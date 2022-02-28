@@ -368,4 +368,29 @@ public abstract class MapValue<K extends Value, V extends Value> implements Valu
 
 ### Record
 
-`Record` 代表多个 Value 数据。
+`Record` 代表多个 Value 数据，每个 Record 可以存储任意多个 field 和 Value 组成的元组，不过 Record 其实没有一个真正地 field，类似 `name -> StringValue`，而是 `0 -> StringValue，1 -> IntValue，2 -> LongValue……`。
+
+Record 采用稀疏存储的方式，即 field 对应的 Value 可能为 null。
+
+```java
+public final class Record implements Value, CopyableValue<Record> {
+    private static final long serialVersionUID = 1L;
+
+    private final InternalDeSerializer serializer =
+            new InternalDeSerializer(); // DataInput and DataOutput abstraction
+
+    private byte[] binaryData; // the buffer containing the binary representation
+
+
+    private int[] offsets; // the offsets to the binary representations of the fields
+
+    private int[] lengths; // the lengths of the fields
+
+    private int numFields; // the number of fields in the record
+}
+```
+
+Record 内部的数据存储都是 byte 方式，每次读取和写入都需要经过序列化和反序列化。
+
+Record 内部使用 numFields 表示存储的 field 的数量，numFields 初始为 0，每次新增 field，numFields 也会递增。新增 field 时，numfields 的值也会作为 `int[] offsets` 和 `int[] lengths` 数组下标，记录 Value 在 `byte[] binaryData` 中的 offset 和 length，用于从 binaryData 中读取 byte 数据。
+
