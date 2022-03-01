@@ -131,3 +131,162 @@ Flink 提供了基本类型和对应的 Value 类型的序列化实现。
 * `VoidSerializer`，处理 `Void`。
 * `EnumSerializer`，处理枚举。
 
+`ListSerializer` 的实现核心代码如下，`GenericArraySerializer` 实现与之类似。
+
+```java
+public final class ListSerializer<T> extends TypeSerializer<List<T>> {
+
+    private static final long serialVersionUID = 1119562170939152304L;
+
+    /** The serializer for the elements of the list. */
+    private final TypeSerializer<T> elementSerializer;
+
+
+    /**
+     * Gets the serializer for the elements of the list.
+     */
+    public TypeSerializer<T> getElementSerializer() {
+        return elementSerializer;
+    }
+
+    @Override
+    public void serialize(List<T> list, DataOutputView target) throws IOException {
+        final int size = list.size();
+        target.writeInt(size);
+
+        // We iterate here rather than accessing by index, because we cannot be sure that
+        // the given list supports RandomAccess.
+        // The Iterator should be stack allocated on new JVMs (due to escape analysis)
+        for (T element : list) {
+            elementSerializer.serialize(element, target);
+        }
+    }
+
+    @Override
+    public List<T> deserialize(DataInputView source) throws IOException {
+        final int size = source.readInt();
+        // create new list with (size + 1) capacity to prevent expensive growth when a single
+        // element is added
+        final List<T> list = new ArrayList<>(size + 1);
+        for (int i = 0; i < size; i++) {
+            list.add(elementSerializer.deserialize(source));
+        }
+        return list;
+    }
+}
+```
+
+`MapSerializer` 实现如下：
+
+```java
+public final class MapSerializer<K, V> extends TypeSerializer<Map<K, V>> {
+
+    private static final long serialVersionUID = -6885593032367050078L;
+
+    /** The serializer for the keys in the map */
+    private final TypeSerializer<K> keySerializer;
+
+    /** The serializer for the values in the map */
+    private final TypeSerializer<V> valueSerializer;
+
+    public TypeSerializer<K> getKeySerializer() {
+        return keySerializer;
+    }
+
+    public TypeSerializer<V> getValueSerializer() {
+        return valueSerializer;
+    }
+
+    @Override
+    public void serialize(Map<K, V> map, DataOutputView target) throws IOException {
+        final int size = map.size();
+        target.writeInt(size);
+
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            keySerializer.serialize(entry.getKey(), target);
+
+            if (entry.getValue() == null) {
+                target.writeBoolean(true);
+            } else {
+                target.writeBoolean(false);
+                valueSerializer.serialize(entry.getValue(), target);
+            }
+        }
+    }
+
+    @Override
+    public Map<K, V> deserialize(DataInputView source) throws IOException {
+        final int size = source.readInt();
+
+        final Map<K, V> map = new HashMap<>(size);
+        for (int i = 0; i < size; ++i) {
+            K key = keySerializer.deserialize(source);
+
+            boolean isNull = source.readBoolean();
+            V value = isNull ? null : valueSerializer.deserialize(source);
+
+            map.put(key, value);
+        }
+
+        return map;
+    }
+}
+```
+
+`EnumSerializer` 实现如下：
+
+```java
+public final class EnumSerializer<T extends Enum<T>> extends TypeSerializer<T> {
+
+    private static final long serialVersionUID = 1L;
+
+    private final Class<T> enumClass;
+
+    /**
+     * Maintain our own map of enum value to their ordinal, instead of directly using {@link
+     * Enum#ordinal()}. This allows us to maintain backwards compatibility for previous serialized
+     * data in the case that the order of enum constants was changed or new constants were added.
+     *
+     * <p>On a fresh start with no reconfiguration, the ordinals would simply be identical to the
+     * enum constants actual ordinals. Ordinals may change after reconfiguration.
+     */
+    private Map<T, Integer> valueToOrdinal;
+
+    /**
+     * Array of enum constants with their indexes identical to their ordinals in the {@link
+     * #valueToOrdinal} map. Serves as a bidirectional map to have fast access from ordinal to
+     * value. May be reordered after reconfiguration.
+     */
+    private T[] values;
+
+    public EnumSerializer(Class<T> enumClass) {
+        this(enumClass, enumClass.getEnumConstants());
+    }
+
+    private EnumSerializer(Class<T> enumClass, T[] enumValues) {
+        this.enumClass = checkNotNull(enumClass);
+        this.values = checkNotNull(enumValues);
+        checkArgument(Enum.class.isAssignableFrom(enumClass), "not an enum");
+
+        checkArgument(this.values.length > 0, "cannot use an empty enum");
+
+        this.valueToOrdinal = new EnumMap<>(this.enumClass);
+        int i = 0;
+        for (T value : values) {
+            this.valueToOrdinal.put(value, i++);
+        }
+    }
+
+    @Override
+    public void serialize(T record, DataOutputView target) throws IOException {
+        // use our own maintained ordinals instead of the actual enum ordinal
+        target.writeInt(valueToOrdinal.get(record));
+    }
+
+    @Override
+    public T deserialize(DataInputView source) throws IOException {
+        return values[source.readInt()];
+    }
+}
+```
+
