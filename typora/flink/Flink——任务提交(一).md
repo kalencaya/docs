@@ -320,6 +320,8 @@ public class CliFrontend {
 
 `CustomCommandLine` 是 Flink 定义的命令行参数解析接口，实现有 `GenericCLI`、`DefaultCLI` 和 `FlinkYarnSessionCli`，分别代表本地、standalone、yarn 等任务提交方式，而 kubernetes 任务提交实现类为 `KubernetesSessionCli`，并未实现 `CustomCommandLine` 接口。
 
+Flink 的运行方式包括 stanalone、yarn 和 kubernetes，不同的运行方式有对应的参数。比如同样是 `run` 命令，在 standalone、yarn 或 kubernetes 上执行时参数存在差异，比如可以使用 `-m yarn-cluster` 指定 yarn 的 session 模式，同时 `--target` 作为通用参数，也可以通过 `--target yarn-session` 指定 yarn 的 session 模式。Flink 可以通过 `CustomCommandLine` 在 `commons-cli` 库参数解析的基础上做更近一步地参数解析处理。
+
 `CustomCommandLine` 定义了 `#isActive(CommandLine)` 方法，用于判断是否生效：
 
 ```java
