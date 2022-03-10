@@ -210,3 +210,61 @@ public class CliFrontend {
 }
 ```
 
+`PackagedProgram` 提交过程如下：
+
+```java
+public class CliFrontend {
+
+    protected void executeProgram(final Configuration configuration, final PackagedProgram program) throws ProgramInvocationException {
+        ClientUtils.executeProgram(new DefaultExecutorServiceLoader(), configuration, program, false, false);
+    }
+}
+
+/** Utility functions for Flink client. */
+public enum ClientUtils {
+    ;
+
+    public static void executeProgram(
+            PipelineExecutorServiceLoader executorServiceLoader,
+            Configuration configuration,
+            PackagedProgram program,
+            boolean enforceSingleJobExecution,
+            boolean suppressSysout)
+            throws ProgramInvocationException {
+        checkNotNull(executorServiceLoader);
+        final ClassLoader userCodeClassLoader = program.getUserCodeClassLoader();
+        final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        try {
+            Thread.currentThread().setContextClassLoader(userCodeClassLoader);
+
+            LOG.info(
+                    "Starting program (detached: {})",
+                    !configuration.getBoolean(DeploymentOptions.ATTACHED));
+
+            ContextEnvironment.setAsContext(
+                    executorServiceLoader,
+                    configuration,
+                    userCodeClassLoader,
+                    enforceSingleJobExecution,
+                    suppressSysout);
+
+            StreamContextEnvironment.setAsContext(
+                    executorServiceLoader,
+                    configuration,
+                    userCodeClassLoader,
+                    enforceSingleJobExecution,
+                    suppressSysout);
+
+            try {
+                program.invokeInteractiveModeForExecution();
+            } finally {
+                ContextEnvironment.unsetAsContext();
+                StreamContextEnvironment.unsetAsContext();
+            }
+        } finally {
+            Thread.currentThread().setContextClassLoader(contextClassLoader);
+        }
+    }
+}
+```
+
