@@ -12,3 +12,11 @@ Flink 在初始化 YARN 客户端时使用 `HADOOP_CONF_DIR` 的配置信息，L
 
 
 
+Flink on YARN 支持 3 种方式的任务运行条件：
+
+* Application。对应 `YarnClusterDescriptor#deployApplicationCluster(ClusterSpecification, ApplicationConfiguration)` 方法。
+* Per-job。对应 `YarnClusterDescriptor#deployJobCluster(ClusterSpecification, JobGraph, detached)` 方法。
+* Session。对应 `YarnClusterDescriptor#deploySessionCluster(ClusterSpecification)` 方法。
+
+Linkis 同时支持 3 种形式的任务提交模式，与之对应的也提供了对应的实现类。
+
