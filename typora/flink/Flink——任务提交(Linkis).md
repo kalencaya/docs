@@ -20,3 +20,11 @@ Flink on YARN 支持 3 种方式的任务运行条件：
 
 Linkis 同时支持 3 种形式的任务提交模式，与之对应的也提供了对应的实现类。
 
+
+
+
+
+session 模式，可能还是先创建一个 session 集群，然后在提交任务。
+
+创建 yarn session 集群后，接口会返回 webInterfaceUrl 和 application.id 两个地址，前者可以使用 rest 接口进行任务提交，后者可以通过 clusterId 获取集群信息，然后提交任务
+
