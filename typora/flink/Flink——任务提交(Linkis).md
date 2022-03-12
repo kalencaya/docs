@@ -112,3 +112,60 @@ public class ClusterDescriptorAdapterFactory {
 }
 ```
 
+
+
+
+
+```java
+public abstract class ClusterDescriptorAdapter implements Closeable {
+
+    public static final long CLIENT_REQUEST_TIMEOUT =
+            FlinkEnvConfiguration.FLINK_CLIENT_REQUEST_TIMEOUT().getValue().toLong();
+
+    protected final ExecutionContext executionContext;
+    // jobId is not null only after job is submitted
+    private JobID jobId;
+    protected ApplicationId clusterID;
+    protected ClusterClient<ApplicationId> clusterClient;
+    private YarnClusterDescriptor clusterDescriptor;
+
+    protected String webInterfaceUrl;
+
+    public ClusterDescriptorAdapter(ExecutionContext executionContext) {
+        this.executionContext = executionContext;
+    }
+
+    /**
+     * The reason of using ClusterClient instead of JobClient to retrieve a cluster is the JobClient
+     * can't know whether the job is finished on yarn-per-job mode.
+     *
+     * <p>If a job is finished, JobClient always get java.util.concurrent.TimeoutException when
+     * getting job status and canceling a job after job is finished. This method will throw
+     * org.apache.hadoop.yarn.exceptions.ApplicationNotFoundException when creating a ClusterClient
+     * if the job is finished. This is more user-friendly.
+     */
+    protected <R> R bridgeClientRequest(ExecutionContext executionContext, JobID jobId, Supplier<CompletableFuture<R>> function, boolean ignoreError) throws JobExecutionException {
+        if (clusterClient == null) {
+            if (this.clusterID == null) {
+                throw new JobExecutionException("Cluster information don't exist.");
+            }
+            clusterDescriptor = executionContext.createClusterDescriptor();
+            try {
+                clusterClient = clusterDescriptor.retrieve(this.clusterID).getClusterClient();
+            } catch (ClusterRetrieveException e) {
+                throw new JobExecutionException(String.format("Job: %s could not retrieve or create a cluster.", jobId), e);
+            }
+        }
+        try {
+            return function.get().get(CLIENT_REQUEST_TIMEOUT, TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            if (ignoreError) {
+                return null;
+            } else {
+                throw new JobExecutionException(String.format("Job: %s operation failed!", jobId), e);
+            }
+        }
+    }
+}
+```
+
