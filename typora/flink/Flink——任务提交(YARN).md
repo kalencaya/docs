@@ -164,7 +164,7 @@ public class JarYarnPerJobSubmitDemo {
 
 ## Session 模式
 
-Session 模式需先创建集群，在提交任务，创建集群的实现如下：
+Session 模式需先创建集群，再提交任务，创建集群的实现如下：
 
 ```java
 public class YarnSessionClusterCreateDemo {

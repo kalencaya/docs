@@ -1,4 +1,4 @@
-# Flink——任务提交(二)
+# Flink——任务提交源码解析(二)
 
 ## 任务运行与集群部署
 
@@ -121,7 +121,7 @@ public class CliFrontend {
 }
 ```
 
-从命令行中解析出来的参数最后会封装成 `CommandLine` 对象，通过 `CommandLine` 可以获取到激活的 `CustomCommandLine`，确定任务的运行方式，在将 `CommandLine` 封装成 `ProgramOptions`。
+从命令行中解析出来的参数最后会封装成 `CommandLine` 对象，通过 `CommandLine` 可以获取到激活的 `CustomCommandLine`，确定任务的运行方式，再将 `CommandLine` 封装成 `ProgramOptions`。
 
 从 jar 包中获取依赖的过程是读取 jar 包中 `lib` 目录下的文件实现的。
 
