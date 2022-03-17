@@ -9,11 +9,24 @@ Flink 是新一代的流批一体计算引擎，从不同的文件格式、消�
 * 接口没有对 partitions/shards/splits 提供明确地支持，导致与此相关的 `event-time alignment`、`per-partition watermarks`、`dynamic split assignment`、`work stealing` 很难实现，source connector 需要自行实现 partitions/shards/splits 功能后，再去考虑事件事件对齐、分区 watermark 等关键特性。
 * checkpoint 锁由 SourceFunction 持有。SourceFunction 实现不得不确保在持有锁的情况下输出数据、更新状态，而 Flink  对此难以优化。并发竞争下、非公平锁也会导致不能确保部分线程（checkpoint 线程）及时获取到锁。锁是高性能的
 
+详细解释可以在 [漫谈 Flink Source 接口重构](http://www.whitewood.me/2020/02/11/%E6%BC%AB%E8%B0%88-Flink-Source-%E6%8E%A5%E5%8F%A3%E9%87%8D%E6%9E%84/) 这篇文章中，获得详细地描述。
 
+## Source
 
-可以在 [漫谈 Flink Source 接口重构](http://www.whitewood.me/2020/02/11/%E6%BC%AB%E8%B0%88-Flink-Source-%E6%8E%A5%E5%8F%A3%E9%87%8D%E6%9E%84/) 这篇文章中，获得详细地描述。
+Flink 官方文档中对于数据源提供了详细的说明，点击[链接](https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/dev/datastream/sources/)可以跳转阅读。
 
+一个数据源包含 3 个核心组件：
 
+* `SplitEnumerator`。单线程运行在 `JobManager`。负责生成 `Split`，接受 `SourceReader` 的 pull 请求，分配 `Split`。
+* `SourceReader`。运行在 `TaskManager`，可分配多个。主动向 `SplitEnumerator` pull `Split` 并进行处理。
+* `Split`。source 数据的切分，比如对应一个文件，Kafka topic 中的一个 partition 等。
+
+Source 类作为 API 入口，以工厂模式创建 `SplitEnumerator`、 `SourceReader` 和对应的序列化实现：
+
+* *Split Enumerator*
+* *Source Reader*
+* *Split Serializer*
+* *Enumerator Checkpoint Serializer*
 
 ```java
 public interface Source<T, SplitT extends SourceSplit, EnumChkT> extends Serializable {
@@ -55,4 +68,8 @@ public interface Source<T, SplitT extends SourceSplit, EnumChkT> extends Seriali
     SimpleVersionedSerializer<EnumChkT> getEnumeratorCheckpointSerializer();
 }
 ```
+
+
+
+https://www.jianshu.com/p/b3890d7b521a
 
