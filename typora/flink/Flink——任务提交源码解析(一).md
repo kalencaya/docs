@@ -1,4 +1,4 @@
-# Flink——任务提交(一)
+# Flink——任务提交源码解析(一)
 
 ## 参数
 
@@ -402,7 +402,7 @@ public class GenericCLI implements CustomCommandLine {
 
 ##### `FlinkYarnSessionCli`
 
-yarn 模式支持 3 中提交方式，分别是 application、per-job 和 session，而一般在使用 session 模式时会使用 `-m yarn-cluster` 参数，这是因为它会激活 `FlinkYarnSessionCli`：
+yarn 模式支持 3 种提交方式，分别是 application、per-job 和 session，而一般在使用 session 模式时会使用 `-m yarn-cluster` 参数，这是因为它会激活 `FlinkYarnSessionCli`：
 
 ```java
 abstract class AbstractYarnCli extends AbstractCustomCommandLine {
