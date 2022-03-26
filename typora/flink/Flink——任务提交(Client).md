@@ -40,6 +40,8 @@ Flink 提供了 2 个实现：`RestClusterClient` 和 `MiniClusterClient`。无�
 
 `ApplicationDeployer#run(Configuration, ApplicationConfiguration)` 提交 application 任务。
 
+把 `run` 和 `run-application` 分开的原因是前者提交的是 `JobGraph`，而后者提交的是 jar 包。
+
 
 
 `ClusterDescriptor` 切入。
@@ -55,6 +57,10 @@ RestClient 切入。
 
 
 ### REST
+
+
+
+### SQL
 
 
 
