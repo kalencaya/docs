@@ -13,7 +13,13 @@ Flink 支持 3 中部署模式：
 三种模式的区别在于：
 
 * 集群生命周期和资源隔离。
+  * 生命周期。任务结束时，集群是否关闭，多个任务一起运行时，集群如何关闭。
+  * JobManager 和 TaskManager 两方面影响，不同任务之间影响。如果 JobManager 发生容错，会导致所有任务 recovery，如果 TaskManager 发生容错，会导致有 Task 在 TaskManager 上运行的任务 recovery，同一台 TaskManager 不同的 Task 也会争抢资源。TaskManager 的 slot 均分内存，共享 CPU。
+
 * 应用 `main()` 方法在 client 还是 JobManager 执行。
+  * client 在执行提交任务时，需下载应用程序依赖，执行 `main()` 方法构建 JobGraph，将依赖和 JobGraph 发送至 JobManager。此过程需消耗网络带宽下载依赖，CPU 执行 `main()` 方法。
+  * 参考 [美团 Flink 大作业部署与状态稳定性优化实践](https://flink-learning.org.cn/article/detail/3f0bb4391f26c5803c44504529cc9415) 部分文章。
+
 
 ![deployment_modes](Flink 部署模式.assets/deployment_modes-5423974.svg)
 
@@ -21,7 +27,7 @@ Flink 支持 3 中部署模式：
 
 在 client 进行任务提交时会先在本地下载应用依赖，执行 `main()` 方法并传输依赖和 `JobGrapth` 到 JobManager。因此 client 是一个资源重度消耗者，它需要大量网络带宽下载依赖、发送二进制 jar 包到 JobManager，消耗 CPU 资源执行 `main()` 方法，当大量用户共享一个 client 时，任务提交会变得很慢。
 
-在 Application 模式下，`main()` 方法是在 JobManager 执行的。提交任务时会为每个应用创建一个 Flink 集群，JobManager 负责 `main()` 方法的执行。Application 和 Per-Job 类似，都会创建一个集群，但是 Application 模式下 `main()` 可以多次调用 `execute()` 和 `executeAsync()` 创建多个任务，Application 模式下应用具有与 Per-Job 模式一致的资源隔离和负载均衡，应用内部的任务共享资源。
+在 Application 模式下，`main()` 方法是在 JobManager 执行的。提交任务时会为每个应用创建一个 Flink 集群，JobManager 负责 `main()` 方法的执行。Application 和 Per-Job 类似，都会创建一个集群，但是 Application 模式下 `main()` 可以多次调用 `execute()` 和 `executeAsync()` 创建多个任务。`execute()` 是阻塞的，导致任务之间的运行是顺序的，`executeAsync()` 是非阻塞的，任务之间的运行是随机的。Application 模式下应用具有与 Per-Job 模式一致的资源隔离和负载均衡，应用内部的任务共享资源。
 
 Application 模式主要解决依赖下载和传输问题。Flink 应用在编写的时候需要将 DataStream/DataSet 等 API 依赖设置为 `provided`，因为 Flink 在 `lib` 目录下提供了核心依赖 jar 包，应用只需要提供自己需要的依赖即可。Application 假设应用提供的是一个 Fat Jar，包含了运行所需的所有的依赖，包括 Flink 的核心依赖，JobManager 和 TaskManager 不会出现缺少类定义的问题。
 
@@ -142,3 +148,9 @@ CLI 支持的命令如下：
 
 
 
+
+
+| 序号 | 商品id     | 商品名称     | 销量 | 销售额 |
+| ---- | ---------- | ------------ | ---- | ------ |
+| 1    | xxxxyyyzzz | 我是一个商品 | 10   | 1000   |
+| 2    | aaaabbbccc | 我是一个商品 | 20   | 2000   |
