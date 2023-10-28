@@ -128,13 +128,13 @@ Flink 在 Kubernetes 上运行在容器中，容器创建的基础是镜像。�
 
 * 镜像。构建镜像时，将依赖打进镜像中。将依赖添加进 `$FLINK_HOME/usrlib` 目录，具体参考 [Configuring Flink on Docker](https://nightlies.apache.org/flink/flink-docs-release-1.18/docs/deployment/resource-providers/standalone/docker/#configuring-flink-on-docker)
 * 容器生命周期。Kubernetes 提供了 `PostStart` 和 `PreStart` hooks，使用 hook 添加依赖。参考 [Container Lifecycle Hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/)
-* init-container。在 Flink 容器启动前，运行初始化容器，加载依赖。参考[Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
+* init-container。在 Flink 容器启动前，运行初始化容器，加载依赖。参考 [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 
 ## 硬件
 
-服务器 classpath
+Flink 任务依然是 Java 程序，可在每台服务器上添加依赖 Jar，通过 `CLASSPATH` 环境变量配置依赖路径。
 
-挂载文件系统
+在 Kubernetes 中，还可以通过将文件系统通过 FUSE 挂载到本地，本地直接访问文件系统上的 Flink 依赖。
 
 
 
