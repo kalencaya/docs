@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: "0 20 * * *" # automatic test while every day on 04:00 am at UTC+10
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Not needed if lastUpdated is not enabled
+      - uses: pnpm/action-setup@v2 # pnpm is optional but recommended, you can also use npm / yarn
+        with:
+          version: 6
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build with Rspress
+        run: |
+          pnpm run build
