@@ -6,6 +6,11 @@
   },
   {
     "type": "dir",
+    "name": "java",
+    "label": "nav.project.java"
+  },
+  {
+    "type": "dir",
     "name": "microservice",
     "label": "nav.project.microservice"
   },

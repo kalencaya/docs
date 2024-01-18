@@ -23,6 +23,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.project.java": {
+    "zh": "Java",
+    "en": "Java"
+  },
   "nav.project.microservice": {
     "zh": "微服务",
     "en": "MicroService"
