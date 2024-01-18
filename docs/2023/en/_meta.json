@@ -10,6 +10,11 @@
     "activeMatch": "/blog/"
   },
   {
+    "text": "nav.project",
+    "link": "/project/",
+    "activeMatch": "/project/"
+  },
+  {
     "text": "nav.faq",
     "link": "/faq/",
     "activeMatch": "/faq/"

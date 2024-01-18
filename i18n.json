@@ -11,8 +11,24 @@
     "zh": "博客",
     "en": "Blog"
   },
+  "nav.blog.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.project": {
+    "zh": "开源项目",
+    "en": "Project"
+  },
+  "nav.project.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
   "nav.faq": {
     "zh": "FAQ",
     "en": "FAQ"
+  },
+  "nav.faq.index": {
+    "zh": "概览",
+    "en": "Overview"
   }
 }
