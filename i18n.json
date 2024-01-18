@@ -1,0 +1,222 @@
+{
+  "nav.quick-start": {
+    "zh": "快速开始",
+    "en": "Quick Start"
+  },
+  "nav.quick-start.index": {
+    "zh": "项目简介",
+    "en": "Introduction"
+  },
+  "nav.quick-start.why": {
+    "zh": "项目初衷",
+    "en": "Why"
+  },
+  "nav.quick-start.requirement": {
+    "zh": "前置需求",
+    "en": "Requirement"
+  },
+  "nav.quick-start.prepare": {
+    "zh": "准备工作",
+    "en": "Prepare"
+  },
+  "nav.quick-start.prepare.index": {
+    "zh": "说明",
+    "en": "Index"
+  },
+  "nav.quick-start.prepare.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
+  "nav.quick-start.prepare.kubernetes.index": {
+    "zh": "说明",
+    "en": "Index"
+  },
+  "nav.quick-start.prepare.kubernetes.docker-desktop": {
+    "zh": "Docker Desktop",
+    "en": "Docker Desktop"
+  },
+  "nav.quick-start.prepare.kubernetes.minikube": {
+    "zh": "Minikube",
+    "en": "Minikube"
+  },
+  "nav.quick-start.prepare.kubernetes.k3s": {
+    "zh": "K3s",
+    "en": "K3s"
+  },
+  "nav.quick-start.prepare.install-dependency": {
+    "zh": "安装依赖",
+    "en": "Install Dependency"
+  },
+  "nav.quick-start.prepare.install-dependency.nginx-ingress-controller": {
+    "zh": "Nginx Ingress Controller",
+    "en": "Nginx Ingress Controller"
+  },
+  "nav.quick-start.prepare.install-dependency.flink-kubernetes-operator": {
+    "zh": "Flink Kubernetes Operator",
+    "en": "Flink Kubernetes Operator"
+  },
+  "nav.quick-start.prepare.install-dependency.doris-operator": {
+    "zh": "Doris Operator",
+    "en": "Doris Operator"
+  },
+  "nav.quick-start.compile": {
+    "zh": "编译",
+    "en": "Compile"
+  },
+  "nav.quick-start.install": {
+    "zh": "安装",
+    "en": "Install"
+  },
+  "nav.quick-start.install.prepare": {
+    "zh": "前置准备",
+    "en": "Prepare"
+  },
+  "nav.quick-start.install.docker": {
+    "zh": "Docker 安装",
+    "en": "Docker Install"
+  },
+  "nav.quick-start.install.compile": {
+    "zh": "编译",
+    "en": "Compile"
+  },
+  "nav.quick-start.quick-start": {
+    "zh": "快速开始",
+    "en": "Quick Start"
+  },
+  "nav.quick-start.quick-start.initialize": {
+    "zh": "初始化系统",
+    "en": "Initialize System"
+  },
+  "nav.quick-start.quick-start.flink&seatunnel": {
+    "zh": "Flink&SeaTunnel",
+    "en": "Flink&SeaTunnel"
+  },
+  "nav.quick-start.quick-start.flink_cluster": {
+    "zh": "Flink 集群",
+    "en": "Flink Cluster"
+  },
+  "nav.quick-start.quick-start.flink-kubernetes": {
+    "zh": "Flink Kubernetes",
+    "en": "Flink Kubernetes"
+  },
+  "nav.quick-start.quick-start.job_jar": {
+    "zh": "Flink Jar 任务",
+    "en": "Flink Jar Job"
+  },
+  "nav.quick-start.quick-start.job_sql": {
+    "zh": "Flink SQL 任务",
+    "en": "Flink SQL Job"
+  },
+  "nav.quick-start.quick-start.job_seatunnel": {
+    "zh": "SeaTunnel On Flink 任务",
+    "en": "SeaTunnel On Flink Job"
+  },
+  "nav.quick-start.quick-start.doris": {
+    "zh": "Doris",
+    "en": "Doris"
+  },
+  "nav.quick-start.quick-start.doris.index": {
+    "zh": "创建集群",
+    "en": "Create Cluster"
+  },
+  "nav.guide": {
+    "zh": "使用指南",
+    "en": "Guide"
+  },
+  "nav.guide.index": {
+    "zh": "使用指南",
+    "en": "Guide"
+  },
+  "nav.guide.doris": {
+    "zh": "Doris",
+    "en": "Doris"
+  },
+  "nav.design": {
+    "zh": "功能设计",
+    "en": "Design"
+  },
+  "nav.design.index": {
+    "zh": "功能设计",
+    "en": "Design"
+  },
+  "nav.design.flink-job": {
+    "zh": "Flink 任务管理",
+    "en": "Flink Job Manage"
+  },
+  "nav.design.storage": {
+    "zh": "存储功能",
+    "en": "Storage"
+  },
+  "nav.design.kubernetes": {
+    "zh": "Flink On Kubernetes",
+    "en": "Flink On Kubernetes"
+  },
+  "nav.design.dataservice": {
+    "zh": "数据服务",
+    "en": "Data Service"
+  },
+  "nav.roadmap": {
+    "zh": "路线图",
+    "en": "Roadmap"
+  },
+  "nav.roadmap.overview": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.roadmap.roadmap": {
+    "zh": "路线图",
+    "en": "Roadmap"
+  },
+  "nav.roadmap.plan": {
+    "zh": "开发计划",
+    "en": "Plan"
+  },
+  "nav.contribute": {
+    "zh": "参与贡献",
+    "en": "How To Contribute"
+  },
+  "nav.contribute.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.contribute.develop": {
+    "zh": "开发环境",
+    "en": "Develop"
+  },
+  "nav.contribute.sourcecode": {
+    "zh": "项目源码",
+    "en": "SourceCode"
+  },
+  "nav.contribute.docker": {
+    "zh": "Docker",
+    "en": "Docker"
+  },
+  "nav.contribute.cicd": {
+    "zh": "CI/CD",
+    "en": "CI/CD"
+  },
+  "nav.contribute.contribute": {
+    "zh": "如何贡献",
+    "en": "How To Contribute"
+  },
+  "nav.blog": {
+    "zh": "博客",
+    "en": "Blog"
+  },
+  "nav.blog.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.blog.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
+  "nav.faq": {
+    "zh": "FAQ",
+    "en": "FAQ"
+  },
+  "nav.faq.index": {
+    "zh": "FAQ",
+    "en": "FAQ"
+  }
+}
