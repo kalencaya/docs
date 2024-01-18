@@ -23,6 +23,14 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.project.microservice": {
+    "zh": "微服务",
+    "en": "MicroService"
+  },
+  "nav.project.bigdata": {
+    "zh": "大数据",
+    "en": "BigData"
+  },
   "nav.faq": {
     "zh": "FAQ",
     "en": "FAQ"

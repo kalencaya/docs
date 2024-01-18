@@ -3,5 +3,15 @@
     "type": "file",
     "name": "index",
     "label": "nav.project.index"
+  },
+  {
+    "type": "dir",
+    "name": "microservice",
+    "label": "nav.project.microservice"
+  },
+  {
+    "type": "dir",
+    "name": "bigdata",
+    "label": "nav.project.bigdata"
   }
 ]
