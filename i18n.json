@@ -1,7 +1,11 @@
 {
-  "nav.quick-start": {
-    "zh": "快速开始",
-    "en": "Quick Start"
+  "nav.introduction": {
+    "zh": "介绍",
+    "en": "Introduction"
+  },
+  "nav.introduction.index": {
+    "zh": "概览",
+    "en": "Overview"
   },
   "nav.blog": {
     "zh": "博客",

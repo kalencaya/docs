@@ -3,10 +3,5 @@
     "type": "file",
     "name": "index",
     "label": "nav.blog.index"
-  },
-  {
-    "type": "dir",
-    "name": "kubernetes",
-    "label": "nav.blog.kubernetes"
   }
 ]

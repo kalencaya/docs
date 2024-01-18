@@ -4,8 +4,8 @@ import {defineConfig} from 'rspress/config';
 export default defineConfig({
     root: path.join(__dirname, 'docs'),
     base: '/docs/',
-    title: 'Docs',
-    description: '个人文档仓库，分享知识、技能和经验',
+    title: '文档',
+    description: '分享知识、技能和经验',
     icon: '/rspress-icon.png',
     logo: '/rspress-icon.png',
     lang: 'zh',
@@ -16,7 +16,7 @@ export default defineConfig({
     themeConfig: {
         lastUpdated: true,
         socialLinks: [
-            {icon: 'github', mode: 'link', content: 'https://github.com/flowerfine/scaleph'},
+            {icon: 'github', mode: 'link', content: 'https://github.com/kalencaya/docs'},
             {icon: 'wechat', mode: 'img', content: '/wechat.jpg'},
         ],
         locales: [
@@ -25,7 +25,7 @@ export default defineConfig({
                 label: '简体中文',
                 editLink: {
                     docRepoBaseUrl:
-                        'https://github.com/flowerfine/scaleph-repress-site/tree/main/docs',
+                        'https://github.com/kalencaya/docs/tree/main/docs',
                     text: '📝 在 GitHub 上编辑此页',
                 },
                 prevPageText: '上一篇',
@@ -37,7 +37,7 @@ export default defineConfig({
                 label: 'English',
                 editLink: {
                     docRepoBaseUrl:
-                        'https://github.com/flowerfine/scaleph-repress-site/tree/main/docs',
+                        'https://github.com/kalencaya/docs/tree/main/docs',
                     text: '📝 Edit this page on GitHub',
                 },
             },
