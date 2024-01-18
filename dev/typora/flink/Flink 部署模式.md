@@ -21,7 +21,7 @@ Flink 支持 3 中部署模式：
   * 参考 [美团 Flink 大作业部署与状态稳定性优化实践](https://flink-learning.org.cn/article/detail/3f0bb4391f26c5803c44504529cc9415) 部分文章。
 
 
-![deployment_modes](Flink 部署模式.assets/deployment_modes-5423974.svg)
+![deployment_modes](Flink%20部署模式.assets/deployment_modes-5423974.svg)
 
 ### Application Mode
 
@@ -49,7 +49,7 @@ Session 模式下会将任务提交到运行中的集群，所有提交的应用
 
 Flink 的组件分为 2 部分：内部组件和外部组件，内部组件是必需的，会根据部署方式的不同，有不同的实现，外部组件属于可选组件。
 
-![deployment_overview](Flink 部署模式.assets/deployment_overview.svg)
+![deployment_overview](Flink%20部署模式.assets/deployment_overview.svg)
 
 内部组件：
 
