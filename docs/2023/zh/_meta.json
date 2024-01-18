@@ -1,0 +1,17 @@
+[
+  {
+    "text": "nav.quick-start",
+    "link": "/quick-start/",
+    "activeMatch": "/quick-start/"
+  },
+  {
+    "text": "nav.blog",
+    "link": "/blog/",
+    "activeMatch": "/blog/"
+  },
+  {
+    "text": "nav.faq",
+    "link": "/faq/",
+    "activeMatch": "/faq/"
+  }
+]
