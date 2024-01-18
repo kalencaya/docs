@@ -15,6 +15,38 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.blog.container": {
+    "zh": "容器",
+    "en": "Container"
+  },
+  "nav.blog.data-platform": {
+    "zh": "数据平台",
+    "en": "Data Platform"
+  },
+  "nav.blog.devops": {
+    "zh": "DevOps",
+    "en": "DevOps"
+  },
+  "nav.blog.flink": {
+    "zh": "Flink",
+    "en": "Flink"
+  },
+  "nav.blog.program-design": {
+    "zh": "程序设计",
+    "en": "Program Design"
+  },
+  "nav.blog.spring": {
+    "zh": "Spring",
+    "en": "Spring"
+  },
+  "nav.blog.sql": {
+    "zh": "SQL",
+    "en": "SQL"
+  },
+  "nav.blog.test": {
+    "zh": "测试",
+    "en": "Test"
+  },
   "nav.project": {
     "zh": "开源项目",
     "en": "Project"
