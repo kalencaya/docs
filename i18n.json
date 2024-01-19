@@ -63,6 +63,10 @@
     "zh": "微服务",
     "en": "MicroService"
   },
+  "nav.project.lowcode": {
+    "zh": "低代码",
+    "en": "LowCode"
+  },
   "nav.project.bigdata": {
     "zh": "大数据",
     "en": "BigData"
