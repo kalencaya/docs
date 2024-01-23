@@ -8,3 +8,9 @@
     * [SQL Visitor](https://github.com/alibaba/druid/wiki/SQL-Parser#43-visitor)。Visitor是遍历AST的手段，是处理AST最方便的模式。
   * [SQL Format](https://github.com/alibaba/druid/wiki/SQL_Format)。
   * [SQL Transform](https://github.com/alibaba/druid/wiki/SQL-Parser#6-sql%E7%BF%BB%E8%AF%91)。Druid 提供了部分类型 SQL 翻译功能，如将 Oracle 翻译成 MySQL。
+* [jOOQ](https://github.com/jOOQ/jOOQ)。
+
+## 日志工具
+
+* log4jdbc
+* [p6spy](https://github.com/p6spy/p6spy)。
