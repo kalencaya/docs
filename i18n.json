@@ -67,6 +67,10 @@
     "zh": "低代码",
     "en": "LowCode"
   },
+  "nav.project.workflow": {
+    "zh": "Workflow",
+    "en": "Workflow"
+  },
   "nav.project.bigdata": {
     "zh": "大数据",
     "en": "BigData"

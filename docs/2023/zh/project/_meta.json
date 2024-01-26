@@ -21,6 +21,11 @@
   },
   {
     "type": "dir",
+    "name": "workflow",
+    "label": "nav.project.workflow"
+  },
+  {
+    "type": "dir",
     "name": "bigdata",
     "label": "nav.project.bigdata"
   }
