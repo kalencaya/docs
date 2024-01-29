@@ -6,6 +6,7 @@ mybatis
 * [mybatis-dynamic-sql](https://github.com/mybatis/mybatis-dynamic-sql)。
 * [mybatis-plus](https://github.com/baomidou/mybatis-plus)。代码生成：mybatis-plus 仓库中 mybatis-plus-generator 模块
 * [mybatis-flex](https://github.com/mybatis-flex/mybatis-flex)。代码生成：mybatis-flex 仓库中 mybatis-flex-codegen 模块
+* [mybatis-plus-join](https://github.com/yulichang/mybatis-plus-join)。
 * [fluent-mybatis](https://github.com/atool/fluent-mybatis)。代码生成：支持。已停止维护
 
 jpa
