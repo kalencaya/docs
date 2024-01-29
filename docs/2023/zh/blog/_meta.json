@@ -6,6 +6,11 @@
   },
   {
     "type": "dir",
+    "name": "microservice",
+    "label": "nav.blog.microservice"
+  },
+  {
+    "type": "dir",
     "name": "container",
     "label": "nav.blog.container"
   },

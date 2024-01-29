@@ -15,6 +15,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.blog.microservice": {
+    "zh": "微服务",
+    "en": "MicroService"
+  },
   "nav.blog.container": {
     "zh": "容器",
     "en": "Container"
