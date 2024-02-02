@@ -19,6 +19,14 @@
     "zh": "代理",
     "en": "Proxy"
   },
+  "nav.env.proxy.docker": {
+    "zh": "Docker",
+    "en": "Docker"
+  },
+  "nav.env.proxy.github": {
+    "zh": "Github",
+    "en": "Github"
+  },
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"

@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "docker",
+    "label": "nav.env.proxy.docker"
+  },
+  {
+    "type": "file",
+    "name": "github",
+    "label": "nav.env.proxy.github"
+  }
+]
