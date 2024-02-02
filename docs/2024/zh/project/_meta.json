@@ -1,0 +1,32 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.index"
+  },
+  {
+    "type": "dir",
+    "name": "java",
+    "label": "nav.project.java"
+  },
+  {
+    "type": "dir",
+    "name": "microservice",
+    "label": "nav.project.microservice"
+  },
+  {
+    "type": "dir",
+    "name": "lowcode",
+    "label": "nav.project.lowcode"
+  },
+  {
+    "type": "dir",
+    "name": "workflow",
+    "label": "nav.project.workflow"
+  },
+  {
+    "type": "dir",
+    "name": "bigdata",
+    "label": "nav.project.bigdata"
+  }
+]

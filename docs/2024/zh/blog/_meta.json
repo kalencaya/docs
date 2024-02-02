@@ -1,0 +1,52 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.blog.index"
+  },
+  {
+    "type": "dir",
+    "name": "microservice",
+    "label": "nav.blog.microservice"
+  },
+  {
+    "type": "dir",
+    "name": "container",
+    "label": "nav.blog.container"
+  },
+  {
+    "type": "dir",
+    "name": "data-platform",
+    "label": "nav.blog.data-platform"
+  },
+  {
+    "type": "dir",
+    "name": "devops",
+    "label": "nav.blog.devops"
+  },
+  {
+    "type": "dir",
+    "name": "flink",
+    "label": "nav.blog.flink"
+  },
+  {
+    "type": "dir",
+    "name": "program-design",
+    "label": "nav.blog.program-design"
+  },
+  {
+    "type": "dir",
+    "name": "spring",
+    "label": "nav.blog.spring"
+  },
+  {
+    "type": "dir",
+    "name": "sql",
+    "label": "nav.blog.sql"
+  },
+  {
+    "type": "dir",
+    "name": "test",
+    "label": "nav.blog.test"
+  }
+]

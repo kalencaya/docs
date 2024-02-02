@@ -1,0 +1,22 @@
+[
+  {
+    "text": "nav.introduction",
+    "link": "/introduction/",
+    "activeMatch": "/introduction/"
+  },
+  {
+    "text": "nav.blog",
+    "link": "/blog/",
+    "activeMatch": "/blog/"
+  },
+  {
+    "text": "nav.project",
+    "link": "/project/",
+    "activeMatch": "/project/"
+  },
+  {
+    "text": "nav.faq",
+    "link": "/faq/",
+    "activeMatch": "/faq/"
+  }
+]
