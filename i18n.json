@@ -27,6 +27,10 @@
     "zh": "Github",
     "en": "Github"
   },
+  "nav.env.github": {
+    "zh": "Github 认证",
+    "en": "Github Auth"
+  },
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
