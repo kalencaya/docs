@@ -1,0 +1,13 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.env.index"
+  },
+  {
+    "type": "dir",
+    "name": "proxy",
+    "collapsed": true,
+    "label": "nav.env.proxy"
+  }
+]

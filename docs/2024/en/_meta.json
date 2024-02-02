@@ -5,6 +5,11 @@
     "activeMatch": "/introduction/"
   },
   {
+    "text": "nav.env",
+    "link": "/env/",
+    "activeMatch": "/env/"
+  },
+  {
     "text": "nav.blog",
     "link": "/blog/",
     "activeMatch": "/blog/"

@@ -7,26 +7,31 @@
   {
     "type": "dir",
     "name": "java",
+    "collapsed": true,
     "label": "nav.project.java"
   },
   {
     "type": "dir",
     "name": "microservice",
+    "collapsed": true,
     "label": "nav.project.microservice"
   },
   {
     "type": "dir",
     "name": "lowcode",
+    "collapsed": true,
     "label": "nav.project.lowcode"
   },
   {
     "type": "dir",
     "name": "workflow",
+    "collapsed": true,
     "label": "nav.project.workflow"
   },
   {
     "type": "dir",
     "name": "bigdata",
+    "collapsed": true,
     "label": "nav.project.bigdata"
   }
 ]

@@ -7,6 +7,18 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.env": {
+    "zh": "环境配置",
+    "en": "ENV"
+  },
+  "nav.env.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.env.proxy": {
+    "zh": "代理",
+    "en": "Proxy"
+  },
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
