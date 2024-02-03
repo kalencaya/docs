@@ -87,6 +87,10 @@
     "zh": "Java",
     "en": "Java"
   },
+  "nav.project.web": {
+    "zh": "前端",
+    "en": "Web"
+  },
   "nav.project.microservice": {
     "zh": "微服务",
     "en": "MicroService"

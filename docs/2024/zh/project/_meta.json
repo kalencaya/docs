@@ -12,6 +12,12 @@
   },
   {
     "type": "dir",
+    "name": "web",
+    "collapsed": true,
+    "label": "nav.project.web"
+  },
+  {
+    "type": "dir",
     "name": "microservice",
     "collapsed": true,
     "label": "nav.project.microservice"
