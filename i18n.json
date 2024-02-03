@@ -103,6 +103,22 @@
     "zh": "大数据",
     "en": "BigData"
   },
+  "nav.cncf": {
+    "zh": "CNCF",
+    "en": "CNCF"
+  },
+  "nav.cncf.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.cncf.volcano": {
+    "zh": "Volcano",
+    "en": "Volcano"
+  },
+  "nav.cncf.kcl": {
+    "zh": "KCL",
+    "en": "KCL"
+  },
   "nav.faq": {
     "zh": "FAQ",
     "en": "FAQ"

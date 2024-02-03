@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.cncf.index"
+  },
+  {
+    "type": "file",
+    "name": "volcano",
+    "label": "nav.cncf.volcano"
+  },
+  {
+    "type": "file",
+    "name": "kcl",
+    "label": "nav.cncf.kcl"
+  }
+]

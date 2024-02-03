@@ -50,3 +50,16 @@ http://127.0.0.1:$PORT
 docker desktop 配置如下：
 
 ![proxy_docker_daemon](./image/docker/proxy_docker_daemon.jpg)
+
+查看配置更改是否成功：
+
+```
+# 命令行执行：docker info
+# 输出如下信息即配置成功
+
+Registry Mirrors:
+ [...]
+ https://dockerproxy.com
+ https://docker.mirrors.ustc.edu.cn
+ https://docker.nju.edu.cn
+```

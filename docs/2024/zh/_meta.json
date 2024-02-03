@@ -20,6 +20,11 @@
     "activeMatch": "/project/"
   },
   {
+    "text": "nav.cncf",
+    "link": "/cncf/",
+    "activeMatch": "/cncf/"
+  },
+  {
     "text": "nav.faq",
     "link": "/faq/",
     "activeMatch": "/faq/"
