@@ -20,6 +20,11 @@
     "activeMatch": "/project/"
   },
   {
+    "text": "nav.ali",
+    "link": "/ali/",
+    "activeMatch": "/ali/"
+  },
+  {
     "text": "nav.cncf",
     "link": "/cncf/",
     "activeMatch": "/cncf/"

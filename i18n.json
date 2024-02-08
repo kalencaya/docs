@@ -107,6 +107,18 @@
     "zh": "大数据",
     "en": "BigData"
   },
+  "nav.ali": {
+    "zh": "阿里",
+    "en": "ali"
+  },
+  "nav.ali.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.ali.lock": {
+    "zh": "锁",
+    "en": "Lock"
+  },
   "nav.cncf": {
     "zh": "CNCF",
     "en": "CNCF"

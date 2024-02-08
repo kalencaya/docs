@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.ali.index"
+  },
+  {
+    "type": "file",
+    "name": "lock",
+    "label": "nav.ali.lock"
+  }
+]
