@@ -39,4 +39,4 @@ spring、spring-boot、spring-cloud 文章总结
 * [SpringBoot 使用 Sa-Token 实现账号封禁、分类封禁、阶梯封禁](https://mp.weixin.qq.com/s/WTVP9RM8JVvwZs-nG6OxhA)
 * [一个账号打通所有应用，这款开源的数字身份管控系统来搞定！](https://mp.weixin.qq.com/s/EE8QHdY-4hxXW6UMgI6PBw)
 * [浅谈统一权限管理服务的设计与开发](https://mp.weixin.qq.com/s/NZfs_P5mi0aC7_7yeJeNDg)
-* 
+* [SpringBoot 动态权限校验，优雅的实现方案](https://mp.weixin.qq.com/s/s0ggnvry6HCgKlalnmYdmw)
