@@ -110,7 +110,7 @@ WHERE job_id = #{jobId};
 
 ### 修改历史表
 
-新增历史表：
+新增历史表，历史表和 job 表字段一致（job 和历史表都新增 version 字段）：
 
 ```sql
 DROP TABLE IF EXISTS job;
