@@ -5,6 +5,8 @@
 * [temporal](https://github.com/temporalio/temporal)
 * [kestra](https://github.com/kestra-io/kestra)
 * [incubator-kie-kogito-runtimes](https://github.com/apache/incubator-kie-kogito-runtimes)
+  * [kogito-examples](https://github.com/kiegroup/kogito-examples)
+
 
  规范
 
