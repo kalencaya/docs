@@ -11,6 +11,7 @@
 * [一文梳理Code Review方法论与实践总结](https://mp.weixin.qq.com/s/_4MFrQSYOIGYRdDGOJPDKQ)
 * [编程中最难的就是命名？这几招教你快速上手](https://mp.weixin.qq.com/s/q0yZPEcOhsNUqdYaBsLm8g)
 * [思考：如何写出让同事难以维护的代码？doge](https://mp.weixin.qq.com/s/C2J4g5G52KdDCQf-46eDPQ)
+* [我有一个朋友写出了17种触发NPE的代码！避免这些坑](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247537250&idx=1&sn=0f9c9b734136ab1f9426bf8b71c20361&chksm=e92a6f6dde5de67bb1760a5bf92f1f56cefc0b82e2b3f3108995718546e9f0a5eb8696d7501d&mpshare=1&scene=1&srcid=0221kUUfqXeTi42AktA0wTGr&sharer_shareinfo=453e9049f682b7ef2c3ce18be325d22a&sharer_shareinfo_first=453e9049f682b7ef2c3ce18be325d22a&version=4.1.10.99312&platform=mac#rd)
 
 ## 注释
 

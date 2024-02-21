@@ -12,6 +12,7 @@
 * [havenask](https://github.com/alibaba/havenask)
   * [10年+，阿里沉淀出怎样的搜索引擎？](https://mp.weixin.qq.com/s/omJQ_1OgjbYnbpHBua-lSQ)
   * [揭秘阿里自研搜索引擎Havenask在线检索服务](https://mp.weixin.qq.com/s/UON2Bco2DepENADYJejwUQ?poc_token=HFFJt2WjqWWFEDWfzUkQfW6Vfps3MMCRLZQkyat8)
+  * [【前沿技术】 阿里开源搜索引擎Havenask的消息系统](https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247502355&idx=1&sn=9be4cb76a4bf7f84e95da38f4a976314&chksm=cfa6daf0f8d153e62e7bbdedd2662dbef4de596d185c66d43183d1bd39fcf323132ec8030dfe&mpshare=1&scene=1&srcid=0221Aqht6Y8pAwEOTHOlbMEU&sharer_shareinfo=43a5c1036ba8624b7184615af99f6e20&sharer_shareinfo_first=43a5c1036ba8624b7184615af99f6e20&version=4.1.10.99312&platform=mac#rd)
 
 其他
 

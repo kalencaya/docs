@@ -29,3 +29,7 @@
 
 * [semi design](https://semi.design/zh-CN/)
 * [arco design](https://arco.design/)
+
+## 其他
+
+* [spreadjs](https://www.grapecity.com.cn/developer/spreadjs)。hologres 和 dataworks 使用的表格库
