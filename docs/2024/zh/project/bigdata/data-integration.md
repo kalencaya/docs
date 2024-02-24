@@ -28,10 +28,11 @@
 
 * [kettle](https://github.com/pentaho/pentaho-kettle)
 * [hop](https://github.com/apache/hop)。基于 kettle fork 的一个分支版本，进入 apache 孵化
-* [nifi](https://github.com/apache/nifi)
+* [nifi](https://github.com/apache/nifi)。[Apache Nifi基本介绍与使用](https://mp.weixin.qq.com/s?__biz=MzIwODM1OTYzOQ==&mid=2247486027&idx=1&sn=868e3ee51ae71c1cbabc3c6d133030c0&chksm=970513f3a0729ae5f1e1921183b3a10d1f4b2ebf74fe97913b6b0cc973b7fa02316d5b9f2530&mpshare=1&scene=1&srcid=0218OWFHlB23PjFLnRdqmYJE&sharer_shareinfo=a6305395a276a30dbbe6a4a7632cc7f7&sharer_shareinfo_first=574620c92972a0dbd995a9cdbc8c06c7&version=4.1.10.99312&platform=mac#rd)
 * [gobblin](https://github.com/apache/gobblin)
 * [Exchangis](https://github.com/WeBankFinTech/Exchangis)。微众银行开源
 * [wrangler](https://github.com/data-integrations/wrangler)
+* [开源ETL工具 Streamsets介绍](https://mp.weixin.qq.com/s/xCTy6_xTEzHFlAXIngUc6w?version=4.1.10.99312&platform=mac)
 
 ## 不维护
 
