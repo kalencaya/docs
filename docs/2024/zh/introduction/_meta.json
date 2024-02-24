@@ -3,5 +3,10 @@
     "type": "file",
     "name": "index",
     "label": "nav.introduction.index"
+  },
+  {
+    "type": "file",
+    "name": "tool",
+    "label": "nav.introduction.tool"
   }
 ]

@@ -7,6 +7,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.introduction.tool": {
+    "zh": "写作工具",
+    "en": "Tool"
+  },
   "nav.env": {
     "zh": "环境配置",
     "en": "ENV"
