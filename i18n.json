@@ -123,6 +123,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.cncf.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
   "nav.cncf.volcano": {
     "zh": "Volcano",
     "en": "Volcano"

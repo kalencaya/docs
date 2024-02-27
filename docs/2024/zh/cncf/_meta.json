@@ -6,6 +6,11 @@
   },
   {
     "type": "file",
+    "name": "kubernetes",
+    "label": "nav.cncf.kubernetes"
+  },
+  {
+    "type": "file",
     "name": "volcano",
     "label": "nav.cncf.volcano"
   },
