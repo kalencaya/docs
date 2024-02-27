@@ -19,7 +19,7 @@
 
 * [antv](https://antv.antgroup.com/)
 * [x6](https://x6.antv.antgroup.com/)
-* [xflow](https://xflow.antv.vision/zh-CN)
+* [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
 
 ### 其他
 
