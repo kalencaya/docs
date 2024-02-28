@@ -21,3 +21,4 @@
 * [大数据上云存算分离演进思考与实践](https://mp.weixin.qq.com/s/FFv8WqsdEKHAT0GYtKMJ-A)
 * [深入浅出流批一体理论篇——数据架构的演进](https://mp.weixin.qq.com/s/ylf01C23lak6z_Wnaqd3KA)
 * [10分钟搞懂 Data Fabric 和 Data Mesh 的区别！](https://mp.weixin.qq.com/s/ZgYZBwmgKh0U_pNw0XbYXA)
+* [弱结构化日志 Flink SQL 怎么写？SLS SPL 来帮忙](https://mp.weixin.qq.com/s?__biz=MzUzNzYxNjAzMg==&mid=2247562191&idx=1&sn=cdde598297d6b40111297bbfe2192a7c&chksm=fae7f800cd907116a385f3702eaedda64116fcda18f9b4337c546f542493a706f68d65b12e21&mpshare=1&scene=1&srcid=0226fF2CjYUo0AiV72PTkgfa&sharer_shareinfo=506a309cee8238c234851a9401ec75c1&sharer_shareinfo_first=bd61f5df710dc32fb3fc00ba08a0204d&version=4.1.10.99312&platform=mac#rd)

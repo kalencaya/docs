@@ -36,6 +36,7 @@
 * [那些年，我们写过的无效单元测试](https://mp.weixin.qq.com/s/R4ZKWcB4TMFAiQlnIRqNeQ)
 * [Java编程技巧之单元测试用例简化方法（内含案例）](https://mp.weixin.qq.com/s/HROhxieLa_g394QiYZUpuw)
 * [值得收藏！Java单元测试典型案例集锦](https://mp.weixin.qq.com/s/e1IxnViIT9LEVHW8aOH1dg)
+* [万字长文：一文详解单元测试干了什么](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247537440&idx=1&sn=faeb133ccb6898508c8c53dad5da43c0&chksm=e92a6e2fde5de73957cfb1e83d487fdea75d9698200453db60620578f298a92e4ebc89a43fb8&mpshare=1&scene=1&srcid=0228D21qEJrQXjw0mHxiOOMO&sharer_shareinfo=e94eca9fec765eb1bebfe5d85f1f0d7e&sharer_shareinfo_first=59af5e039140a3ccaa6648119d742138&version=4.1.10.99312&platform=mac#rd)
 
 ## 重构
 
