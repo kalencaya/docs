@@ -42,6 +42,8 @@
 
 * [linkis](https://linkis.apache.org/)
 * [kyuubi](https://kyuubi.apache.org/)
+  * [基于 Kyuubi 实现分布式 Flink SQL 网关](https://mp.weixin.qq.com/s/-AwXJz9CqEeX7cRdGGdyIg)
+
 
 ## 数据湖
 
