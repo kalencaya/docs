@@ -11,7 +11,8 @@
 * [bitsail](https://github.com/bytedance/bitsail)。字节开源，项目已经前途未卜，可能要烂尾
 * [seatunnel](https://github.com/apache/seatunnel)。原 waterdrop。支持 Flink、Spark 以及 SeaTunnel 社区自研的 Zeta 引擎
   * [Apache SeaTunnel 及 Web 功能部署指南(小白版)](https://mp.weixin.qq.com/s?__biz=MzkwNTMwNTEyNA==&mid=2247492653&idx=1&sn=ade20dd5f54ee316da37285247b7d9e3&chksm=c0fb6966f78ce0704acfd97c8df66783b32399eb37708cf26c57ba91efe301085b8a916a3c68&mpshare=1&scene=1&srcid=022937Eilg8OdLx0JRZYtrbI&sharer_shareinfo=cc0f57196b3e559aa362dcbf477b83c3&sharer_shareinfo_first=b196a66a8d05063264e8c821e9b9cfa0&version=4.1.10.99312&platform=mac#rd)
-
+  * [SeaTunnel wiki](https://cwiki.apache.org/confluence/display/SEATUNNEL/Home)
+  
 * [flink-cdc-connectors](https://github.com/ververica/flink-cdc-connectors)。flink cdc 在 3.0 推出 pipeline 功能，实现端到端数据实时集成
 * [inlong](https://github.com/apache/inlong)。消息队列、flink
 
