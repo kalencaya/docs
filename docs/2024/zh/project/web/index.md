@@ -21,6 +21,11 @@
 * [x6](https://x6.antv.antgroup.com/)
 * [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
 
+### opensumi
+
+* [opensumi](https://opensumi.com/zh)
+* [Codeblitz](https://codeblitz.opensumi.com/zh)
+
 ### 其他
 
 * [fusion design](https://fusion.design/pc/)
