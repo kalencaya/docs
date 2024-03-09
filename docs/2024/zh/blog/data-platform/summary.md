@@ -11,3 +11,4 @@
 * [【开源】数据标准管理平台](https://mp.weixin.qq.com/s/6HgjCxNVJFe5ZnrZ5Fpn3Q)
 * [Hadoop on k8s 快速部署进阶精简篇](https://mp.weixin.qq.com/s/w95RvgwBiMYARRWtu1WFAA)
 * [大数据服务上k8s主要是为了什么？](https://mp.weixin.qq.com/s/Oezinimi5-UO6MB0ygvEbQ)
+* [浅谈大数据的过去、现在和未来](https://mp.weixin.qq.com/s?__biz=MzIxMTE0ODU5NQ==&mid=2650245831&idx=1&sn=7ec71fe10e16a95dd37266dbf97c17e8&chksm=8f5ae09bb82d698d32f002cf33bcbb67320aded00b1b41dafdde776992b430766233c2cff47c&mpshare=1&scene=1&srcid=0705fiJnJLpes9Gh1gGl5yJt&sharer_shareinfo=baaef1aa38ea34de8a6df2ecd615c182&sharer_shareinfo_first=baaef1aa38ea34de8a6df2ecd615c182&version=4.1.10.99312&platform=mac#rd)
