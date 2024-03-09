@@ -25,6 +25,7 @@
 
 * [opensumi](https://opensumi.com/zh)
 * [Codeblitz](https://codeblitz.opensumi.com/zh)
+* [Theia IDE](https://theia-ide.org/)。Eclipse 开源，非阿里。在腾讯云轻量服务器上提供的有默认模版，可以做到开箱即用，实现云端开发
 
 ### 其他
 
