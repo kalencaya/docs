@@ -42,6 +42,8 @@
 * [dbgate](https://github.com/dbgate/dbgate)。[4k+ stars 最智能的 SQL+noSQL 数据库客户端，完全免费！](https://mp.weixin.qq.com/s?__biz=Mzg3ODUzMjI5Ng==&mid=2247497967&idx=1&sn=5fe342a437c65d893d4f5ff7e186d4e5&chksm=cf10fb48f867725ecd92e5d60a498bd29ac84797c093fe1cc021015c5ef2dd385845d9e0a8fb&mpshare=1&scene=1&srcid=0303163GaVcKXp5gn7b9KoRR&sharer_shareinfo=799dda35c6473f086b8ff577ba0317fa&sharer_shareinfo_first=ef006479280b02193a93a40c6d336bcc&version=4.1.10.99312&platform=mac#rd)
 * [azuredatastudio](https://github.com/microsoft/azuredatastudio)
 * [Chat2DB](https://github.com/chat2db/Chat2DB)
+  * [sql-translator](https://github.com/whoiskatrin/sql-translator)。一个 Node 库，使用 AI 实现自然语言转 SQL
+
 * [sqlpad](https://github.com/sqlpad/sqlpad)。维护模式
 
 ## 其他
