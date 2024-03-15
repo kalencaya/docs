@@ -36,3 +36,7 @@
 ## 埋点平台
 
 * [dawn](https://github.com/eventtracing/dawn)
+
+## 运维平台
+
+* [SREWorks](https://github.com/alibaba/SREWorks)。阿里巴巴大数据SRE团队云原生运维平台 SREWorks，沉淀了团队近10年经过内部业务锤炼的 SRE 工程实践，秉承“数据化、智能化”运维思想，帮助运维行业更多的从业者采用“数智”思想做好高效运维。
