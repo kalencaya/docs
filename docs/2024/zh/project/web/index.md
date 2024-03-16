@@ -48,6 +48,8 @@
 
 * [querybook](https://github.com/pinterest/querybook)
 
+* [pentaho-metadata-editor](https://github.com/pentaho/pentaho-metadata-editor)
+
 ## 其他
 
 * [spreadjs](https://www.grapecity.com.cn/developer/spreadjs)。hologres 和 dataworks 使用的表格库
