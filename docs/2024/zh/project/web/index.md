@@ -7,7 +7,7 @@
 * [ant design](https://ant-design.antgroup.com/components/overview-cn/)
 * [ant design pro components](https://pro-components.antdigital.dev/components)
 * [ant design pro](https://pro.ant.design/zh-CN/)
-* [pro-editor](https://github.com/ant-design/pro-editor)
+* [pro-editor](https://github.com/ant-design/pro-editor)。[官网链接](https://pro-editor.antdigital.dev/zh-CN)
 * [pro-chat](https://github.com/ant-design/pro-chat)
 * [pro-flow](https://github.com/ant-design/pro-flow)
 
