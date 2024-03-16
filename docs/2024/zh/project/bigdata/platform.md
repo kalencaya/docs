@@ -43,3 +43,5 @@
 * [KubeVela](https://kubevela.io/zh/)。KubeVela 是一个现代化的软件交付平台，它可以让你的应用交付在当今流行的混合、多云环境中变得更加*简单、高效、可靠。*
 * [flux2](https://github.com/fluxcd/flux2)。gitops CD 平台。缺少 web-ui。
   * [capacitor](https://github.com/gimlet-io/capacitor)。Capacitor 是一个开源的 Flux GUI，需要单独部署。
+* [teletraan](https://github.com/pinterest/teletraan)
+* [orion](https://github.com/pinterest/orion)

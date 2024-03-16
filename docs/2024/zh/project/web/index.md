@@ -46,6 +46,8 @@
 
 * [sqlpad](https://github.com/sqlpad/sqlpad)。维护模式
 
+* [querybook](https://github.com/pinterest/querybook)
+
 ## 其他
 
 * [spreadjs](https://www.grapecity.com.cn/developer/spreadjs)。hologres 和 dataworks 使用的表格库
