@@ -18,6 +18,10 @@
 - [StreamPark](https://streampark.apache.org/)。原名 `StreamX`，捐献到 apache 后更名为 `StreamPark`。
 - [Dinky](http://www.dlink.top/)。提供丝滑的 Flink SQL 开发体验。
 - [Ververica Platform](https://docs.ververica.com/)。商业化云原生 Flink 实时计算平台，提供免费的社区版。
+  - [阿里超大规模 Flink 集群运维实践](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247484900&idx=1&sn=451209b310b1ffbd60d391c71b2e24a5&chksm=f90a5d5fce7dd44947131f82a10a3facf3d16b530aa68b358f2b9261cdad0d6037151d475393&scene=21#wechat_redirect)
+  - [基于云原生的集群自愈系统 Flink Cluster Inspector](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485233&idx=1&sn=d1d90f1fb32253499897199107d839fc&chksm=f90a5f8ace7dd69c25a584ae1913ec835207db8dcc36811cf1eaf0d8560451d97ba4baac4553&mpshare=1&scene=1&srcid=031951ECDuzTAcrZWsRKRqFm&sharer_shareinfo=0a466a355eb1f4be752742d03dd9e0a0&sharer_shareinfo_first=0a466a355eb1f4be752742d03dd9e0a0&version=4.1.10.99312&platform=mac#rd)
+  - [揭秘阿里云Flink智能诊断利器——Fllink Job Advisor](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485357&idx=1&sn=743e735984493af334e794abbd4cb084&chksm=f90a5f16ce7dd600662b02f3b4ef144746c1210a802bdf18fdcad64e55e163724a4ae129bb43&mpshare=1&scene=1&srcid=0319ghHsi43SNgcaj1EN2BlF&sharer_shareinfo=036f728843106c10f944a25e25f7bbbc&sharer_shareinfo_first=036f728843106c10f944a25e25f7bbbc&version=4.1.10.99312&platform=mac#rd)
+
 - [Streamis](https://github.com/WeBankFinTech/Streamis)。Streamis 是 **微众银行** 联合 **天翼云**、**仙翁科技** 和 **萨摩耶云** 联合共建的流式应用开发管理系统。基于 [DataSphere Studio](https://github.com/WeBankFinTech/DataSphereStudio) 的框架化能力，以及底层对接 [Linkis](https://github.com/apache/incubator-linkis) 的 **Flink 引擎**，让用户低成本完成流式应用的开发、调试、发布和生产管理。
 
 ## 机器学习/深度学习AI平台
@@ -40,6 +44,8 @@
 ## 运维平台
 
 * [SREWorks](https://github.com/alibaba/SREWorks)。阿里巴巴大数据SRE团队云原生运维平台 SREWorks，沉淀了团队近10年经过内部业务锤炼的 SRE 工程实践，秉承“数据化、智能化”运维思想，帮助运维行业更多的从业者采用“数智”思想做好高效运维。
+  * [QCon演讲实录（上）：多云环境下应用管理与交付实践](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485249&idx=1&sn=180f5b95ccf7dc01be77d2dc68418963&chksm=f90a5fface7dd6ec56dfe88e06a4d35157f16726b0447ecd0db77d2bb599d02ceb19ef5a5a14&mpshare=1&scene=1&srcid=0319nmRej9vaxDZkzY9lwgrJ&sharer_shareinfo=536817ac34b67e2655037b3111436725&sharer_shareinfo_first=536817ac34b67e2655037b3111436725&version=4.1.10.99312&platform=mac#rd)
+  * [QCon演讲实录（下）：多云管理关键能力实现与解析-AppManager](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485254&idx=1&sn=c1238c840be65984f6715fd40ff2c1b5&chksm=f90a5ffdce7dd6eba06895fff37ef3aa5813c4bdea6d1062ce28dda6ef8076b05be8d6e5aacb&mpshare=1&scene=1&srcid=031900YvTo47QqlZe9C9T40F&sharer_shareinfo=691335c3db61207084fb899efd31d0e0&sharer_shareinfo_first=691335c3db61207084fb899efd31d0e0&version=4.1.10.99312&platform=mac#rd)
 * [KubeVela](https://kubevela.io/zh/)。KubeVela 是一个现代化的软件交付平台，它可以让你的应用交付在当今流行的混合、多云环境中变得更加*简单、高效、可靠。*
 * [flux2](https://github.com/fluxcd/flux2)。gitops CD 平台。缺少 web-ui。
   * [capacitor](https://github.com/gimlet-io/capacitor)。Capacitor 是一个开源的 Flux GUI，需要单独部署。
