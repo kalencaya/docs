@@ -15,6 +15,7 @@
   
 * [flink-cdc-connectors](https://github.com/ververica/flink-cdc-connectors)。flink cdc 在 3.0 推出 pipeline 功能，实现端到端数据实时集成
 * [inlong](https://github.com/apache/inlong)。消息队列、flink
+* [datalinkx](https://github.com/SplitfireUptown/datalinkx)。基于 Flink 的异构数据源同步。使用 chunjun 做数据同步，xxl-job 做任务调度
 
 ## Airbyte
 
