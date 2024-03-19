@@ -123,6 +123,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.cncf.container": {
+    "zh": "Container",
+    "en": "Container"
+  },
   "nav.cncf.kubernetes": {
     "zh": "Kubernetes",
     "en": "Kubernetes"

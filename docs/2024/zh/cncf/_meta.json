@@ -6,6 +6,11 @@
   },
   {
     "type": "file",
+    "name": "container",
+    "label": "nav.cncf.container"
+  },
+  {
+    "type": "file",
     "name": "kubernetes",
     "label": "nav.cncf.kubernetes"
   },
