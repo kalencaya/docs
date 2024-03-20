@@ -16,6 +16,11 @@
 - [dolphinscheduler](https://github.com/apache/dolphinscheduler)
 - [hodor](https://github.com/dromara/hodor)
 - [disjob](https://github.com/dromara/disjob)
+- [auto-job](https://gitee.com/hyxl-520/auto-job)
+- [light-task-scheduler](https://gitee.com/hugui/light-task-scheduler)
+- [big-whale](https://gitee.com/meetyoucrop/big-whale)
+- [hera](https://github.com/scxwhite/hera)
+- [Taier](https://dtstack.github.io/Taier/)
 
 ## 技术文档
 
@@ -27,3 +32,13 @@
 - [快速实现一个分布式定时器](https://mp.weixin.qq.com/s/ggPftQm2ewGOJwlRDQGgDQ)
 - [Spring Boot 实现定时任务的 4 种方式](https://mp.weixin.qq.com/s/iWK70k1KgHLKG9cvIlELbg)
 - [DAG流图自动排列布局的实现](https://mp.weixin.qq.com/s/tsmNFpABJAxAItVzPqluWw)。前端页面如何实现 DAG 自动排列的一篇文章
+
+## 异步任务
+
+* [Task](https://github.com/WangJunTYTL/Task)
+* [大搜车异步任务队列中间件的建设实践](https://www.infoq.cn/article/umqb2cfdgrfcduz9ofd1)
+* [AsyncTask](https://gitee.com/jmpp/AsyncTask)
+* [asyncmd](https://github.com/bojiw/asyncmd)
+* [yy-job](https://gitee.com/the_source_of_the_abyss/yy-job)
+* [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+
