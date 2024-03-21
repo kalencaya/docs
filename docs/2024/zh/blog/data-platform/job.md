@@ -2,8 +2,10 @@
 
 JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步和调度任务，但是存在一些弊病：
 
+* 基于内存。应用宕机任务丢失
 * 只支持单机，或者是单 JVM 实例。不支持集群，存在单点问题。如果应用是集群部署，存在任务重复执行问题
 * 缺少重试。任务异常后，任务无法通过重试自愈，重新执行
+* 限流。通过限流保护应用不会因为压力过大宕机
 * 生命周期管理。任务无法启动、停止
 * 动态调整。无法调整任务参数、执行频率
 * 不支持高级任务。任务分片，MapReduce 类型
@@ -47,19 +49,35 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
 
 ## 异步任务
 
-执行数据下载、导入任务时，往往采用异步
+执行数据下载、导入任务时，往往采用异步任务执行这些长耗时任务。但是对于缺乏重试、监控的 `ExecutorService`，任务异常时无法重新执行，缺少容错性。如何保证异步任务执行的可靠性就成了这些长耗时任务的关注点。
 
-* [Task](https://github.com/WangJunTYTL/Task)
-* [大搜车异步任务队列中间件的建设实践](https://www.infoq.cn/article/umqb2cfdgrfcduz9ofd1)
-* [AsyncTask](https://gitee.com/jmpp/AsyncTask)
-* [asyncmd](https://github.com/bojiw/asyncmd)
-* [yy-job](https://gitee.com/the_source_of_the_abyss/yy-job)
-* [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
-  * [celery-java](https://github.com/crabhi/celery-java)
-  * [celery-spring-boot-starter](https://github.com/juforg/celery-spring-boot-starter)
+除此之外还要考虑异步任务性能，为支持数以百万的异步任务执行，需支持异步任务在集群其他节点的执行。
 
-* [resque](https://github.com/resque/resque)
-  * [jesque](https://github.com/gresrun/jesque)
+Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)、Ruby 语言的 [sidekiq](https://github.com/sidekiq/sidekiq)，提供了简单、高性能、功能齐全的异步任务，只需要简单配置，就可以像在本地调用异步一样，实现集群异步任务。
+
+* Python
+  * [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+
+* Ruby
+  * [Sidekiq](https://github.com/sidekiq/sidekiq)
+  * [Resque](https://github.com/resque/resque)
+
+* Java
+  * Celery 实现
+    * [celery-java](https://github.com/crabhi/celery-java)
+    * [celery-spring-boot-starter](https://github.com/juforg/celery-spring-boot-starter)
+
+  * Resque 实现
+    * [jesque](https://github.com/gresrun/jesque)
+
+  * 其他
+    * [redisson](https://github.com/redisson/redisson)。基于 Redis 实现了异步和调度任务。
+    * [Task](https://github.com/WangJunTYTL/Task)
+    * [大搜车异步任务队列中间件的建设实践](https://www.infoq.cn/article/umqb2cfdgrfcduz9ofd1)
+    * [AsyncTask](https://gitee.com/jmpp/AsyncTask)
+    * [asyncmd](https://github.com/bojiw/asyncmd)
+    * [yy-job](https://gitee.com/the_source_of_the_abyss/yy-job)
+
 
 ## 技术文档
 
