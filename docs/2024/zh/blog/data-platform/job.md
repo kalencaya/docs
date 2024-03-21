@@ -21,6 +21,7 @@
 - [big-whale](https://gitee.com/meetyoucrop/big-whale)
 - [hera](https://github.com/scxwhite/hera)
 - [Taier](https://dtstack.github.io/Taier/)
+- [redisson](https://github.com/redisson/redisson)
 
 ## 技术文档
 
@@ -41,4 +42,9 @@
 * [asyncmd](https://github.com/bojiw/asyncmd)
 * [yy-job](https://gitee.com/the_source_of_the_abyss/yy-job)
 * [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+  * [celery-java](https://github.com/crabhi/celery-java)
+  * [celery-spring-boot-starter](https://github.com/juforg/celery-spring-boot-starter)
+
+* [resque](https://github.com/resque/resque)
+  * [jesque](https://github.com/gresrun/jesque)
 
