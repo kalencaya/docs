@@ -2,6 +2,7 @@
 
 * [elasticsearch](https://github.com/elastic/elasticsearch)
   * [一口气看完43个关于 ElasticSearch 的使用建议｜得物技术](https://mp.weixin.qq.com/s/Gsa1rPVISjOdVteol78EoA)
+  * [KnowSearch](https://github.com/didi/KnowSearch)。KnowSearch是面向Elasticsearch研发与运维人员，围绕集群、索引构建的零侵入、多租户的Elasticsearch GUI管控平台。历经滴滴PB级海量索引数据考验、金融级1000+ES集群运营实战打磨，围绕Elasticsearch构建的可见、可管、可控的服务体系。
 * [OpenSearch](https://github.com/opensearch-project/OpenSearch)
 * [meilisearch](https://github.com/meilisearch/meilisearch)
 * [zincsearch](https://github.com/zincsearch/zincsearch)

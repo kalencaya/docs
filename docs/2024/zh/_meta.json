@@ -30,6 +30,11 @@
     "activeMatch": "/cncf/"
   },
   {
+    "text": "nav.information",
+    "link": "/information/",
+    "activeMatch": "/information/"
+  },
+  {
     "text": "nav.faq",
     "link": "/faq/",
     "activeMatch": "/faq/"

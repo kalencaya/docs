@@ -139,6 +139,14 @@
     "zh": "KCL",
     "en": "KCL"
   },
+  "nav.information": {
+    "zh": "信息系统",
+    "en": "Information"
+  },
+  "nav.information.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
   "nav.faq": {
     "zh": "FAQ",
     "en": "FAQ"

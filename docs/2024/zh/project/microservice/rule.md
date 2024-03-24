@@ -15,3 +15,4 @@
 * [liteflow](https://liteflow.cc/)
 * [easy-flows](https://github.com/j-easy/easy-flows)
 * [gobrs-async](https://github.com/dromara/gobrs-async)
+* [turbo](https://github.com/didi/turbo)
