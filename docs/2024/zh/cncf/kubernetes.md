@@ -16,3 +16,8 @@
 * [Kubernetes资源编排系列之三: Kustomize篇](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485126&idx=1&sn=2b28ab0bc1c6d93ba2181f0c11e1bc42&chksm=f90a5e7dce7dd76b581aa8aa2830ddb0f6a94b54ef662dff97b5b1b9bcf7015f9adfbac0a916&mpshare=1&scene=1&srcid=0319I8Yzen2kbpBmzD8Y9jZ5&sharer_shareinfo=4e494dfcc3c0bb48029f95ebe198cf38&sharer_shareinfo_first=4e494dfcc3c0bb48029f95ebe198cf38&version=4.1.10.99312&platform=mac#rd)
 * [Kubernetes资源编排系列之四: CRD+Operator篇](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485151&idx=1&sn=e2ec08bc1ccbe27ba4b9cbb14c841d40&chksm=f90a5e64ce7dd772849d149a371ce87d5226582ea726d79127fee0657264ad164ac9921b9c1e&mpshare=1&scene=1&srcid=0319mte6jyvOIYzrnul334bp&sharer_shareinfo=80e53b5f453ee5108d5e4d726ab254ee&sharer_shareinfo_first=80e53b5f453ee5108d5e4d726ab254ee&version=4.1.10.99312&platform=mac#rd)
 * [Kubernetes资源编排系列之五: OAM篇](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485175&idx=1&sn=61ed0bdc1141e4fe98ca53c959c3cbed&chksm=f90a5e4cce7dd75a3ba75d3ed530ad6f234b6c9b979054f45222da8df2106d67ad420c020a02&mpshare=1&scene=1&srcid=03193XfA6ej728rsvMFKSDq4&sharer_shareinfo=f825f7f093cc53f55ba215542765d8c1&sharer_shareinfo_first=f825f7f093cc53f55ba215542765d8c1&version=4.1.10.99312&platform=mac&poc_token=HEkH-WWjNxmvh6z3OXltOPzth0U4RSVtVYs42ygx)
+
+## 开发工具
+
+* [kt-connect](https://github.com/alibaba/kt-connect)。KtConnect（Kt为Kubernetes Toolkit集群工具包的简写）是一款基于Kubernetes环境用于提高本地测试联调效率的小工具。
+* [virtual-environment](https://github.com/alibaba/virtual-environment)。对于微服务的开发者而言，拥有一套干净、独占的完整测试环境无疑能够提高软件研发过程中的功能调试和异常排查效率。然而在中大型团队里，为每位开发者维护一整套专用测试服务集群，从经济成本和管理成本上考虑都并不现实。为此阿里巴巴的研发团队采用了基于路由隔离的"虚拟环境"方法。
