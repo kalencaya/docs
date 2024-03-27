@@ -47,6 +47,8 @@
 * [Chat2DB](https://github.com/chat2db/Chat2DB)
   * [sql-translator](https://github.com/whoiskatrin/sql-translator)。一个 Node 库，使用 AI 实现自然语言转 SQL
 
+* [sqlchat](https://github.com/sqlchat/sqlchat)
+  
 * [sqlpad](https://github.com/sqlpad/sqlpad)。维护模式
 
 * [querybook](https://github.com/pinterest/querybook)
