@@ -19,6 +19,7 @@
 * [dolphinscheduler](https://dolphinscheduler.apache.org/zh-cn)
   * [2024年Apache DolphinScheduler RoadMap：引领开源调度系统的未来](https://mp.weixin.qq.com/s?__biz=MzA4NDYxNTc2NA==&mid=2247521259&idx=1&sn=34f57620fb4aeda1afca44e4de16149e&chksm=9fe6a4d0a8912dc6201bc0d4e7c7ebab7fc24e25a4747cb56d36df3ffa2401b7446f2c085efe&mpshare=1&scene=1&srcid=03097iC0mgw1pTyvdj259qmd&sharer_shareinfo=a02ef71fe5a512d65610af05a5d20817&sharer_shareinfo_first=a02ef71fe5a512d65610af05a5d20817&version=4.1.10.99312&platform=mac#rd)
   * [Apache DolphinScheduler-3.2.0集群部署教程](https://mp.weixin.qq.com/s?__biz=MzA4NDYxNTc2NA==&mid=2247521304&idx=1&sn=a3fe8578fcf04cd0d5fcc31d2510fc43&chksm=9fe6a323a8912a3533d94e97a95d9ffbb1d5fd75773abc22ad6a7a8c9443f007a867c176ea96&mpshare=1&scene=1&srcid=03141ATSXkgmMjMDoZVWE81m&sharer_shareinfo=96b57665a386c84e75cf35d6fe6f7cef&sharer_shareinfo_first=1d2596fe5db8e7831050aa60dad0a708&version=4.1.10.99312&platform=mac#rd)
+  * [dolphinscheduler-sdk-java](https://github.com/weaksloth/dolphinscheduler-sdk-java)。
   
 * [oozie](https://oozie.apache.org/)
 
