@@ -29,6 +29,7 @@
 * [opensumi](https://opensumi.com/zh)
 * [Codeblitz](https://codeblitz.opensumi.com/zh)
 * [Theia IDE](https://theia-ide.org/)。Eclipse 开源，非阿里。在腾讯云轻量服务器上提供的有默认模版，可以做到开箱即用，实现云端开发
+* [molecule](https://github.com/DTStack/molecule)。袋鼠云开源。Molecule 是一款受 **VSCode** 启发，使用 **React.js** 构建的 **Web IDE UI** 框架。我们设计了类似 VSCode 的**扩展**Extension)机制，可以帮助我们使用 React 组件快速完成对 Workbench 的自定义。
 
 ### 其他
 
@@ -54,6 +55,10 @@
 * [querybook](https://github.com/pinterest/querybook)
 
 * [pentaho-metadata-editor](https://github.com/pentaho/pentaho-metadata-editor)
+
+* [monaco-sql-languages](https://github.com/DTStack/monaco-sql-languages)
+  * [dt-sql-parser](https://github.com/DTStack/dt-sql-parser)
+
 
 ## 其他
 
