@@ -49,6 +49,8 @@
 * [SREWorks](https://github.com/alibaba/SREWorks)。阿里巴巴大数据SRE团队云原生运维平台 SREWorks，沉淀了团队近10年经过内部业务锤炼的 SRE 工程实践，秉承“数据化、智能化”运维思想，帮助运维行业更多的从业者采用“数智”思想做好高效运维。
   * [QCon演讲实录（上）：多云环境下应用管理与交付实践](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485249&idx=1&sn=180f5b95ccf7dc01be77d2dc68418963&chksm=f90a5fface7dd6ec56dfe88e06a4d35157f16726b0447ecd0db77d2bb599d02ceb19ef5a5a14&mpshare=1&scene=1&srcid=0319nmRej9vaxDZkzY9lwgrJ&sharer_shareinfo=536817ac34b67e2655037b3111436725&sharer_shareinfo_first=536817ac34b67e2655037b3111436725&version=4.1.10.99312&platform=mac#rd)
   * [QCon演讲实录（下）：多云管理关键能力实现与解析-AppManager](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485254&idx=1&sn=c1238c840be65984f6715fd40ff2c1b5&chksm=f90a5ffdce7dd6eba06895fff37ef3aa5813c4bdea6d1062ce28dda6ef8076b05be8d6e5aacb&mpshare=1&scene=1&srcid=031900YvTo47QqlZe9C9T40F&sharer_shareinfo=691335c3db61207084fb899efd31d0e0&sharer_shareinfo_first=691335c3db61207084fb899efd31d0e0&version=4.1.10.99312&platform=mac#rd)
+* [datasophon](https://github.com/datavane/datasophon)。致力于快速实现部署、管理、监控以及自动化运维大数据云原生平台，帮助您快速构建起稳定、高效、可弹性伸缩的大数据云原生平台。
+* [CloudEon](https://github.com/dromara/CloudEon)。CloudEon 将基于 Kubernetes 的资源安装部署开源大数据组件，实现开源大数据平台的容器化运行，您可减少对于底层资源的运维关注。
 * [KubeVela](https://kubevela.io/zh/)。KubeVela 是一个现代化的软件交付平台，它可以让你的应用交付在当今流行的混合、多云环境中变得更加*简单、高效、可靠。*
 * [flux2](https://github.com/fluxcd/flux2)。gitops CD 平台。缺少 web-ui。
   * [capacitor](https://github.com/gimlet-io/capacitor)。Capacitor 是一个开源的 Flux GUI，需要单独部署。
