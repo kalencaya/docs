@@ -491,3 +491,7 @@ schemaless 存储需要用户自己定义存储数据的 schema，计算引擎 F
 * [schema-registry](https://github.com/confluentinc/schema-registry)
 * [aws glue schema registry](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html)
 * [spring-cloud-schema-registry](https://github.com/spring-cloud/spring-cloud-schema-registry)
+
+## 开源项目
+
+* [metacat](https://github.com/Netflix/metacat)。[Netflix 开源新作：大数据发现服务框架 Metacat](https://www.infoq.cn/article/bigdata-netflix-metacat)

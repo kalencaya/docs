@@ -21,6 +21,7 @@
     * [一文搞懂使用 Buildpack 替代 Dockerfile 进行容器镜像构建](https://mp.weixin.qq.com/s?__biz=MzA4MjM3NzE5MQ==&mid=2649664381&idx=1&sn=7e0b6044365f248214a3256a245a540b&chksm=879cabf5b0eb22e30dd45c96fc1177f02c457931fa3d6b7d0b7270fb696baa181fa9d6f28a46&mpshare=1&scene=1&srcid=1122tblSvcDMKbJq8ozA8Nhu&sharer_shareinfo=63966415ebfc25c423fdaa46d9d1555f&sharer_shareinfo_first=216b7f1947cba45f2939e854643595b8&version=4.1.10.99312&platform=mac#rd)
   * [kaniko](https://github.com/GoogleContainerTools/kaniko)
   * [buildkit](https://docs.docker.com/build/buildkit/)。Docker 推出，在 github actions 中大量运用
+  * [packer](https://github.com/hashicorp/packer)
 * maven
   * [jib](https://github.com/GoogleContainerTools/jib)
 

@@ -32,6 +32,7 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
   - [elastic-job](https://github.com/apache/shardingsphere-elasticjob)。分 2 种模式：lite 和 cloud，lite 模式需嵌入应用中，cloud 模式下可独立部署
   - [xxl-job](https://github.com/xuxueli/xxl-job)
   - [light-task-scheduler](https://gitee.com/hugui/light-task-scheduler)。停止维护
+  - [orca](https://github.com/spinnaker/orca)。CI/CD 系统的编排引擎
 
 - DAG
 
