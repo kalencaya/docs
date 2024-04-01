@@ -5,6 +5,8 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
 * 基于内存。应用宕机任务丢失
 * 只支持单机，或者是单 JVM 实例。不支持集群，存在单点问题。如果应用是集群部署，存在任务重复执行问题
 * 缺少重试。任务异常后，任务无法通过重试自愈，重新执行
+  * 持久化。将任务持久化后就可以容忍 JVM 宕机问题，供后续重试
+
 * 限流。通过限流保护应用不会因为压力过大宕机
 * 生命周期管理。任务无法启动、停止
 * 动态调整。无法调整任务参数、执行频率
@@ -12,7 +14,39 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
 * 任务上下游依赖。
 * 监控告警、任务日志查看
 
-在技术发展过程中，出现了很多开源软件致力于解决 JDK 提供的异步和调度任务的不足。
+关键特性
+
+* 任务类型
+  * 一次性。fire-and-forget
+  * 周期性任务
+  * 延时任务
+  * MapReduce
+  * 任务分片
+  * 任务广播
+  * DAG 任务
+* 调度频率。执行开始时间、结束时间限制，执行次数限制，是否支持秒级调度
+  * 固定延迟
+  * 固定频率
+  * CRON 表达式
+* 任务参数
+* 存储
+  * 存储类型。内存，MySQL，Redis，消息队列
+  * 任务持久化。是否支持将任务持久化到存储中，任务线程或 JVM 宕机后可以重试任务
+* JDK。8，11，17
+* 生命周期。
+  * 任务管理。任务的启动，停止，暂停，恢复等
+  * 任务事件监听。
+* 监控、告警、日志白屏化
+* 异步执行。异步执行任务，执行结束后发送任务执行结果
+* 任务阻塞
+  * 过期处理策略。任务错过调度时间的处理策略，如服务重启、调度线程阻塞
+  * 负载均衡。
+  * 阻塞策略。单机串行，丢弃后续调度
+  * 队列
+* 任务优先级，任务超时
+* 其他
+  * 长耗时
+  * 任务进度条
 
 ## 调度任务
 
@@ -26,7 +60,6 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
   - [auto-job](https://gitee.com/hyxl-520/auto-job)
   - [jobrunr](https://github.com/jobrunr/jobrunr)
   - [db-scheduler](https://github.com/kagkarlsson/db-scheduler)
-
 - 中间件
 
   - [elastic-job](https://github.com/apache/shardingsphere-elasticjob)。分 2 种模式：lite 和 cloud，lite 模式需嵌入应用中，cloud 模式下可独立部署
@@ -72,7 +105,7 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
     * [jesque](https://github.com/gresrun/jesque)
 
   * 其他
-    * [redisson](https://github.com/redisson/redisson)。基于 Redis 实现了异步和调度任务。
+    * [redisson](https://github.com/redisson/redisson)。基于 Redis 实现了异步和调度任务
     * [hazelcast](https://github.com/hazelcast/hazelcast)。[Java Executor Service](https://docs.hazelcast.com/hazelcast/latest/computing/executor-service)
     * [Task](https://github.com/WangJunTYTL/Task)
     * [大搜车异步任务队列中间件的建设实践](https://www.infoq.cn/article/umqb2cfdgrfcduz9ofd1)
@@ -80,6 +113,9 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
     * [asyncmd](https://github.com/bojiw/asyncmd)
     * [yy-job](https://gitee.com/the_source_of_the_abyss/yy-job)
 
+## 其他
+
+* [cron-utils](https://github.com/jmrozanec/cron-utils)。一个单纯的 cron 库
 
 ## 技术文档
 
