@@ -107,6 +107,26 @@
     "zh": "Workflow",
     "en": "Workflow"
   },
+  "nav.project.workflow.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.project.workflow.workflow": {
+    "zh": "Workflow",
+    "en": "Workflow"
+  },
+  "nav.project.workflow.orchestration": {
+    "zh": "编排",
+    "en": "Orchestration"
+  },
+  "nav.project.workflow.blog": {
+    "zh": "博客",
+    "en": "Blog"
+  },
+  "nav.project.workflow.design": {
+    "zh": "设计",
+    "en": "Design"
+  },
   "nav.project.bigdata": {
     "zh": "大数据",
     "en": "BigData"

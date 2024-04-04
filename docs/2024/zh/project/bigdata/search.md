@@ -3,6 +3,9 @@
 * [elasticsearch](https://github.com/elastic/elasticsearch)
   * [一口气看完43个关于 ElasticSearch 的使用建议｜得物技术](https://mp.weixin.qq.com/s/Gsa1rPVISjOdVteol78EoA)
   * [KnowSearch](https://github.com/didi/KnowSearch)。KnowSearch是面向Elasticsearch研发与运维人员，围绕集群、索引构建的零侵入、多租户的Elasticsearch GUI管控平台。历经滴滴PB级海量索引数据考验、金融级1000+ES集群运营实战打磨，围绕Elasticsearch构建的可见、可管、可控的服务体系。
+  * [不可思议！亿级数据竟然如此轻松同步至ES！](https://mp.weixin.qq.com/s/JyH0AHy0VmOe_qiBKSU_RQ)
+  * [广告增量实时索引构建实践](https://mp.weixin.qq.com/s/B9BFOLam5OXCYnimqInqpQ)
+  * [数据库不应放在容器中？- B站Kubernetes有状态服务实践(Elasticsearch/Clickhouse)](https://mp.weixin.qq.com/s/dCQPOx2n2w36Q3P3hCKe8A)
 * [OpenSearch](https://github.com/opensearch-project/OpenSearch)
 * [meilisearch](https://github.com/meilisearch/meilisearch)
 * [zincsearch](https://github.com/zincsearch/zincsearch)

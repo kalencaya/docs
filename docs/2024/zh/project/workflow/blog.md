@@ -1,0 +1,5 @@
+# 博客文章
+
+## 编排
+
+* [微服务+异步工作流+Serverless，Netflix 决定弃用稳定运行7年的旧平台](https://mp.weixin.qq.com/s/inGMjz4dqUgJcXW7IPZ6Yw)
