@@ -14,3 +14,9 @@
 ## Cache
 
 * [mapdb](https://github.com/jankotek/mapdb)。[高性能Java架构之堆外缓存与磁盘缓存解决方案：MapDB](https://mp.weixin.qq.com/s/6YOd3fieys8csMkwFMSnEw)
+* [hutool](https://github.com/dromara/hutool)。[缓存（Hutool-cache）](https://doc.hutool.cn/pages/cache/index/)
+* [kcache](https://github.com/rayokota/kcache)。An In-Memory Cache Backed by Apache Kafka
+  * [kareldb](https://github.com/rayokota/kareldb)。KarelDB is a fully-functional relational database backed by Apache Kafka.
+  * [keta](https://github.com/rayokota/keta)。Keta is a transactional metadata store backed by Apache Kafka.
+* [caffeine](https://github.com/ben-manes/caffeine)
+* [guava](https://github.com/google/guava)。
