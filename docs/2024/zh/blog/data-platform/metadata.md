@@ -495,3 +495,4 @@ schemaless 存储需要用户自己定义存储数据的 schema，计算引擎 F
 ## 开源项目
 
 * [metacat](https://github.com/Netflix/metacat)。[Netflix 开源新作：大数据发现服务框架 Metacat](https://www.infoq.cn/article/bigdata-netflix-metacat)
+* [gravitino](https://github.com/datastrato/gravitino)。[7 个数据平台，1 套元数据体系，小米基于 Gravitino 的下一代资产管理实践](https://mp.weixin.qq.com/s/KOgcw79cQyX39EmYNTM0ow)
