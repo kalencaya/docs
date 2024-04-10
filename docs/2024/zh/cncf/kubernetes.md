@@ -4,6 +4,7 @@
 * kind
 * minikube
 * docker desktop
+* [vcluster](https://github.com/loft-sh/vcluster)。在 kubernetes 内部虚拟出一个新的 kubernetes 集群以提供更好的多租户和隔离体验，底层基于 k3s，额外负载很低
 
 ## 文章列表
 
