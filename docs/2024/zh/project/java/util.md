@@ -9,3 +9,4 @@
 * [apache commons](https://commons.apache.org/)
   * [commons-lang](https://github.com/apache/commons-lang)
   * [commons-collections](https://github.com/apache/commons-collections)
+* [java-util](https://github.com/jdereg/java-util)。Rare, hard-to-write utilities that are thoroughly tested
