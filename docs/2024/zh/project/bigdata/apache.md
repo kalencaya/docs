@@ -59,6 +59,7 @@
 * [delta](https://github.com/delta-io/delta)。非 apache 项目。
 * [XTable](https://xtable.apache.org/)。原 OneTable 项目，进入 apache 孵化更名为 XTable
 * [openhouse](https://github.com/linkedin/openhouse)。非 apache 项目。湖仓的表控制面
+* [amoro](https://amoro.apache.org/)。网易开源，数据湖管理系统
 
 ### 文章列表
 
