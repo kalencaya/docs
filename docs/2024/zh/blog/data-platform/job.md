@@ -60,6 +60,7 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
   - [auto-job](https://gitee.com/hyxl-520/auto-job)
   - [jobrunr](https://github.com/jobrunr/jobrunr)
   - [db-scheduler](https://github.com/kagkarlsson/db-scheduler)
+  - [spring cloud task](https://spring.io/projects/spring-cloud-task#overview)
 - 中间件
 
   - [elastic-job](https://github.com/apache/shardingsphere-elasticjob)。分 2 种模式：lite 和 cloud，lite 模式需嵌入应用中，cloud 模式下可独立部署

@@ -28,3 +28,7 @@
 
 * [grafana-operator](https://github.com/grafana/grafana-operator)
 * [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)
+
+## 其他
+
+* [shell-operator](https://github.com/flant/shell-operator)
