@@ -21,7 +21,7 @@
   },
   {
     "type": "file",
-    "name": "kcl",
-    "label": "nav.cncf.kcl"
+    "name": "config",
+    "label": "nav.cncf.config"
   }
 ]

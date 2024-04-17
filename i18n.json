@@ -155,9 +155,9 @@
     "zh": "Volcano",
     "en": "Volcano"
   },
-  "nav.cncf.kcl": {
-    "zh": "KCL",
-    "en": "KCL"
+  "nav.cncf.config": {
+    "zh": "配置语言",
+    "en": "Config-Language"
   },
   "nav.information": {
     "zh": "信息系统",
