@@ -159,6 +159,10 @@
     "zh": "配置语言",
     "en": "Config-Language"
   },
+  "nav.cncf.package": {
+    "zh": "包管理",
+    "en": "Package"
+  },
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"

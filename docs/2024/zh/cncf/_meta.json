@@ -23,5 +23,10 @@
     "type": "file",
     "name": "config",
     "label": "nav.cncf.config"
+  },
+  {
+    "type": "file",
+    "name": "package",
+    "label": "nav.cncf.package"
   }
 ]
