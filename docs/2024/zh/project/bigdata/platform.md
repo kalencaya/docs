@@ -46,14 +46,5 @@
 
 ## 运维平台
 
-* [SREWorks](https://github.com/alibaba/SREWorks)。阿里巴巴大数据SRE团队云原生运维平台 SREWorks，沉淀了团队近10年经过内部业务锤炼的 SRE 工程实践，秉承“数据化、智能化”运维思想，帮助运维行业更多的从业者采用“数智”思想做好高效运维。
-  * [QCon 演讲实录（上）：多云环境下应用管理与交付实践](https://xie.infoq.cn/article/330fa3e9327c0836f193ba9b0)
-  * [QCon 演讲实录（下）：多云管理关键能力实现与解析 -AppManager](https://xie.infoq.cn/article/ccf591830b980db73d0e5af9c)
 * [datasophon](https://github.com/datavane/datasophon)。致力于快速实现部署、管理、监控以及自动化运维大数据云原生平台，帮助您快速构建起稳定、高效、可弹性伸缩的大数据云原生平台。
 * [CloudEon](https://github.com/dromara/CloudEon)。CloudEon 将基于 Kubernetes 的资源安装部署开源大数据组件，实现开源大数据平台的容器化运行，您可减少对于底层资源的运维关注。
-* [spinnaker](https://github.com/spinnaker)。Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
-* [KubeVela](https://kubevela.io/zh/)。KubeVela 是一个现代化的软件交付平台，它可以让你的应用交付在当今流行的混合、多云环境中变得更加*简单、高效、可靠。*
-* [flux2](https://github.com/fluxcd/flux2)。gitops CD 平台。缺少 web-ui。
-  * [capacitor](https://github.com/gimlet-io/capacitor)。Capacitor 是一个开源的 Flux GUI，需要单独部署。
-* [teletraan](https://github.com/pinterest/teletraan)
-* [orion](https://github.com/pinterest/orion)

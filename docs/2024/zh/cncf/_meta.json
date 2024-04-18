@@ -28,5 +28,10 @@
     "type": "file",
     "name": "package",
     "label": "nav.cncf.package"
+  },
+  {
+    "type": "file",
+    "name": "cicd",
+    "label": "nav.cncf.cicd"
   }
 ]

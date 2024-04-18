@@ -9,3 +9,7 @@
 
   * [kubevela](https://kubevela.io/zh/) 使用 cue
 * [pkl](https://github.com/apple/pkl)。
+
+其他
+
+* [10 种 Kubernetes 声明式配置管理的方式，你都了解多少?](https://mp.weixin.qq.com/s/nLKoyIntDhlcyFpQVZQO3w)

@@ -163,6 +163,10 @@
     "zh": "包管理",
     "en": "Package"
   },
+  "nav.cncf.cicd": {
+    "zh": "CI/CD",
+    "en": "CI/CD"
+  },
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"
