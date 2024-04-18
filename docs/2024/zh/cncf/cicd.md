@@ -10,6 +10,7 @@
     * [QCon 演讲实录（下）：多云管理关键能力实现与解析 -AppManager](https://xie.infoq.cn/article/ccf591830b980db73d0e5af9c)
 * 理论相关
   * [阿里云发布 OAM Kubernetes 标准实现与核心依赖库](https://mp.weixin.qq.com/s/YWPgNgr-WHd-ORvtJXp62A)
+  * [OAM 深入解读：OAM 为云原生应用带来哪些价值？](https://developer.aliyun.com/article/744417)
   * 服务编排
     * [Kubernetes资源编排系列之一: Pod YAML篇](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485027&idx=1&sn=6d1371244d5c05203c0d5be78a27cd32&chksm=f90a5ed8ce7dd7cefcf19974f0e8d6c1cdeddf1e1c6ca45cdbefbeab669a30511cfa7e6da334&mpshare=1&scene=1&srcid=0319uWVYWokg3J4TuImH6imU&sharer_shareinfo=7286f71d67c3da15cd9ced0b5a609ec3&sharer_shareinfo_first=7286f71d67c3da15cd9ced0b5a609ec3&version=4.1.10.99312&platform=mac#rd)
     * [Kubernetes资源编排系列之二: Helm篇](https://mp.weixin.qq.com/s?__biz=MzUwOTkwNzQxMg==&mid=2247485073&idx=1&sn=ba1ced10c1941ee859632b55c3b8fcaa&chksm=f90a5e2ace7dd73c501318ce4358c58f651c06ccccc2eda2301b3374c6795f3ca8e936a09734&mpshare=1&scene=1&srcid=03190G17UN1VLeSiAAanZc7C&sharer_shareinfo=2092d771e8d85123066a653e44b782d9&sharer_shareinfo_first=2092d771e8d85123066a653e44b782d9&version=4.1.10.99312&platform=mac#rd)
