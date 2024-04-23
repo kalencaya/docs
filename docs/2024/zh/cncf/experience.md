@@ -14,5 +14,7 @@
 综合实现
 
 * sreworks
+  * [QCon 演讲实录（上）：多云环境下应用管理与交付实践](https://xie.infoq.cn/article/330fa3e9327c0836f193ba9b0)
+  * [QCon 演讲实录（下）：多云管理关键能力实现与解析 -AppManager](https://xie.infoq.cn/article/ccf591830b980db73d0e5af9c)
 * [java-operator-sdk](https://github.com/operator-framework/java-operator-sdk)。
-  * 同时实现了 watch 和 timer 方式，还支持从消息队列中获取
+  * [Handling Related Events with Event Sources](https://javaoperatorsdk.io/docs/features#handling-related-events-with-event-sources)同时实现了 watch 和 timer 方式，还支持从消息队列中获取
