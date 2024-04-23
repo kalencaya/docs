@@ -163,6 +163,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.cncf.experience": {
+    "zh": "经验技巧",
+    "en": "Experience&Skill"
+  },
   "nav.cncf.container": {
     "zh": "Container",
     "en": "Container"
