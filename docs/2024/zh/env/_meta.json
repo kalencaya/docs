@@ -12,7 +12,17 @@
   },
   {
     "type": "file",
+    "name": "java",
+    "label": "nav.env.java"
+  },
+  {
+    "type": "file",
     "name": "github",
     "label": "nav.env.github"
+  },
+  {
+    "type": "file",
+    "name": "web",
+    "label": "nav.env.web"
   }
 ]

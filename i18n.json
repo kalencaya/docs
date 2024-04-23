@@ -19,6 +19,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.env.java": {
+    "zh": "Java",
+    "en": "Java"
+  },
   "nav.env.proxy": {
     "zh": "代理",
     "en": "Proxy"
@@ -34,6 +38,10 @@
   "nav.env.github": {
     "zh": "Github 认证",
     "en": "Github Auth"
+  },
+  "nav.env.web": {
+    "zh": "前端",
+    "en": "Web"
   },
   "nav.blog": {
     "zh": "博客",
