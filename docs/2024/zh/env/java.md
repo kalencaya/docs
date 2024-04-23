@@ -2,7 +2,7 @@
 
 ## JDK
 
-1. 下载 [JDK](https://adoptium.net/zh-CN/temurin/archive/)。可选择 JDK 11、17、21 等长期支持版本。下载分为**二进制**和**安装器**，Mac 和 Windows 用户可选择**安装器**下载
+1. 下载 [JDK](https://adoptium.net/zh-CN/temurin/archive/)。可选择 JDK 11、17、21 等长期支持版本。下载分为 **二进制** 和 **安装器**，Mac 和 Windows 用户可选择 **安装器** 下载
 
 2. 安装。
 

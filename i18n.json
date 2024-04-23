@@ -43,6 +43,18 @@
     "zh": "前端",
     "en": "Web"
   },
+  "nav.env.docker": {
+    "zh": "Docker",
+    "en": "Docker"
+  },
+  "nav.env.helm": {
+    "zh": "Helm",
+    "en": "Helm"
+  },
+  "nav.env.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
