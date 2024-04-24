@@ -10,3 +10,11 @@
   * [commons-lang](https://github.com/apache/commons-lang)
   * [commons-collections](https://github.com/apache/commons-collections)
 * [java-util](https://github.com/jdereg/java-util)。Rare, hard-to-write utilities that are thoroughly tested
+
+## Graph
+
+* [guava](https://github.com/google/guava)。guava Graph
+* [jgrapht](https://github.com/jgrapht/jgrapht)。[jgrapht.org/guide](https://jgrapht.org/guide/UserOverview)
+* [commons-graph](https://github.com/apache/commons-graph)。Apache Commons Graph
+* [jung](https://github.com/jrtom/jung)。
+
