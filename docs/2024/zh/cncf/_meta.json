@@ -6,6 +6,11 @@
   },
   {
     "type": "file",
+    "name": "experience",
+    "label": "nav.cncf.experience"
+  },
+  {
+    "type": "file",
     "name": "container",
     "label": "nav.cncf.container"
   },

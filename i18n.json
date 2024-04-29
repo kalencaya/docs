@@ -35,6 +35,26 @@
     "zh": "Github 认证",
     "en": "Github Auth"
   },
+  "nav.env.java": {
+    "zh": "Java",
+    "en": "Java"
+  },
+  "nav.env.web": {
+    "zh": "前端",
+    "en": "Web"
+  },
+  "nav.env.docker": {
+    "zh": "Docker",
+    "en": "Docker"
+  },
+  "nav.env.helm": {
+    "zh": "Helm",
+    "en": "Helm"
+  },
+  "nav.env.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
@@ -142,6 +162,10 @@
   "nav.cncf.index": {
     "zh": "概览",
     "en": "Overview"
+  },
+  "nav.cncf.experience": {
+    "zh": "经验技巧",
+    "en": "Experience&Skill"
   },
   "nav.cncf.container": {
     "zh": "Container",

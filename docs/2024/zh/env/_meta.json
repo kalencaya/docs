@@ -14,5 +14,31 @@
     "type": "file",
     "name": "github",
     "label": "nav.env.github"
+  },
+  {
+    "type": "file",
+    "name": "java",
+    "label": "nav.env.java"
+  },
+  {
+    "type": "file",
+    "name": "web",
+    "label": "nav.env.web"
+  },
+  {
+    "type": "file",
+    "name": "docker",
+    "label": "nav.env.docker"
+  },
+  {
+    "type": "file",
+    "name": "helm",
+    "label": "nav.env.helm"
+  },
+  {
+    "type": "dir",
+    "name": "kubernetes",
+    "collapsed": true,
+    "label": "nav.env.kubernetes"
   }
 ]
