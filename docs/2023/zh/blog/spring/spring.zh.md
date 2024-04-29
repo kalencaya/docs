@@ -9,6 +9,7 @@ spring、spring-boot、spring-cloud 文章总结
 ### lombok
 
 * [请谨慎使用 @Builder 注解！](https://mp.weixin.qq.com/s/yp-lvB9A5dVBrsBT3XkICA)
+* [盘点Lombok的几个骚操作](https://mp.weixin.qq.com/s/hfW1mUsLFm0_mqHd6YbIXw)
 
 ### event & listener
 
