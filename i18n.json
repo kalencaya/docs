@@ -23,6 +23,10 @@
     "zh": "代理",
     "en": "Proxy"
   },
+  "nav.env.standard": {
+    "zh": "开发规范",
+    "en": "Develop Standard"
+  },
   "nav.env.proxy.docker": {
     "zh": "Docker",
     "en": "Docker"

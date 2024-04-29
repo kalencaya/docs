@@ -19,6 +19,11 @@ spring、spring-boot、spring-cloud 文章总结
 * [打破JSON的束缚：探寻Spring @JsonComponent的灵活性和扩展性](https://mp.weixin.qq.com/s/9qErhPk7niC_An2lKjInqQ)
 * [Spring强大的数据格式化处理功能你必须的知道](https://mp.weixin.qq.com/s/ZvgzdlbwwTB9DCBQvt0EiA)
 
+### 版本控制
+
+* [SpringBoot一个注解轻松实现多版本Rest API接口控制](https://mp.weixin.qq.com/s/_3M4dRS_T5Xt-dgoOHZ8YA)
+* [Spring Boot中的REST API版本控制：实现API的版本管理](https://mp.weixin.qq.com/s/B-3DAxYE2RO6aguanrk6dg)
+
 ## Spring Boot
 
 * [牢记这16个SpringBoot 扩展接口，写出更加漂亮的代码](https://mp.weixin.qq.com/s/RwHynYEZNI8jaJK7pWiQ9A)

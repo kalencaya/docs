@@ -27,7 +27,11 @@
 * [开放网关架构演进](https://mp.weixin.qq.com/s/yW9bXgbSOI7gzOMvAVznHg)
 * [浅谈交易链路中的一些设计原则&模式](https://mp.weixin.qq.com/s/nP9ssyngf4OtziX5E5o6tw)
 * [一场67万行代码的应用重构](https://mp.weixin.qq.com/s/zGTi4Y5ojjp05T07kBl7bw)
-* [上线十年，81万行Java代码的老系统如何重构](https://mp.weixin.qq.com/s/yUXYQLZ6RY-Z2b1oM9RKbQ)
+* 老房改造
+  * [上线十年，81万行Java代码的老系统如何重构](https://mp.weixin.qq.com/s/yUXYQLZ6RY-Z2b1oM9RKbQ)
+  * [老房改造系列--如何用一套流程接入所有业务线](https://mp.weixin.qq.com/s/Mq4sLh-rI69ldljse7N11w)
+  * [灵魂三问之稳定性摸排](https://mp.weixin.qq.com/s/IyQQSXUoOn5XDpWNVJc1Zg)
+
 
 ## DDD
 
@@ -51,6 +55,7 @@
 * [从设计模式谈业务开发](https://mp.weixin.qq.com/s/vLOViGeCgNHZ79b0FOesWA)
 * [跟着iLogtail学习设计模式](https://mp.weixin.qq.com/s/gfy9DfvcTuCiBiLJdZLTKQ)
 * [Java中保持扩展性的几种套路和实现](https://mp.weixin.qq.com/s/F42LqQncMDLQH-WWmZ28fA)
+* [使用策略模式消除冗长的if-else｜记一次smart-auto重构总结](https://mp.weixin.qq.com/s/cf7mMEl5HEwX_40i92mZ9A)
 
 ## 工具
 

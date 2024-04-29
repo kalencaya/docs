@@ -4,6 +4,7 @@
 * [hutool](https://github.com/dromara/hutool)
 * [guava](https://github.com/google/guava)
 * [vavr](https://github.com/vavr-io/vavr)
+* [Java8 Steam流太难用了？那你可以试试 JDFrame](https://mp.weixin.qq.com/s/cf7mMEl5HEwX_40i92mZ9A)
 * [redisson](https://github.com/redisson/redisson)
 * [camellia](https://github.com/netease-im/camellia)
 * [apache commons](https://commons.apache.org/)
