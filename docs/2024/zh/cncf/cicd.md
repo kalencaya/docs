@@ -44,3 +44,7 @@
   * [混沌初开，DevOps落地从哪个实践开始会更合适？我选择制品管理](https://mp.weixin.qq.com/s/ZYmeclR-KoZA2NqbhmOSIw)
   * [聊聊DevOps制品管理-不止是存储这么简单](https://mp.weixin.qq.com/s/8DRCIt_VVu9sX4RSoTea-Q)
   * [DevOps制品管理：深入探索一方、二方与三方组件的生产、消费、分发与协同机制](https://mp.weixin.qq.com/s?__biz=MzI1OTYyMzE4OQ==&mid=2247485351&idx=1&sn=6c232df50924b5229f4a800656ad7808&chksm=eb803b06bce458f4937f00efca578afc710d649c8204a734178cfee873d2bff6eb144ab4a1ac&scene=132&exptype=timeline_recommend_article_extendread_samebiz&show_related_article=1&subscene=0&scene=132#wechat_redirect)
+
+## IaC
+
+* [运维总监之路——基础设施即代码（IaC）](https://mp.weixin.qq.com/s/R8yQaA0H82ZTwUw6nqZrrw)

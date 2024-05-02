@@ -20,6 +20,7 @@
   * [2024年Apache DolphinScheduler RoadMap：引领开源调度系统的未来](https://mp.weixin.qq.com/s?__biz=MzA4NDYxNTc2NA==&mid=2247521259&idx=1&sn=34f57620fb4aeda1afca44e4de16149e&chksm=9fe6a4d0a8912dc6201bc0d4e7c7ebab7fc24e25a4747cb56d36df3ffa2401b7446f2c085efe&mpshare=1&scene=1&srcid=03097iC0mgw1pTyvdj259qmd&sharer_shareinfo=a02ef71fe5a512d65610af05a5d20817&sharer_shareinfo_first=a02ef71fe5a512d65610af05a5d20817&version=4.1.10.99312&platform=mac#rd)
   * [Apache DolphinScheduler-3.2.0集群部署教程](https://mp.weixin.qq.com/s?__biz=MzA4NDYxNTc2NA==&mid=2247521304&idx=1&sn=a3fe8578fcf04cd0d5fcc31d2510fc43&chksm=9fe6a323a8912a3533d94e97a95d9ffbb1d5fd75773abc22ad6a7a8c9443f007a867c176ea96&mpshare=1&scene=1&srcid=03141ATSXkgmMjMDoZVWE81m&sharer_shareinfo=96b57665a386c84e75cf35d6fe6f7cef&sharer_shareinfo_first=1d2596fe5db8e7831050aa60dad0a708&version=4.1.10.99312&platform=mac#rd)
   * [dolphinscheduler-sdk-java](https://github.com/weaksloth/dolphinscheduler-sdk-java)。
+  * [这篇 DolphinScheduler on k8s 部署实践，值得所有人看！](https://mp.weixin.qq.com/s/Q0Ud5CgmtaeBU52jgvkQbw)
   
 * [oozie](https://oozie.apache.org/)
 
@@ -34,6 +35,7 @@
 * [inlong](https://inlong.apache.org/)
 * [seatunnel](https://seatunnel.apache.org/)
   * [Apache SeaTunnel社区发布最新Roadmap：定义数据集成未来](https://mp.weixin.qq.com/s?__biz=MzkwNTMwNTEyNA==&mid=2247492782&idx=1&sn=cc5dda78b883e9b3ec02fa9bd4d80bbd&chksm=c0fb69e5f78ce0f345539e72702a9ff1c4dc748d8e49d61927dfdeb0bda7154d3900aa10a2b4&mpshare=1&scene=1&srcid=0309qKLEDXVyk5WWLWvqWA3j&sharer_shareinfo=5d03516ccad1cc683c16e68da79ad7d0&sharer_shareinfo_first=5d03516ccad1cc683c16e68da79ad7d0&version=4.1.10.99312&platform=mac#rd)
+  * [本地构建编译Apache-Seatunnel2.3.5适配Web1.0.0运行实现Mysql-CDC示例](https://mp.weixin.qq.com/s/pHg6FhHgCsWSk5Gg-HOj9A)
 
 
 ## 计算引擎
@@ -118,3 +120,5 @@
 * [Elasticsearch：普通检索和向量检索的异同？](https://mp.weixin.qq.com/s?__biz=MzI2NDY1MTA3OQ==&mid=2247488583&idx=1&sn=f996d7feb4cbccc620e68188fee46d67&chksm=eaa83c6fdddfb5795db9fb304e3b4c8c81c720d7bbfaf237cdbdd6b1ea7fae599d896ff017c8&mpshare=1&scene=1&srcid=0119MfFl9o4f1H3diunSo5GD&sharer_shareinfo=d5e15b2d5d5ef990870f93a803265c24&sharer_shareinfo_first=d5e15b2d5d5ef990870f93a803265c24&version=4.1.10.99312&platform=mac#rd)
 * [向量化引擎怎么提升数据库性能](https://mp.weixin.qq.com/s?__biz=MzU1OTgxMjA4OA==&mid=2247485545&idx=1&sn=1e0fd7478505c52501ef3ce10a9c4e09&chksm=fc10d4fecb675de8d924b9fa949aad65ef97223fda880b8e8b00922972f262567bbdd48b4df0&mpshare=1&scene=1&srcid=1107GMZnzvngqMF0MsLZL0LY&sharer_shareinfo=7f9a225dab1664b1b670ce62f4ce4500&sharer_shareinfo_first=d2195e4381332631c74b2cf5aff7fa55&version=4.1.10.99312&platform=mac#rd)
 * [向量化代码实践与思考：如何借助向量化技术给代码提速](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247536363&idx=1&sn=e3b6d17baa9c44c49819e48745142129&chksm=e92a73e4de5dfaf2b9486eabd118da98fb05e7a93aa8d7ba413a8b415b0ea92b98d1f321a5eb&mpshare=1&scene=1&srcid=1226Jqkg6lAArQu4QS1J1ad2&sharer_shareinfo=5a1676b649f42c446506c05a3e47d538&sharer_shareinfo_first=7972b1e35ce97d23086dfa0d52200c5f&version=4.1.10.99312&platform=mac#rd)
+* [Apache SeaTunnel 入选 2024 开源数据工程生态系统全景图！](https://mp.weixin.qq.com/s/ut3850ESV5sq83GFFF6xMw)
+* [深入解读 CNCF 推出的云原生 AI 白皮书](https://mp.weixin.qq.com/s/4vkX4EDLKAUXqLdAeTfxoA)
