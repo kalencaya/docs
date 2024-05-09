@@ -24,6 +24,7 @@
 * [Mybatis Plus 数据权限插件坑点](https://mp.weixin.qq.com/s/v7xmPxMUYaIm7ASWXHLrOg)
 * [分享一种灵活的数据权限思路(AOP、反射、MyBatis拦截器)](https://mp.weixin.qq.com/s/58JhpSkzTKOPFgJzE_P-uw)
 * [基于Mybatis拦截器实现数据范围权限](https://mp.weixin.qq.com/s/kxYlN2i06n9mrqnDcyQLkA)
+* [巧用 MyBatis Plus 实现数据权限控制](https://mp.weixin.qq.com/s/IizKn-7OSoO47mGS6fl_Nw)
 
 ## Mybatis Plus 插件
 

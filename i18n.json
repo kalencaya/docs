@@ -23,6 +23,10 @@
     "zh": "代理",
     "en": "Proxy"
   },
+  "nav.env.standard": {
+    "zh": "开发规范",
+    "en": "Develop Standard"
+  },
   "nav.env.proxy.docker": {
     "zh": "Docker",
     "en": "Docker"
@@ -86,10 +90,6 @@
   "nav.blog.program-design": {
     "zh": "程序设计",
     "en": "Program Design"
-  },
-  "nav.blog.spring": {
-    "zh": "Spring",
-    "en": "Spring"
   },
   "nav.blog.sql": {
     "zh": "SQL",
@@ -198,6 +198,10 @@
   "nav.information.index": {
     "zh": "概览",
     "en": "Overview"
+  },
+  "nav.information.project": {
+    "zh": "项目",
+    "en": "Project"
   },
   "nav.faq": {
     "zh": "FAQ",

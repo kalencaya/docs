@@ -42,12 +42,6 @@
   },
   {
     "type": "dir",
-    "name": "spring",
-    "collapsed": true,
-    "label": "nav.blog.spring"
-  },
-  {
-    "type": "dir",
     "name": "sql",
     "collapsed": true,
     "label": "nav.blog.sql"

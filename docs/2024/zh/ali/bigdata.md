@@ -15,6 +15,7 @@
 * [一文解析 ODPS SQL 任务优化方法原理](https://mp.weixin.qq.com/s/48srCxlocg3F5PusswKteg)
 * [了解那些“奇葩”SQL写法，快速写出高效率SQL](https://mp.weixin.qq.com/s/ahxUK5r6LjxwY30QfgsgBA)
 * [给技术新人的ODPS优化建议](https://mp.weixin.qq.com/s/C_f0QpokTXmf4-XN8t54mA)
+* [一个SQL任务的一生](https://mp.weixin.qq.com/s/BnG0t4icxYcnnMD8hHS8Pg)
 
 ## 其他
 

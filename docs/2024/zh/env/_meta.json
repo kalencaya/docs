@@ -11,6 +11,12 @@
     "label": "nav.env.proxy"
   },
   {
+    "type": "dir",
+    "name": "standard",
+    "collapsed": true,
+    "label": "nav.env.standard"
+  },
+  {
     "type": "file",
     "name": "github",
     "label": "nav.env.github"
