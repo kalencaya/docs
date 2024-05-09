@@ -18,6 +18,7 @@
 * [spark-operator](https://github.com/kubeflow/spark-operator)。原来的 spark-on-k8s-operator 项目，从 `GoogleCloudPlatform` 迁移至 `Kubeflow`。
   * [batch-processing-gateway](https://github.com/apple/batch-processing-gateway)
   * [lighter](https://github.com/exacaster/lighter)。REST API for Apache Spark on K8S or YARN
+  * [宣布Kubeflow Spark Operator：在K8s社区构建更强大的Spark](https://mp.weixin.qq.com/s?__biz=MzI5ODk5ODI4Nw==&mid=2247544248&idx=1&sn=7ca901ff992991eef37d8137fb160c89&chksm=ec9f22d8dbe8abce8ddc576e3eb7ab9e6b7e1038470ecb74ba44686724d1ef09270f15e78e32&mpshare=1&scene=1&srcid=0509UJNf5oYOAXif4Tu1dxRG&sharer_shareinfo=fa18868533812d14a65dd3285ce8bb16&sharer_shareinfo_first=fa18868533812d14a65dd3285ce8bb16&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
 
 
 ## 云存储
