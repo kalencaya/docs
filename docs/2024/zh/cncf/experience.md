@@ -18,3 +18,13 @@
   * [QCon 演讲实录（下）：多云管理关键能力实现与解析 -AppManager](https://xie.infoq.cn/article/ccf591830b980db73d0e5af9c)
 * [java-operator-sdk](https://github.com/operator-framework/java-operator-sdk)。
   * [Handling Related Events with Event Sources](https://javaoperatorsdk.io/docs/features#handling-related-events-with-event-sources)同时实现了 watch 和 timer 方式，还支持从消息队列中获取
+
+## 监控、可视化和告警
+
+基于 prometheus 和 grafana 实现
+
+* [ververica platform](https://github.com/ververica/ververica-platform-playground)
+* [doris-manager]([doris-manager](https://github.com/apache/doris-manager))。
+  * [【Apache Doris】Manager 极致丝滑地运维管理](https://mp.weixin.qq.com/s/kMBQ51kuVHL3Fb-xmb5a8A)
+  * [Cluster Manager for Apache Doris 24.x 安装手册](https://docs.selectdb.com/docs/enterprise/cluster-manager-guide/deployment-guide/deployment-guide-24.x)
+* [DataSophon](https://datasophon.github.io/datasophon-website/docs/current/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/)
