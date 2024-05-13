@@ -8,6 +8,7 @@
   * [Phoenix 框架 小米商城产品站革新之路](https://mp.weixin.qq.com/s/EYMOvIHhCpSnb4TbAm4TsA)
   * [Phoenix框架 从0到1设计业务并发框架 怎么组织设计一个框架](https://mp.weixin.qq.com/s/f29We5lfTafhXAIMpWq5LQ)
   * [Phoenix框架 从0到1设计业务并发框架 并发线程池的核心设计](https://mp.weixin.qq.com/s/lx7Mk4T2V32JnvWSRONn4g)
+  * [Phoenix框架 从0到1设计业务并发框架 自动构建有向无循环图设计](https://mp.weixin.qq.com/s/ORH3dtIVcoykjUOG0dzrFA)。如何规划有向无环图的任务执行先后顺序？
 
 
 ## 独立服务
