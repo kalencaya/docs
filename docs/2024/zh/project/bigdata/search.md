@@ -13,6 +13,7 @@
 * [manticoresearch](https://github.com/manticoresoftware/manticoresearch)
   * [号称取代 Elasticsearch，太猛了！](https://mp.weixin.qq.com/s/woLCm21FyFCptU0A18bdAw)
 * [typesense](https://github.com/typesense/typesense)
+* [quickwit](https://github.com/quickwit-oss/quickwit)
 * [havenask](https://github.com/alibaba/havenask)
   * [10年+，阿里沉淀出怎样的搜索引擎？](https://mp.weixin.qq.com/s/omJQ_1OgjbYnbpHBua-lSQ)
   * [揭秘阿里自研搜索引擎Havenask在线检索服务](https://mp.weixin.qq.com/s/UON2Bco2DepENADYJejwUQ?poc_token=HFFJt2WjqWWFEDWfzUkQfW6Vfps3MMCRLZQkyat8)
