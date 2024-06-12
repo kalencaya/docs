@@ -5,3 +5,4 @@
 * [Art](https://github.com/springboot4/Art)
 * [eiam](https://github.com/topiam/eiam)
 * [spring-boot-3-jwt-security](https://github.com/ali-bouali/spring-boot-3-jwt-security)
+* [smart-cloud](https://github.com/smart-cloud/smart-cloud)
