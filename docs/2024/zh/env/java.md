@@ -2,6 +2,8 @@
 
 ## JDK
 
+### Mac & Linux
+
 1. 下载 [JDK](https://adoptium.net/zh-CN/temurin/archive/)。可选择 JDK 11、17、21 等长期支持版本。下载分为 **二进制** 和 **安装器**，Mac 和 Windows 用户可选择 **安装器** 下载
 
 2. 安装。
@@ -24,7 +26,13 @@
    java -version
    ```
 
+### Windows
+
+参考：[轻松管理多版本JDK：从1.8到11和17的无缝切换指南](https://mp.weixin.qq.com/s?__biz=Mzk0NzQwMzgxNQ==&mid=2247486717&idx=1&sn=9f3f314dc13f643a3e029bb5df942bdf&chksm=c37621b5f401a8a3fd9e36d9ca63b1bc4597d2f392cef3200ec3a1cdd1a933275355cc092e7c&mpshare=1&scene=1&srcid=0611NoypwokdXVO2KgUGudcx&sharer_shareinfo=c1703af4802db14696e2ab3e4c655342&sharer_shareinfo_first=20abd686207264467ebbb23f1caa40dc&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
+
 ## Maven
+
+### Mac & Linux
 
 1. 下载 [maven](https://maven.apache.org/download.cgi)。
 
