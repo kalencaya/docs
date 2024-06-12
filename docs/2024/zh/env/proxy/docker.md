@@ -27,6 +27,8 @@ http://127.0.0.1:$PORT
 
 ![proxy_docker_setting](./image/docker/proxy_docker_setting.jpg)
 
+
+
 ## 镜像代理
 
 文档链接：
@@ -63,3 +65,19 @@ Registry Mirrors:
  https://docker.mirrors.ustc.edu.cn
  https://docker.nju.edu.cn
 ```
+
+如果是 linux 环境，可以直接编辑 `daemon.json` 文件，没有则新建：
+
+```shell
+vim /etc/docker/daemon.json
+
+## 在将代理镜像仓库地址，添加到 `daemon.json` 即可
+
+## 添加完毕后，重启 docker
+systemctl restart docker
+systemctl status docker
+
+## 查看配置是否成功
+docker info
+```
+
