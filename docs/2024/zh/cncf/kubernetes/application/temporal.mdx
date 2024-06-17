@@ -1,0 +1,64 @@
+# Temporal
+
+Temporal 是一个开源的支持持久化微服务编排的工作流引擎。
+
+对于一个工作流，可以包含多个步骤，如 `A -> B, C -> D` 形成一个复杂的 DAG 图。Temporal 支持工作流持久化，即当工作流执行步骤 A 后，发生异常，重试时会略过执行过的 A，继而执行后续的 `B, C -> D`。
+
+Temporal 的性能非常的高，可同时支持百万级工作流。知名数据集成工具 [airbyte](https://github.com/airbytehq/airbyte) 即使用 Temporal 作为定时调度工具。根据笔者亲身体验，使用 Temporal 作为定时任务引擎，支持超过 2w+ 调度频率在 3s ~ 5min 的定时任务。
+
+文档链接：
+
+* 文档：https://docs.temporal.io/
+* github 仓库：[temporal](https://github.com/temporalio/temporal)
+* 安装
+  * docker
+    * 文档：[Docker & Docker Compose](https://docs.temporal.io/self-hosted-guide/setup#docker--docker-compose)
+    * github 仓库：[docker-compose](https://github.com/temporalio/docker-compose)
+  * kubernetes
+    * 文档：[Helm charts](https://docs.temporal.io/self-hosted-guide/setup#helm-charts)
+    * github 仓库：[helm-charts](https://github.com/temporalio/helm-charts)
+* 案例
+  * github 仓库：[samples-java](https://github.com/temporalio/samples-java)
+
+## 安装
+
+### Docker
+
+clone 对应的 github 仓库到本地，按需选择部署方式即可
+
+### Kubernetes
+
+#### 准备 mysql
+
+Temporal 支持部署时，动态创建对应的库表结构和初始化数据，但是如果因为外部限制，无法在部署时创建库表结构，需要通过工单系统申请数据库，创建库表，因此在初始化数据库时需要额外操作：
+
+* 通过 docker compose 方式本地创建对应版本的 temporal，使用 mysql 数据库访问工具，连接 mysql，导出库表结构和数据。数据库连接信息可以从 `docker-compose.yml` 文件中获得为准：
+  * jdbc-url: `jdbc:mysql://localhost:3306`
+  * user: `root`
+  * password: `root`
+* 在申请好的数据库中导入上一步的库表结构和数据
+
+#### 创建 temporal
+
+下载需要的版本，使用 helm 创建。
+
+创建对应 values.yaml 文件，添加如下内容：
+
+
+
+创建 temporal
+
+```shell
+helm install temporal /path/to/helm -n temporal --create-namespace --values values.yaml
+```
+
+
+
+## 常用操作
+
+创建、删除 namespace
+
+
+
+调整限流
+
