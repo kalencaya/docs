@@ -175,6 +175,27 @@
     "zh": "Kubernetes",
     "en": "Kubernetes"
   },
+  "nav.cncf.kubernetes.index": {
+    "zh": "说明",
+    "en": "Index"
+  },
+  "nav.cncf.kubernetes.env": {
+    "zh": "环境",
+    "en": "Environment"
+  },
+
+  "nav.cncf.kubernetes.env.install": {
+    "zh": "安装",
+    "en": "Install"
+  },
+  "nav.cncf.kubernetes.env.panel": {
+    "zh": "管理面板",
+    "en": "Panel"
+  },
+  "nav.cncf.kubernetes.application": {
+    "zh": "安装应用",
+    "en": "Application"
+  },
   "nav.cncf.volcano": {
     "zh": "Volcano",
     "en": "Volcano"

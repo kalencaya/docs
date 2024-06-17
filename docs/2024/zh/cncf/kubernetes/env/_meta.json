@@ -1,0 +1,14 @@
+[
+  {
+    "type": "dir",
+    "name": "install",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes.env.install"
+  },
+  {
+    "type": "dir",
+    "name": "panel",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes.env.panel"
+  }
+]

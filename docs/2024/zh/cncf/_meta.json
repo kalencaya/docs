@@ -15,8 +15,9 @@
     "label": "nav.cncf.container"
   },
   {
-    "type": "file",
+    "type": "dir",
     "name": "kubernetes",
+    "collapsed": true,
     "label": "nav.cncf.kubernetes"
   },
   {
