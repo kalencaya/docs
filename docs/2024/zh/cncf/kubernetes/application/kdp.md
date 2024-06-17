@@ -16,7 +16,7 @@ KDP(Kubernetes Data Platform) 提供了一个基于 Kubernetes 的现代化混�
 
 ## 文档链接
 
-参考：[[Kubernetes Data Platform](https://linktimecloud.github.io/kubernetes-data-platform/)](https://linktimecloud.github.io/kubernetes-data-platform/README_zh.html)
+参考：[Kubernetes Data Platform](https://linktimecloud.github.io/kubernetes-data-platform/)
 
 * [快速启动](https://linktimecloud.github.io/kubernetes-data-platform/docs/zh/getting-started/quick-start.html)。本地使用 Kind 和 Docker 快速启动演示环境。
 * [高级安装](https://linktimecloud.github.io/kubernetes-data-platform/docs/zh/getting-started/advanced-install.html)。在 Kubernetes 上安装环境
@@ -50,11 +50,11 @@ cd linux-amd64
 mv ./kdp /usr/local/bin/kdp
 
 ## 安装
-./kdp install --set loki.enabled=false \
+kdp install --set loki.enabled=false \
 	--set prometheusCRD.enabled=false \
 	--set prometheus.enabled=false \
 	--set kong.enabled=false \
-	--ingress.class=traefik
+	--set ingress.class=traefik
 ```
 
 为了节约资源和复用 k3s 自带的资源，这里关闭了 KDP 自带的 prometheus 、loki，后续访问 kdp-ux 时部分功能无法使用。同时关闭了 kong，替换成 k3s 自带的 traefik。
