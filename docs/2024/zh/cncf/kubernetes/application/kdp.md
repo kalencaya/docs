@@ -29,7 +29,7 @@ KDP 发版很频繁，用户可以选择较新版本进行实践，测试时最�
 
 ### 准备 Kubernetes 环境
 
-* 准备 K3s 环境。参考：[k3s](../env/install/k3s.md)。在安装 k3s 时可能会遇到网络问题，需要做如下调整。
+* 准备 K3s 环境。参考：[k3s](../env/install/k3s.md)。在安装 k3s 时可能会遇到网络问题，可以通过如下调整加快安装速度。
   * K3s 国内镜像。如果 `https://rancher-mirror.rancher.cn` 无法访问，切换成 `https://rancher-mirror.oss-cn-beijing.aliyuncs.com`，或者在网络搜索相关资源。
   * Docker 镜像。为加快镜像下载速度，需配置镜像源。
     * 配置 Docker 镜像源。参考 [Docker](../../../env/proxy/docker.md)。腾讯云服务器选择容器镜像操作系统后，Docker 自带了镜像源：`https://mirror.ccs.tencentyun.com/`
