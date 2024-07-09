@@ -20,6 +20,7 @@ KDP(Kubernetes Data Platform) 提供了一个基于 Kubernetes 的现代化混�
 
 * [快速启动](https://linktimecloud.github.io/kubernetes-data-platform/docs/zh/getting-started/quick-start.html)。本地使用 Kind 和 Docker 快速启动演示环境。
 * [高级安装](https://linktimecloud.github.io/kubernetes-data-platform/docs/zh/getting-started/advanced-install.html)。在 Kubernetes 上安装环境
+* [在 KubeSphere 上快速安装和使用 KDP 云原生数据平台](https://mp.weixin.qq.com/s?__biz=Mzg4NTU0MzEyMg==&mid=2247530970&idx=1&sn=ab1c7d5f5a47f7d490fe7aec8c38ff1e&chksm=cfa56067f8d2e97171ad604ad25f75a1bd1497516aa43ceb68972b437f89c3e96e85cb9848c7&mpshare=1&scene=1&srcid=0618vbu9Po2iuFi8DUcSOErv&sharer_shareinfo=26e9d58150768fcbf95fd521314138ff&sharer_shareinfo_first=91e040ad271d3a02ab67d824448a370d&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
 
 ## 实操指南
 
