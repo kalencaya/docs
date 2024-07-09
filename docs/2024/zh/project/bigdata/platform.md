@@ -48,3 +48,4 @@
 
 * [datasophon](https://github.com/datavane/datasophon)。致力于快速实现部署、管理、监控以及自动化运维大数据云原生平台，帮助您快速构建起稳定、高效、可弹性伸缩的大数据云原生平台。
 * [CloudEon](https://github.com/dromara/CloudEon)。CloudEon 将基于 Kubernetes 的资源安装部署开源大数据组件，实现开源大数据平台的容器化运行，您可减少对于底层资源的运维关注。
+* [kubernetes-data-platform](https://github.com/linktimecloud/kubernetes-data-platform)。KDP(Kubernetes Data Platform) 提供了一个基于 Kubernetes 的现代化混合云原生数据平台。它能够利用 Kubernetes 的云原生能力来有效地管理数据平台。
