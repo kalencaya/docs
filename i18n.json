@@ -143,6 +143,10 @@
     "zh": "博客",
     "en": "Blog"
   },
+  "nav.project.workflow.temporal": {
+    "zh": "Temporal",
+    "en": "Temporal"
+  },
   "nav.project.workflow.design": {
     "zh": "设计",
     "en": "Design"

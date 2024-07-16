@@ -21,6 +21,11 @@
   },
   {
     "type": "file",
+    "name": "temporal",
+    "label": "nav.project.workflow.temporal"
+  },
+  {
+    "type": "file",
     "name": "design",
     "label": "nav.project.workflow.design"
   }
