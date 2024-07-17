@@ -4,7 +4,7 @@ Temporal 是一个开源的支持持久化微服务编排的工作流引擎。
 
 对于一个工作流，可以包含多个步骤，如 `A -> B, C -> D` 形成一个复杂的 DAG 图。Temporal 支持工作流持久化，即当工作流执行步骤 A 后，发生异常，重试时会略过执行过的 A，继而执行后续的 `B, C -> D`。
 
-Temporal 的性能非常的高，可同时支持百万级工作流。知名数据集成工具 [airbyte](https://github.com/airbytehq/airbyte) 即使用 Temporal 作为定时调度工具。根据笔者亲身体验，使用 Temporal 作为定时任务引擎，支持超过 2w+ 调度频率在 3s ~ 5min 的定时任务。
+Temporal 的性能非常的高，可同时支持百万级工作流。知名数据集成工具 [airbyte](https://github.com/airbytehq/airbyte) 即使用 Temporal 作为定时调度工具。根据笔者亲身体验，使用 Temporal 作为定时任务引擎，通过 CronJob 支持超过 4w+ 调度频率在 3s ~ 5min 的定时任务。
 
 文档链接：
 
@@ -42,17 +42,76 @@ Temporal 支持部署时，动态创建对应的库表结构和初始化数据�
 
 下载需要的版本，使用 helm 创建。
 
-创建对应 values.yaml 文件，添加如下内容：
+创建 values.yaml 文件添加如下内容。这里将存储切换成了 mysql，关闭了自动建表和表结构升级，关闭了 grafana 和 prometheus
+
+```yaml
+server:
+  config:
+    persistence:
+      defaultStore: default
+      additionalStores: {}
+      default:
+        driver: "sql"
+        sql:
+          driver: "mysql"
+          host: "localhost"
+          port: 3306
+          database: "temporal"
+          user: "temporal_user"
+          password: "temporal_password"
+          existingSecret: ""
+          secretName: ""
+          maxConns: 20
+          maxConnLifetime: "1h"
+          # connectAttributes:
+          # tx_isolation: 'READ-COMMITTED'
+
+      visibility:
+        driver: "sql"
+        sql:
+          driver: "mysql"
+          host: "localhost"
+          port: 3306
+          database: "temporal_visibility"
+          user: "temporal_visibility_user"
+          password: "temporal_visibility_password"
+          existingSecret: ""
+          secretName: ""
+          maxConns: 20
+          maxConnLifetime: "1h"
+          # connectAttributes:
+          #   tx_isolation: 'READ-COMMITTED'
 
 
+schema:
+  setup:
+    enabled: false
+  update:
+    enabled: false
+
+elasticsearch:
+  enabled: false
+
+prometheus:
+  enabled: false
+  nodeExporter:
+    enabled: false
+
+grafana:
+  enabled: false
+
+cassandra:
+  enabled: false
+
+mysql:
+  enabled: true
+```
 
 创建 temporal
 
 ```shell
 helm install temporal /path/to/helm -n temporal --create-namespace --values values.yaml
 ```
-
-
 
 ## 常用操作
 
