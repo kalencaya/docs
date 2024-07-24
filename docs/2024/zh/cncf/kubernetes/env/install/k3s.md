@@ -49,18 +49,20 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIR
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
 	INSTALL_K3S_EXEC="--node-external-ip=myip" \
 	sh -
 
-# 如果发现拉取 rancher k3s 和 docker 镜像异常，可以修改配置，切换下载地址
-curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
-	INSTALL_K3S_MIRROR=cn \
-	INSTALL_K3S_MIRROR_URL=rancher-mirror.oss-cn-beijing.aliyuncs.com \
-	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
-	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-	INSTALL_K3S_EXEC="--node-external-ip=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
-	sh -
+# 如果发现拉取 rancher k3s 和 docker 镜像异常，可以修改配置，从网络上查找可用下载地址，例如：
+# curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
+#	INSTALL_K3S_MIRROR=cn \
+#	INSTALL_K3S_MIRROR_URL=rancher-mirror.oss-cn-beijing.aliyuncs.com \
+#	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+#	INSTALL_K3S_SKIP_SELINUX_RPM=true \
+#	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
+#	INSTALL_K3S_EXEC="--node-external-ip=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
+#	sh -
 
 # 如果发现卡在下载 docker ce，需要更换 linux 的软件源
 # centos 系统
@@ -98,6 +100,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIR
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_URL=https://myserver:6443 \
 	K3S_TOKEN=mynodetoken \
 	INSTALL_K3S_EXEC="--node-external-ip=myip" \
@@ -109,6 +112,7 @@ curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh 
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_MIRROR_URL=rancher-mirror.oss-cn-beijing.aliyuncs.com \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_URL=https://myserver:6443 \
 	K3S_TOKEN=mynodetoken \
 	INSTALL_K3S_EXEC="--node-external-ip=myip" \
@@ -189,6 +193,7 @@ k3s 默认使用  [containerd](https://containerd.io/)，如果用户可以通�
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
 	INSTALL_K3S_EXEC="--docker --node-external-ip=myip" \
 	sh -
@@ -197,6 +202,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_URL=https://myserver:6443 \
 	K3S_TOKEN=mynodetoken \
 	INSTALL_K3S_EXEC="--docker --node-external-ip=myip" \
