@@ -196,6 +196,14 @@
     "zh": "管理面板",
     "en": "Panel"
   },
+  "nav.cncf.kubernetes.env.panel.kubepi": {
+    "zh": "KubePi",
+    "en": "KubePi"
+  },
+  "nav.cncf.kubernetes.env.panel.kubesphere": {
+    "zh": "Kubesphere",
+    "en": "Kubesphere"
+  },
   "nav.cncf.kubernetes.application": {
     "zh": "安装应用",
     "en": "Application"
