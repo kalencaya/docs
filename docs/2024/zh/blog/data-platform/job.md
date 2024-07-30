@@ -109,6 +109,7 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
   * 其他
     * [redisson](https://github.com/redisson/redisson)。基于 Redis 实现了异步和调度任务
     * [hazelcast](https://github.com/hazelcast/hazelcast)。[Java Executor Service](https://docs.hazelcast.com/hazelcast/latest/computing/executor-service)
+    * [fc-async](https://github.com/xiongyanokok/fc-async)。[一套万能的异步处理方案（典藏版）](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247557011&idx=1&sn=175a3f46f9310768aea1c0d31f9d61b9&chksm=ebd520bfdca2a9a9de0741319d5c1f4f3fe0bc53e465f3adbe6cfd0668a5108cbc9f7844fbc8&mpshare=1&scene=1&srcid=0730cCbOa8FrDkyKdIyWzXzJ&sharer_shareinfo=9e34ce939c1b54f05a3c7b522941173e&sharer_shareinfo_first=9e34ce939c1b54f05a3c7b522941173e&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
     * [Task](https://github.com/WangJunTYTL/Task)
     * [大搜车异步任务队列中间件的建设实践](https://www.infoq.cn/article/umqb2cfdgrfcduz9ofd1)
     * [AsyncTask](https://gitee.com/jmpp/AsyncTask)

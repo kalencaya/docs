@@ -7,6 +7,8 @@
 * [AutoService]([auto](https://github.com/google/auto))。google autoservice。自动生成 SPI 需要的配置信息
 * [metainf-services](https://github.com/kohsuke/metainf-services)。自动生成 `MEA-INF/services` 文件。
 * [sofa-ark](https://github.com/sofastack/sofa-ark)
+* [代码更新不停机：SpringBoot应用实现零停机更新的新质生产力](https://mp.weixin.qq.com/s?__biz=MzU2NDEyMzIzOA==&mid=2247504064&idx=1&sn=da9475e12d9c0c7f7759ee8dd4741416&chksm=fc4d53c9cb3adadf85c9c491d9953b35b360f756fd53d4411ef8809d81846488ff5ec78a13be&mpshare=1&scene=1&srcid=0728XMPHzrb0DR6S22aOBBrW&sharer_shareinfo=e5a2949a2439e47db6d40a2a345ada9b&sharer_shareinfo_first=ec7c8d0cab9d4101abaae4782175d3b3&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
+* [Spring Boot 插件化开发模式](https://mp.weixin.qq.com/s?__biz=MzUxOTc4NjEyMw==&mid=2247582442&idx=2&sn=fb797affae73a8f24ffa3b621eaa8bf3&chksm=f9f7990ece801018dd65cdc6c8ba9f221b7ad78748edbfb097f74205edae8e900b8b35d3fcfe&mpshare=1&scene=1&srcid=0714m8TKeh13TMRKzycRzvRS&sharer_shareinfo=9269b075514d8c16f5604c63d4eb487c&sharer_shareinfo_first=9526d653142ecb195a0394e0f98d568f&version=4.1.10.99312&platform=mac#rd)
 
 ## 动态加载
 
