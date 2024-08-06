@@ -6,7 +6,10 @@
 * [如何设计多版本内容管理](https://juejin.cn/post/7095671785336619045)
 * [apolloconfigdb.sql](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/profiles/mysql-default/apolloconfigdb.sql)。commit、release、release_history
 * [dolphinscheduler_mysql.sql](https://github.com/apache/dolphinscheduler/blob/dev/dolphinscheduler-dao/src/main/resources/sql/dolphinscheduler_mysql.sql)。t_ds_process_definition 和 t_ds_process_definition_log
+* [gravitino_mysql.sql](https://github.com/apache/gravitino/blob/main/scripts/mysql/schema-0.6.0-mysql.sql)。`current_version` 和 `last_version`
+* [Mybatis Plus 乐观锁](https://mybatis.plus/guide/interceptor-optimistic-locker.html)
 * [文档版本管理系统 数据表设计](https://www.cnblogs.com/DBFocus/archive/2010/09/12/1824321.html)
+* [javers](https://github.com/javers/javers)
 
 ## 设计思路
 
@@ -107,6 +110,10 @@ WHERE job_id = #{jobId};
 
 * 将数据和历史数据放在同一张表中，会导致表中数据量膨胀的很快
 * 修改操作时需将新的版本数据 version 设置为 max(version) + 1
+
+### current_version 和 last_version
+
+将 `version` 变更为 `current_version` 和 `last_version` 字段。以便支持版本回退
 
 ### 修改历史表
 
