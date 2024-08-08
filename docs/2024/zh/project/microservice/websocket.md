@@ -1,0 +1,3 @@
+# WebSocket
+
+* [WebSocket 的 6 种集成方式](https://mp.weixin.qq.com/s?__biz=MzUxOTc4NjEyMw==&mid=2247583639&idx=2&sn=81a71e37266ef6daeaca101cbd2a3a86&chksm=f9f79c73ce801565c32bf16b10d8161b7ee0f665f91f7134fe4445c7259e8ea3a6d5e489a39b&mpshare=1&scene=1&srcid=0808lK58LavW5nJv6O3Yzfvt&sharer_shareinfo=c6372bf60376ecebebd4cccb78a80468&sharer_shareinfo_first=c6372bf60376ecebebd4cccb78a80468&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
