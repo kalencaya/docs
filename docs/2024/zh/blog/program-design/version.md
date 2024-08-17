@@ -4,9 +4,12 @@
 
 * [数据库模型设计——历史与版本设计](https://developer.aliyun.com/article/350760)
 * [如何设计多版本内容管理](https://juejin.cn/post/7095671785336619045)
-* [apolloconfigdb.sql](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/profiles/mysql-default/apolloconfigdb.sql)。commit、release、release_history
-* [dolphinscheduler_mysql.sql](https://github.com/apache/dolphinscheduler/blob/dev/dolphinscheduler-dao/src/main/resources/sql/dolphinscheduler_mysql.sql)。t_ds_process_definition 和 t_ds_process_definition_log
-* [gravitino_mysql.sql](https://github.com/apache/gravitino/blob/main/scripts/mysql/schema-0.6.0-mysql.sql)。`current_version` 和 `last_version`
+* 开源方案
+  * [apollo](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/profiles/mysql-default/apolloconfigdb.sql)。commit、release、release_history
+  * [dolphinscheduler](https://github.com/apache/dolphinscheduler/blob/dev/dolphinscheduler-dao/src/main/resources/sql/dolphinscheduler_mysql.sql)。t_ds_process_definition 和 t_ds_process_definition_log
+  * [gravitino](https://github.com/apache/gravitino/blob/main/scripts/mysql/schema-0.6.0-mysql.sql)。`current_version` 和 `last_version`
+  * [sreworks](https://github.com/alibaba/SREWorks/tree/main/paas/appmanager/APP-META-PRIVATE/db)。`am_deploy_config` & `am_deploy_config_history`，`am_dynamic_script` & `am_dynamic_script_history`
+
 * [Mybatis Plus 乐观锁](https://mybatis.plus/guide/interceptor-optimistic-locker.html)
 * [文档版本管理系统 数据表设计](https://www.cnblogs.com/DBFocus/archive/2010/09/12/1824321.html)
 * [javers](https://github.com/javers/javers)
@@ -50,7 +53,7 @@ CREATE TABLE job (
 新增 `version` 字段，标记修改版本。
 
 * 创建。初始化 version 为 0
-* 修改。新增一条记录，将 version 设置为 max(version) + 1
+* 修改。新增一条记录，将 version 设置为 max(version) + 1。version 自动加 1 可通过 mybatis plus 乐观锁简单实现
 * 删除。删除所有版本数据
 
 ```sql
