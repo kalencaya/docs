@@ -6,7 +6,7 @@
 * [如何设计多版本内容管理](https://juejin.cn/post/7095671785336619045)
 * 开源方案
   * [apollo](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/profiles/mysql-default/apolloconfigdb.sql)。commit、release、release_history
-  * [dolphinscheduler](https://github.com/apache/dolphinscheduler/blob/dev/dolphinscheduler-dao/src/main/resources/sql/dolphinscheduler_mysql.sql)。t_ds_process_definition 和 t_ds_process_definition_log
+  * [dolphinscheduler](https://github.com/apache/dolphinscheduler/blob/dev/dolphinscheduler-dao/src/main/resources/sql/dolphinscheduler_mysql.sql)。`t_ds_process_definition` 和 `t_ds_process_definition_log`
   * [gravitino](https://github.com/apache/gravitino/blob/main/scripts/mysql/schema-0.6.0-mysql.sql)。`current_version` 和 `last_version`
   * [sreworks](https://github.com/alibaba/SREWorks/tree/main/paas/appmanager/APP-META-PRIVATE/db)。`am_deploy_config` & `am_deploy_config_history`，`am_dynamic_script` & `am_dynamic_script_history`
 
