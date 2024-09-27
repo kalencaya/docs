@@ -7,3 +7,4 @@
 * [spring-boot-3-jwt-security](https://github.com/ali-bouali/spring-boot-3-jwt-security)
 * [smart-cloud](https://github.com/smart-cloud/smart-cloud)
 * [eladmin](https://github.com/elunez/eladmin)
+* [yshop-crm](https://github.com/guchengwuyue/yshop-crm)
