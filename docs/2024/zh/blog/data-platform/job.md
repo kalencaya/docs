@@ -98,6 +98,13 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
   * [Sidekiq](https://github.com/sidekiq/sidekiq)
   * [Resque](https://github.com/resque/resque)
 
+* Go
+  * [machinery](https://github.com/RichardKnop/machinery)
+  
+  * [asynq](https://github.com/hibiken/asynq)
+  
+  * 
+  
 * Java
   * Celery 实现
     * [celery-java](https://github.com/crabhi/celery-java)
