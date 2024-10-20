@@ -93,22 +93,20 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
 
 * Python
   * [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
-
 * Ruby
   * [Sidekiq](https://github.com/sidekiq/sidekiq)
   * [Resque](https://github.com/resque/resque)
-
 * Go
   * [machinery](https://github.com/RichardKnop/machinery)
-  
   * [asynq](https://github.com/hibiken/asynq)
-  
-  * 
-  
+
 * Java
   * Celery 实现
     * [celery-java](https://github.com/crabhi/celery-java)
     * [celery-spring-boot-starter](https://github.com/juforg/celery-spring-boot-starter)
+
+  * Sidekiq 实现
+    * [jsidekiq](https://github.com/liangxiong/jsidekiq)
 
   * Resque 实现
     * [jesque](https://github.com/gresrun/jesque)
