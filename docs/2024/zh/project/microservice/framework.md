@@ -8,3 +8,4 @@
 * [smart-cloud](https://github.com/smart-cloud/smart-cloud)
 * [eladmin](https://github.com/elunez/eladmin)
 * [yshop-crm](https://github.com/guchengwuyue/yshop-crm)
+* [continew-admin](https://github.com/continew-org/continew-admin)
