@@ -93,6 +93,7 @@ Python 语言的 [Celery](https://docs.celeryq.dev/en/stable/getting-started/int
 
 * Python
   * [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+  * [dramatiq](https://github.com/Bogdanp/dramatiq)
 * Ruby
   * [Sidekiq](https://github.com/sidekiq/sidekiq)
   * [Resque](https://github.com/resque/resque)
