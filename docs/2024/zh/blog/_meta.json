@@ -51,5 +51,11 @@
     "name": "test",
     "collapsed": true,
     "label": "nav.blog.test"
+  },
+  {
+    "type": "dir",
+    "name": "apm",
+    "collapsed": true,
+    "label": "nav.blog.apm"
   }
 ]

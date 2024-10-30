@@ -99,6 +99,10 @@
     "zh": "测试",
     "en": "Test"
   },
+  "nav.blog.apm": {
+    "zh": "APM",
+    "en": "APM"
+  },
   "nav.project": {
     "zh": "开源项目",
     "en": "Project"
