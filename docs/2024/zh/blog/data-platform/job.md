@@ -68,6 +68,7 @@ JDK 提供的有 `ExecutorService` 和 `ScheduledExecutorService` 提供异步�
   - [light-task-scheduler](https://gitee.com/hugui/light-task-scheduler)。停止维护
   - [orca](https://github.com/spinnaker/orca)。CI/CD 系统的编排引擎
   - [lmstfy](https://github.com/bitleak/lmstfy)。基于 redis 的延迟队列实现
+  - [devops-framework](https://github.com/bkdevops-projects/devops-framework)。腾讯蓝盾团队自研分布式调度框架
 
 - DAG
 

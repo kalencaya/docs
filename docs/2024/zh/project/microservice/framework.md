@@ -9,3 +9,4 @@
 * [eladmin](https://github.com/elunez/eladmin)
 * [yshop-crm](https://github.com/guchengwuyue/yshop-crm)
 * [continew-admin](https://github.com/continew-org/continew-admin)
+* [devops-framework](https://github.com/bkdevops-projects/devops-framework)
