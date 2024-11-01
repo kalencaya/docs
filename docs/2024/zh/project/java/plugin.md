@@ -4,6 +4,9 @@
   * [sbp](https://github.com/hank-cp/sbp)。Plugin framework for Spring Boot based on pf4j
 
 * [exp](https://github.com/stateIs0/exp)。Java extension plugin and hot swap plugin（Java 扩展点/插件系统，支持热插拔，旨在解决大部分软件的功能定制问题）
+* [devops-framework](https://github.com/bkdevops-projects/devops-framework)。源码：[devops-boot-core/devops-plugin](https://github.com/bkdevops-projects/devops-framework/tree/master/devops-boot-project/devops-boot-core/devops-plugin)，类似于 pf4j 的插件系统
+* [COLA](https://github.com/alibaba/COLA)。源码：[cola-components/cola-component-extension-starter](https://github.com/alibaba/COLA/tree/master/cola-components/cola-component-extension-starter)
+* [AGEIPort](https://github.com/alibaba/AGEIPort)。源码：[ageiport-ext/ageiport-ext-arch](https://github.com/alibaba/AGEIPort/tree/master/ageiport-ext/ageiport-ext-arch)。类似 dubbo 的 spi 机制
 * [AutoService]([auto](https://github.com/google/auto))。google autoservice。自动生成 SPI 需要的配置信息
 * [metainf-services](https://github.com/kohsuke/metainf-services)。自动生成 `MEA-INF/services` 文件。
 * [sofa-ark](https://github.com/sofastack/sofa-ark)
