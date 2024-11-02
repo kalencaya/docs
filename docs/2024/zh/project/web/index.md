@@ -12,6 +12,7 @@
 * [pro-flow](https://github.com/ant-design/pro-flow)
   * [xyflow](https://github.com/xyflow/xyflow)。基于 reactflow 实现
   * [vue-flow](https://github.com/bcakmakoglu/vue-flow)。一个 vue 的拖拉拽库
+* [slash-admin](https://github.com/d3george/slash-admin)。Slash Admin 是一款现代化的后台管理模板，基于 React 18、Vite、Ant Design 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统
 
 
 ### umi
