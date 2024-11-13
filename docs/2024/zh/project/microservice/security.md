@@ -10,3 +10,4 @@
 
 * [Sa-Token](https://github.com/dromara/Sa-Token)
 * [Spring Security](https://spring.io/projects/spring-security)
+* [JustAuth](https://github.com/justauth/JustAuth)
