@@ -11,7 +11,21 @@
 
 * [jackson](https://github.com/FasterXML/jackson)
   * 多态序列化
-  * 自定义序列化器-脱敏&数据权限
+  * 自定义序列化器
+    * 脱敏&数据权限
+    * 格式化。数字（金钱，千|万｜亿），日期，字典｜枚举转换
+
+### 反射
+
+jackson 反射 api 使用
+
+```java
+ObjectMapper mapper = createMapper();
+JavaType javaType = mapper.constructType(Test.class);
+// JavaType javaType = mapper.getTypeFactory().constructType(Test.class);
+BeanDescription bd = mapper.getSerializationConfig().introspect(javaType);
+bd.findProperties().stream().forEach(bpd -> System.out.println(bpd.getName()));
+```
 
 ## 其他
 
