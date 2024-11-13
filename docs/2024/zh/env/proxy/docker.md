@@ -37,14 +37,18 @@ http://127.0.0.1:$PORT
 * [docker proxy](https://dockerproxy.com/docs)。`https://dockerproxy.com` 代理介绍
 * [docker daemon cli](https://docs.docker.com/engine/reference/commandline/dockerd/)
 
-添加如下代理信息至 `daemon.json` 中：
+添加如下代理信息至 `daemon.json` 中。代理不定时失效，需勤快更新
 
 ```json
 {
     "registry-mirrors": [
-        "https://dockerproxy.com",
-        "https://docker.mirrors.ustc.edu.cn",
-        "https://docker.nju.edu.cn"
+        "https://docker.1panel.dev/",
+        "https://docker.fxxk.dedyn.io",
+        "https://dockerhub.icu/",
+        "https://dockerpull.org",
+        "https://docker.m.daocloud.io",
+        "https://docker.chenby.cn/",
+        "https://docker.gh-proxy.com/"
     ]
 }
 ```
