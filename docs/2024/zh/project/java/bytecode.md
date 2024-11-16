@@ -22,3 +22,6 @@
 * [asm](https://asm.ow2.io/)
 * [bytekit](https://github.com/alibaba/bytekit)
 * [javapoet](https://github.com/palantir/javapoet)。Java library used to generate Java source files
+  * [kotlinpoet](https://github.com/square/kotlinpoet)
+  * 生成 java 代码，使用 api 拼接是一件费时费力的事情，也可以使用 freemarker、mustache 等模板引擎生成会更易读和方便
+
