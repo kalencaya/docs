@@ -7,7 +7,7 @@
 * [devops-framework](https://github.com/bkdevops-projects/devops-framework)。源码：[devops-boot-core/devops-plugin](https://github.com/bkdevops-projects/devops-framework/tree/master/devops-boot-project/devops-boot-core/devops-plugin)，类似于 pf4j 的插件系统
 * [COLA](https://github.com/alibaba/COLA)。源码：[cola-components/cola-component-extension-starter](https://github.com/alibaba/COLA/tree/master/cola-components/cola-component-extension-starter)
 * [AGEIPort](https://github.com/alibaba/AGEIPort)。源码：[ageiport-ext/ageiport-ext-arch](https://github.com/alibaba/AGEIPort/tree/master/ageiport-ext/ageiport-ext-arch)。类似 dubbo 的 spi 机制
-* [AutoService]([auto](https://github.com/google/auto))。google autoservice。自动生成 SPI 需要的配置信息
+* [AutoService](https://github.com/google/auto)。google autoservice。自动生成 SPI 需要的配置信息
 * [metainf-services](https://github.com/kohsuke/metainf-services)。自动生成 `MEA-INF/services` 文件。
 * [sofa-ark](https://github.com/sofastack/sofa-ark)
 * [代码更新不停机：SpringBoot应用实现零停机更新的新质生产力](https://mp.weixin.qq.com/s?__biz=MzU2NDEyMzIzOA==&mid=2247504064&idx=1&sn=da9475e12d9c0c7f7759ee8dd4741416&chksm=fc4d53c9cb3adadf85c9c491d9953b35b360f756fd53d4411ef8809d81846488ff5ec78a13be&mpshare=1&scene=1&srcid=0728XMPHzrb0DR6S22aOBBrW&sharer_shareinfo=e5a2949a2439e47db6d40a2a345ada9b&sharer_shareinfo_first=ec7c8d0cab9d4101abaae4782175d3b3&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
