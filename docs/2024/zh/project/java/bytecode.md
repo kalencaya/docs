@@ -11,3 +11,4 @@
 * [byte-buddy](https://github.com/raphw/byte-buddy)
 * [asm](https://asm.ow2.io/)
 * [bytekit](https://github.com/alibaba/bytekit)
+* [javapoet](https://github.com/palantir/javapoet)。Java library used to generate Java source files
