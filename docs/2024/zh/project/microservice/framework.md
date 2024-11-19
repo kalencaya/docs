@@ -11,3 +11,4 @@
 * [continew-admin](https://github.com/continew-org/continew-admin)
 * [devops-framework](https://github.com/bkdevops-projects/devops-framework)
 * [maku-boot](https://github.com/makunet/maku-boot)
+* [sz-boot-parent](https://github.com/feiyuchuixue/sz-boot-parent)
