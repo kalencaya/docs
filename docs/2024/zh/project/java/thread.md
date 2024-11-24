@@ -1,5 +1,9 @@
 # Thread
 
+上下文传递
+
+* [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)
+
 动态线程池
 
 * [Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)

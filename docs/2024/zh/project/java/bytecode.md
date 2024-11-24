@@ -26,3 +26,27 @@
   * [kotlinpoet](https://github.com/square/kotlinpoet)
   * 生成 java 代码，使用 api 拼接是一件费时费力的事情，也可以使用 freemarker、mustache 等模板引擎生成会更易读和方便
 
+## 简介
+
+在开发过程中，`.java` 文件需要经过编译变成 `.class` 字节码，在到启动、运行，Java 提供了多种方式增强程序的方法：
+
+- 编译。annotation processor
+- 启动。JavaAgent
+- 运行。反射，aop，动态生成和编译
+
+### 编译-annotation processor
+
+常见的项目：
+
+* [lombok](https://github.com/projectlombok/lombok)
+* [mapstruct](https://github.com/mapstruct/mapstruct)
+* [auto](https://github.com/google/auto)。google auto-serivce
+
+缺陷：只是在编译时提供了 API 处理特定注解，如果要新增 Java 类或修改字节码，annotation processor 并未提供 API。需要使用其他 API 配合，新增 Java 类已经有成熟的解决方案，但是修改字节码则应用较少，做的最好的是 lombok，其中的难度参考 [Generate Methods in annotation processors](https://stackoverflow.com/a/70008734)。
+
+### 启动-JavaAgent
+
+常见项目：
+
+* 链路追踪。
+
