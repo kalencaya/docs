@@ -12,3 +12,5 @@
 * [devops-framework](https://github.com/bkdevops-projects/devops-framework)
 * [maku-boot](https://github.com/makunet/maku-boot)
 * [sz-boot-parent](https://github.com/feiyuchuixue/sz-boot-parent)
+* [likeadmin_java](https://github.com/likeadmin-likeshop/likeadmin_java)
+* [mfish-nocode](https://github.com/mfish-qf/mfish-nocode)
