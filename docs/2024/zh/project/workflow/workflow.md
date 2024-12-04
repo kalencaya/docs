@@ -8,6 +8,7 @@
 * [incubator-kie-kogito-runtimes](https://github.com/apache/incubator-kie-kogito-runtimes)
   * [kogito-examples](https://github.com/kiegroup/kogito-examples)
 * [flux](https://github.com/flipkart-incubator/flux)
+* 三方收录。[awesome-java#任务调度](https://gitee.com/tuyucheng7/awesome-java#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6)
 
 
  规范
