@@ -7,6 +7,7 @@
 * [maestro](https://github.com/Netflix/maestro)。[一周2K star！Netflix 开源的工作流编排器，不容错过](https://mp.weixin.qq.com/s/ssa_F3FLveIvFPsHfEMGIg)
 * [incubator-kie-kogito-runtimes](https://github.com/apache/incubator-kie-kogito-runtimes)
   * [kogito-examples](https://github.com/kiegroup/kogito-examples)
+* [flux](https://github.com/flipkart-incubator/flux)
 
 
  规范
