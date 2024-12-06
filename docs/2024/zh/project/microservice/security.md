@@ -10,4 +10,5 @@
 
 * [Sa-Token](https://github.com/dromara/Sa-Token)
 * [Spring Security](https://spring.io/projects/spring-security)
+* [supertokens-core](https://github.com/supertokens/supertokens-core)
 * [JustAuth](https://github.com/justauth/JustAuth)
