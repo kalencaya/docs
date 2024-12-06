@@ -11,6 +11,10 @@
 
 * [jackson](https://github.com/FasterXML/jackson)
   * 多态序列化
+    * 注解。`@JsonTypeInfo`
+      * `@JsonTypeIdResolver`。实现 `PolymorphicResolver` 接口
+      * `@JsonSubTypes` 注解
+    * 手动注册。`ObjectMapper#registerSubtypes(NamedType)`
   * 自定义序列化器
     * 脱敏&数据权限
     * 格式化。数字（金钱，千|万｜亿），日期，字典｜枚举转换
