@@ -16,4 +16,6 @@
 * [DataApiService](https://github.com/WeBankFinTech/DataSphereStudio-Doc/blob/main/zh_CN/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/DataApiService%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)。（DSS已内置的第三方应用工具）数据API服务。可快速将SQL脚本发布为一个 Restful 接口，对外提供 Rest 访问能力。
 * [SREWorks](https://github.com/alibaba/SREWorks)。提供了数据服务功能，位于 [saas/dataops/api/dataset](https://github.com/alibaba/SREWorks/tree/main/saas/dataops/api/dataset) 模块
   * [InterfaceConfigService.java](https://github.com/alibaba/SREWorks/blob/main/saas/dataops/api/dataset/dataset-api/src/main/java/com/alibaba/sreworks/dataset/api/inter/InterfaceConfigService.java)
-* [驭数平台](https://gitee.com/data_harness_cloud/data_harness-be)。提供了部分数据服务功能，参考 [MyDynamicController.java](https://gitee.com/data_harness_cloud/data_harness-be/blob/master/application-webadmin/src/main/java/supie/webadmin/app/controller/dynamicRoutingAPI/MyDynamicController.java)。
+* [驭数平台](https://gitee.com/data_harness_cloud/data_harness-be)。提供了部分数据服务功能，参考：
+  * [MyDynamicController.java](https://gitee.com/data_harness_cloud/data_harness-be/blob/master/application-webadmin/src/main/java/supie/webadmin/app/controller/dynamicRoutingAPI/MyDynamicController.java)
+  * [CustomizeRouteServiceImpl](https://gitee.com/data_harness_cloud/data_harness-be/blob/master/application-webadmin/src/main/java/supie/webadmin/app/service/impl/CustomizeRouteServiceImpl.java)
