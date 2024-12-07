@@ -19,3 +19,5 @@
 * [驭数平台](https://gitee.com/data_harness_cloud/data_harness-be)。提供了部分数据服务功能，参考：
   * [MyDynamicController.java](https://gitee.com/data_harness_cloud/data_harness-be/blob/master/application-webadmin/src/main/java/supie/webadmin/app/controller/dynamicRoutingAPI/MyDynamicController.java)
   * [CustomizeRouteServiceImpl](https://gitee.com/data_harness_cloud/data_harness-be/blob/master/application-webadmin/src/main/java/supie/webadmin/app/service/impl/CustomizeRouteServiceImpl.java)
+* [mfish-nocode](https://github.com/mfish-qf/mfish-nocode)。支持可视化配置查询API接口，后端自动生成SQL执行
+
