@@ -62,6 +62,7 @@
 
 * [monaco-sql-languages](https://github.com/DTStack/monaco-sql-languages)
   * [dt-sql-parser](https://github.com/DTStack/dt-sql-parser)
+* [studio](https://github.com/outerbase/studio)。Outerbase Studio 是一款全新的开源数据库图形用户界面（GUI）
 
 
 ## 其他
