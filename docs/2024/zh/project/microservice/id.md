@@ -12,6 +12,7 @@
 * [Leaf](https://github.com/Meituan-Dianping/Leaf)
 * [tinyid](https://github.com/didi/tinyid)
 * [uid-generator](https://github.com/baidu/uid-generator)
+* [idworker](https://github.com/imadcn/idworker)
 
 文章
 
