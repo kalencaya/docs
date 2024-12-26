@@ -15,7 +15,7 @@
 
 macOS 查看代理端口号方式：
 
-![proxy_docker_port](image/docker/proxy_docker_port.jpg)
+![proxy_docker_port](./image/docker/proxy_docker_port.jpg)
 
 获取到端口号后，代理地址即为：
 
@@ -25,7 +25,7 @@ http://127.0.0.1:$PORT
 
 配置 docker desktop 代理：
 
-![proxy_docker_setting](image/docker/proxy_docker_setting.jpg)
+![proxy_docker_setting](./image/docker/proxy_docker_setting.jpg)
 
 
 
@@ -55,7 +55,7 @@ http://127.0.0.1:$PORT
 
 docker desktop 配置如下：
 
-![proxy_docker_daemon](image/docker/proxy_docker_daemon.jpg)
+![proxy_docker_daemon](./image/docker/proxy_docker_daemon.jpg)
 
 查看配置更改是否成功：
 

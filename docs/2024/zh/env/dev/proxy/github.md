@@ -15,7 +15,7 @@
 
 macOS 查看代理端口号方式：
 
-![proxy_docker_port](image/docker/proxy_docker_port.jpg)
+![proxy_docker_port](./image/docker/proxy_docker_port.jpg)
 
 获取到端口号后，代理地址即为：
 
