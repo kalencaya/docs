@@ -21,5 +21,11 @@
     "name": "kubernetes",
     "collapsed": true,
     "label": "nav.env.kubernetes"
+  },
+  {
+    "type": "dir",
+    "name": "tools",
+    "collapsed": true,
+    "label": "nav.env.tools"
   }
 ]

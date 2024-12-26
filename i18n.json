@@ -59,15 +59,9 @@
     "zh": "Kubernetes",
     "en": "Kubernetes"
   },
-
-
-  "nav.env.docker": {
-    "zh": "Docker",
-    "en": "Docker"
-  },
-  "nav.env.helm": {
-    "zh": "Helm",
-    "en": "Helm"
+  "nav.env.tools": {
+    "zh": "工具",
+    "en": "Tools"
   },
 
   "nav.blog": {
