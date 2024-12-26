@@ -19,13 +19,21 @@
     "zh": "概览",
     "en": "Overview"
   },
-  "nav.env.proxy": {
-    "zh": "代理",
-    "en": "Proxy"
+  "nav.env.dev": {
+    "zh": "开发环境",
+    "en": "Development"
   },
   "nav.env.standard": {
     "zh": "开发规范",
     "en": "Develop Standard"
+  },
+  "nav.env.kubernetes": {
+    "zh": "Kubernetes",
+    "en": "Kubernetes"
+  },
+  "nav.env.proxy": {
+    "zh": "代理",
+    "en": "Proxy"
   },
   "nav.env.proxy.docker": {
     "zh": "Docker",
@@ -55,10 +63,7 @@
     "zh": "Helm",
     "en": "Helm"
   },
-  "nav.env.kubernetes": {
-    "zh": "Kubernetes",
-    "en": "Kubernetes"
-  },
+
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"

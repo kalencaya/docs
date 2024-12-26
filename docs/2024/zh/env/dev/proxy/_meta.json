@@ -2,11 +2,11 @@
   {
     "type": "file",
     "name": "docker",
-    "label": "nav.env.proxy.docker"
+    "label": "nav.env.dev.proxy.docker"
   },
   {
     "type": "file",
     "name": "github",
-    "label": "nav.env.proxy.github"
+    "label": "nav.env.dev.proxy.github"
   }
 ]
