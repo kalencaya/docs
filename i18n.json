@@ -23,6 +23,34 @@
     "zh": "开发环境",
     "en": "Development"
   },
+  "nav.env.dev.java": {
+    "zh": "Java",
+    "en": "Java"
+  },
+  "nav.env.dev.web": {
+    "zh": "前端",
+    "en": "Web"
+  },
+  "nav.env.dev.terminal": {
+    "zh": "终端工具",
+    "en": "Terminal"
+  },
+  "nav.env.dev.github": {
+    "zh": "Github 认证",
+    "en": "Github Auth"
+  },
+  "nav.env.dev.proxy": {
+    "zh": "代理",
+    "en": "Proxy"
+  },
+  "nav.env.dev.proxy.docker": {
+    "zh": "Docker",
+    "en": "Docker"
+  },
+  "nav.env.dev.proxy.github": {
+    "zh": "Github",
+    "en": "Github"
+  },
   "nav.env.standard": {
     "zh": "开发规范",
     "en": "Develop Standard"
@@ -31,30 +59,8 @@
     "zh": "Kubernetes",
     "en": "Kubernetes"
   },
-  "nav.env.proxy": {
-    "zh": "代理",
-    "en": "Proxy"
-  },
-  "nav.env.proxy.docker": {
-    "zh": "Docker",
-    "en": "Docker"
-  },
-  "nav.env.proxy.github": {
-    "zh": "Github",
-    "en": "Github"
-  },
-  "nav.env.github": {
-    "zh": "Github 认证",
-    "en": "Github Auth"
-  },
-  "nav.env.java": {
-    "zh": "Java",
-    "en": "Java"
-  },
-  "nav.env.web": {
-    "zh": "前端",
-    "en": "Web"
-  },
+
+
   "nav.env.docker": {
     "zh": "Docker",
     "en": "Docker"
