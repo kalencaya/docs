@@ -26,14 +26,21 @@ Spinnaker 采用[微服务架构](https://spinnaker.io/docs/reference/architectu
 
 Orca 将任务定义为 3 层：
 
-* pipeline
-* stage
-* task
+* pipeline。`PipelineExecution`，有 2 种类型：`PIPELINE`、`ORCHESTRATION`。pipeline 由一系列的 stages 组成
+* stage。`StageExecution`。stage 本身由一系列的 tasks 组成，tasks 之间组成一个 DAG
+* task。`TaskExecution`。task 是最小粒度的划分，完成具体的任务
 
-
+![pipelines.png](./images/orca/pipelines.png)
 
 ![pipeline-tasks.png](./images/orca/pipeline-tasks.png)
 
-队列
+Orca 使用队列管理内部任务分发，队列实现为延迟队列：
 
-节点
+* 可扩展性。Orca 节点为队列消费者，可方便扩展
+* 容错。队列具有重试功能
+* 易维护。通过定义良好的 `Message` 和 `Handler`，功能清晰
+
+在存储上，Orca 提供了 2 种实现：Redis 和 MySQL
+
+* 队列。同时支持 Redis 和 MySQL，推荐使用 Redis
+* Orca。同时支持 Redis 和 MySQL，推荐使用 MySQL
