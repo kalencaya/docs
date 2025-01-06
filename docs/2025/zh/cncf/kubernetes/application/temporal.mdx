@@ -1,0 +1,215 @@
+# Temporal
+
+Temporal 是一个开源的支持持久化微服务编排的工作流引擎。
+
+对于一个工作流，可以包含多个步骤，如 `A -> B, C -> D` 形成一个复杂的 DAG 图。Temporal 支持工作流持久化，即当工作流执行步骤 A 后，发生异常，重试时会略过执行过的 A，继而执行后续的 `B, C -> D`。
+
+Temporal 的性能非常的高，可同时支持百万级工作流。知名数据集成工具 [airbyte](https://github.com/airbytehq/airbyte) 即使用 Temporal 作为定时调度工具。根据笔者亲身体验，使用 Temporal 作为定时任务引擎，通过 CronJob 支持超过 4w+ 调度频率在 3s ~ 5min 的定时任务。
+
+文档链接：
+
+* 文档：https://docs.temporal.io/
+* github 仓库：[temporal](https://github.com/temporalio/temporal)
+* 安装
+  * docker
+    * 文档：[Docker & Docker Compose](https://docs.temporal.io/self-hosted-guide/setup#docker--docker-compose)
+    * github 仓库：[docker-compose](https://github.com/temporalio/docker-compose)
+  * kubernetes
+    * 文档：[Helm charts](https://docs.temporal.io/self-hosted-guide/setup#helm-charts)
+    * github 仓库：[helm-charts](https://github.com/temporalio/helm-charts)
+* 案例
+  * github 仓库：[samples-java](https://github.com/temporalio/samples-java)
+
+## 选型
+
+版本选择
+
+1.16.0， 1.24.1
+
+存储选择
+
+temporal mysql 不会自动进行数据删除
+
+服务器核数不能过小。核数过小，导致 iops 能力过小，删除数据删不动
+
+temporal-history 异常。手动删除 executions
+
+## 安装
+
+### Docker
+
+下载所需版本的 [release](https://github.com/temporalio/docker-compose/releases) 到本地解压缩，按需选择部署方式即可。
+
+### Kubernetes
+
+#### 准备 mysql
+
+todo auto schema 设置
+
+Temporal 支持部署时，动态创建对应的库表结构和初始化数据，但是如果因为外部限制，无法在部署时创建库表结构，需要通过工单系统申请数据库，创建库表，因此在初始化数据库时需要额外操作：
+
+* 获取 sql。
+  * 从 github 仓库获得。[mysql schema](https://github.com/temporalio/temporal/blob/main/schema/mysql)
+  * 通过 docker compose 方式本地创建对应版本的 temporal，使用 mysql 数据库访问工具，连接 mysql，导出库表结构和数据。数据库连接信息可以从 `docker-compose.yml` 文件中获得为准：
+    * jdbc-url: `jdbc:mysql://localhost:3306`
+    * user: `root`
+    * password: `root`
+
+* 在申请好的数据库中导入上一步的库表结构和数据
+
+在创建 mysql 表时可能会遇到一些建表 sql 语法问题。这些问题出现的原因可能是使用的不是 mysql 发行版，而是兼容 mysql 的数据库，如云厂商的 rds、polardb 等产品。
+
+常见问题：
+
+* `CREATE INDEX by_temporal_change_version       ON executions_visibility (namespace_id, (CAST(TemporalChangeVersion AS CHAR(255) ARRAY)), (COALESCE(close_time, CAST('9999-12-31 23:59:59' AS DATETIME))) DESC, start_time DESC, run_id);` 中的 `CAST(TemporalChangeVersion AS CHAR(255) ARRAY)` 中的 `ARRAY`
+* 如果是通过 docker compose 方式启动 temporal，在从数据库导出的库表结构，还会遇到 `CAST(utf8mb4'9999-12-31 23:59:59' AS DATETIME)`，需要移除 `utf8mb4`
+
+#### 创建 temporal
+
+下载需版本的 [releases](https://github.com/temporalio/helm-charts/releases) 到本地解压缩，使用 helm 创建
+
+创建 values.yaml 文件添加如下内容。这里将存储切换成了 mysql，关闭了自动建表和表结构升级，关闭了 grafana 和 prometheus。
+
+使用 mysql 作为存储时参考 `values/values.mysql.yaml` 进行修改。
+
+以下是 `1.16.0` 版本的修改，与新版已有一定变动，如 `mysql` -> `mysql8`。
+
+```yaml
+server:
+  config:
+    persistence:
+      defaultStore: default
+      additionalStores: {}
+      default:
+        driver: "sql"
+        sql:
+          driver: "mysql"
+          host: "localhost"
+          port: 3306
+          database: "temporal"
+          user: "temporal_user"
+          password: "temporal_password"
+          existingSecret: ""
+          secretName: ""
+          maxConns: 20
+          maxConnLifetime: "1h"
+          # connectAttributes:
+          # tx_isolation: 'READ-COMMITTED'
+
+      visibility:
+        driver: "sql"
+        sql:
+          driver: "mysql"
+          host: "localhost"
+          port: 3306
+          database: "temporal_visibility"
+          user: "temporal_visibility_user"
+          password: "temporal_visibility_password"
+          existingSecret: ""
+          secretName: ""
+          maxConns: 20
+          maxConnLifetime: "1h"
+          # connectAttributes:
+          #   tx_isolation: 'READ-COMMITTED'
+
+
+schema:
+  setup:
+    enabled: false
+  update:
+    enabled: false
+
+elasticsearch:
+  enabled: false
+
+prometheus:
+  enabled: false
+  nodeExporter:
+    enabled: false
+
+grafana:
+  enabled: false
+
+cassandra:
+  enabled: false
+
+mysql:
+  enabled: true
+```
+
+创建 temporal
+
+```shell
+helm install temporal /path/to/helm -n temporal --create-namespace --values values.yaml
+```
+
+如果是本地重新打一个 helm charts 包，通过发布工具发布，打包命令：
+
+```shell
+helm package -u .
+```
+
+temporal helm 中增加了 cassandra、prometheus 等额外依赖，如果用不到，可以在 `Chart.yaml` 中删除
+
+修改镜像。因为 dockerhub 被禁，众多国内代理停止服务，从外网下载 docker 镜像需设置代理，可考虑如下代理。代理随时可能会挂，不保证下面代理都可用：
+
+```
+https://docker.1panel.dev/
+https://docker.fxxk.dedyn.io
+https://dockerhub.icu/
+https://dockerpull.org
+https://docker.m.daocloud.io
+https://docker.chenby.cn/
+https://docker.gh-proxy.com/
+```
+
+## 常用操作
+
+tctl 常用操作
+
+```shell
+# namespace 操作
+
+# 查看 namespace 列表
+tctl namespace list 
+# 查看 data-center 信息
+tctl --namespace data-center namespace describe
+
+# 注册 namespace，设置数据保留日期为 1 天
+tctl --namespace data-center namespace register --retention 1d
+# 更改 namespace，调整数据保留日期为 3 小时
+tctl --namespace data-center namespace update --retention 3h
+```
+
+调整限流
+
+在 k8s ConfigMap `temporal-dynamic-config` 增加或修改如下内容
+
+```yaml
+# MatchingRPS, default is 1200
+matching.rps:
+- value: 76800
+  constraints: {}
+# HistoryRPS, default is 3000
+history.rps:
+- value: 76800
+  constraints: {}
+# FrontendRPS, default is 2400
+frontend.rps:
+- value: 76800
+  constraints: {}
+# FrontendMaxNamespaceRPSPerInstance, default is 2400
+frontend.namespaceRPS:
+- value: 76800
+  constraints: {}
+# FrontendMaxNamespaceCountPerInstance, default is 1200
+frontend.namespaceCount:
+- value: 9600
+  constraints: {}
+```
+
+## 常见问题
+
+web 打开无数据
+
+线程池爆炸

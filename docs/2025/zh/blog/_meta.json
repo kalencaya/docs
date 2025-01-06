@@ -1,0 +1,61 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.blog.index"
+  },
+  {
+    "type": "dir",
+    "name": "microservice",
+    "collapsed": true,
+    "label": "nav.blog.microservice"
+  },
+  {
+    "type": "dir",
+    "name": "container",
+    "collapsed": true,
+    "label": "nav.blog.container"
+  },
+  {
+    "type": "dir",
+    "name": "data-platform",
+    "collapsed": true,
+    "label": "nav.blog.data-platform"
+  },
+  {
+    "type": "dir",
+    "name": "devops",
+    "collapsed": true,
+    "label": "nav.blog.devops"
+  },
+  {
+    "type": "dir",
+    "name": "flink",
+    "collapsed": true,
+    "label": "nav.blog.flink"
+  },
+  {
+    "type": "dir",
+    "name": "program-design",
+    "collapsed": true,
+    "label": "nav.blog.program-design"
+  },
+  {
+    "type": "dir",
+    "name": "sql",
+    "collapsed": true,
+    "label": "nav.blog.sql"
+  },
+  {
+    "type": "dir",
+    "name": "test",
+    "collapsed": true,
+    "label": "nav.blog.test"
+  },
+  {
+    "type": "dir",
+    "name": "apm",
+    "collapsed": true,
+    "label": "nav.blog.apm"
+  }
+]

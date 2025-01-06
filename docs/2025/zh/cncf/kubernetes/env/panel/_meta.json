@@ -1,0 +1,13 @@
+[
+  {
+    "type": "file",
+    "name": "kubepi",
+    "label": "nav.cncf.kubernetes.env.panel.kubepi"
+  },
+  {
+    "type": "dir",
+    "name": "kubesphere",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes.env.panel.kubesphere"
+  }
+]

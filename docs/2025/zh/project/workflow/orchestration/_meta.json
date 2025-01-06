@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.workflow.orchestration.index"
+  },
+  {
+    "type": "file",
+    "name": "temporal",
+    "label": "nav.project.workflow.orchestration.temporal"
+  },
+  {
+    "type": "file",
+    "name": "orca",
+    "label": "nav.project.workflow.orchestration.orca"
+  },
+  {
+    "type": "file",
+    "name": "design",
+    "label": "nav.project.workflow.orchestration.design"
+  }
+]

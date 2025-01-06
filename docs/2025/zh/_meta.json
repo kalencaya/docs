@@ -1,0 +1,42 @@
+[
+  {
+    "text": "nav.introduction",
+    "link": "/introduction/",
+    "activeMatch": "/introduction/"
+  },
+  {
+    "text": "nav.env",
+    "link": "/env/",
+    "activeMatch": "/env/"
+  },
+  {
+    "text": "nav.blog",
+    "link": "/blog/",
+    "activeMatch": "/blog/"
+  },
+  {
+    "text": "nav.project",
+    "link": "/project/",
+    "activeMatch": "/project/"
+  },
+  {
+    "text": "nav.ali",
+    "link": "/ali/",
+    "activeMatch": "/ali/"
+  },
+  {
+    "text": "nav.cncf",
+    "link": "/cncf/",
+    "activeMatch": "/cncf/"
+  },
+  {
+    "text": "nav.information",
+    "link": "/information/",
+    "activeMatch": "/information/"
+  },
+  {
+    "text": "nav.faq",
+    "link": "/faq/",
+    "activeMatch": "/faq/"
+  }
+]

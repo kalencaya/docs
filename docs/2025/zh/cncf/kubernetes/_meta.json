@@ -1,0 +1,19 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.cncf.kubernetes.index"
+  },
+  {
+    "type": "dir",
+    "name": "env",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes.env"
+  },
+  {
+    "type": "dir",
+    "name": "application",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes.application"
+  }
+]

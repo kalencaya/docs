@@ -148,17 +148,25 @@
     "zh": "编排",
     "en": "Orchestration"
   },
-  "nav.project.workflow.blog": {
-    "zh": "博客",
-    "en": "Blog"
+  "nav.project.workflow.orchestration.index": {
+    "zh": "概览",
+    "en": "Overview"
   },
-  "nav.project.workflow.temporal": {
+  "nav.project.workflow.orchestration.temporal": {
     "zh": "Temporal",
     "en": "Temporal"
   },
-  "nav.project.workflow.design": {
+  "nav.project.workflow.orchestration.orca": {
+    "zh": "Orca",
+    "en": "Orca"
+  },
+  "nav.project.workflow.orchestration.design": {
     "zh": "设计",
     "en": "Design"
+  },
+  "nav.project.workflow.blog": {
+    "zh": "博客",
+    "en": "Blog"
   },
   "nav.project.bigdata": {
     "zh": "大数据",

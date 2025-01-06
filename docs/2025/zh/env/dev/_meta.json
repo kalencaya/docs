@@ -1,0 +1,28 @@
+[
+  {
+    "type": "file",
+    "name": "java",
+    "label": "nav.env.dev.java"
+  },
+  {
+    "type": "file",
+    "name": "web",
+    "label": "nav.env.dev.web"
+  },
+  {
+    "type": "file",
+    "name": "terminal",
+    "label": "nav.env.dev.terminal"
+  },
+  {
+    "type": "file",
+    "name": "github",
+    "label": "nav.env.dev.github"
+  },
+  {
+    "type": "dir",
+    "name": "proxy",
+    "collapsed": false,
+    "label": "nav.env.dev.proxy"
+  }
+]

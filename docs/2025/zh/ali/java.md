@@ -1,0 +1,23 @@
+# Java
+
+* [Java开发实践：合理使用线程池及线程变量](https://mp.weixin.qq.com/s/6fXHJGQJOyA8Q0KgBYqb4w)
+* [线程操纵术之更优雅的并行策略](https://mp.weixin.qq.com/s/wPoMlevdB5lEHVQKERPNDw)
+* [了解Java可见性的本质](https://mp.weixin.qq.com/s/yS6fjvXxhMOO73XTT8SnXQ)
+* [图解JVM内存模型及JAVA程序运行原理](https://mp.weixin.qq.com/s/lxdePdWP5UFzA06ceuVUfQ)
+* [三万字长文：JVM内存问题排查Cookbook](https://mp.weixin.qq.com/s/zshcVuQreAB8YHwjBL0EmA)
+* [总结｜性能优化思路及常用工具及手段](https://mp.weixin.qq.com/s/MsqqFFkb1L4T8LlHIS97Kw)
+* [Java异常处理和最佳实践（含案例分析）](https://mp.weixin.qq.com/s/7MbgphfBDBHWLx9nx5lHqA)
+* [卓越工程布道：掌握条件判断的模式](https://mp.weixin.qq.com/s/HJHvthUW0TAhc2Pj0-6xbw)
+* [这代码居然有差别？CPU友好的代码该这样写](https://mp.weixin.qq.com/s/VXB4WqdN5ryc2TU7haxh_A)
+* [一个 List.of 引发的“血案”](https://mp.weixin.qq.com/s/iav9Uj0RcHJFewkjok8x9Q)
+* [Java 缺失的特性：扩展方法](https://mp.weixin.qq.com/s/VTIrBVbJJ7vOotIMB5pRSg)
+* [Java 缺失的特性：操作符重载](https://mp.weixin.qq.com/s/pr_zylljvVaW7taeovtOxw)
+* [一种新的流：为Java加入生成器(Generator)特性](https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw)
+* [升级指南之JDK 11+ 新特性和AJDK](https://mp.weixin.qq.com/s/4YtXx1JVsCdGoExpF8Se3Q)
+* [从 JDK 9 到 19，认识一个新的 Java 形态（内存篇）](https://mp.weixin.qq.com/s/cF6JgJIOCF6Jxg520rRbLA)
+* [一些杂想：Java老矣，尚能饭否？](https://mp.weixin.qq.com/s/Ul8-sidDZNtBuZJqhMxbGg)
+* [一文解读业务平台升级JDK11的适配之路](https://mp.weixin.qq.com/s/C1aeLSHehHD2UFgIA_DB1g)
+* [如果你也会这样调试，那真是泰酷辣](https://mp.weixin.qq.com/s/fjMCG17u6EC97A7oSqMSjQ)
+* [浅谈阿里开源JVM Sandbox（内含代码实战）](https://mp.weixin.qq.com/s/wtDVYwgKpSHw469nb4NeDw)
+* [一文解读｜Java编译期注解处理器AbstractProcessor](https://mp.weixin.qq.com/s/VO39ZN_7uO1srMuHFxu9hQ)
+

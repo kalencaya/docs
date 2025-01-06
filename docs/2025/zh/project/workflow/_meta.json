@@ -1,0 +1,23 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.workflow.index"
+  },
+  {
+    "type": "file",
+    "name": "workflow",
+    "label": "nav.project.workflow.workflow"
+  },
+  {
+    "type": "dir",
+    "collapsed": true,
+    "name": "orchestration",
+    "label": "nav.project.workflow.orchestration"
+  },
+  {
+    "type": "file",
+    "name": "blog",
+    "label": "nav.project.workflow.blog"
+  }
+]

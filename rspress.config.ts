@@ -10,8 +10,8 @@ export default defineConfig({
     logo: '/rspress-icon.png',
     lang: 'zh',
     multiVersion: {
-        default: '2024',
-        versions: ['2024', '2023'],
+        default: '2025',
+        versions: ['2025', '2024', '2023'],
     },
     themeConfig: {
         lastUpdated: true,

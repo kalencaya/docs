@@ -1,0 +1,186 @@
+# Prometheus Operator
+
+通过 prometheus operator 采集监控指标：
+
+* 参考：[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+* [Prometheus 基于 Pod 和 Service 注解的服务发现](https://mp.weixin.qq.com/s/6uxkCJ6Mb3U8j5h9XceZUQ)
+  * `ServiceMonitor`。通过 `Service` 采集
+  * `PodMonitor`。采集 `Pod`
+
+## 安装
+
+安装 prometheus operator
+
+```shell
+helm upgrade --install prometheus-operator kube-prometheus-stack \
+    --repo https://prometheus-community.github.io/helm-charts \
+    --values tools/kubernetes/prometheus/values-prometheus-operator.yaml
+```
+
+参数说明：
+
+* values。可通过 `--values additional-values` 批量覆盖参数，也可通过 `--set xxx=yyyy` 覆盖参数
+
+  * 命名空间
+
+  * ```shell
+    helm upgrade --install prometheus-operator kube-prometheus-stack \
+        --namespace "$NAMESPACE"
+        --repo https://prometheus-community.github.io/helm-charts \
+        --set prometheusOperator.namespaces.additional="{$ADDITIONAL_MONITOR_NAMESPACE}"
+    ```
+
+  * 禁用 AlertManager。`--set alertmanager.enabled=false`
+
+  * 禁用 Grafana。`--set grafana.enabled=false`
+
+:::warning 注意
+
+scaleph 在 tools/kubernetes/prometheus/values-prometheus-operator.yaml 中定制了开发、测试环境使用的 prometheus-operator 配置
+
+生产环境中可以考虑使用 kubernetes 统一的 prometheus-operator 或者独立于 kubernetes 部署的 prometheus 实例，只需配置采集 kubernetes 中的 flink pods 的 metrics 即可
+
+:::
+
+访问 prometheus 和 alert-manager
+
+```shell
+## 通过 http://${IP}:${PORT} 访问 prometheus 或 alert-manager
+## IP 为 Kubernetes 节点的 IP 地址，本地则为 localhost 或 127.0.0.1
+## 查看 prometheus 实例端口号
+kubectl get services prometheus-operator-kube-p-prometheus
+## 返回如下结果，端口号即为：30090
+## NAME                                    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)                         AGE
+## prometheus-operator-kube-p-prometheus   NodePort   10.98.170.125   <none>        9090:30090/TCP,8080:30710/TCP   18h
+
+## 查看 alert-manager 实例端口号
+kubectl get services prometheus-operator-kube-p-alertmanager
+## 返回如下结果，端口号即为：30090
+## NAME                                      TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)                         AGE
+## prometheus-operator-kube-p-alertmanager   NodePort   10.111.2.15   <none>        9093:30903/TCP,8080:30546/TCP   18h
+```
+
+:::tip
+
+tools/kubernetes/prometheus/values-prometheus-operator.yaml 默认通过 NodePort 方式暴露了 prometheus 和 alert-manager 实例端口号。
+
+:::
+
+卸载 prometheus operator
+
+```shell
+helm uninstall prometheus-operator
+```
+
+:::warning 注意
+
+helm 并不会删除 crd, 需要手动删除
+
+```
+kubectl delete crd alertmanagerconfigs.monitoring.coreos.com
+kubectl delete crd alertmanagers.monitoring.coreos.com
+kubectl delete crd podmonitors.monitoring.coreos.com
+kubectl delete crd probes.monitoring.coreos.com
+kubectl delete crd prometheusagents.monitoring.coreos.com
+kubectl delete crd prometheuses.monitoring.coreos.com
+kubectl delete crd prometheusrules.monitoring.coreos.com
+kubectl delete crd scrapeconfigs.monitoring.coreos.com
+kubectl delete crd servicemonitors.monitoring.coreos.com
+kubectl delete crd thanosrulers.monitoring.coreos.com
+```
+
+:::
+
+## 监控
+
+### Flink
+
+:::tip
+
+scaleph 对 Flink JobManager 和 TaskManager pod 增加了 `prometheus.io/port:9249` 和 `prometheus.io/scrape:true` 注解，并声明了 `jmx` 和 `prom` 的端口号：`jmx-metrics: 8789` 和 `prom-metrics: 9249`。
+
+scaleph 并未对 `8789` 和 `9249` 端口号创建 `Service` 对象，暴露这 2 个端口号。用户需查创建一个 `Service` 暴露所有 flink pods 的 metrics 端口号。后续 prometheus 会采集 flink pods 上的 labels，在 grafana 展示的时候，可以通过 pods 上的 labels 区分任务。
+
+:::
+
+1. 创建 `Service` 暴露 Flink 的 metrics 端口，包含所有的 Flink pods，供 prometheus 采集监控信息。
+
+   ```yaml
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: flink-kubernetes-operator-job-metrics
+     annotations:
+       prometheus.io/port: "9249"
+       prometheus.io/scrape: "true"
+     labels:
+       # Define all flink jobs's metrics service labels for promethues operator's ServiceMonitor
+       app: flink-kubernetes-operator-job-metrics
+       component: metrics
+       platform: scaleph
+   spec:
+     # Match all flink jobs's pod by labels
+     # todo 增加 scaleph 的专有注解，明确采集 scaleph 管理的 FlinkDeployment
+     selector:
+       type: flink-native-kubernetes
+     ports:
+       - name: prom-metrics
+         port: 9249
+         targetPort: 9249
+         protocol: TCP
+   ```
+
+2. prometheus operator 通过 `ServiceMonitor` 采集 Flink metrics。`tools/kubernetes/prometheus/values-prometheus-operator.yaml` 已默认会创建，如果不是通过 `tools/kubernetes/prometheus/values-prometheus-operator.yaml` 创建的 prometheus operator，需自行创建
+
+   ```yaml
+   apiVersion: monitoring.coreos.com/v1
+   kind: ServiceMonitor
+   metadata:
+     name: flink-kubernetes-operator-job-metrics
+     labels:
+     	# Define service monitor labels for promethues operator's Promethues
+     	# todo 统一定义 platform: scaleph
+     	group: flink-kubernetes-operator-job-metrics
+     	platform: scaleph
+       ...
+   spec:
+     selector:
+       # Match the above flink jobs's metrics service labels
+       matchLabels:
+         app: flink-kubernetes-operator-job-metrics
+         component: metrics
+         platform: scaleph
+         ...
+     endpoints:
+       - port: prom-metrics # Above service ports name
+         interval: 2s
+     # Collect each flink jobs's pod metrics data
+     podTargetLabels:
+       - app
+       - component
+       ...
+   ```
+
+3. 通过 prometheus 监控 `ServiceMonitor`。prometheus 默认只监控当前 namespace 下的 `ServiceMonitor`，如果要监控其他命名空间，可以通过 `spec.serviceMonitorNamespaceSelector` 实现。`tools/kubernetes/prometheus/values-prometheus-operator.yaml` 已默认会处理上一步的 `ServiceMonitor`，如果不是通过 `tools/kubernetes/prometheus/values-prometheus-operator.yaml` 创建的 prometheus operator，需检查是否能够处理，如果不能，需添加一下对应的处理
+
+   ```yaml
+   apiVersion: monitoring.coreos.com/v1
+   kind: Prometheus
+   metadata:
+     name: prometheus
+   spec:
+     serviceAccountName: prometheus
+     # 下面配置是可选的。如果不配置，会处理所有的 ServiceMonitor，会把监控 flink metrics 的 flink-kubernetes-operator-job-metrics ServiceMonitor 包括在内
+     serviceMonitorSelector:
+       matchLabels:
+       	# Match the above ServiceMonitor labels
+       	# todo 统一定义 platform: scaleph
+         group: flink-kubernetes-operator-job-metrics
+         platform: scaleph
+     resources:
+       requests:
+         memory: 400Mi
+     enableAdminAPI: false
+   ```
+
+使用 `PodMonitor` 监控 flink jobs pod 可以参考：[Using PodMonitors](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/getting-started.md#using-podmonitors)
