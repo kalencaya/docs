@@ -1,9 +1,12 @@
 # Orca
 
+[spinnaker](https://spinnaker.io/) 是一个多云交付系统，即 CI/CD 中的 CD 部分，定位类似于 [KubeVela](https://kubevela.io/zh/)。Spinnaker 源自于 Netflix，完全基于云服务，对接 aws 等云服务商，将应用部署到云服务中。和物理机类似的“包年包月”不同，Spinnaker 支持的是按量付费和动态伸缩，追求极致的弹性。Spinnaker 极其强大的一点在于多云交付，避免应用因为单一云服务故障导致应用不可用。
+
+Spinnaker 采用[微服务架构](https://spinnaker.io/docs/reference/architecture/microservices-overview/)，[orca](https://github.com/spinnaker/orca) 是流程引擎。Spinnaker 的发布流水线由一个个 stage 组成，[deck](https://github.com/spinnaker/deck) 提供可视化界面将 stage 串联起来组成 pipeline。Orca 则具体执行 pipeline。在 Orca 中，pipeline 表示串行之行的 stages，还可以支持并行的orchestration。
+
 参考链接：
 
-* [orca](https://github.com/spinnaker/orca)
-* [spinnaker](https://spinnaker.io/)。[Spinnaker Architecture Overview](https://spinnaker.io/docs/reference/architecture/microservices-overview/)
+* [spinnaker](https://spinnaker.io/)。
   * [application deployment](https://spinnaker.io/docs/concepts/#application-deployment)
   * [pipelines](https://spinnaker.io/docs/concepts/pipelines/)
   * [create a pipeline](https://spinnaker.io/docs/guides/user/pipeline/managing-pipelines/#create-a-pipeline)
@@ -20,6 +23,16 @@
 * [Spinnaker第七节—Orca代码详解](https://blog.csdn.net/yejingtao703/article/details/104246126)
 
 ## 原理介绍
+
+Orca 将任务定义为 3 层：
+
+* pipeline
+* stage
+* task
+
+
+
+![pipeline-tasks.png](./images/orca/pipeline-tasks.png)
 
 队列
 
