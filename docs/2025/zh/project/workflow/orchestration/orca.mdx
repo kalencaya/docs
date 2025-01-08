@@ -34,7 +34,9 @@ Orca 将任务定义为 3 层：
 
 ![pipeline-tasks.png](./images/orca/pipeline-tasks.png)
 
-Orca 使用队列管理内部任务分发，队列实现为延迟队列：
+Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipeline、stage 和 task 的启动、执行，上下游依赖。
+
+事件驱动的核心为延迟队列，提供了一个抽象的队列接口，并提供了 Redis 和 MySQL 实现：
 
 * 可扩展性。Orca 节点为队列消费者，可方便扩展
 * 容错。队列具有重试功能
