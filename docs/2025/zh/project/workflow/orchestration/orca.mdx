@@ -4,6 +4,17 @@
 
 Spinnaker 采用[微服务架构](https://spinnaker.io/docs/reference/architecture/microservices-overview/)，[orca](https://github.com/spinnaker/orca) 是流程引擎。Spinnaker 的发布流水线由一个个 stage 组成，[deck](https://github.com/spinnaker/deck) 提供可视化界面将 stage 串联起来组成 pipeline。Orca 则具体执行 pipeline。在 Orca 中，pipeline 表示串行之行的 stages，还可以支持并行的orchestration。
 
+* DAG。支持丰富的编排支持上下游依赖的 stage 编排
+  * 上下游依赖
+  * 跨 pipeline 依赖
+  * stage 组合。stage 支持设置 before、after 和 onFailure stage，多个 stage 合并成一个 stage
+* stage 管理。暂停、恢复、撤销
+* stage 易开发、易维护。stage 接口和 model 定义良好，对开发新的 stage 很友好，避免开发者绑定，易于新增、修改定制 stage
+* 参数传递。
+  * 初始化参数。pipeline 级别
+  * 运行参数。pipeline、stage 级别，task 的参数也可供下游使用
+  * 模板参数。基于表达式的动态参数
+
 参考链接：
 
 * [spinnaker](https://spinnaker.io/)。
