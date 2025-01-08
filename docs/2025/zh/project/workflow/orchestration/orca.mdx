@@ -2,7 +2,7 @@
 
 [spinnaker](https://spinnaker.io/) 是一个多云交付系统，即 CI/CD 中的 CD 部分，定位类似于 [KubeVela](https://kubevela.io/zh/)。Spinnaker 源自于 Netflix，完全基于云服务，对接 aws 等云服务商，将应用部署到云服务中。和物理机类似的“包年包月”不同，Spinnaker 支持的是按量付费和动态伸缩，追求极致的弹性。Spinnaker 极其强大的一点在于多云交付，避免应用因为单一云服务故障导致应用不可用。
 
-Spinnaker 采用[微服务架构](https://spinnaker.io/docs/reference/architecture/microservices-overview/)，[orca](https://github.com/spinnaker/orca) 是流程引擎。Spinnaker 的发布流水线由一个个 stage 组成，[deck](https://github.com/spinnaker/deck) 提供可视化界面将 stage 串联起来组成 pipeline。Orca 则具体执行 pipeline。在 Orca 中，pipeline 表示串行之行的 stages，还可以支持并行的orchestration。
+Spinnaker 采用[微服务架构](https://spinnaker.io/docs/reference/architecture/microservices-overview/)，[orca](https://github.com/spinnaker/orca) 是流程引擎。Spinnaker 的发布流水线由一个个 stage 组成，[deck](https://github.com/spinnaker/deck) 提供可视化界面将 stage 串联起来组成 pipeline。Orca 则具体执行 pipeline。在 Orca 中，pipeline 表示串行执行的 stages，还可以支持并行的 orchestration，但是不是 pipeline 只支持串行执行，而是因为 Spinnaker 是一个 CD 系统，pipeline 和 orchestration 是 Spinnaker 功能上的划分，pipeline 表示发布流水线，orchestration 表示可以在 ui 上由用户发起的任务。pipeline 本身是 DAG。
 
 * DAG。支持丰富的编排支持上下游依赖的 stage 编排
   * 上下游依赖
