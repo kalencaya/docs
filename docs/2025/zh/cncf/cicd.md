@@ -25,6 +25,8 @@
   * [orca](https://github.com/spinnaker/orca)。Orchestration engine
   * [echo](https://github.com/spinnaker/echo)。Spinnaker Eventing Service
 
+* [gocd](https://github.com/gocd/gocd)。
+
 * [argo](https://argoproj.github.io/)。[argo-cd](https://argo-cd.readthedocs.io/en/stable/)
 
 * flux2
