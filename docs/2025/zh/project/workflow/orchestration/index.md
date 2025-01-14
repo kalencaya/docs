@@ -10,7 +10,7 @@
   * [Phoenix框架 从0到1设计业务并发框架 怎么组织设计一个框架](https://mp.weixin.qq.com/s/f29We5lfTafhXAIMpWq5LQ)
   * [Phoenix框架 从0到1设计业务并发框架 并发线程池的核心设计](https://mp.weixin.qq.com/s/lx7Mk4T2V32JnvWSRONn4g)
   * [Phoenix框架 从0到1设计业务并发框架 自动构建有向无循环图设计](https://mp.weixin.qq.com/s/ORH3dtIVcoykjUOG0dzrFA)。如何规划有向无环图的任务执行先后顺序？
-* [mule](https://github.com/mulesoft/mule)。Mule 是由 MuleSoft 提供的轻量级集成平台，
+* [mule](https://github.com/mulesoft/mule)。Mule 是由 MuleSoft 提供的轻量级集成平台，旨在实现任意系统、服务、APIs 及设备间的高效连接。它避免传统的点对点集成方式，通过智能管理消息路由、数据映射、编排、可靠性和安全性，简化多系统间通信。Mule 应用基于事件驱动架构（EDA），利用各种“乐高积木式”的消息处理器（称为Flow）串联起来处理消息。
   * [mule-api](https://github.com/mulesoft/mule-api)
   * [mule-scheduler-service](https://github.com/mulesoft/mule-scheduler-service)
 
