@@ -13,6 +13,8 @@
 * [mule](https://github.com/mulesoft/mule)。Mule 是由 MuleSoft 提供的轻量级集成平台，旨在实现任意系统、服务、APIs 及设备间的高效连接。它避免传统的点对点集成方式，通过智能管理消息路由、数据映射、编排、可靠性和安全性，简化多系统间通信。Mule 应用基于事件驱动架构（EDA），利用各种“乐高积木式”的消息处理器（称为Flow）串联起来处理消息。
   * [mule-api](https://github.com/mulesoft/mule-api)
   * [mule-scheduler-service](https://github.com/mulesoft/mule-scheduler-service)
+* [automatiko-engine](https://github.com/automatiko-io/automatiko-engine)
+* [goobi-workflow](https://github.com/intranda/goobi-workflow)
 
 
 
