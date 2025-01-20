@@ -6,6 +6,11 @@
   },
   {
     "type": "file",
+    "name": "project",
+    "label": "nav.project.workflow.orchestration.project"
+  },
+  {
+    "type": "file",
     "name": "temporal",
     "label": "nav.project.workflow.orchestration.temporal"
   },

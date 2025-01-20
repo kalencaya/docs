@@ -152,6 +152,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.project.workflow.orchestration.project": {
+    "zh": "开源项目",
+    "en": "Open Source Project"
+  },
   "nav.project.workflow.orchestration.temporal": {
     "zh": "Temporal",
     "en": "Temporal"
