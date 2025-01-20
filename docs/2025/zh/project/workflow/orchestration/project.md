@@ -1,13 +1,19 @@
-# awesome-workflow-engines
+# 开源项目
 
-A curated list of awesome open source workflow engines
+参考：[awesome-workflow-engines](https://github.com/meirwah/awesome-workflow-engines)
+
+## 成熟项目
+
+| 项目                                                         | Star                                                         | 是否活跃 | 开发语言   | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ---------- | ------------------------------------------------------------ |
+| [Activepieces](https://github.com/activepieces/activepieces) | [![Stars](https://img.shields.io/github/stars/activepieces/activepieces.svg)](https://github.com/activepieces/activepieces) | 是       | Typescript | Open source no-code business automation, alternative to Zapier |
+| [AiiDA](https://github.com/aiidateam/aiida-core)             | [![Stars](https://img.shields.io/github/stars/aiidateam/aiida-core.svg)](https://github.com/aiidateam/aiida-core) |          |            | Open source workflow manager for computational science with strong focus on performance, provenance, and extensibility |
+| [Airflow](https://github.com/apache/incubator-airflow)       | [![Stars](https://img.shields.io/github/stars/apache/incubator-airflow.svg)](https://github.com/apache/incubator-airflow) |          | Python     | Python-based platform for running directed acyclic graphs (DAGs) of tasks |
 
 
-## Full fledged product
 
-* [Activepieces](https://github.com/activepieces/activepieces) [![Stars](https://img.shields.io/github/stars/activepieces/activepieces.svg)](https://github.com/activepieces/activepieces) - Open source no-code business automation, alternative to Zapier
-* [AiiDA](https://github.com/aiidateam/aiida-core) [![Stars](https://img.shields.io/github/stars/aiidateam/aiida-core.svg)](https://github.com/aiidateam/aiida-core) - Open source workflow manager for computational science with strong focus on performance, provenance, and extensibility.
-* [Airflow](https://github.com/apache/incubator-airflow) [![Stars](https://img.shields.io/github/stars/apache/incubator-airflow.svg)](https://github.com/apache/incubator-airflow) - Python-based platform for running directed acyclic graphs (DAGs) of tasks
+
+
 * [Argo Workflows](https://github.com/argoproj/argo-workflows) [![Stars](https://img.shields.io/github/stars/argoproj/argo-workflows.svg)](https://github.com/argoproj/argo-workflows) - Open source container-native workflow engine for getting work done on Kubernetes
 * [Arvados](https://github.com/arvados/arvados) [![Stars](https://img.shields.io/github/stars/arvados/arvados.svg)](https://github.com/arvados/arvados) - Open Source data and workflow management platform with emphasis on reproducibily, scale, and secure data sharing, deployable on cloud and HPC.
 * [Azkaban](https://azkaban.github.io/) [![Stars](https://img.shields.io/github/stars/azkaban/azkaban.svg)](https://github.com/azkaban/azkaban) - Batch workflow job scheduler created at LinkedIn to run Hadoop jobs.
