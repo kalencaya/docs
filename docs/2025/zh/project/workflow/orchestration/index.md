@@ -19,6 +19,7 @@
   * [mule-scheduler-service](https://github.com/mulesoft/mule-scheduler-service)
 * [automatiko-engine](https://github.com/automatiko-io/automatiko-engine)
 * [goobi-workflow](https://github.com/intranda/goobi-workflow)
+* [cloudslang/score](https://cloudslang-docs.readthedocs.io/en/latest/developer/developer_score.html)
 
 
 
