@@ -69,11 +69,33 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 
 ### 状态机
 
-\```mermaid    
+#### PipelineExecution
 
-流程图/时序图代码 
-
+```mermaid
+graph TD;
+    NOT_STARTED -- StartExecution ---> RUNNING;
+    NOT_STARTED -- No Initial Stages ---> TERMINAL;
+    RUNNING -- InvalidTaskId ---> TERMINAL;
 ```
+
+#### StageExecution
+
+```mermaid
+graph TD;
+    NOT_STARTED-- StartStage --->RUNNING;
+```
+
+
+
+#### TaskExecution
+
+```mermaid
+graph TD;
+    NOT_STARTED-- StartTask --->RUNNING;
+    NOT_STARTED-- TaskDisabled --->SKIPPED;
+```
+
+
 
 ## 功能扩展
 
