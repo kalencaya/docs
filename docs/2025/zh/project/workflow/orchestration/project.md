@@ -1,6 +1,8 @@
 # 开源项目
 
-参考 [awesome-workflow-engines](https://github.com/meirwah/awesome-workflow-engines)，使用 AI 转成 table，调整了 Java 语言项目的顺序
+参考 [awesome-workflow-engines](https://github.com/meirwah/awesome-workflow-engines)，使用 AI 转成 table，调整了 Java 语言项目的顺序。
+
+类似项目：[awesome-pipeline](https://github.com/pditommaso/awesome-pipeline)
 
 ## 成熟项目
 

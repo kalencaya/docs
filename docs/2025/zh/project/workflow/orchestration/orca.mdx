@@ -59,6 +59,22 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 * 队列。同时支持 Redis 和 MySQL，推荐使用 Redis
 * Orca。同时支持 Redis 和 MySQL，推荐使用 MySQL
 
+## 代码说明
+
+`ExecutionRepository` 存储
+
+`Queue`
+
+`StageResolver` 和 `TaskResolver`
+
+### 状态机
+
+\```mermaid    
+
+流程图/时序图代码 
+
+```
+
 ## 功能扩展
 
 流程编排方式：
@@ -66,3 +82,12 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 * 编程编排
 * 可视化
 * yaml 编辑
+
+序列化。默认是以 jackson 为序列化方式
+
+* 支持标准的序列化接口
+
+接口声明。为方便实现三方 stage 和 task，提供标准的接口和内部实现，发布至 maven 供三方实现
+
+
+
