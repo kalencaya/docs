@@ -69,7 +69,9 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 
 ### 状态机
 
-#### PipelineExecution
+#### PipelineExecution 状态机
+
+
 
 ```mermaid
 graph TD;
@@ -78,7 +80,11 @@ graph TD;
     RUNNING -- InvalidTaskId ---> TERMINAL;
 ```
 
-#### StageExecution
+
+
+#### StageExecution 状态机
+
+
 
 ```mermaid
 graph TD;
@@ -87,7 +93,11 @@ graph TD;
 
 
 
-#### TaskExecution
+
+
+#### TaskExecution状态机
+
+
 
 ```mermaid
 graph TD;
