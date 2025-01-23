@@ -61,13 +61,31 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 
 ## 代码说明
 
-`ExecutionRepository` 存储
+### 核心模型
+
+#### 延迟队列
 
 `Queue`
 
+`Message`
+
+`QueueHandler`
+
+`QueueProcessor`
+
+#### 任务编排
+
+`ExecutionRepository` 存储
+
 `StageResolver` 和 `TaskResolver`
 
+`ExecutionLauncher` 和 `ExecutionRunner`
+
+`PipelineExecution`、`StageExecution`、`TaskExecution`
+
 ### 状态机
+
+执行 Pipeline -> Stage -> Task -> RunTask -> CompleteTask -> Complete Stage -> Complete Pipeline -> 
 
 #### PipelineExecution 状态机
 
@@ -77,8 +95,10 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 graph TD;
     NOT_STARTED -- StartExecution ---> RUNNING;
     NOT_STARTED -- No Initial Stages ---> TERMINAL;
-    RUNNING -- InvalidTaskId ---> TERMINAL;
+    RUNNING -- ConfigurationError(InvalidExecutionId, InvalidStageId, InvalidTaskId, InvalidTaskType, NoDownstreamTasks) ---> TERMINAL;
 ```
+
+StartExecution -> 是否限制并发（如果有 pipelineConfigId）
 
 
 
@@ -103,6 +123,26 @@ graph TD;
 graph TD;
     NOT_STARTED-- StartTask --->RUNNING;
     NOT_STARTED-- TaskDisabled --->SKIPPED;
+```
+
+
+
+### 处理逻辑
+
+```mermaid
+graph TD;
+    A[Messages.StartExecution] --> B{NOT_STARTED or Not Canceled?}
+    B -->|Yes| C{Limit Concurrency?}
+    B -->|No| I[Terminate]
+    C -->|Yes| D{Has pipelineConfigId?}
+    C -->|No| H[Start]
+    D -->|No| E[Do Nothing]
+    D -->|Yes| F[Pending]
+    H --> J{Start Time Expiry?}
+    J -->|Yes| K[CancelExecution]
+    J -->|No| L{Has Initial Stages?}
+    L -->|No| M[Complete]
+    L -->|Yes| N[StartStage]
 ```
 
 
