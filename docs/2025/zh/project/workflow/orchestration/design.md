@@ -14,6 +14,7 @@
   * [MaxCompute 自适应执行引擎DAG 2.0为1.5亿分布式作业提供自动化保障](https://mp.weixin.qq.com/s/yOGEwyz5o1a1SVS2UGRHdQ)
   * [火山引擎数据调度实例的 DAG 优化方案](https://mp.weixin.qq.com/s/TIW1sh_dG_O-jtGoXAqIvQ)
   * [DAG 布局算法介绍&在流水线库中的应用](https://mp.weixin.qq.com/s/ACamz63ZmiNA4DslJFf2_g)
+  * [手把手教你打造最好用的任务框架](https://mp.weixin.qq.com/s?__biz=MzU5NjkwOTg2Mw==&mid=2247484216&idx=1&sn=05e1767ed00bbc92feb6fd81bb93a308&chksm=ffd2d363ebb52fbfc0feb529dc4750c9cf01c9b914497d75148048f8e112ffeef81dc65a22ae&mpshare=1&scene=1&srcid=0125lJxVBUtFKvySvLZhQKmb&sharer_shareinfo=1cfd5e6ce4d07459f2fee2dde531fd21&sharer_shareinfo_first=1cfd5e6ce4d07459f2fee2dde531fd21&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
 * 开源项目
   * [dag-flow](https://github.com/sofn/dag-flow)
   * [dag-flow-platform](https://github.com/a925907195/dag-flow-platform)

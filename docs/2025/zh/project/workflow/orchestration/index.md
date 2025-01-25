@@ -20,6 +20,7 @@
 * [automatiko-engine](https://github.com/automatiko-io/automatiko-engine)
 * [goobi-workflow](https://github.com/intranda/goobi-workflow)
 * [cloudslang/score](https://cloudslang-docs.readthedocs.io/en/latest/developer/developer_score.html)
+* [jd-easyflow](https://github.com/jd-opensource/jd-easyflow)
 
 
 
