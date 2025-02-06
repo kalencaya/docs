@@ -9,6 +9,7 @@
 
 * [devops-framework](https://github.com/bkdevops-projects/devops-framework)。源码：[devops-boot-core/devops-plugin](https://github.com/bkdevops-projects/devops-framework/tree/master/devops-boot-project/devops-boot-core/devops-plugin)，类似于 pf4j 的插件系统
 * [COLA](https://github.com/alibaba/COLA)。源码：[cola-components/cola-component-extension-starter](https://github.com/alibaba/COLA/tree/master/cola-components/cola-component-extension-starter)
+* [easy-extension](https://github.com/xiaoshicae/easy-extension)
 * [AGEIPort](https://github.com/alibaba/AGEIPort)。源码：[ageiport-ext/ageiport-ext-arch](https://github.com/alibaba/AGEIPort/tree/master/ageiport-ext/ageiport-ext-arch)。类似 dubbo 的 spi 机制
 * [AutoService](https://github.com/google/auto)。google autoservice。自动生成 SPI 需要的配置信息
 * [metainf-services](https://github.com/kohsuke/metainf-services)。自动生成 `MEA-INF/services` 文件。
