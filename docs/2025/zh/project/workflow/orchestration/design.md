@@ -91,4 +91,8 @@
 
 * 状态机
 
- 
+ ## 接口定义
+
+* `WorkflowDefition`、`WorkflowInstance`、`WorkflowSettings`
+* `ListenerContext`、`WorkflowExecutorListener`、`ListenerChain` & `ExecutorListenerChain`
+* 
