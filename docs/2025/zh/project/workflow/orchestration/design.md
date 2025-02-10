@@ -93,6 +93,15 @@
 
  ## 接口定义
 
-* `WorkflowDefition`、`WorkflowInstance`、`WorkflowSettings`
-* `ListenerContext`、`WorkflowExecutorListener`、`ListenerChain` & `ExecutorListenerChain`
-* 
+* DAG
+  * 基于 JGraph 封装的 DAG
+  * 存储基于 carp-framework-dag
+* 任务结构
+  * `WorkflowDefition`、`WorkflowInstance`、`WorkflowState`
+  * 任务层级。`workflow` -> `stage` -> `task`
+  * 任务依赖。需同时
+    * 直接通过 dag 的 node + edge 表示依赖关系
+    * 手动添加依赖 stageA -成功> stageB，stageA -失败> stageC
+* 任务执行。过滤器执行链 + 监听器：filter + handler -> listener
+* 状态流转。
+  * 状态机
