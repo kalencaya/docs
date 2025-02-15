@@ -18,6 +18,7 @@
 * [Spring Boot 插件化开发模式](https://mp.weixin.qq.com/s?__biz=MzUxOTc4NjEyMw==&mid=2247582442&idx=2&sn=fb797affae73a8f24ffa3b621eaa8bf3&chksm=f9f7990ece801018dd65cdc6c8ba9f221b7ad78748edbfb097f74205edae8e900b8b35d3fcfe&mpshare=1&scene=1&srcid=0714m8TKeh13TMRKzycRzvRS&sharer_shareinfo=9269b075514d8c16f5604c63d4eb487c&sharer_shareinfo_first=9526d653142ecb195a0394e0f98d568f&version=4.1.10.99312&platform=mac#rd)
 * [一种基于动态代理的通用研发提效解决方案](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247535205&idx=1&sn=2245bef586416bdba23eaf533bec3448&chksm=e8bbf81a3b4564bb186b9e0bb068ec428a0f40d3c8e0a4f6ec4ec95d55b9362059908e6c562b&mpshare=1&scene=1&srcid=1221rKO6mSuZa9sbcclogSo1&sharer_shareinfo=3154a9ea15cd74cc242509bd6e53e1fe&sharer_shareinfo_first=f32b05f33d86040bd2b7984ef0f7dedf&version=4.1.10.99312&platform=mac&nwr_flag=1#wechat_redirect)
 * [fit-framework](https://gitcode.com/ModelEngine/fit-framework)
+* [gravitee-plugin](https://github.com/gravitee-io/gravitee-plugin)
 
 ## 动态加载
 
