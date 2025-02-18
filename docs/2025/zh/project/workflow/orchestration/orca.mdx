@@ -75,13 +75,15 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 
 #### 任务编排
 
-`ExecutionRepository` 存储
-
-`StageResolver` 和 `TaskResolver`
-
-`ExecutionLauncher` 和 `ExecutionRunner`
-
-`PipelineExecution`、`StageExecution`、`TaskExecution`
+* pipeline -> stage -> task。
+  * `PipelineExecution`、`StageExecution`、`TaskExecution`、`Trigger`，
+  * `StageGraphBuilder`、`StageDefitionBuilder`、`TaskNode`
+  * `CancellableStage`、`Task`、`TaskExecutionInterceptor`
+  * `StageListener`、`ExecutionListener`、`StageListenerAdapter`、`ExecutionListenerAdapter`
+  * `StageResolver`、`TaskImplementationResolver`、`TaskResolver`
+  * `ExecutionContext`、`StageContext`、`TaskContext`
+  * `ExecutionRunner`、`ExecutionLauncher`
+  * `ExecutionRepository`
 
 ### 状态机
 
