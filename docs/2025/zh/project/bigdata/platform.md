@@ -14,6 +14,7 @@
 * [vespa](https://github.com/vespa-engine/vespa)。yahoo 开源实时大数据处理服务系统 Vespa
 * [lacus](https://github.com/eyesmoons/lacus)。Lacus是一个开源大数据平台项目，致力于让数据采集变得更简单、好用。基于 Flink CDC
 * [datax-cloud](https://gitee.com/yuwei1203/datax-cloud)。智数通提供了元数据管理、数据标准管理、数据质量管理、主数据管理、数据集市管理、可视化图表看板、流程管理等微服务，是为数字化建设而生的企业级一站式数据治理平台。已停止维护
+* [flink-platform-backend](https://github.com/itinycheng/flink-platform-backend)
 
 ## 实时计算平台
 
