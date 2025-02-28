@@ -16,3 +16,4 @@
 * [mfish-nocode](https://github.com/mfish-qf/mfish-nocode)
 * [quan](https://github.com/quan100/quan)。Quan 基于Spring Boot 2.7.x开发的后台管理系统。采用的架构是基于DDD领域驱动设计思想的BFF架构。目标是打造一个支持多端适配、分布式、高可用、多模块的系统。在未来可扩展成任意的企业中后台系统解决方案。 前端基于 Ant Design 5.0，为 Web 应用提供了丰富的基础 UI 组件， 助力设计开发者「更灵活」地搭建出「更美」的产品 ～
   * [quan-admin](https://github.com/quan100/quan-admin)
+* [memberclub](https://github.com/juejin-wuyang/memberclub)
