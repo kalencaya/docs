@@ -14,6 +14,7 @@
 * [orca](https://github.com/spinnaker/orca)
 * [rqueue](https://github.com/sonus21/rqueue)
 * [redeq](https://github.com/kevinleeex/redeq)
+* [tql-delayqueue](https://github.com/beyondyuefei/tql-delayqueue)
 * [Spring Boot + Redission 自定义分布式延时任务组件设计](https://mp.weixin.qq.com/s/tsinZNPJ8H2QM8hzEd9gMA?version=4.1.10.99312&platform=mac&poc_token=HKW9x2ejDDesDgzdkD5FpCpLReMK0MhmJ4oIu4Lg)
 * [Redis延时队列的简单实现(基于有赞的设计)](https://mp.weixin.qq.com/s/8diUam1j0fuqfOmGDBTopw?version=4.1.10.99312&platform=mac)
 * [基于Spring Boot实现redis延迟队列](https://mp.weixin.qq.com/s?__biz=MzU4NDc1NDMxMw==&mid=2247487120&idx=1&sn=6fff88f28b24c552b6b4e7951ecd492b&chksm=fce83c7de581c08277b2546a2e9a4783b72dad2cfdf108fcffcb4fd027df587dfcbc09ea3c93&mpshare=1&scene=1&srcid=0214KpE2p4ij1TsNWWPQ2tEZ&sharer_shareinfo=45ec293c8079f7cf60fc0d17d2486427&sharer_shareinfo_first=2dc7df3b1b3c37c7982d8994239ed4a5&version=4.1.10.99312&platform=mac#rd)
