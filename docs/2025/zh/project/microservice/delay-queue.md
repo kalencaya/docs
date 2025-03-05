@@ -29,3 +29,4 @@
 * [TaskManager](https://github.com/Konloch/TaskManager)
 * [joq4j](https://github.com/anhtranbk/joq4j)
 * [vertx-db-task-queue](https://github.com/colinzhu/vertx-db-task-queue)
+* [jesque](https://github.com/gresrun/jesque)
