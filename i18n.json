@@ -245,6 +245,10 @@
     "zh": "CI/CD",
     "en": "CI/CD"
   },
+  "nav.interview": {
+    "zh": "面试大全",
+    "en": "Interview"
+  },
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"
