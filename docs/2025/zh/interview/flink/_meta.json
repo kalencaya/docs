@@ -1,0 +1,32 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.flink.index"
+  },
+  {
+    "type": "file",
+    "name": "concept",
+    "label": "nav.interview.flink.concept"
+  },
+  {
+    "type": "file",
+    "name": "base",
+    "label": "nav.interview.flink.base"
+  },
+  {
+    "type": "file",
+    "name": "advance",
+    "label": "nav.interview.flink.advance"
+  },
+  {
+    "type": "file",
+    "name": "env",
+    "label": "nav.interview.flink.env"
+  },
+  {
+    "type": "file",
+    "name": "quick-start",
+    "label": "nav.interview.flink.quick-start"
+  }
+]
