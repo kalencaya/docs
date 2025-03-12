@@ -26,7 +26,10 @@
 ### antv
 
 * [antv](https://antv.antgroup.com/)
-* [x6](https://x6.antv.antgroup.com/)
+* [x6](https://x6.antv.antgroup.com/)。x6 文档分为国内版和国外版。国内版和国外版文档不一样，存在差异
+  * [国内版](https://x6.antv.antgroup.com/)
+  * [国外版](https://x6.antv.vision/zh)
+
 * [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
 
 ### opensumi
