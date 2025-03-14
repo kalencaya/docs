@@ -245,6 +245,42 @@
     "zh": "CI/CD",
     "en": "CI/CD"
   },
+  "nav.interview": {
+    "zh": "面试大全",
+    "en": "Interview"
+  },
+  "nav.interview.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.interview.flink": {
+    "zh": "Flink",
+    "en": "Flink"
+  },
+  "nav.interview.flink.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.interview.flink.concept": {
+    "zh": "概念",
+    "en": "Concept"
+  },
+  "nav.interview.flink.base": {
+    "zh": "基础",
+    "en": "Base"
+  },
+  "nav.interview.flink.advance": {
+    "zh": "进阶",
+    "en": "Advance"
+  },
+  "nav.interview.flink.env": {
+    "zh": "环境",
+    "en": "Env"
+  },
+  "nav.interview.flink.quick-start": {
+    "zh": "快速开始",
+    "en": "Quick Start"
+  },
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"

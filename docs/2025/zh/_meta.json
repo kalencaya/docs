@@ -30,9 +30,9 @@
     "activeMatch": "/cncf/"
   },
   {
-    "text": "nav.information",
-    "link": "/information/",
-    "activeMatch": "/information/"
+    "text": "nav.interview",
+    "link": "/interview/",
+    "activeMatch": "/interview/"
   },
   {
     "text": "nav.faq",

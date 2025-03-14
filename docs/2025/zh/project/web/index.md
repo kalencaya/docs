@@ -17,6 +17,7 @@
 * [eiam](https://github.com/topiam/eiam)。以开源为核心的IDaas/IAM平台，用于管理企业内员工账号、权限、身份认证、应用访问，帮助整合部署在本地或云端的内部办公系统、业务系统及三方 SaaS 系统的所有身份，实现一个账号打通所有应用的服务
 * [quan](https://github.com/quan100/quan)。Quan 基于Spring Boot 2.7.x开发的后台管理系统。采用的架构是基于DDD领域驱动设计思想的BFF架构。目标是打造一个支持多端适配、分布式、高可用、多模块的系统。在未来可扩展成任意的企业中后台系统解决方案。 前端基于 Ant Design 5.0，为 Web 应用提供了丰富的基础 UI 组件， 助力设计开发者「更灵活」地搭建出「更美」的产品 ～
   - [quan-admin](https://github.com/quan100/quan-admin)
+* [Formily](https://v2.formilyjs.org/zh-CN/guide)
 
 
 ### umi
@@ -26,7 +27,10 @@
 ### antv
 
 * [antv](https://antv.antgroup.com/)
-* [x6](https://x6.antv.antgroup.com/)
+* [x6](https://x6.antv.antgroup.com/)。x6 文档分为国内版和国外版。国内版和国外版文档不一样，存在差异
+  * [国内版](https://x6.antv.antgroup.com/)
+  * [国外版](https://x6.antv.vision/zh)
+
 * [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
 
 ### opensumi
@@ -72,3 +76,5 @@
 ## 其他
 
 * [spreadjs](https://www.grapecity.com.cn/developer/spreadjs)。hologres 和 dataworks 使用的表格库
+* [velaux](https://github1s.com/kubevela/velaux/blob/main/packages/velaux-ui/src/extends)。根据接口定义，动态显示表单
+* [Flowise](https://github1s.com/FlowiseAI/Flowise)。dag 解决方案
