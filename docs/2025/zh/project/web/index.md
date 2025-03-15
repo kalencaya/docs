@@ -28,10 +28,12 @@
 ### antv
 
 * [antv](https://antv.antgroup.com/)
-* [x6](https://x6.antv.antgroup.com/)。x6 文档分为国内版和国外版。国内版和国外版文档不一样，存在差异
-  * [国内版](https://x6.antv.antgroup.com/)
-  * [国外版](https://x6.antv.vision/zh)
-
+* [x6](https://x6.antv.antgroup.com/)。x6 文档分为 2.x 和 1.x。文档不一样，有些还在支持的功能在 2.x 文档没有展示
+  * [2.x](https://x6.antv.antgroup.com/)。
+  * [1.x](https://x6.antv.vision/zh)。
+    * [x6-react-components](https://github.com/antvis/X6/tree/master/packages/x6-react-components)
+    * [x6-react-components](https://x6.antv.vision/zh/docs/api/ui/menu)
+  
 * [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
 
 ### opensumi
