@@ -83,3 +83,5 @@
 * [Flowise](https://github1s.com/FlowiseAI/Flowise)。dag 解决方案
 * [dify](https://github.com/langgenius/dify)
 * [tinyflow](https://github.com/tinyflow-ai/tinyflow)
+* [dockview](https://github.com/mathuo/dockview)。布局
+* [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
