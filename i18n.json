@@ -176,6 +176,14 @@
     "zh": "大数据",
     "en": "BigData"
   },
+  "nav.ai": {
+    "zh": "AI",
+    "en": "AI"
+  },
+  "nav.ai.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
   "nav.ali": {
     "zh": "阿里",
     "en": "ali"
