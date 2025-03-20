@@ -51,7 +51,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-	INSTALL_K3S_EXEC="--node-external-ip=myip" \
+	INSTALL_K3S_EXEC="--node-external-ip=myip --advertise-address=myip" \
 	sh -
 
 # 如果发现卡在下载 docker ce，需要更换 linux 的软件源
@@ -127,8 +127,12 @@ systemctl status k3s-agent.service
 使用 systemd 运行时，日志将发送到 Journald，用户可以查看对应的日志：
 
 ```shell
-journalctl -u k3s
-journalctl -u k3s-agent
+journalctl -xeu k3s
+journalctl -xeu k3s-agent
+
+# 日志滚动
+journalctl -xeu k3s -f
+journalctl -xeu k3s-agent -f
 ```
 
 k3s 日志查看：[K3s 日志在哪里？](https://docs.k3s.io/zh/faq?_highlight=journalctl#k3s-%E6%97%A5%E5%BF%97%E5%9C%A8%E5%93%AA%E9%87%8C)
@@ -155,11 +159,19 @@ k3s 提供的相关文档：[集群访问](https://docs.k3s.io/zh/cluster-access
 
 解决方式就是在运行时指定节点 ip 和公网 ip：
 
-* `--node-ip`。设置节点 InternalIP。默认是 `127.0.0.1`
+* `--node-ip`。设置节点 InternalIP，默认是 `127.0.0.1`，无需设置。如果设置为内网 ip，还可能会因为云服务商设置，访问 `https://内网ip：6443` 异常。
 * `--node-external-ip`。设置节点 ExternalIP
 * `--advertise-address`。ApiServer 向集群成员发布的 IP 地址
 
 一些云提供商（例如 Linode）将创建以 “localhost” 作为主机名的主机，而其他云提供商可能根本没有设置主机名。这可能会导致域名解析出现问题。你可以使用 `--node-name` 标志或 `K3S_NODE_NAME` 环境变量运行 K3s，这会通过传递节点名称来解决此问题。
+
+启动成功后通过 kubectl 查看集群节点信息：
+
+```shell
+kubectl get nodes -o wide
+```
+
+可以看到节点的 `INTERNAL-IP` 和 `EXTERNAL-IP` 被成功设置为云服务器的内网 ip 和公网 ip。
 
 ### 开放端口
 
@@ -214,6 +226,8 @@ mirrors:
 
 k3s 默认使用  [containerd](https://containerd.io/)，如果用户可以通过 `--docker` 选项启用 docker。参考：[使用 Docker 作为容器运行时](https://docs.k3s.io/zh/advanced#%E4%BD%BF%E7%94%A8-docker-%E4%BD%9C%E4%B8%BA%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%E6%97%B6)。
 
+随着 kubernetes 和 docker 的各自发展，kubernetes 使用 docker 作为容器运行时会出现版本不支持问题，即 docker 版本过高，kubernetes 不支持现象。使用 docker 作为容器运行时需多加测试。
+
 对应的安装脚本：
 
 ```shell
@@ -223,7 +237,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-	INSTALL_K3S_EXEC="--docker --node-external-ip=myip" \
+	INSTALL_K3S_EXEC="--docker --node-external-ip=myip --advertise-address=myip" \
 	sh -
 
 # 增加 agent 节点，注意替换 mynodetoken、myserver 和 myip
