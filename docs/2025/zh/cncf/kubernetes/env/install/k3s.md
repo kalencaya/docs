@@ -155,8 +155,9 @@ k3s 提供的相关文档：[集群访问](https://docs.k3s.io/zh/cluster-access
 
 解决方式就是在运行时指定节点 ip 和公网 ip：
 
-* `--node-ip`。设置节点 InternalIP
+* `--node-ip`。设置节点 InternalIP。默认是 `127.0.0.1`
 * `--node-external-ip`。设置节点 ExternalIP
+* `--advertise-address`。ApiServer 向集群成员发布的 IP 地址
 
 一些云提供商（例如 Linode）将创建以 “localhost” 作为主机名的主机，而其他云提供商可能根本没有设置主机名。这可能会导致域名解析出现问题。你可以使用 `--node-name` 标志或 `K3S_NODE_NAME` 环境变量运行 K3s，这会通过传递节点名称来解决此问题。
 
@@ -191,14 +192,22 @@ vim /etc/rancher/k3s/registries.yaml
 mirrors:
   docker.io:
     endpoint:
+      - "https://docker.1ms.run/"
+      - "https://docker.1panel.live/"
+      - "https://docker.1panelproxy.com/"
       - "https://docker.m.daocloud.io/"
       - "https://docker.gh-proxy.com/"
 
-# 腾讯云提供了内网下的镜像加速地址。如果是腾讯云只需配置内部的即可
+# 腾讯云提供了内网下的镜像加速地址。如果是腾讯云可以加上
 mirrors:
   docker.io:
     endpoint:
       - "https://mirror.ccs.tencentyun.com"
+      - "https://docker.1ms.run/"
+      - "https://docker.1panel.live/"
+      - "https://docker.1panelproxy.com/"
+      - "https://docker.m.daocloud.io/"
+      - "https://docker.gh-proxy.com/"
 ```
 
 ### docker
