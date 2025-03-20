@@ -20,6 +20,11 @@
     "activeMatch": "/project/"
   },
   {
+    "text": "nav.ai",
+    "link": "/ai/",
+    "activeMatch": "/ai/"
+  },
+  {
     "text": "nav.ali",
     "link": "/ali/",
     "activeMatch": "/ali/"
