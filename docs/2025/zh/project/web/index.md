@@ -85,3 +85,4 @@
 * [tinyflow](https://github.com/tinyflow-ai/tinyflow)
 * [dockview](https://github.com/mathuo/dockview)。布局
 * [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
+* [console](https://github.com/kubesphere/console/tree/release-3.4/)。kubesphere 前端项目。3.x 版本，4.x 版本有大改，无法查看 devops 页面
