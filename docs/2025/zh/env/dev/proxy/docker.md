@@ -42,12 +42,7 @@ http://127.0.0.1:$PORT
 ```json
 {
     "registry-mirrors": [
-        "https://docker.1panel.dev/",
-        "https://docker.fxxk.dedyn.io",
-        "https://dockerhub.icu/",
-        "https://dockerpull.org",
         "https://docker.m.daocloud.io",
-        "https://docker.chenby.cn/",
         "https://docker.gh-proxy.com/"
     ]
 }

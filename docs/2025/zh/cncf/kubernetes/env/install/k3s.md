@@ -54,16 +54,6 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_EXEC="--node-external-ip=myip" \
 	sh -
 
-# 如果发现拉取 rancher k3s 和 docker 镜像异常，可以修改配置，从网络上查找可用下载地址，例如：
-# curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
-#	INSTALL_K3S_MIRROR=cn \
-#	INSTALL_K3S_MIRROR_URL=rancher-mirror.oss-cn-beijing.aliyuncs.com \
-#	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
-#	INSTALL_K3S_SKIP_SELINUX_RPM=true \
-#	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-#	INSTALL_K3S_EXEC="--node-external-ip=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
-#	sh -
-
 # 如果发现卡在下载 docker ce，需要更换 linux 的软件源
 # centos 系统
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
@@ -180,6 +170,35 @@ k3s 提供的相关文档：[集群访问](https://docs.k3s.io/zh/cluster-access
 
 # udp
 8472,51820,51821
+```
+
+### 指定镜像源
+
+随着 docker 镜像被禁，拉取 docker 镜像愈发艰难，需配置镜像解决镜像下载问题。参考：[Private Registry Configuration](https://docs.k3s.io/zh/installation/private-registry)
+
+```shell
+# 创建 /etc/rancher/k3s/registries.yaml 文件
+mkdir -p /etc/rancher/k3s && touch /etc/rancher/k3s/registries.yaml
+
+# 编辑 /etc/rancher/k3s/registries.yaml，添加内容
+vim /etc/rancher/k3s/registries.yaml
+```
+
+在 `/etc/rancher/k3s/registries.yaml` 中添加如下内容：
+
+```yaml
+# 配置 docker.io 镜像加速地址
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://docker.m.daocloud.io/"
+      - "https://docker.gh-proxy.com/"
+
+# 腾讯云提供了内网下的镜像加速地址。如果是腾讯云只需配置内部的即可
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://mirror.ccs.tencentyun.com"
 ```
 
 ### docker
