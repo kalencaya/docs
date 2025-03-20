@@ -149,6 +149,35 @@ graph TD;
 
 
 
+#### Cancel
+
+`ForceExecutionCancellationCommand`。将执行中的 stage（排除未开始和已结束的）及其 task 设置为 `CANCELED`，execution 设置为 `CANCELED`
+
+* `ExecutionRunner#cancel`
+* `ExecutionRepository#cancel`
+
+#### Pause & Resume
+
+`CompoundExecutionOperator`
+
+`ExecutionRunner`
+
+`ExecutionLauncher`
+
+* `ExecutionRunner#rescheduler`
+* `ExecutionRepository#pause`
+* `ExecutionRunner#unpause`
+* `ExecutionRepository#resume`
+
+
+
+#### Restart
+
+* `ExecutionRunner#restart`
+* `ExecutionRepository#restartStage`
+
+
+
 ## 功能扩展
 
 流程编排方式：
