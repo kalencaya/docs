@@ -86,3 +86,11 @@
 * [dockview](https://github.com/mathuo/dockview)。布局
 * [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
 * [console](https://github.com/kubesphere/console/tree/release-3.4/)。kubesphere 前端项目。3.x 版本，4.x 版本有大改，无法查看 devops 页面
+* [xeasywork](https://github.com/chinesHhd/xeasywork)
+* [universe](https://uiverse.io/)
+* [homer](https://github.com/bastienwirtz/homer)
+* [reactbits](https://www.reactbits.dev/)
+* [motion](https://github.com/motiondivision/motion)
+* [OrgChart](https://github.com/dabeng/OrgChart)
+* [react-arborist](https://github.com/brimdata/react-arborist)
+* [VTable](https://github.com/VisActor/VTable)
