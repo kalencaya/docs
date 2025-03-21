@@ -33,8 +33,11 @@
   * [1.x](https://x6.antv.vision/zh)。
     * [x6-react-components](https://github.com/antvis/X6/tree/master/packages/x6-react-components)
     * [x6-react-components](https://x6.antv.vision/zh/docs/api/ui/menu)
-  
 * [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
+* 布局算法
+  * [hierarchy](https://github.com/antvis/hierarchy)
+  * [layout](https://github.com/antvis/layout)
+
 
 ### opensumi
 
