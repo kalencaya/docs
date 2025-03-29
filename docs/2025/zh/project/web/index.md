@@ -88,6 +88,7 @@
 * [tinyflow](https://github.com/tinyflow-ai/tinyflow)
 * [dockview](https://github.com/mathuo/dockview)。布局
 * [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
+* [menu](https://github.com/react-component/menu)。演示网站很好。[menu.react-component.now.sh/](https://menu.react-component.now.sh/)
 * [console](https://github.com/kubesphere/console/tree/release-3.4/)。kubesphere 前端项目。3.x 版本，4.x 版本有大改，无法查看 devops 页面
 * [xeasywork](https://github.com/chinesHhd/xeasywork)
 * [universe](https://uiverse.io/)
@@ -99,3 +100,4 @@
 * [VTable](https://github.com/VisActor/VTable)
 * [react-cron-generator](https://github.com/sojinantony01/react-cron-generator)
 * [formik](https://github.com/jaredpalmer/formik)
+* [awesome-react](https://github.com/enaqx/awesome-react)
