@@ -91,29 +91,9 @@ Orca 的实现基于事件驱动，基于发布-订阅模式，完成了 pipelin
 
 #### PipelineExecution 状态机
 
-
-
-```mermaid
-graph TD;
-    NOT_STARTED -- StartExecution ---> RUNNING;
-    NOT_STARTED -- No Initial Stages ---> TERMINAL;
-    RUNNING -- ConfigurationError(InvalidExecutionId, InvalidStageId, InvalidTaskId, InvalidTaskType, NoDownstreamTasks) ---> TERMINAL;
-```
-
 StartExecution -> 是否限制并发（如果有 pipelineConfigId）
 
-
-
 #### StageExecution 状态机
-
-
-
-```mermaid
-graph TD;
-    NOT_STARTED-- StartStage --->RUNNING;
-```
-
-
 
 
 
@@ -121,31 +101,7 @@ graph TD;
 
 
 
-```mermaid
-graph TD;
-    NOT_STARTED-- StartTask --->RUNNING;
-    NOT_STARTED-- TaskDisabled --->SKIPPED;
-```
-
-
-
 ### 处理逻辑
-
-```mermaid
-graph TD;
-    A[Messages.StartExecution] --> B{NOT_STARTED or Not Canceled?}
-    B -->|Yes| C{Limit Concurrency?}
-    B -->|No| I[Terminate]
-    C -->|Yes| D{Has pipelineConfigId?}
-    C -->|No| H[Start]
-    D -->|No| E[Do Nothing]
-    D -->|Yes| F[Pending]
-    H --> J{Start Time Expiry?}
-    J -->|Yes| K[CancelExecution]
-    J -->|No| L{Has Initial Stages?}
-    L -->|No| M[Complete]
-    L -->|Yes| N[StartStage]
-```
 
 
 
@@ -169,14 +125,24 @@ graph TD;
 * `ExecutionRunner#unpause`
 * `ExecutionRepository#resume`
 
-
-
 #### Restart
 
 * `ExecutionRunner#restart`
 * `ExecutionRepository#restartStage`
 
+### 上下文
 
+orca 任务层级有 3 层构成：pipeline -> stage -> task。stage 包含多个 task，task 可通过 `REDIRECT` 反复执行。
+
+* task。输出 context 和 output。output 对 stage 下其他 task 和 stage 可见，context 只对 stage 下其他 task 可见
+* stage。接收 context，输出 output。context 可在创建时传入（承担 input 的作用），也可由 task 输出。output 为 task 输出。stage 可读取上游 stage 的 output
+* pipeline。context 为所有 stage 的 output
+
+代码信息：
+
+* pipeline。[PipelineExecutionImpl.java#getContext()](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/model/PipelineExecutionImpl.java#L179)，
+* stage。[StageExecutionImpl#context](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/model/StageExecutionImpl.java#L226)，[StageExecutionImpl#outputs](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/model/StageExecutionImpl.java#L241)，[StageContext#get()](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/model/StageContext.java#L57)。[StageExecutionImpl#mapTo(Class)](https://github.com/spinnaker/orca/blob/master/orca-core/src/main/java/com/netflix/spinnaker/orca/pipeline/model/StageExecutionImpl.java#L607)。
+* task。[TaskResult#context](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/TaskResult.java#L55)，[TaskResult#outputs](https://github.com/spinnaker/orca/blob/master/orca-api/src/main/java/com/netflix/spinnaker/orca/api/pipeline/TaskResult.java#L65)。[RunTaskHandler#processTaskOutput](https://github.com/spinnaker/orca/blob/master/orca-queue/src/main/kotlin/com/netflix/spinnaker/orca/q/handler/RunTaskHandler.kt#L462)，[ExpressionAware#withMergedContext](https://github.com/spinnaker/orca/blob/master/orca-queue/src/main/kotlin/com/netflix/spinnaker/orca/q/handler/ExpressionAware.kt#L50)
 
 ## 功能扩展
 
