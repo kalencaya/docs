@@ -135,7 +135,7 @@ StartExecution -> 是否限制并发（如果有 pipelineConfigId）
 orca 任务层级有 3 层构成：pipeline -> stage -> task。stage 包含多个 task，task 可通过 `REDIRECT` 反复执行。
 
 * task。输出 context 和 output。output 对 stage 下其他 task 和 stage 可见，context 只对 stage 下其他 task 可见
-* stage。接收 context，输出 output。context 可在创建时传入（承担 input 的作用），也可由 task 输出。output 为 task 输出。stage 可读取上游 stage 的 output
+* stage。接收 context，输出 output。context 可在创建时传入（承担 input 的作用），也可由 task 输出。output 为 task 输出。stage 可读取上游 stage 的 output。task 的 output 默认只会输出到 stages 的 output，其他 task 无法读取当前 stage 的 output，就会出现 task 无法获取其他 task 的 output。需要 task 将 output 主动复制到 context 中
 * pipeline。context 为所有 stage 的 output
 
 代码信息：
