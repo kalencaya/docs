@@ -121,11 +121,14 @@
 
 ## 状态机
 
+状态处理并未全部在状态机内实现，执行环境通过 pub-sub 进行转发。
+
 ### WorkflowInstance 状态机
 
 ```mermaid
 flowchart TD;
 		START((STAET)) -----> PENDING;
+		PENDING -- COMMAND_INIT ---> PENDING;
     PENDING -- COMMAND_DEPLOY ---> RUNNING;
     RUNNING -- PROCESS_STEP_CHANGE ---> RUNNING;
     RUNNING -- PROCESS_SUCCESS ---> SUCCESS;
@@ -174,9 +177,9 @@ flowchart TD;
 flowchart TD;
 		START((START)) -----> PENDING;
     PENDING -- COMMAND_DEPLOY ---> RUNNING;
+    RUNNING -- COMMAND_RUN ---> RUNNING;
     RUNNING -- PROCESS_SUCCESS ---> SUCCESS;
     RUNNING -- PROCESS_FAILURE ---> FAILURE;
-    RUNNING -- PROCESS_REDIRECT ---> REDIRECT;
     RUNNING -- COMMAND_SHUTDOWN ---> SHUTDOWN;
     PENDING -- COMMAND_SHUTDOWN ---> SHUTDOWN;
     SUCCESS -----> END((EMIT:PROCESS_TASK_CHANGE));
