@@ -5,6 +5,7 @@
 * [快速入门指南](https://docs.k3s.io/zh/quick-start)。k3s 文档
 * [K3s 中文文档](https://docs.rancher.cn/k3s/)。rancher k3s 文档
 * [腾讯云k3s试用](https://mp.weixin.qq.com/s/d6aoYdrpU2HLnsFwm1Nk_g)。腾讯云轻量服务器提供了 k3s 模版
+* [单机部署K3s服务并接入Kuboard](https://mp.weixin.qq.com/s?__biz=MzU2ODAxNjI4Nw==&mid=2247483959&idx=1&sn=5230dc0221553221403db97a3dae515d&chksm=fd428ba4d9310e90cf4504b701b2e2b5f4f795ce081787a22805eeeaa01f9befc3153028d95d&mpshare=1&scene=1&srcid=0406DrzerfrBhUfY20F2TI4d&sharer_shareinfo=f670f924a1417129b00fbbf1625d7011&sharer_shareinfo_first=511934ec0017ce6247353580a0111aa2&version=4.1.10.99312&platform=mac#rd)
 
 ## 介绍
 
@@ -51,7 +52,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-	INSTALL_K3S_EXEC="--node-external-ip=myip --advertise-address=myip" \
+	INSTALL_K3S_EXEC="--node-external-ip=myip --advertise-address=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
 	sh -
 
 # 如果发现卡在下载 docker ce，需要更换 linux 的软件源
@@ -237,7 +238,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
-	INSTALL_K3S_EXEC="--docker --node-external-ip=myip --advertise-address=myip" \
+	INSTALL_K3S_EXEC="--docker --node-external-ip=myip --advertise-address=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
 	sh -
 
 # 增加 agent 节点，注意替换 mynodetoken、myserver 和 myip
