@@ -17,6 +17,7 @@
 - [BitSail](https://github.com/bytedance/bitsail)。BitSail 是字节跳动开源的基于分布式架构的高性能数据集成引擎, 支持多种异构数据源间的数据同步，并提供离线、实时、全量、增量场景下的全域数据集成解决方案。
 - [Flink Kubernetes Operator](https://nightlies.apache.org/flink/flink-kubernetes-operator-docs-stable/)。
 - [Sql Gateway](https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/dev/table/sql-gateway/overview/)。
+- [flink-platform-backend](https://github.com/itinycheng/flink-platform-backend)
 
 ## 文章列表
 
