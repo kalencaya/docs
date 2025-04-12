@@ -20,6 +20,29 @@
 
 #### 指标配置
 
+指标配置规则
+
+```
+任务重启(默认 1 分钟内) 次数。次数大于等于 1
+delta(flink_jobmanager_job_numRestarts{deploymentId='{deploymentId}'}[1m]) >= 1.0
+
+任务延迟。延迟大于 10 分钟，即 600s
+max(flink_taskmanager_job_task_operator_currentEmitEventTimeLag{deploymentId='{deploymentId}'}/1000) >= 600.0
+max by(ali_metric_deploymentName, deploymentId) (flink_taskmanager_job_task_operator_currentEmitEventTimeLag{deploymentId='{deploymentId}'}/1000) >= 600.0
+
+checkpoint(默认 5 分钟内) 次数。次数小于等于 1
+delta(flink_jobmanager_job_numberOfCompletedCheckpoints{deploymentId='{deploymentId}'}[5m]) <= 1.0
+
+in rps。输入流量大于 1 条/秒
+sum by(ali_metric_deploymentName, deploymentId) (flink_taskmanager_job_task_operator_source_numRecordsInPerSecond{deploymentId='{deploymentId}'}) >= 1.0
+
+out rps。输出流量大于 1 条/秒
+sum by(ali_metric_deploymentName, deploymentId) (flink_taskmanager_job_task_operator_sink_numRecordsOutPerSecond{deploymentId='{deploymentId}'}) >= 1.0
+
+source 空闲时间。大于 1 毫秒
+max by(ali_metric_deploymentName, deploymentId) (flink_taskmanager_job_task_operator_sourceIdleTime{deploymentId='{deploymentId}'}) >= 1.0
+```
+
 ![alert_config_template_detail_metrics_01](./image/alert_config_template_detail_metrics_01.png)
 
 ![alert_config_template_detail_metrics_02](./image/alert_config_template_detail_metrics_02.png)
