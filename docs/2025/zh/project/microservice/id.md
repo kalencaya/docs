@@ -8,6 +8,7 @@
 * [tinyid](https://github.com/didi/tinyid)
 * [uid-generator](https://github.com/baidu/uid-generator)
 * [idworker](https://github.com/imadcn/idworker)
+* [IdGenerator](https://github.com/yitter/IdGenerator)
 
 ## UUID
 
