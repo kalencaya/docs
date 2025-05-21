@@ -280,8 +280,15 @@ resources:
   limits:
     memory: 256Mi
     cpu: 1000m
-service:
+# 使用 NodePort
+ service:
   type: NodePort
+# 使用 Traefik 和 Ingress。k3s 默认安装 Traefik
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  path: /minio
 ```
 
 定义 helm manifests 清单：
@@ -293,8 +300,8 @@ metadata:
   name: minio
   namespace: kube-system
 spec:
-  chart: minio
-  repo: https://charts.helm.sh/stable
+  chart: stable/minio
+#  repo: https://charts.helm.sh/stable stable 可省略
   targetNamespace: default  # MinIO 将安装到这个命名空间
   valuesContent: |-
     accessKey: admin
@@ -316,9 +323,9 @@ spec:
         memory: 256Mi
         cpu: 250m
       limits:
-        memory: 256Mi
-        cpu: 1000m
-    service:
+        memory: 512Mi
+        cpu: 500m
+     service:
       type: NodePort
 ```
 
