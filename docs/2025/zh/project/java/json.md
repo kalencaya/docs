@@ -31,6 +31,24 @@ BeanDescription bd = mapper.getSerializationConfig().introspect(javaType);
 bd.findProperties().stream().forEach(bpd -> System.out.println(bpd.getName()));
 ```
 
+### 注解
+
+#### `@JsonAnyGetter` 和 `@JsonAnySetter`
+
+把未知或动态变化的字段通过 Map 序列化和反序列化。常见于 `Map<String, Object> ext` 属性。
+
+#### `@JsonRootName`
+
+todo
+
+#### `@JsonUnwrapped`
+
+todo
+
+#### `@JsonPOJOBuilder`
+
+todo
+
 ## 其他
 
 * [JsonPath](https://github.com/json-path/JsonPath)。类似 xml path 功能，用于快速提取 json 字段内容。

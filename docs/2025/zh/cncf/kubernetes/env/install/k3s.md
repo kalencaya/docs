@@ -252,3 +252,73 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	sh -
 ```
 
+### Helm
+
+k3s 提供了 Helm controller，通过自动部署 helm，参考：[helm](https://docs.rancher.cn/docs/k3s/helm/_index/)
+
+以部署 minio 为例，提供如下 `values.yaml`
+
+```yaml
+accessKey: admin
+secretKey: password
+defaultBucket:
+  enabled: true
+  name: carp
+  policy: public
+  purge: true
+buckets:
+  - name: scaleph
+    policy: public
+    purge: true
+replicas: 1
+persistence:
+  size: 5Gi
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 250m
+  limits:
+    memory: 256Mi
+    cpu: 1000m
+service:
+  type: NodePort
+```
+
+定义 helm manifests 清单：
+
+```yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: minio
+  namespace: kube-system
+spec:
+  chart: minio
+  repo: https://charts.helm.sh/stable
+  targetNamespace: default  # MinIO 将安装到这个命名空间
+  valuesContent: |-
+    accessKey: admin
+    secretKey: password
+    defaultBucket:
+      enabled: true
+      name: carp
+      policy: public
+      purge: true
+    buckets:
+      - name: scaleph
+        policy: public
+        purge: true
+    replicas: 1
+    persistence:
+      size: 5Gi
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 256Mi
+        cpu: 1000m
+    service:
+      type: NodePort
+```
+
