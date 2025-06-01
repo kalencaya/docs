@@ -15,6 +15,8 @@
 * [lacus](https://github.com/eyesmoons/lacus)。Lacus是一个开源大数据平台项目，致力于让数据采集变得更简单、好用。基于 Flink CDC
 * [datax-cloud](https://gitee.com/yuwei1203/datax-cloud)。智数通提供了元数据管理、数据标准管理、数据质量管理、主数据管理、数据集市管理、可视化图表看板、流程管理等微服务，是为数字化建设而生的企业级一站式数据治理平台。已停止维护
 * [flink-platform-backend](https://github.com/itinycheng/flink-platform-backend)
+* [qData](https://github.com/qiantongtech/qData)。千数平台（qData） 是一款一站式开源数据中台，覆盖中台基础建设、数据治理、数据开发、监控告警、数据服务与数据可视化等核心能力，致力于高效赋能数据前台，为各类业务系统提供统一、高效、安全的数据支撑服务。
+* [data-platform-open](https://gitee.com/aizuda/data-platform-open)。🔥🔥🔥可视化拖拽式大数据集成平台、大数据平台、大数据，包含数据流、数据源、数据对齐、查询模板、完善的监控等。像画流程图一样且无代码方式同步、清洗数据。
 
 ## 实时计算平台
 
