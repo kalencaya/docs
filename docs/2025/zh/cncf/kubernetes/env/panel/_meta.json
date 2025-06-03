@@ -5,6 +5,11 @@
     "label": "nav.cncf.kubernetes.env.panel.kubepi"
   },
   {
+    "type": "file",
+    "name": "kuboard",
+    "label": "nav.cncf.kubernetes.env.panel.kuboard"
+  },
+  {
     "type": "dir",
     "name": "kubesphere",
     "collapsed": true,

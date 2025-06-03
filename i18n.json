@@ -233,6 +233,10 @@
     "zh": "KubePi",
     "en": "KubePi"
   },
+  "nav.cncf.kubernetes.env.panel.kuboard": {
+    "zh": "Kuboard",
+    "en": "Kuboard"
+  },
   "nav.cncf.kubernetes.env.panel.kubesphere": {
     "zh": "Kubesphere",
     "en": "Kubesphere"
