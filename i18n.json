@@ -233,13 +233,13 @@
     "zh": "KubePi",
     "en": "KubePi"
   },
-  "nav.cncf.kubernetes.env.panel.kuboard": {
-    "zh": "Kuboard",
-    "en": "Kuboard"
-  },
   "nav.cncf.kubernetes.env.panel.kubesphere": {
     "zh": "Kubesphere",
     "en": "Kubesphere"
+  },
+  "nav.cncf.kubernetes.env.panel.other": {
+    "zh": "其他",
+    "en": "Other"
   },
   "nav.cncf.kubernetes.application": {
     "zh": "安装应用",
