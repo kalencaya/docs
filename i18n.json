@@ -120,17 +120,9 @@
     "zh": "Java",
     "en": "Java"
   },
-  "nav.project.web": {
-    "zh": "前端",
-    "en": "Web"
-  },
   "nav.project.microservice": {
     "zh": "微服务",
     "en": "MicroService"
-  },
-  "nav.project.lowcode": {
-    "zh": "低代码",
-    "en": "LowCode"
   },
   "nav.project.workflow": {
     "zh": "Workflow",
@@ -171,6 +163,26 @@
   "nav.project.workflow.blog": {
     "zh": "博客",
     "en": "Blog"
+  },
+  "nav.project.database": {
+    "zh": "数据库",
+    "en": "DataBase"
+  },
+  "nav.project.database.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.project.database.tools": {
+    "zh": "工具",
+    "en": "Tools"
+  },
+  "nav.project.web": {
+    "zh": "前端",
+    "en": "Web"
+  },
+  "nav.project.lowcode": {
+    "zh": "低代码",
+    "en": "LowCode"
   },
   "nav.project.bigdata": {
     "zh": "大数据",

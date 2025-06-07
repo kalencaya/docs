@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.database.index"
+  },
+  {
+    "type": "file",
+    "name": "tools",
+    "label": "nav.project.database.tools"
+  }
+]
