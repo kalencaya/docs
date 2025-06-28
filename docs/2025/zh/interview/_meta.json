@@ -9,5 +9,11 @@
     "name": "flink",
     "collapsed": true,
     "label": "nav.interview.flink"
+  },
+  {
+    "type": "dir",
+    "name": "gravitino",
+    "collapsed": true,
+    "label": "nav.interview.gravitino"
   }
 ]

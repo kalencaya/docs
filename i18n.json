@@ -309,6 +309,14 @@
     "zh": "快速开始",
     "en": "Quick Start"
   },
+  "nav.interview.gravitino": {
+    "zh": "Gravitino",
+    "en": "Gravitino"
+  },
+  "nav.interview.gravitino.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"
