@@ -315,6 +315,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.interview.gravitino.quick-start": {
+    "zh": "快速开始",
+    "en": "Quick Start"
+  },
   "nav.interview.gravitino.flink": {
     "zh": "Flink 生态",
     "en": "Flink"

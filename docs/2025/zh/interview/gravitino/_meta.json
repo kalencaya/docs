@@ -6,7 +6,17 @@
   },
   {
     "type": "file",
-    "name": "index",
+    "name": "quick-start",
+    "label": "nav.interview.gravitino.quick-start"
+  },
+  {
+    "type": "file",
+    "name": "flink",
     "label": "nav.interview.gravitino.flink"
+  },
+  {
+    "type": "file",
+    "name": "lineage",
+    "label": "nav.interview.gravitino.lineage"
   }
 ]

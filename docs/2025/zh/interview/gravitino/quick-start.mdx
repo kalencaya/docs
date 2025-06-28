@@ -1,0 +1,20 @@
+# 快速开始
+
+## 部署 gravitino
+
+通过 docker compose 部署
+
+## Catalog
+
+### Paimon
+
+以 minio 为例
+
+```
+catalog-backend: filesystem
+warehouse: s3://gravitino/gravitino/paimon/
+s3-endpoint: http://localhost:9000
+s3-access-key-id: admin
+s3-secret-access-key: password
+```
+
