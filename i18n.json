@@ -63,7 +63,6 @@
     "zh": "工具",
     "en": "Tools"
   },
-
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
@@ -232,7 +231,6 @@
     "zh": "环境",
     "en": "Environment"
   },
-
   "nav.cncf.kubernetes.env.install": {
     "zh": "安装",
     "en": "Install"
@@ -316,6 +314,14 @@
   "nav.interview.gravitino.index": {
     "zh": "概览",
     "en": "Overview"
+  },
+  "nav.interview.gravitino.flink": {
+    "zh": "Flink 生态",
+    "en": "Flink"
+  },
+  "nav.interview.gravitino.lineage": {
+    "zh": "数据血缘",
+    "en": "Lineage"
   },
   "nav.information": {
     "zh": "信息系统",

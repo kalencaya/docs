@@ -3,5 +3,10 @@
     "type": "file",
     "name": "index",
     "label": "nav.interview.gravitino.index"
+  },
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.gravitino.flink"
   }
 ]
