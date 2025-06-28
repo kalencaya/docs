@@ -13,8 +13,10 @@
 ```
 catalog-backend: filesystem
 warehouse: s3://gravitino/gravitino/paimon/
-s3-endpoint: http://localhost:9000
+s3-endpoint: http://host.docker.internal:9000
 s3-access-key-id: admin
 s3-secret-access-key: password
 ```
+
+使用 docker compose 启动 gravitino 时需增加 hadoop-s3 支持，否则会失败。
 
