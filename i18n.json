@@ -307,6 +307,18 @@
     "zh": "快速开始",
     "en": "Quick Start"
   },
+  "nav.interview.paimon": {
+    "zh": "Paimon",
+    "en": "Paimon"
+  },
+  "nav.interview.paimon.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.interview.paimon.quick-start": {
+    "zh": "快速开始",
+    "en": "Quick Start"
+  },
   "nav.interview.gravitino": {
     "zh": "Gravitino",
     "en": "Gravitino"

@@ -12,6 +12,12 @@
   },
   {
     "type": "dir",
+    "name": "paimon",
+    "collapsed": true,
+    "label": "nav.interview.paimon"
+  },
+  {
+    "type": "dir",
     "name": "gravitino",
     "collapsed": true,
     "label": "nav.interview.gravitino"

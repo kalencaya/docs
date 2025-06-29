@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.paimon.index"
+  },
+  {
+    "type": "file",
+    "name": "quick-start",
+    "label": "nav.interview.paimon.quick-start"
+  }
+]

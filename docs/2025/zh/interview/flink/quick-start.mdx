@@ -1,15 +1,12 @@
 # 快速开始
 
+以 paimon 为例，使用 paimon catalog 和 connector，文件系统采用 minio，即 s3。
 
-
-以 ververica-platform 为例，上传 catalog 和 connector。
-
-下载 catalog，参考 [Quick Start](https://paimon.apache.org/docs/1.1/flink/quick-start/)，下载 Flink 1.20 的 bundle 包：[paimon-flink-1.20-1.1.1.jar](https://repo.maven.apache.org/maven2/org/apache/paimon/paimon-flink-1.20/1.1.1/paimon-flink-1.20-1.1.1.jar)。
-
-
+* 下载 catalog，参考 [Quick Start](https://paimon.apache.org/docs/1.1/flink/quick-start/)，下载 Flink 1.20 的 bundle 包：[paimon-flink-1.20-1.1.1.jar](https://repo.maven.apache.org/maven2/org/apache/paimon/paimon-flink-1.20/1.1.1/paimon-flink-1.20-1.1.1.jar)。
+* 下载 s3 支持。参考 [Filesystems](https://paimon.apache.org/docs/1.1/maintenance/filesystems/)，下载 [paimon-s3-1.1.1.jar](https://repo.maven.apache.org/maven2/org/apache/paimon/paimon-s3/1.1.1/paimon-s3-1.1.1.jar)。
 
 ```sql
--- 创建 catalog
+-- 创建 catalog，注意替换 s3 endpoint 地址
 CREATE CATALOG mycatalog WITH (
     'type'='paimon',
     'warehouse'='s3://gravitino/gravitino/paimon/',
@@ -18,7 +15,7 @@ CREATE CATALOG mycatalog WITH (
     's3.secret-key' = 'password'
 );
 
--- 创建 paimon sink 表
+-- 创建 paimon sink 表，在 paimon catalog 下无需指定 connector 为 paimon 和 path
 CREATE TABLE mycatalog.`default`.word_count (
     word STRING PRIMARY KEY NOT ENFORCED,
     cnt BIGINT
@@ -32,7 +29,11 @@ CREATE TABLE vvp.`default`.word_table (
     'fields.word.length' = '1'
 );
 
--- 执行插入
+-- 像 paimon 中写入数据，执行插入
 INSERT INTO mycatalog.`default`.word_count SELECT word, COUNT(*) FROM vvp.`default`.word_table GROUP BY word;
+
+
+-- 查询 paimon 数据
+select * from mycatalog.`default`.word_count;
 ```
 
