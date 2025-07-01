@@ -319,6 +319,10 @@
     "zh": "快速开始",
     "en": "Quick Start"
   },
+  "nav.interview.paimon.concept": {
+    "zh": "概念",
+    "en": "Concept"
+  },
   "nav.interview.gravitino": {
     "zh": "Gravitino",
     "en": "Gravitino"
