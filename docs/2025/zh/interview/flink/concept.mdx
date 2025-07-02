@@ -92,13 +92,26 @@ watermark 实际上是一个 unix ms 时间戳，表示早于该时间的数据�
 watermark 类型：
 
 * 周期性
-* 
+
+watermark 传输。watermark 生成后在经过 operator chain 传输过程中，是如何传播的？复用现有的 operator chain 中 subtask 的连接方式进行传输。watermark 在 source 生成，一直传输到 sink，会经过所有的 operator。
+
+在多并行度下
+
+
 
 ## 状态
 
 参考链接：
 
 * [Stateful Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/stateful-stream-processing/)
+
+## 参数
+
+参考链接：
+
+* [Handling Application Parameters](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/application_parameters/)
+
+
 
 ## Flink SQL
 
