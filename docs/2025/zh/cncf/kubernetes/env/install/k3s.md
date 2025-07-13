@@ -6,6 +6,7 @@
 * [K3s 中文文档](https://docs.rancher.cn/k3s/)。rancher k3s 文档
 * [腾讯云k3s试用](https://mp.weixin.qq.com/s/d6aoYdrpU2HLnsFwm1Nk_g)。腾讯云轻量服务器提供了 k3s 模版
 * [单机部署K3s服务并接入Kuboard](https://mp.weixin.qq.com/s?__biz=MzU2ODAxNjI4Nw==&mid=2247483959&idx=1&sn=5230dc0221553221403db97a3dae515d&chksm=fd428ba4d9310e90cf4504b701b2e2b5f4f795ce081787a22805eeeaa01f9befc3153028d95d&mpshare=1&scene=1&srcid=0406DrzerfrBhUfY20F2TI4d&sharer_shareinfo=f670f924a1417129b00fbbf1625d7011&sharer_shareinfo_first=511934ec0017ce6247353580a0111aa2&version=4.1.10.99312&platform=mac#rd)
+* [K3S 证书有效期太短？一招将证书延长至 10 年！](https://mp.weixin.qq.com/s/wAzHw-bsp8wQ-VBnO5i4UA)
 
 ## 介绍
 
@@ -49,7 +50,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIR
 # 安装 server 节点，注意替换 myip
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
-	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_VERSION=v1.31.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
 	INSTALL_K3S_EXEC="--node-external-ip=myip --advertise-address=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
@@ -90,7 +91,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIR
 # 增加 agent 节点，注意替换 mynodetoken、myserver 和 myip
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
-	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_VERSION=v1.31.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_URL=https://myserver:6443 \
 	K3S_TOKEN=mynodetoken \
@@ -102,7 +103,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
 	INSTALL_K3S_MIRROR_URL=rancher-mirror.oss-cn-beijing.aliyuncs.com \
-	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_VERSION=v1.31.8+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_URL=https://myserver:6443 \
 	K3S_TOKEN=mynodetoken \
@@ -144,7 +145,10 @@ k3s 日志查看：[K3s 日志在哪里？](https://docs.k3s.io/zh/faq?_highligh
 
 k3s 在国内提供了下载镜像，加速 k3s 下载。但不是每个版本在国内都有对应的镜像，在老版本中 k3s 是没有的。
 
-官方的启动脚本默认会安装最新版本，用户可以选择一个固定版本。推荐版本 `v1.26.8+k3s1`
+官方的启动脚本默认会安装最新版本，用户可以选择一个固定版本。推荐版本：
+
+* `v1.31.8+k3s1`
+* `v1.26.8+k3s1`
 
 ### 指定 kubeconfig
 
@@ -186,6 +190,16 @@ kubectl get nodes -o wide
 8472,51820,51821
 ```
 
+### 配置证书有效期
+
+通过配置环境变量 `CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS`，将证书有效期最长延长至 10 年。`CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS` 的最大值为 3650（即 10 年），因为 K3S 内部 CA 的最大有效期也是 10 年。
+
+```shell
+cat > /etc/default/k3s <<EOF
+CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS=3650
+EOF
+```
+
 ### 指定镜像源
 
 随着 docker 镜像被禁，拉取 docker 镜像愈发艰难，需配置镜像解决镜像下载问题。参考：[Private Registry Configuration](https://docs.k3s.io/zh/installation/private-registry)
@@ -221,6 +235,32 @@ mirrors:
       - "https://docker.1panelproxy.com/"
       - "https://docker.m.daocloud.io/"
       - "https://docker.gh-proxy.com/"
+```
+
+或者直接写入：
+
+```shell
+mkdir -p /etc/rancher/k3s
+cat >> /etc/rancher/k3s/registries.yaml <<EOF
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://mirror.ccs.tencentyun.com"
+EOF
+```
+
+### 系统代理
+
+通过指定 `--system-default-registry` 参数，修改 k3s 系统镜像地址，防止安装 k3s 过程中拉取镜像失败导致安装失败。但是如果配置了镜像源，解决了镜像拉取的问题，此参数可省略。毕竟这个配置只能解决 k3s 自身安装过程中的镜像拉取问题
+
+```shell
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+	INSTALL_K3S_MIRROR=cn \
+	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
+	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
+	INSTALL_K3S_EXEC="--node-external-ip=myip --advertise-address=myip --system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
+	sh -
 ```
 
 ### docker
