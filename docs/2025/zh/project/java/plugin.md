@@ -3,6 +3,7 @@
 * [pf4j](https://github.com/pf4j/pf4j)。
   * [sbp](https://github.com/hank-cp/sbp)。Plugin framework for Spring Boot based on pf4j
   * [spinnaker/kork](https://github.com/spinnaker/kork)
+  * [oceanbase/odc](https://github.com/oceanbase/odc/blob/main/server/plugins/pom.xml)
   
 * [exp](https://github.com/stateIs0/exp)。Java extension plugin and hot swap plugin（Java 扩展点/插件系统，支持热插拔，旨在解决大部分软件的功能定制问题）。没有在 maven 仓库找到依赖
   * [open-exp-plugin](https://github.com/mqttsnet/open-exp-plugin)。只找到了这个
