@@ -6,6 +6,11 @@
   },
   {
     "type": "file",
+    "name": "doc",
+    "label": "nav.interview.flink.doc"
+  },
+  {
+    "type": "file",
     "name": "concept",
     "label": "nav.interview.flink.concept"
   },

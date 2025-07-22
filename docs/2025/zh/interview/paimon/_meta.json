@@ -11,7 +11,7 @@
   },
   {
     "type": "file",
-    "name": "context",
-    "label": "nav.interview.paimon.context"
+    "name": "concept",
+    "label": "nav.interview.paimon.concept"
   }
 ]

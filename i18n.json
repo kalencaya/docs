@@ -287,6 +287,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.interview.flink.doc": {
+    "zh": "文档",
+    "en": "Doc"
+  },
   "nav.interview.flink.concept": {
     "zh": "概念",
     "en": "Concept"
