@@ -24,5 +24,15 @@
     "name": "proxy",
     "collapsed": false,
     "label": "nav.env.dev.proxy"
+  },
+  {
+    "type": "file",
+    "name": "software",
+    "label": "nav.env.dev.software"
+  },
+  {
+    "type": "file",
+    "name": "resource",
+    "label": "nav.env.dev.resource"
   }
 ]

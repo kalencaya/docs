@@ -52,6 +52,14 @@
     "zh": "Github",
     "en": "Github"
   },
+  "nav.env.dev.software": {
+    "zh": "软件",
+    "en": "Software"
+  },
+  "nav.env.dev.resource": {
+    "zh": "资源",
+    "en": "Resource"
+  },
   "nav.env.standard": {
     "zh": "开发规范",
     "en": "Develop Standard"
