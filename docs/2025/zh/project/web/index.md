@@ -37,6 +37,8 @@
 * [slash-admin](https://github.com/d3george/slash-admin)。Slash Admin 是一款现代化的后台管理模板，基于 React 18、Vite、Ant Design 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统
 * [TestHub](https://github.com/dromara/TestHub)。一款基于流程编排的自动化测试工具
 * [datavines](https://github.com/datavane/datavines)。新一代数据可观测性平台，数据目录管理和数据质量监控平台
+* [AIFlowy](https://gitee.com/aiflowy/aiflowy)
+* [spug](https://github.com/openspug/spug)。开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、文件在线上传下载、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。
 
 
 ### umi

@@ -1,0 +1,72 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.bigdata.index"
+  },
+  {
+    "type": "file",
+    "name": "platform",
+    "label": "nav.project.bigdata.platform"
+  },
+  {
+    "type": "file",
+    "name": "apache",
+    "label": "nav.project.bigdata.apache"
+  },
+  {
+    "type": "file",
+    "name": "data-integration",
+    "label": "nav.project.bigdata.data-integration"
+  },
+  {
+    "type": "file",
+    "name": "data-service",
+    "label": "nav.project.bigdata.data-service"
+  },
+  {
+    "type": "file",
+    "name": "framework",
+    "label": "nav.project.bigdata.framework"
+  },
+  {
+    "type": "file",
+    "name": "olap",
+    "label": "nav.project.bigdata.olap"
+  },
+  {
+    "type": "file",
+    "name": "sql",
+    "label": "nav.project.bigdata.sql"
+  },
+  {
+    "type": "file",
+    "name": "search",
+    "label": "nav.project.bigdata.search"
+  },
+  {
+    "type": "file",
+    "name": "rust",
+    "label": "nav.project.bigdata.rust"
+  },
+  {
+    "type": "file",
+    "name": "operator",
+    "label": "nav.project.bigdata.operator"
+  },
+  {
+    "type": "file",
+    "name": "fs",
+    "label": "nav.project.bigdata.fs"
+  },
+  {
+    "type": "file",
+    "name": "bi",
+    "label": "nav.project.bigdata.bi"
+  },
+  {
+    "type": "file",
+    "name": "alert",
+    "label": "nav.project.bigdata.alert"
+  }
+]

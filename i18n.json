@@ -11,6 +11,7 @@
     "zh": "写作工具",
     "en": "Tool"
   },
+
   "nav.env": {
     "zh": "环境配置",
     "en": "ENV"
@@ -63,6 +64,7 @@
     "zh": "工具",
     "en": "Tools"
   },
+
   "nav.blog": {
     "zh": "博客",
     "en": "Blog"
@@ -107,6 +109,7 @@
     "zh": "APM",
     "en": "APM"
   },
+
   "nav.project": {
     "zh": "开源项目",
     "en": "Project"
@@ -187,6 +190,63 @@
     "zh": "大数据",
     "en": "BigData"
   },
+  "nav.project.bigdata.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.project.bigdata.platform": {
+    "zh": "平台",
+    "en": "Platform"
+  },
+  "nav.project.bigdata.apache": {
+    "zh": "Apache 社区",
+    "en": "Apache"
+  },
+  "nav.project.bigdata.data-integration": {
+    "zh": "数据集成",
+    "en": "Data Integration"
+  },
+  "nav.project.bigdata.data-service": {
+    "zh": "数据服务",
+    "en": "Data Service"
+  },
+  "nav.project.bigdata.framework": {
+    "zh": "框架",
+    "en": "Framework"
+  },
+  "nav.project.bigdata.olap": {
+    "zh": "OLAP",
+    "en": "OLAP"
+  },
+  "nav.project.bigdata.sql": {
+    "zh": "SQL",
+    "en": "SQL"
+  },
+  "nav.project.bigdata.search": {
+    "zh": "搜索",
+    "en": "Search"
+  },
+  "nav.project.bigdata.rust": {
+    "zh": "Rust",
+    "en": "Rust"
+  },
+  "nav.project.bigdata.operator": {
+    "zh": "Kubernetes Operator",
+    "en": "Kubernetes Operator"
+  },
+  "nav.project.bigdata.fs": {
+    "zh": "文件系统",
+    "en": "File System"
+  },
+  "nav.project.bigdata.bi": {
+    "zh": "BI",
+    "en": "BI"
+  },
+  "nav.project.bigdata.alert": {
+    "zh": "监控告警",
+    "en": "Alert"
+  },
+
   "nav.ai": {
     "zh": "AI",
     "en": "AI"
@@ -199,10 +259,12 @@
     "zh": "项目",
     "en": "Project"
   },
+
   "nav.ali": {
     "zh": "阿里",
     "en": "ali"
   },
+
   "nav.cncf": {
     "zh": "CNCF",
     "en": "CNCF"
@@ -271,6 +333,7 @@
     "zh": "CI/CD",
     "en": "CI/CD"
   },
+
   "nav.interview": {
     "zh": "面试大全",
     "en": "Interview"
@@ -347,6 +410,7 @@
     "zh": "数据血缘",
     "en": "Lineage"
   },
+
   "nav.information": {
     "zh": "信息系统",
     "en": "Information"
@@ -359,6 +423,7 @@
     "zh": "项目",
     "en": "Project"
   },
+
   "nav.faq": {
     "zh": "FAQ",
     "en": "FAQ"
