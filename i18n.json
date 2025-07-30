@@ -398,6 +398,10 @@
     "zh": "概念",
     "en": "Concept"
   },
+  "nav.interview.paimon.primary-key-table": {
+    "zh": "主键表",
+    "en": "Primary Key Table"
+  },
   "nav.interview.gravitino": {
     "zh": "Gravitino",
     "en": "Gravitino"
