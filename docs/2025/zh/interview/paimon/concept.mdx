@@ -1,6 +1,103 @@
 # 概念
 
-## Catalog
+## 数据湖
+
+![架构](https://paimon.apache.org/docs/1.2/img/architecture.png)
+
+读写：
+
+* 读
+  * batch 模式。读取历史快照数据
+  * stream 模式。从最新偏移量消费数据，或通过**增量快照**实现混合读取
+* 写
+  * cdc 同步。流式同步数据库变更日志（如 mysql binlog）
+  * batch 模式。insert / overwrite 方式写入离线数据
+
+支持引擎如下：
+
+* flink
+* spark
+* doris
+* starrocks
+* hive
+* trino
+
+存储支持文件系统/对象存储（如 hdfs/s3）。
+
+列式文件。parquet/orc/avro
+
+统一存储：
+
+* 消息队列如 kafka。在 data pipeline 中作为数据源和中间层以保证数据的秒级延迟
+* olap 系统如 clickhouse。将处理好的数据流式写入 olap 以提供 ad-hoc 查询
+* 批存储如 hive。支持传统的批处理操作如 `insert overwrite`
+
+paimon 表和传统表有点区别：
+
+* batch 模式。类似 hive 表，支持各种 batch sql。batch 模式下查询的是 latest snapshot。
+* stream 模式。类似消息队列，查询 changelog 流，历史数据永不过期
+
+### 文件布局
+
+![文件布局](https://paimon.apache.org/docs/1.2/img/file-layout.png)
+
+文件目录
+
+```
+/base_path
+├── snapshot # 快照元数据
+├── manifest # 清单文件
+└── data     # 分区数据文件
+```
+
+- 快照（Snapshot）
+  - JSON文件记录表某一时刻的状态，包含 Schema 和关联的清单列表。支持**时间旅行**（Time Travel）回溯历史数据。
+- **清单文件（Manifest）**
+  - 记录 LSM 数据文件的变更（如增删），通过清单列表组织成链式结构。
+
+- **数据文件**
+
+  - 按分区存储，默认 Parquet 格式，支持 ORC/AVRO。
+
+- ##### **分区**
+
+  与 Hive 分区兼容，通过日期、城市、部门等字段划分数据，显著提升查询效率：
+
+### 并发控制
+
+参考：
+
+* [consistency-guarantees](https://paimon.apache.org/docs/1.2/concepts/basic-concepts/#consistency-guarantees)
+* [Concurrency Control](https://paimon.apache.org/docs/1.2/concepts/concurrency-control/)
+
+当有多个任务在像同一张表写入数据时，如何保证数据正确性。
+
+paimon 支持乐观锁支持多任务同时写入：
+
+每个任务按照自己逻辑运行，提交时基于当前最新快照生成新的快照。因为多任务同时写入，提交时存在 2 种失败情况：
+
+* snapshot 冲突。快照 id 被占用，别的任务已经生成了新的快照。当检测到这种情况时，任务重新基于当前最新快照生成新的快照。
+* file 冲突。任务删除文件（逻辑删除）时，发现文件已经被其他文件删除。此时任务只能失败（对于 flink，任务失败后触发 failover 重启）
+
+#### snapshot 冲突。
+
+![snapshot-ids](https://paimon.apache.org/docs/1.2/img/snapshot-conflict.png)
+
+paimon 中快照 id 是唯一的，只要任务能将快照写入文件系统中，即成功。
+
+paimon 提交快照时，使用文件系统的 `rename` 操作。hdfs 确保 `rename` 操作的事务性和原子性，而对象存储无法保证，需要在 hive 或 jdbc metastore 中启用 `lock.enabled` 选项。
+
+#### file 冲突
+
+![file-conflicts](https://paimon.apache.org/docs/1.2/img/files-conflict.png)
+
+文件删除发生在 `compaction` 阶段，当多个任务同时写入时并同时开启 compaction，任务之间会不断触发 file 冲突，造成任务不停失败、触发 failover 重启。
+
+在多个任务同时写入时，需确保只有一个任务开启 compaction。其余任务设置为 `'write-only' = 'true'`。
+
+## 使用
+
+### Catalog
 
 参考链接：
 
@@ -12,3 +109,24 @@
 * Hive
 * Rest
 * JDBC
+
+### 表类型
+
+* 主键表（primary key table）
+  * [新一代流式湖存储Paimon-主键表](https://mp.weixin.qq.com/s/R8OgOXO-NS9e1n7mIcvy1A)
+* Append 表（no primary key table）。日志表
+  * [基于 Apache Paimon 的 Append 表处理](https://mp.weixin.qq.com/s/npNlWQwlfcixzRH0lcOl9Q)
+  * [新一代流式湖存储Paimon-追加表](https://mp.weixin.qq.com/s/0wmFrSyadxxToj6zaqd4Ow)
+
+#### Merge Engine
+
+todo
+
+#### Changelog Producer
+
+todo
+
+#### 索引
+
+todo
+
