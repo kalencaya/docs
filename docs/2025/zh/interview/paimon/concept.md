@@ -13,6 +13,7 @@
 * [基于Pamion的流式数仓架构](https://www.cnblogs.com/bigdata1024/p/18671189)
 * [基于Paimon的Streaming Lakehouse方案](https://www.alibabacloud.com/help/zh/flink/scheme-of-streaming-lakehouse-based-on-paimon/)
 * [Paimon 实时数据湖开发](https://www.volcengine.com/docs/6581/1450236)
+* [Paimon 概览 | Apache Paimon 实时数据湖 Streaming Lakehouse 的存储底座](https://mp.weixin.qq.com/s/6ahJSqiv6sBOHmoSBnIk8A)
 
 ### 简介
 

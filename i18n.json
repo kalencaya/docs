@@ -390,10 +390,6 @@
     "zh": "概览",
     "en": "Overview"
   },
-  "nav.interview.paimon.quick-start": {
-    "zh": "快速开始",
-    "en": "Quick Start"
-  },
   "nav.interview.paimon.concept": {
     "zh": "概念",
     "en": "Concept"
@@ -401,6 +397,10 @@
   "nav.interview.paimon.primary-key-table": {
     "zh": "主键表",
     "en": "Primary Key Table"
+  },
+  "nav.interview.paimon.practice": {
+    "zh": "实践",
+    "en": "Practice"
   },
   "nav.interview.gravitino": {
     "zh": "Gravitino",

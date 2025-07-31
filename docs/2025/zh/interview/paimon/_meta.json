@@ -6,11 +6,6 @@
   },
   {
     "type": "file",
-    "name": "quick-start",
-    "label": "nav.interview.paimon.quick-start"
-  },
-  {
-    "type": "file",
     "name": "concept",
     "label": "nav.interview.paimon.concept"
   },
@@ -18,5 +13,10 @@
     "type": "file",
     "name": "primary-key-table",
     "label": "nav.interview.paimon.primary-key-table"
+  },
+  {
+    "type": "file",
+    "name": "practice",
+    "label": "nav.interview.paimon.practice"
   }
 ]
