@@ -12,8 +12,6 @@
 * [巴别时代基于 Apache Paimon 的 Streaming Lakehouse 的探索与实践](https://mp.weixin.qq.com/s/NxYvXj5NHRJf1J8oFiFmfQ)
 * [Apache Paimon 在同程旅行的探索实践](https://mp.weixin.qq.com/s/edS2_TKhg3jRC0MXzhiCpg)
 
-![湖仓一体架构](https://mmbiz.qpic.cn/mmbiz_png/8AsYBicEePu7eiaj66wa1ObEiaibMcH1dpEJau8yiacNbtQbEfQPsV1QE5x8vqEnib7YcOcyJeXcQr63k6arAP8cq0Wg/640?wx_fmt=png&from=appmsg&randomid=v9v33jj1&tp=webp&wxfrom=5&wx_lazy=1)
-
 ## 场景
 
 ### CDC 入湖
@@ -303,12 +301,3 @@ Paimon 支持的 Changelog Produer 包括：
 参考文档：
 
 * [Paimon 实践 | Paimon+StarRocks 湖仓一体数据分析方案](https://mp.weixin.qq.com/s/vooE9p9k3Xi-YFHotq-PLw)
-
-首先介绍一下实时化的演进历程，对整个发展过程和未来的方向有一个概括性的了解。
-
-- 第一阶段：起步。基于 Kafka 的实时 ETL，包括实时采集、实时加工、实时载入、实时 OLAP。该架构能够解决的问题大都是基于事实表的统计分析，已经在行内有大量的落地案例，但无法解决银行基于维度表的统计分析。另外，该方案很难形成规模化的数据分层复用，Kafka 数据无法查询和长期持久化等问题也比较突出。
-- 第二阶段：探索。为了解决银行业大量基于维度表统计分析场景，先载入后分析，也就是 ELT 的方式。过程是先实时采集，然后不进行逻辑加工直接实时载入，最后再实时 OLAP 查询阶段进行逻辑加工。
-  - 在 ELT 探索初期，我们采用过微批全量的方式，在数据实时写入到数据库后，定时执行全量加工逻辑，类似于离线数仓跑批的概念。只不过是从每天跑批缩短到了小时级别，甚至分钟级别，达到准时加工的效果。显而易见这种方式不可取，存在时效性差、跑批不稳定等问题。
-  - 随着 MPB 数据库的发展，查询性能也得到了极大的提升。使用 View 视图嵌套加工逻辑的方式也进行了探索，也就是把业务数据以 CDC 的方式载入 MPP 数据库的明细层，分析查询逻辑使用 View 封装，在查询时触发底层计算。这种方式也可以解决维度表的统计分析，但每次查询资源消耗太大，无法大范围推广。这种 ELT 方式虽然能够解决一部分的实时场景，但局限很大。
-- 第三阶段：优化。接下来到了优化升级和未来方向选择的节点。为了解决银行业基于维度表的实时 OLAP，必须把部分计算向前移动到 Flink 计算。数据湖 Flink Table Store(Apache Paimon) 的出现，使基于维度表的全量统计分析成为了可能。也就是前期一部分的加工工作在 Flink 中完成，另一部分聚合等计算工作在 OLAP 数据库中完成，两者分摊了计算的时间消耗。
-- 第四阶段：未来。在未来还是希望能够把全部加工逻辑在 Flink 端完成，向着存算分离流批一体的流式数仓方向发展。
