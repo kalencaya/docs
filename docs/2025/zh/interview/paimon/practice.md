@@ -2,10 +2,29 @@
 
 
 
-
-
 ## 参考链接
 
+* 
+* [Flink+Paimon：实时数仓的"超能搭档"（内藏高效秘籍）](https://mp.weixin.qq.com/s/Xc__giOjtgvA20VRyrILbA)
+* [小米基于 Apache Paimon 的流式湖仓实践](https://mp.weixin.qq.com/s/cgde9-zWgaviAKIkVyWspQ)
+* [vivo基于Paimon的湖仓一体落地实践](https://mp.weixin.qq.com/s/adye-mk6xoYu5nMeD5yQxQ)
+* [抖音集团基于Flink的亿级RPS实时计算优化实践](https://mp.weixin.qq.com/s/G02-1yVXXnU-60JMqSosWQ)
+* [蔚来基于 Paimon 的实时湖仓实践](https://mp.weixin.qq.com/s/kyGIZSqU4tgc9FYmI4OwnA)
+* [基于 Flink+Paimon+Hologres 搭建淘天集团湖仓一体数据链路](https://mp.weixin.qq.com/s/IldKsA7NVvSubXjEW5oKJw)
+* [基于 Paimon 的数据湖技术在 Shopee 的应用](https://mp.weixin.qq.com/s/Ho-K-h5-IaUO-bxB0Q56_g)
+* [Apache Paimon 在抖音集团多场景中的优化实践](https://mp.weixin.qq.com/s/D2vIw4OUZB3bhCKbsqzESA)
+* [Paimon Audit Log 在贝壳找房家装数仓中的运用](https://mp.weixin.qq.com/s/OoFwRAlebWdo_QbOPKRwNA)
+* [Flink+Paimon在阿里云大数据云原生运维数仓的实践](https://mp.weixin.qq.com/s/j5GCMS70LEGiHJRC9RvHCg)
+* [阿里云 EMR 基于 Paimon 和 Hudi 构建 Streaming Lakehouse](https://mp.weixin.qq.com/s/BbOfJMiJqZxMVbwqS7W1nQ)
+* [Apache Paimon 表模式最佳实践](https://mp.weixin.qq.com/s/aj3C4ms92maiHAsF2z065Q)
+* [Apache Paimon 在蚂蚁的生产实践](https://mp.weixin.qq.com/s/B9OXKPWy7txZ56IzthbpHA)
+* [Paimon 在汽车之家的业务实践](https://mp.weixin.qq.com/s/wGZJ7H5Y6IBUtUO1qLW-qg)
+* [Paimon 实践 | 基于 Flink SQL 和 Paimon 构建流式湖仓新方案](https://mp.weixin.qq.com/s/9a_RfZWv-DxH2AiDT09VNw)
+* [Apache Doris 整合 FLINK CDC 、Paimon 构建实时湖仓一体的联邦查询入门](https://mp.weixin.qq.com/s/rn33rhgkZTFUU4MSwqxc9g)
+* [Apache Paimon 在网易传媒推荐场景实践](https://mp.weixin.qq.com/s/3HmCTjDJKefhSB6Sxbj47w)
+* [Flink + Paimon 数据 CDC 入湖最佳实践](https://mp.weixin.qq.com/s/pSc-VUYYFdrvrgl0BmHYQg)
+* [快速实践: 通过Flink CDC一键整库同步MongoDB到Paimon](https://mp.weixin.qq.com/s/6RVChTNiAfeUfjHRCCqFyw)
+* [Apache Flink 和 Paimon 在自如数据集成场景中的使用](https://mp.weixin.qq.com/s/fxWsEcvSSDfsUzCScKRCMw)
 * [Paimon 实践 | 幸福里基于 Flink & Paimon 的流式数仓实践](https://mp.weixin.qq.com/s/torn9jWdG4E50rGKzvYP_g)
 * [快速上手使用 Paimon MySQL CDC](https://mp.weixin.qq.com/s/ejoZQ6AMm7QAS4nVSpTntg)
 * [海程邦达基于Apache Paimon+Streampark实现 Streaming warehouse的实战应用](https://mp.weixin.qq.com/s/KB_CG-o7PHqY1V5FcMt85w)
