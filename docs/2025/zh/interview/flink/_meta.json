@@ -36,6 +36,11 @@
   },
   {
     "type": "file",
+    "name": "sql",
+    "label": "nav.interview.flink.sql"
+  },
+  {
+    "type": "file",
     "name": "gateway",
     "label": "nav.interview.flink.gateway"
   }
