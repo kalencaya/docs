@@ -382,6 +382,10 @@
     "zh": "快速开始",
     "en": "Quick Start"
   },
+  "nav.interview.flink.gateway": {
+    "zh": "Flink SQL Gateway",
+    "en": "Flink SQL Gateway"
+  },
   "nav.interview.paimon": {
     "zh": "Paimon",
     "en": "Paimon"

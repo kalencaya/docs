@@ -33,5 +33,10 @@
     "type": "file",
     "name": "quick-start",
     "label": "nav.interview.flink.quick-start"
+  },
+  {
+    "type": "file",
+    "name": "gateway",
+    "label": "nav.interview.flink.gateway"
   }
 ]
