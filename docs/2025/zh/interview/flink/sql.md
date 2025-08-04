@@ -100,3 +100,32 @@ WITH (
 
 ## 窗口
 
+参考文档：
+
+* [Windowing table-valued functions (Windowing TVFs)](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/window-tvf/)
+* [窗口函数](https://help.aliyun.com/zh/flink/window-functions-1)
+
+### 滚动窗口
+
+语法：`TUMBLE(TABLE table_name,DESCRIPTOR(time_attr), size [, offset])`
+
+参数：table_name参数是表名，time_attr参数是时间属性，时间属性列可以为处理时间或事件时间，size参数用于定义窗口大小，offset参数用于定义窗口的偏移量，offset参数是可选参数
+
+### 滑动窗口
+
+HOP(TABLE table_name,DESCRIPTOR(time_attr), slide, size [, offset])，其中table_name参数是表名，time_attr参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，slide参数用于定义窗口的滑动步长，size参数用于定义滑动窗口大小，offset参数用于定义窗口的偏移量
+
+### 累计窗口
+
+累计窗口表值函数的定义方式为CUMULATE(TABLE table_name,DESCRIPTOR(time_attr), step, size)，其中table_name参数是表名，time_attr参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，step参数用于定义窗口的滑动步长，size参数用于定义窗口大小。
+
+## Join
+
+参考文档：
+
+* [Joins](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/joins/)
+* [Window Join](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/window-join/)
+* [双流JOIN语句](https://help.aliyun.com/zh/flink/dual-stream-join-statements)
+* [IntervalJoin语句](https://help.aliyun.com/zh/flink/realtime-flink/developer-reference/intervaljoin-statement)
+* [维表JOIN语句](https://help.aliyun.com/zh/flink/realtime-flink/developer-reference/join-statements-for-dimension-tables)
+* [Processing Time Temporal Join语句](https://help.aliyun.com/zh/flink/processing-time-temporal-join-statement)。paimon 支持
