@@ -11,3 +11,4 @@
 * [sealos](https://github.com/labring/sealos)
 * [cozystack](https://github.com/cozystack/cozystack)
 * [rancher](https://github.com/rancher/rancher)
+* [bigprime-dk8](https://gitee.com/bigprime/bigprime-dk8)。BigPrime-DK8是是一款基于java开发的Kubernetes容器(docker)管理平台，让运维人员或开发人员能通过可视化的界面来操作kubernetes，以及部署docker，为大数据集群在分布式环境中的运维和部署提供了效率提升、资源优化、稳定性增强等重要价值。

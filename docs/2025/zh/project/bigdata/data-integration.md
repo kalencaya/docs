@@ -40,6 +40,10 @@
 * [wrangler](https://github.com/data-integrations/wrangler)
 * [开源ETL工具 Streamsets介绍](https://mp.weixin.qq.com/s/xCTy6_xTEzHFlAXIngUc6w?version=4.1.10.99312&platform=mac)
 * [ares](https://github.com/rewerma/ares)。Ares-Access 是基于 `PL-SQL` 语法的 ETL、跨源计算、数据分析、存计分离的数据计算集成引擎
+* [bigprime-dip](https://gitee.com/bigprime/bigprime-dip)。Data Integration Platform 是 Bigprime DGP 大数据数智平台中的一个核心子平台，专注于数据源管理、数据集成、数仓管理。该平台致力于通过高效的数据整合与管理，帮助企业实现数据驱动的价值创造。借助先进的插件化架构和灵活的自定义配置，Data Integration Platform 能够快速响应各种复杂的数据集成需求，为企业的数据治理之路提供坚实的技术支撑。
+* [mydata-boot](https://gitee.com/LIEN321/mydata-boot)。mydata是基于Web API的数据集成平台，提供数据集成服务，简化跨系统之间的数据对接； mydata-boot是平台后端，基于 SpringBoot 3 开发；
+  * [mydata-antd](https://gitee.com/LIEN321/mydata-antd)
+
 
 ## 不维护
 
