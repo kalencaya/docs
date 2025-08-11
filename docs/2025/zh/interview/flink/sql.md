@@ -109,15 +109,15 @@ WITH (
 
 语法：`TUMBLE(TABLE table_name,DESCRIPTOR(time_attr), size [, offset])`
 
-参数：table_name参数是表名，time_attr参数是时间属性，时间属性列可以为处理时间或事件时间，size参数用于定义窗口大小，offset参数用于定义窗口的偏移量，offset参数是可选参数
+参数：table_name 参数是表名，time_attr 参数是时间属性，时间属性列可以为处理时间或事件时间，size 参数用于定义窗口大小，offset 参数用于定义窗口的偏移量，offset 参数是可选参数
 
 ### 滑动窗口
 
-HOP(TABLE table_name,DESCRIPTOR(time_attr), slide, size [, offset])，其中table_name参数是表名，time_attr参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，slide参数用于定义窗口的滑动步长，size参数用于定义滑动窗口大小，offset参数用于定义窗口的偏移量
+`HOP(TABLE table_name,DESCRIPTOR(time_attr), slide, size [, offset])`，其中 table_name 参数是表名，time_attr 参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，slide参数用于定义窗口的滑动步长，size 参数用于定义滑动窗口大小，offset 参数用于定义窗口的偏移量
 
 ### 累计窗口
 
-累计窗口表值函数的定义方式为CUMULATE(TABLE table_name,DESCRIPTOR(time_attr), step, size)，其中table_name参数是表名，time_attr参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，step参数用于定义窗口的滑动步长，size参数用于定义窗口大小。
+累计窗口表值函数的定义方式为 `CUMULATE(TABLE table_name,DESCRIPTOR(time_attr), step, size)`，其中 table_name 参数是表名，time_attr 参数是时间属性列，时间属性列可以是处理时间或事件时间的时间属性列，step 参数用于定义窗口的滑动步长，size 参数用于定义窗口大小。
 
 ## Join
 
