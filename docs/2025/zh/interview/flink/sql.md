@@ -132,6 +132,7 @@ HOP(TABLE table_name,DESCRIPTOR(time_attr), slide, size [, offset])，其中tabl
   * [Interval Join语句](https://help.aliyun.com/zh/flink/realtime-flink/developer-reference/intervaljoin-statement)
   * [维表JOIN语句](https://help.aliyun.com/zh/flink/realtime-flink/developer-reference/join-statements-for-dimension-tables)
   * [Processing Time Temporal Join语句](https://help.aliyun.com/zh/flink/processing-time-temporal-join-statement)。paimon 支持
+  * [Flink SQL Join快速入门](https://help.aliyun.com/zh/flink/flink-sql-join-quickstart)
 
 ### DataStream
 
@@ -308,7 +309,164 @@ WHERE
 
 时间区间关联支持 Inner Interval Join、Left  Interval Join、Right Interval Join 和 Full Interval Join。
 
+```sql
+-- 使用 PROCTIME() 例子
+CREATE TABLE show_log_table (
+    log_id BIGINT,
+    show_params STRING,
+    proctime AS PROCTIME()
+) WITH (
+  'connector' = 'datagen',
+  'rows-per-second' = '1',
+  'fields.show_params.length' = '1',
+  'fields.log_id.min' = '1',
+  'fields.log_id.max' = '10'
+);
 
+CREATE TABLE click_log_table (
+    log_id BIGINT,
+    click_params STRING,
+    proctime AS PROCTIME()
+)
+WITH (
+  'connector' = 'datagen',
+  'rows-per-second' = '1',
+  'fields.click_params.length' = '1',
+  'fields.log_id.min' = '1',
+  'fields.log_id.max' = '10'
+);
+
+CREATE TABLE sink_table (
+    s_id BIGINT,
+    s_params STRING,
+    c_id BIGINT,
+    c_params STRING
+) WITH (
+  'connector' = 'print'
+);
+
+INSERT INTO sink_table
+SELECT
+    show_log_table.log_id as s_id,
+    show_log_table.show_params as s_params,
+    click_log_table.log_id as c_id,
+    click_log_table.click_params as c_params
+FROM show_log_table INNER JOIN click_log_table ON show_log_table.log_id = click_log_table.log_id
+AND show_log_table.proctime BETWEEN click_log_table.proctime - INTERVAL '4' HOUR AND click_log_table.proctime;
+
+-- 使用 event_time，watermark
+CREATE TABLE show_log_table (
+    log_id BIGINT,
+    show_params STRING,
+    row_time AS cast(CURRENT_TIMESTAMP as timestamp(3)),
+    WATERMARK FOR row_time AS row_time
+) WITH (
+  'connector' = 'datagen',
+  'rows-per-second' = '1',
+  'fields.show_params.length' = '1',
+  'fields.log_id.min' = '1',
+  'fields.log_id.max' = '10'
+);
+
+CREATE TABLE click_log_table (
+    log_id BIGINT,
+    click_params STRING,
+    row_time AS cast(CURRENT_TIMESTAMP as timestamp(3)),
+    WATERMARK FOR row_time AS row_time
+)
+WITH (
+  'connector' = 'datagen',
+  'rows-per-second' = '1',
+  'fields.click_params.length' = '1',
+  'fields.log_id.min' = '1',
+  'fields.log_id.max' = '10'
+);
+
+CREATE TABLE sink_table (
+    s_id BIGINT,
+    s_params STRING,
+    c_id BIGINT,
+    c_params STRING
+) WITH (
+  'connector' = 'print'
+);
+
+INSERT INTO sink_table
+SELECT
+    show_log_table.log_id as s_id,
+    show_log_table.show_params as s_params,
+    click_log_table.log_id as c_id,
+    click_log_table.click_params as c_params
+FROM show_log_table INNER JOIN click_log_table ON show_log_table.log_id = click_log_table.log_id
+AND show_log_table.row_time BETWEEN click_log_table.row_time - INTERVAL '4' HOUR AND click_log_table.row_time;
+```
 
 #### Lookup Join
 
+维表关联
+
+```sql
+-- 维表关联。维表只能用 PROCTIME() 查询。
+CREATE TABLE show_log (
+    log_id BIGINT,
+    `timestamp` as cast(CURRENT_TIMESTAMP as timestamp(3)),
+    user_id STRING,
+    proctime AS PROCTIME()
+)
+WITH (
+  'connector' = 'datagen',
+  'rows-per-second' = '10000000',
+  'fields.user_id.length' = '1',
+  'fields.log_id.min' = '1',
+  'fields.log_id.max' = '10'
+);
+
+CREATE TABLE user_profile (
+    user_id STRING,
+    age STRING,
+    sex STRING
+    ) WITH (
+  'connector' = 'redis',
+  'hostname' = '127.0.0.1',
+  'port' = '6379',
+  'format' = 'json',
+  'lookup.cache.max-rows' = '500',
+  'lookup.cache.ttl' = '3600',
+  'lookup.max-retries' = '1'
+);
+
+CREATE TABLE sink_table (
+    log_id BIGINT,
+    `timestamp` TIMESTAMP(3),
+    user_id STRING,
+    proctime TIMESTAMP(3),
+    age STRING,
+    sex STRING
+) WITH (
+  'connector' = 'print'
+);
+
+INSERT INTO sink_table
+SELECT 
+    s.log_id as log_id
+    , s.`timestamp` as `timestamp`
+    , s.user_id as user_id
+    , s.proctime as proctime
+    , u.sex as sex
+    , u.age as age
+FROM show_log AS s
+LEFT JOIN user_profile FOR SYSTEM_TIME AS OF s.proctime AS u
+ON s.user_id = u.user_id
+```
+
+#### Temporal Join
+
+Lookup Join 即是基于 Temporal Join。
+
+## 列转行
+
+参考文档：
+
+* [Array, Multiset and Map Expansion](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/joins/#array-multiset-and-map-expansion)
+* [Table Function](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/joins/#table-function)。需配合 UDTF
+* [FlinkSQL实现行转列](https://blog.csdn.net/liuwei0376/article/details/125038130)
