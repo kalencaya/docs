@@ -14,6 +14,8 @@
 * [MybatisPlus不好用？帅小伙一气之下写了个MybatisPlusPro](https://mp.weixin.qq.com/s/8MRHmSbQJCGnit8SyPd5EQ)
 * [MyBatis-Plus更新部分字段](https://mp.weixin.qq.com/s/7RHqSEtlrEQ8iluZj29Elw)
 * [mybatis-plus-join](https://github.com/yulichang/mybatis-plus-join)。[MyBatis-Plus联表查询的短板，终于有一款工具补齐了](https://mp.weixin.qq.com/s/c17P7c3w1u567KaRrNwvDA)
+* [SpringBoot 自研运行时 SQL 调用树，3 分钟定位慢 SQL！
+  ](https://mp.weixin.qq.com/s/jqXflEAYu20g6wwTLT6ZoQ)
 
 ## 性能优化
 
