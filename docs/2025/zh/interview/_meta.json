@@ -21,5 +21,11 @@
     "name": "gravitino",
     "collapsed": true,
     "label": "nav.interview.gravitino"
+  },
+  {
+    "type": "dir",
+    "name": "warehouse",
+    "collapsed": true,
+    "label": "nav.interview.warehouse"
   }
 ]

@@ -430,6 +430,10 @@
     "zh": "数据血缘",
     "en": "Lineage"
   },
+  "nav.interview.warehouse": {
+    "zh": "湖仓",
+    "en": "WareHouse"
+  },
 
   "nav.information": {
     "zh": "信息系统",
