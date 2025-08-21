@@ -1,0 +1,124 @@
+# 湖仓
+
+## 数仓分层
+
+参考链接：
+
+* [数仓分层](https://help.aliyun.com/zh/dataphin/several-positions-layered)
+* [架构与模型设计](https://help.aliyun.com/zh/dataworks/use-cases/architecture-and-model-design/)
+* [简单聊聊数仓分层](https://mp.weixin.qq.com/s/dovyekHjePIZS5MK023gPg)
+* [腾讯面试：数仓建设需要遵循哪些规范？](https://mp.weixin.qq.com/s/MCNyGlYrUmVwukw110gc8w)
+* [腾讯面试：数仓分层架构是怎么样的？为什么要这样设计？](https://mp.weixin.qq.com/s/OXs8g-4j-E730PbSTPXJ6Q)
+* [数据仓库经典面试题（50道）](https://mp.weixin.qq.com/s/ABffo7h4ndWI2KrbxtFrkw)
+* [大数据仓库开发规范示例](https://mp.weixin.qq.com/s/ylajYqDgwaCldMtfh4w9Vg)
+
+## Flink
+
+* [如何使用DataStream API实现FlinkSQL相同的功能](https://mp.weixin.qq.com/s/2gAOrgZxlp7-VqS3gTLwhg)
+* [万字长文 | Flink 运维指南](https://mp.weixin.qq.com/s/AXVK9xcaIOHi_PPdFDIe3A)
+* [Flink SQL 四种 Join 方式详解：原理、场景与实战](https://mp.weixin.qq.com/s/tkWJ_GV8c67zo5gGOO4BNw)
+* [腾讯面试：Flink五种Join方式，各自有什么特点，应用场景分别是怎么样的？](https://mp.weixin.qq.com/s/VTPQJ2-9XPQDq60WiPJp0w)
+* [Flink + YARN + Gitlab 自动提交代码全流程详解](https://mp.weixin.qq.com/s/8oWcKJBFS5Eeik1XFQ42lg)
+* [Flink 1.19 + Paimon 1.2 构建实时数据湖深度实践指南](https://mp.weixin.qq.com/s/yS2hUhIlerQF7Gscv5dTmw)
+* [Flink SQL × Paimon 构建实时数仓最佳实践](https://mp.weixin.qq.com/s/6FIKYF94J35wkVE6-8VJMA)
+* [超强总结：Flink最新学习文档（十二章）](https://mp.weixin.qq.com/s/8KirmbnoFLD3tvDT9QW4Jg)
+* [超强总结：Flink可以优化的方方面面](https://mp.weixin.qq.com/s/Su4A6imtyficTHWoEbwyXA)
+* [Flink经典面试题（200道）](https://mp.weixin.qq.com/s/JabXbOR0E7d69y2jzcvhNQ)
+* [Flink源码分析 经典面试题（200道）](https://mp.weixin.qq.com/s/rJapy9FvTvqbyrwBXQVkHQ)
+* [FlinkSQL 经典面试题（200道）](https://mp.weixin.qq.com/s/9mFgZTk18mDl9bDJr0cZUw)
+* [网易面试：Flink优化可以从哪几个方面入手？分别详细介绍一下？](https://mp.weixin.qq.com/s/rVPoiXYee3JztCJx1ueFbg)
+* [建议收藏 | FlinkSQL电商订单状态追踪与实时处理代码](https://mp.weixin.qq.com/s/AvrhHI-HC-LfvDz7V9C7Hw)
+* [腾讯面试：Flink哪些场景下的数据需要保存到状态中参与计算？](https://mp.weixin.qq.com/s/dPnf0MdS0C3gUpx5ntiVAw)
+* [腾讯面试：Flink Checkpoint与两阶段提交对下游算子拉取数据时机的影响](https://mp.weixin.qq.com/s/1PSBv0X42yp-ZJIMchcPWA)
+* [Flink 1.19 风控管理系统核心代码实现](https://mp.weixin.qq.com/s/YeS-8hjJ6y6a63thTuv9MQ)
+* [一个可以写进简历的Flink在金融风控行业应用的真实案例（附详细业务代码）](https://mp.weixin.qq.com/s/kgHCtbnjAjEpxA7ehr7sFQ)
+* [腾讯面试：Flink Checkpoint 和 Spark Checkpoint 有什么区别？](https://mp.weixin.qq.com/s/4G-2ueRdBFtyzc2UoLE7Qg)
+* [Flink Checkpoint源码级拆解](https://mp.weixin.qq.com/s/B49irKs8pEz8f_dVal1i5g)
+* [腾讯面试：Flink100G大状态如何优化？有哪些参数可以调整？](https://mp.weixin.qq.com/s/PigdyC221F9BwF5y37y0kA)
+* [Flink中的Savepoint和Checkpoint有什么区别？](https://mp.weixin.qq.com/s/b3_gEga_GWho14thPnCemQ)
+* [腾讯面试：Flink出现反压如何排查？有哪些参数可以调整？](https://mp.weixin.qq.com/s/8O3bAtXCZNwOOnC4qbXFrQ)
+* [Flink 反压问题深度剖析与解决方案](https://mp.weixin.qq.com/s/GTR1WW6OawFkHMOcpVvulg)
+* [美团面试：Flink 反压机制（Backpressure）是如何实现的？出现反压如何解决?](https://mp.weixin.qq.com/s/KI0g_EQTlVC-gTpHeiA0zg)
+* [阿里面试：请详细解释一下Flink内存管理，具体有哪些参数可以调整？](https://mp.weixin.qq.com/s/n6XY869TySVCiWLwBRk-Xg)
+* [Flink内存调优指南（经验版）](https://mp.weixin.qq.com/s/gPWSvH3_OfVyPvpSMv8Qkg)
+* [蚂蚁面试：Flink并行度、算子、算子链、Slot、Slot共享组之间的关系是什么？如何设置能够使资源利用最大化？](https://mp.weixin.qq.com/s/--shF1G4oMP3hd-DbehNzA)
+* [京东面试：如何合理设置Flink并行度？有哪些优化的点？](https://mp.weixin.qq.com/s/kwuko2yxK4wvsQg5T1bMGw)
+* [百度面试：Flink CEP复杂事件处理是什么？原理是怎么样的？哪些场景可以使用？](https://mp.weixin.qq.com/s/HbzmwnYs1ufuvSJR2VTIoA)
+* [字节面试：Flink如何做压测？如何保证系统稳定？](https://mp.weixin.qq.com/s/SgBUoh3LA1nuhvHPz5lXoA)
+* [FlinkSQL中Catalog的使用场景及案例详解](https://mp.weixin.qq.com/s/6eU3UVSrklnP5TxSUM4-NA)
+* [省流版 | Apache Flink 2.0.0 核心特点总结](https://mp.weixin.qq.com/s/05TihI8LdNMXQ_B3_eo1Tw)
+* [Flink 消费 Kafka 配置优化实战分享](https://mp.weixin.qq.com/s/YelSnL5--MGhoqP8gt_gmg)
+* [Flink一致性语义和checkpoint时barrier对齐和不对齐的关系是什么？](https://mp.weixin.qq.com/s/dflwaEVPmW7RjNkCaVoZmA)
+* [再也不用state和checkpoint傻傻分不清了，Flink1.13开始statebacked的配置方式好清晰](https://mp.weixin.qq.com/s/dMX6oR-4ze7Onx3cmsF_6Q)
+* [Flink State有哪几种类型？](https://mp.weixin.qq.com/s/suSOEXENf6AE8xzABZNGYw)
+* [Flink Watermark都包不住的这部分迟到数据怎么处理？](https://mp.weixin.qq.com/s/R3ac7PwKWsXd0L_OaLetXQ)
+* [Flink Watermark卡住不动，出现eventtime倾斜问题怎么办？](https://mp.weixin.qq.com/s/mKncIfP7EKphn8zid4oksw)
+* [Flink Watermark的两种产生方式：标点水位线和周期水位线详解s](https://mp.weixin.qq.com/s/gAz3P-D7ayw_QS1jSUobXA)
+* [Flink乱序问题解决神器Watermark详解及代码实战](https://mp.weixin.qq.com/s/uP6M7QzKO_c3plqa1PH7SQ)
+* [Flink Watermark何种情况下可以触发窗口计算？](https://mp.weixin.qq.com/s/x_PD8B2e0pjkj4tJrTFVig)
+* [Flink 并行运行时Watermark如何向下传递？](https://mp.weixin.qq.com/s/f0WyNYOOubwQO4jtHZuCuA)
+* [【视频】| Flink 窗口函数是个好东西，你真的会用吗？](https://mp.weixin.qq.com/s/mxLdomkwiaKdN8GCEZdYjg)
+* Flink CDC
+  * [什么是Chunk分片？它如何提高Flink CDC的性能？](https://mp.weixin.qq.com/s/Pqx4eRnHFEsgz4j9IZBhLg)
+  * [FlinkCDC经典面试题（200道）](https://mp.weixin.qq.com/s/1CZHjv6FsQd0jSJQU0-2PQ)
+  * [建议收藏 | Flink CDC 系列总结篇](https://mp.weixin.qq.com/s/rzbdLkKSdhy13Z3vzaSIpg)
+  * [终于搞明白了 Flink CDC 2.0 原理，人麻了...](https://mp.weixin.qq.com/s/OqF2RctIqjcrhjPlp6HoEw)
+
+## Doris
+
+* [Doris查询太慢？要不要试试这几项加速技术。。](https://mp.weixin.qq.com/s/7fH26G-eplvxGc2EaX6SuA)
+* [腾讯面试：Doris优化可以从哪些点入手？请详细描述优化方案。。](https://mp.weixin.qq.com/s/tMzwGVfS_TLtxGeTC1CIlw)
+* [阿里面试：Doris冷热分层原理是什么？如何配置冷热分层。。](https://mp.weixin.qq.com/s/B7ih508eSbEK1lK4F6tY-g)
+* [腾讯面试：如何使用Doris × Paimon构建湖仓一体，请给出详细建设方案。。](https://mp.weixin.qq.com/s/cwV1tBa5O5_NcT73zkuxGA)
+* [阿里面试：ClickHouse 为什么在多表Join场景中性能不及Doris ？](https://mp.weixin.qq.com/s/xV08c4yihcMAA1hUEy8Vqw)
+* [腾讯面试：介绍一下Doris问题排查思路，有没有总结过相关文档？](https://mp.weixin.qq.com/s/yH1ujPLk_HNcg9SaxsSXPQ)
+* [腾讯面试：Doris 物化视图的使用场景是怎么样的，有哪几种数据更新方式？](https://mp.weixin.qq.com/s/7GEWKzGCZjYC1eCxW5-sxA)
+* [Doris经典面试题（200道）](https://mp.weixin.qq.com/s/Zr-JDDKxWn75QukbH_K9Eg)
+* [【Apache Doris】行列转换 最佳实践指南](https://mp.weixin.qq.com/s/FAOsywc7RmB7_LdsEpIWjw)
+* [【Apache Doris】部分列更新 最佳实践指南](https://mp.weixin.qq.com/s/Fv0_bTArlmfWy6tXh91pBw)
+* [终态部署、易扩展、无感升级，Doris Operator 支持高效 Kubernetes 容器化部署方案](https://mp.weixin.qq.com/s/4z4pcCB7Y3Y8WxriOdt8SQ)
+* [我用X2Doris干翻了3000张表，老板还以为我组了个团队](https://mp.weixin.qq.com/s/MG_f7sIShfGqKDi7ch1Tqg)
+* [全网最全Doris实战文章合集](https://mp.weixin.qq.com/s/ALQyNOFEBxxfgmb5HeaxUQ)
+* [Doris 数仓使用规范（经验版）](https://mp.weixin.qq.com/s/on3_m4WA5njBL_QL1wkaOw)
+
+## StarRocks
+
+* [超强总结：StarRocks可以优化的方方面面](https://mp.weixin.qq.com/s/_eQM0eU_9CNaPLBDUVBmuQ)
+* [字节面试：StarRocks中如何优化大表JOIN？](https://mp.weixin.qq.com/s/M6_JZqP3RGy4Lnsy_6fQ8w)
+* [StarRocks经典面试题（200道）](https://mp.weixin.qq.com/s/lrJZcmhyoaE2R-kn8MXcQQ)
+
+## Paimon
+
+* [阿里面试：Paimon Changelog 和 合并引擎有哪些组合，分别适用于哪些场景？](https://mp.weixin.qq.com/s/fbY76CikonuCgcbMge0Zwg)
+* [腾讯面试：Paimon自动分区清理与快照清理机制是怎么样的？哪个先清理？](https://mp.weixin.qq.com/s/aPfoK4Q8zbzMJE1kFmSadA)
+* [超强整理：Paimon最新学习文档（十一章）](https://mp.weixin.qq.com/s/KcnoixlBj-716ufiLP-I6A)
+* [Paimon 经典面试题（200道）](https://mp.weixin.qq.com/s/5XcRZewZj_liYI2IkQPHkw)
+* [腾讯面试：请详细描述Paimon如何基于LSM树实现高吞吐写入和高效查询？](https://mp.weixin.qq.com/s/E4y7T9Bna5KnJ0K_4R-aIA)
+* [阿里面试：Paimon QPS太低怎么优化？](https://mp.weixin.qq.com/s/ohP6g_PF-lbNBsED7wAePA)
+* [阿里面试：Hudi，Iceberg，Paimon之间的差异有哪些？该如何选择？](https://mp.weixin.qq.com/s/A0Udo_FJM0n1sFOGjcgHKQ)
+* [网易面试：Hudi、Iceberg、Paimon有什么异同点？如何选型？](https://mp.weixin.qq.com/s/BCZwLdphk8v7k9QT69zQRw)
+* [这篇文章把Paimon和Fluss的关系给彻底说清楚了](https://mp.weixin.qq.com/s/0wtdDnrTcCfWJZpEZ_xcJA)
+* [超强总结：Paimon可以优化的方方面面](https://mp.weixin.qq.com/s/LhWHa5oFMWzFmXTTLDB21g)
+* [阿里面试：Paimon只保留两天的快照，如何关联昨天的数据？](https://mp.weixin.qq.com/s/OXN83J9UGO4wwDipPP8TSQ)
+* [小米面试：Paimon Join用法有哪些？大规模数据场景下如何优化 Join 性能？](https://mp.weixin.qq.com/s/1LLz8I0MIXoTk-9H_7VlOA)
+* [老板说要降本又增效，我把Paimon搬进了Doris家，然后...](https://mp.weixin.qq.com/s/czRzKRfWQcsLlhE3qDFG2w)
+* [建议收藏 | Paimon 实战文章总结](https://mp.weixin.qq.com/s/fzZNz7BXonOSay76ZDNVPQ)
+* [Paimon通过分支操作来完成数据修正](https://mp.weixin.qq.com/s/rUyD12pS3rNll1hpiSk35Q)
+* [Paimon使用技巧 | 通过tags查询历史数据](https://mp.weixin.qq.com/s/1CVmwpaGHl69UtTUMcn3Aw)
+* [利用Paimon系统表快速获取物理表的快照文件配置等信息](https://mp.weixin.qq.com/s/z15bkybaJz4EXu7aHuMQXw)
+
+## 综合案例
+
+* [data-warehouse-learning](https://github.com/Mrkuhuo/data-warehouse-learning)。数据湖建设实战项目代码
+* [基于Kubernetes的湖仓一体高可用架构部署指南](https://mp.weixin.qq.com/s/eJwO1tgLTrW6f0tK-HUvZw)
+* [超强总结 | Kubernetes 详细学习路线图](https://mp.weixin.qq.com/s/v_wb8eBLF0CMF04_vFdMWQ)
+* [阿里面试：如果让你负责大数据平台的架构，需要考虑哪些点？如何设计？](https://mp.weixin.qq.com/s/HVUtsk6040EUXENVulOSSQ)
+* [什么是湖仓一体数据平台？怎么构建湖仓一体数据平台](https://mp.weixin.qq.com/s/AjYdOFOJ2i5FXF3-x1FR7g)
+* [一文聊透开放表格式和开放数据Lakehouse](https://mp.weixin.qq.com/s/IAvuLBYf80fSgRpDcUGFYQ)
+
+## 其他
+
+* [大数据架构师简历“天花板”模板：架构/开发/优化/管理，四大核心全覆盖！](https://mp.weixin.qq.com/s/gpQeXGschfoBhpk9ucMG_A)
+* [阿里面试：列式存储和行式存储有什么区别？他们的应用场景分别是怎么样？](https://mp.weixin.qq.com/s/m-8sbWWIk6Lg8ZYhcsCX7A)
+* [大数据计算引擎（Hadoop,Spark,Flink）发展史](https://mp.weixin.qq.com/s/Wtdinl7_c8T3vAwMCmdXSQ)
+* [新入职的老哥终于把数据治理给讲清楚了，真香！](https://mp.weixin.qq.com/s/02g6_1YkRXpEPJGrm0I8pg)

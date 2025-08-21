@@ -24,8 +24,8 @@
   },
   {
     "type": "dir",
-    "name": "warehouse",
+    "name": "lakehouse",
     "collapsed": true,
-    "label": "nav.interview.warehouse"
+    "label": "nav.interview.lakehouse"
   }
 ]
