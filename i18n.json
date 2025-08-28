@@ -362,33 +362,9 @@
     "zh": "文档",
     "en": "Doc"
   },
-  "nav.interview.flink.concept": {
-    "zh": "概念",
-    "en": "Concept"
-  },
-  "nav.interview.flink.base": {
-    "zh": "基础",
-    "en": "Base"
-  },
-  "nav.interview.flink.advance": {
-    "zh": "进阶",
-    "en": "Advance"
-  },
-  "nav.interview.flink.env": {
-    "zh": "环境",
-    "en": "Env"
-  },
-  "nav.interview.flink.quick-start": {
-    "zh": "快速开始",
-    "en": "Quick Start"
-  },
-  "nav.interview.flink.sql": {
-    "zh": "Flink SQL",
-    "en": "Flink SQL"
-  },
-  "nav.interview.flink.gateway": {
-    "zh": "Flink SQL Gateway",
-    "en": "Flink SQL Gateway"
+  "nav.interview.flink.practice": {
+    "zh": "实践",
+    "en": "Practice"
   },
   "nav.interview.paimon": {
     "zh": "Paimon",

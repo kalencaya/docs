@@ -5,43 +5,15 @@
     "label": "nav.interview.flink.index"
   },
   {
-    "type": "file",
+    "type": "dir",
     "name": "doc",
+    "collapsed": true,
     "label": "nav.interview.flink.doc"
   },
   {
-    "type": "file",
-    "name": "concept",
-    "label": "nav.interview.flink.concept"
-  },
-  {
-    "type": "file",
-    "name": "base",
-    "label": "nav.interview.flink.base"
-  },
-  {
-    "type": "file",
-    "name": "advance",
-    "label": "nav.interview.flink.advance"
-  },
-  {
-    "type": "file",
-    "name": "env",
-    "label": "nav.interview.flink.env"
-  },
-  {
-    "type": "file",
-    "name": "quick-start",
-    "label": "nav.interview.flink.quick-start"
-  },
-  {
-    "type": "file",
-    "name": "sql",
-    "label": "nav.interview.flink.sql"
-  },
-  {
-    "type": "file",
-    "name": "gateway",
-    "label": "nav.interview.flink.gateway"
+    "type": "dir",
+    "name": "practice",
+    "collapsed": true,
+    "label": "nav.interview.flink.practice"
   }
 ]
