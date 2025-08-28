@@ -366,6 +366,10 @@
     "zh": "实践",
     "en": "Practice"
   },
+  "nav.interview.flink.devops": {
+    "zh": "DevOps",
+    "en": "DevOps"
+  },
   "nav.interview.paimon": {
     "zh": "Paimon",
     "en": "Paimon"

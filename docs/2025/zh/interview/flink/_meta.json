@@ -15,5 +15,11 @@
     "name": "practice",
     "collapsed": true,
     "label": "nav.interview.flink.practice"
+  },
+  {
+    "type": "dir",
+    "name": "devops",
+    "collapsed": true,
+    "label": "nav.interview.flink.devops"
   }
 ]
