@@ -21,5 +21,11 @@
     "name": "devops",
     "collapsed": true,
     "label": "nav.interview.flink.devops"
+  },
+  {
+    "type": "dir",
+    "name": "question",
+    "collapsed": true,
+    "label": "nav.interview.flink.question"
   }
 ]

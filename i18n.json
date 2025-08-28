@@ -370,6 +370,10 @@
     "zh": "DevOps",
     "en": "DevOps"
   },
+  "nav.interview.flink.question": {
+    "zh": "面试题",
+    "en": "Question"
+  },
   "nav.interview.paimon": {
     "zh": "Paimon",
     "en": "Paimon"
