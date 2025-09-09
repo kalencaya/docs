@@ -15,16 +15,23 @@
 
 #### Flink 架构与概念
 
-1. 什么是Apache Flink？它的主要特点是什么？
-2. Flink相比其他流处理框架（如Spark Streaming、Storm）有哪些优势？
-3. 解释Flink的架构组件及其作用。
-4. Flink中JobManager和TaskManager的职责是什么？
-5. 什么是TaskSlot？它在Flink中扮演什么角色？
-6. Flink如何处理状态？什么是状态后端（State Backend）？
-7. Flink中的CheckpointCoordinator有什么作用？
-8. 什么是Flink的资源管理器（ResourceManager）？
-9. 解释Flink的分布式执行模型。
-10. Flink的部署模式有哪些？各有什么特点？
+##### 1.什么是 Apache Flink ？它的主要特点是什么？
+
+Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行有状态计算。并且 Flink 提供了数据分布、容错机制以及资源管理等核心功能。Flink提供了诸多高抽象层的API以便用户编写分布式任务： DataSet API， 对静态数据进行批处理操作，将静态数据抽象成分布式的数据集，用户可以方便地使用Flink提供的各种操作符对分布式数据集进行处理，支持Java、Scala和Python。 DataStream API，对数据流进行流处理操作，将流式的数据抽象成分布式的数据流，用户可以方便地对分布式数据流进行各种操作，支持Java和Scala。 Table API，对结构化数据进行查询操作，将结构化数据抽象成关系表，并通过类SQL的DSL对关系表进行各种查询操作，支持Java和Scala。
+
+##### 2.Flink 相比其他流处理框架（如 Spark Streaming、Storm）有哪些优势？
+
+##### 3.解释 Flink 的架构组件及其作用。
+
+![distributed-runtime](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg)
+
+1. Flink中 JobManager 和 TaskManager 的职责是什么？
+2. 什么是 TaskSlot？它在 Flink 中扮演什么角色？
+3. Flink 如何处理状态？什么是状态后端（State Backend）？
+4. Flink 中的 CheckpointCoordinator 有什么作用？
+5. 什么是 Flink 的资源管理器（ResourceManager）？
+6. 解释 Flink 的分布式执行模型。
+7. Flink 的部署模式有哪些？各有什么特点？
 
 #### 02.基本API与操作
 

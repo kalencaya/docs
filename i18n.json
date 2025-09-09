@@ -337,6 +337,10 @@
     "zh": "包管理",
     "en": "Package"
   },
+  "nav.cncf.alert": {
+    "zh": "监控告警",
+    "en": "Alert"
+  },
   "nav.cncf.cicd": {
     "zh": "CI/CD",
     "en": "CI/CD"

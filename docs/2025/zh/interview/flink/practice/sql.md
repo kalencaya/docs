@@ -470,3 +470,15 @@ Lookup Join 即是基于 Temporal Join。
 * [Array, Multiset and Map Expansion](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/joins/#array-multiset-and-map-expansion)
 * [Table Function](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/joins/#table-function)。需配合 UDTF
 * [FlinkSQL实现行转列](https://blog.csdn.net/liuwei0376/article/details/125038130)
+
+## DataStream API 和 Table API
+
+二者互转，DataStream 如何转化为 Table? Table 如何转化为 DataStream？
+
+`TableEnvironment` 是 Table API 和 SQL API 的执行环境，`TableEnvironment` 在 Table API 和 SQL API 中的地位和 `StreamExecutionEnvironment` 在 DataStream API 中的地位是相同的，`TableEnvironment` 可以给 Table API 和 SQL API 作业提供上下文环境信息以及各种接口，比如管理表、用户自定义函数等元数据信息，并提供 SQL 查询和 SQL 执行的能力。
+
+`TableEnvironment` 是一个接口，有两个实现类：
+
+* `TableEnvironmentImpl`。只使用 Table API 和 SQL API
+* `StreamTableEnvironmentImpl`。混合使用 Table API、SQL API 和 DataStream API
+

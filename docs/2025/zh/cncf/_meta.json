@@ -37,6 +37,11 @@
   },
   {
     "type": "file",
+    "name": "alert",
+    "label": "nav.cncf.alert"
+  },
+  {
+    "type": "file",
     "name": "cicd",
     "label": "nav.cncf.cicd"
   }
