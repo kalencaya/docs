@@ -517,7 +517,7 @@ public class Test {
 * function 管理。包含用户自定义函数和内置函数。
 * module 管理。module 用于管理用户自定义函数。Flink 提供了 `HiveModule`，从而支持在 Flink 中运行 `Hive SQL`。
 
-`TableEnvironment` 可以执行 SQL API：
+`TableEnvironment` 可以执行 SQL API，参考：[SqlRunner.java](https://github.com/apache/flink-kubernetes-operator/blob/main/examples/flink-sql-runner-example/src/main/java/org/apache/flink/examples/SqlRunner.java)
 
 ```java
 import org.apache.flink.api.java.utils.ParameterTool;
