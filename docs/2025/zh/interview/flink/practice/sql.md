@@ -482,3 +482,171 @@ Lookup Join 即是基于 Temporal Join。
 * `TableEnvironmentImpl`。只使用 Table API 和 SQL API
 * `StreamTableEnvironmentImpl`。混合使用 Table API、SQL API 和 DataStream API
 
+```java
+import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.EnvironmentSettings;
+import org.apache.flink.table.api.TableEnvironment;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+
+public class Test {
+
+    public static void main(String[] args) {
+        ParameterTool parameterTool = ParameterTool.fromArgs(args);
+        Configuration configuration = Configuration.fromMap(parameterTool.toMap());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(configuration);
+        env.getConfig().setGlobalJobParameters(parameterTool);
+
+        EnvironmentSettings settings = EnvironmentSettings
+                .newInstance()
+                .inStreamingMode()
+                .build();
+      
+        TableEnvironment tableEnv = TableEnvironment.create(settings);
+        // StreamTableEnvironment streamTableEnv = StreamTableEnvironment.create(env, settings);
+    }
+}
+```
+
+`TableEnvironment` 提供元数据管理的功能：
+
+* catalog 管理。Flink 默认的 catalog 和 database 分别为 `default_catalog` 和 `default_database`。
+* database 管理。
+* table 管理。table 包含 table 和 view，其中 table 和 view 还分为 temporal 和永久 2 种。
+* function 管理。包含用户自定义函数和内置函数。
+* module 管理。module 用于管理用户自定义函数。Flink 提供了 `HiveModule`，从而支持在 Flink 中运行 `Hive SQL`。
+
+`TableEnvironment` 可以执行 SQL API：
+
+```java
+import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.*;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+
+public class Test {
+
+    public static void main(String[] args) {
+        ParameterTool parameterTool = ParameterTool.fromArgs(args);
+        Configuration configuration = Configuration.fromMap(parameterTool.toMap());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(configuration);
+        env.getConfig().setGlobalJobParameters(parameterTool);
+
+        EnvironmentSettings settings = EnvironmentSettings
+                .newInstance()
+                .inStreamingMode()
+                .build();
+        TableEnvironment tableEnv = TableEnvironment.create(settings);
+
+        StreamTableEnvironment streamTableEnv = StreamTableEnvironment.create(env, settings);
+
+        // 执行 DQL，返回结果流
+        Table table = tableEnv.sqlQuery("select xxx from xxxx");
+        // 调用 Table 的 #execute() 方法：该方法会自动生成一个 CollectSinkFunction
+        // CollectSinkFunction 可以将查询结果返回提交作业的客户端
+        TableResult executeResult = table.execute();
+        // 将当前表的结果插入目标表，方法入参为目标表
+        TableResult executeInsertResult = table.executeInsert("sink_table");
+        // 执行 DDL、DML、DQL、DCL
+        // 如果 SQL 语句是 DML 或 DQL，作业提交之后就会运行起来，比如 INSERT INTO…SELECT…FROM…WHERE…
+        // 如果 SQL 语句是 DDL 或 DCL，那么在语句执行完成之后，就会直接返回结果并退出程序，比如 CREATE TABLE…
+        TableResult executeSqlResult = tableEnv.executeSql("xxx");
+
+        // StatementSet 用于运行多段 SQL 逻辑，只有调用 #execute() 方法才会执行
+        StatementSet statementSet = tableEnv.createStatementSet();
+        TableResult statementSetResult = statementSet
+                .addInsertSql("INSERT INTO xxx SELECT xxx FROM xxxx")
+                .addInsertSql("INSERT INTO xxx SELECT xxx FROM xxxx")
+                .addInsertSql("INSERT INTO xxx SELECT xxx FROM xxxx")
+                .execute();
+    }
+```
+
+### Table API 和 SQL API 原理
+
+参考链接：
+
+* [Determinism In Continuous Queries](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/table/concepts/determinism/)
+* [Dynamic Tables](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/table/concepts/dynamic_tables/)
+
+Flink 能实现 SQL 流处理的原理有 2 个：
+
+* 流表二象性。参考：[Flink架构浅析：流表二象性](https://juejin.cn/post/7439594533002444838)
+* 动态表。如何将无界流转化为表，动态表如何通过 
+* 连续查询。对动态表的查询会产生一个连续查询，连续查询永不停止，输出一个动态表。连续查询的核心是将表的更新映射为更新日志流
+
+Flink 实现过程如下：
+
+![stream-query-stream](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/table-streaming/stream-query-stream.png)
+
+* 读取源数据，将无界流转化为动态表。源数据中的每条数据都会被转化为一条 `INSERT` 类型的 changelog
+* 在动态表执行连续查询。相比于批处理，连续查询不会终止，只要输入表更新，就会输出新的结算结果。
+* 连续查询输出的结果为动态表
+* 将动态表转化为无界流，写入外部存储。Flink 会将动态表翻译成无界流，Flink 支持 3 种方式：
+  * Append-Only。动态表只有 `INSERT` 类型数据
+  * Retract。retract 流有 2 种消息：Add 和 Retract（回撤）。`INSERT` 转化为 Add 消息，`DELETE` 转化为 Retract 消息，`UPDATE` 转化为一条 Retract 消息和一条 Add 消息，通过 Retract 消息将旧结果删除，通过 Add 消息写入新的结果
+    * Add 消息前缀为 `+`，Retract 消息前缀为 `-`。
+  * Upsert。upsert 流有 2 种消息：Upsert 和 Delete。执行 Upsert 操作依赖主键，因此动态表必须有主键。`INSERT` 和 `UPDATE` 转化为 Upsert 消息，`DELETE` 转化为 Delete 消息
+    * Upsert 消息前缀为 `*`，Delete 消息前缀为 `-`。
+
+动态表可以编码为 Append-only 流、Retract 流和 Upsert 流，而 Table API 和 SQL API 中的 Table 对象与 DataStream API 的 DataStream 对象之间的转换就是动态表到数据流的转换。
+
+### Table API、SQL API 和 DataStream API 转换
+
+`StreamTableEnvironment` 支持 Table API 和 SQL API 与 DataStream API 的集成，`TableEnvironment` 不支持。
+
+```java
+import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.datastream.DataStreamSource;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.*;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.types.Row;
+import org.apache.flink.types.RowKind;
+
+public class Test {
+
+    public static void main(String[] args) {
+        ParameterTool parameterTool = ParameterTool.fromArgs(args);
+        Configuration configuration = Configuration.fromMap(parameterTool.toMap());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(configuration);
+        env.getConfig().setGlobalJobParameters(parameterTool);
+
+        EnvironmentSettings settings = EnvironmentSettings
+                .newInstance()
+                .inStreamingMode()
+                .build();
+        StreamTableEnvironment streamTableEnv = StreamTableEnvironment.create(env, settings);
+
+        DataStreamSource<Row> dataStream = env.fromData(
+                Row.ofKind(RowKind.INSERT, "商品1", 12),
+                Row.ofKind(RowKind.INSERT, "商品2", 7),
+                Row.ofKind(RowKind.UPDATE_BEFORE, "商品1", 12),
+                Row.ofKind(RowKind.UPDATE_AFTER, "商品1", 66)
+                );
+        Table table = streamTableEnv.fromChangelogStream(dataStream);
+        streamTableEnv.createTemporaryView("source_table", table);
+
+        streamTableEnv.executeSql("""
+                SELECT 
+                    f0 AS pid,
+                    SUM(f1) AS all
+                FROM source_table
+                GROUP BY f0
+                """).print();
+    }
+}
+```
+
+`StreamTableEnvironment` 提供了 6 个方法用于转换：
+
+* `StreamTableEnvironment#fromChangelogStream(DataStream<Row> dataStream)`。DataStream 的 StreamRecord 数据中保存了事件时间戳，转换为 Table 对象后，事件时间戳将会被丢弃。当 DataStream 对象转换为 Table 对象后，Watermark 不会在 DataStream API 和 Table API 之间的算子间传输。
+* `StreamTableEnvironment#fromChangelogStream(DataStream<Row> dataStream, Schema schema)`。可以通过 Schema 为转换得到的表重新指定时间属性、Watermark 生成策略、主键。
+* `StreamTableEnvironment#fromChangelogStream(DataStream<Row> dataStream, Schema schema, ChangelogMode changelogMode)`。入参 `ChangelogMode` 允许指定转换得到的表对应的更新日志流的类型
+* `StreamTableEnvironment#toChangelogStream(Table table)`。入参 Table 包含事件时间列，那么转换为 DataStream 后，数据的事件时间将会保存在 StreamRecord 的 timestamp 字段中。同时，Watermark 也会在 Table API 和 DataStream API 的算子间正常传播。
+* `StreamTableEnvironment#toChangelogStream(Table table, Schema targetSchema)`。通过入参 Schema，我们可以将 Table 中数据的事件时间作为一个元数据的列写出，从而将 Table 中数据的事件时间保留下来。
+* `StreamTableEnvironment#toChangelogStream(Table table, Schema targetSchema, ChangelogMode changelogMode)`。入参 `ChangelogMode` 允许将表按照指定的更新模式转换为数据类型为 Row 的 DataStream
+
