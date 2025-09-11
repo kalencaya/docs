@@ -24,6 +24,12 @@
   },
   {
     "type": "dir",
+    "name": "doris",
+    "collapsed": true,
+    "label": "nav.interview.doris"
+  },
+  {
+    "type": "dir",
     "name": "lakehouse",
     "collapsed": true,
     "label": "nav.interview.lakehouse"

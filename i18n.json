@@ -418,6 +418,10 @@
     "zh": "数据血缘",
     "en": "Lineage"
   },
+  "nav.interview.doris": {
+    "zh": "Doris",
+    "en": "Doris"
+  },
   "nav.interview.lakehouse": {
     "zh": "湖仓",
     "en": "LakeHouse"
