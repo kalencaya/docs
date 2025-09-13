@@ -426,6 +426,10 @@
     "zh": "湖仓",
     "en": "LakeHouse"
   },
+  "nav.interview.trouble_shoot": {
+    "zh": "问题定位",
+    "en": "Trouble Shoot"
+  },
 
   "nav.information": {
     "zh": "信息系统",

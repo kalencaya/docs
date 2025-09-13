@@ -33,5 +33,11 @@
     "name": "lakehouse",
     "collapsed": true,
     "label": "nav.interview.lakehouse"
+  },
+  {
+    "type": "dir",
+    "name": "trouble_shoot",
+    "collapsed": true,
+    "label": "nav.interview.trouble_shoot"
   }
 ]
