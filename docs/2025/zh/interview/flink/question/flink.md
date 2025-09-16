@@ -25,13 +25,54 @@ Flink 是一个框架和分布式处理引擎，用于对无界和有界数据�
 
 ![distributed-runtime](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg)
 
-1. Flink中 JobManager 和 TaskManager 的职责是什么？
-2. 什么是 TaskSlot？它在 Flink 中扮演什么角色？
-3. Flink 如何处理状态？什么是状态后端（State Backend）？
-4. Flink 中的 CheckpointCoordinator 有什么作用？
-5. 什么是 Flink 的资源管理器（ResourceManager）？
-6. 解释 Flink 的分布式执行模型。
-7. Flink 的部署模式有哪些？各有什么特点？
+![processes](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/processes.svg)
+
+##### 4.Flink中 JobManager 和 TaskManager 的职责是什么？
+
+参考链接：
+
+* [JobManager](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#jobmanager)
+* [TaskManagers](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#taskmanagers)
+
+![ClientJmTm](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/ClientJmTm.svg)
+
+##### 5.什么是 TaskSlot？它在 Flink 中扮演什么角色？
+
+参考链接：
+
+* [Tasks and Operator Chains](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#tasks-and-operator-chains)
+* [Task Chaining and Resource Groups](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/operators/overview/#task-chaining-and-resource-groups)
+* [Task Slots and Resources](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#task-slots-and-resources)
+
+##### 6.Flink 如何处理状态？什么是状态后端（State Backend）？
+
+参考链接：
+
+* [State Backends](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/learn-flink/fault_tolerance/#state-backends)
+* [State Backends](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/stateful-stream-processing/#state-backends)
+* [State Backends](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/ops/state/state_backends/)
+
+状态后端（State Backend）和 checkpoint storage 是 2 个概念，也是 2 个配置。
+
+##### 6.Flink 中的 CheckpointCoordinator 有什么作用？
+
+##### 7.什么是 Flink 的资源管理器（ResourceManager）？
+
+##### 8.解释 Flink 的分布式执行模型。
+
+参考链接：
+
+* [Flink Application Execution](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#flink-application-execution)
+
+##### 9.Flink 的部署模式有哪些？各有什么特点？
+
+![deployment_modes](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/deployment_modes.png)
+
+![deployment_overview](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/deployment_overview.svg)
+
+![FlinkOnK8s](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/FlinkOnK8s.svg)
+
+![FlinkOnYarn](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/FlinkOnYarn.svg)
 
 #### 02.基本API与操作
 
