@@ -1,10 +1,8 @@
 # 实践
 
-
-
 ## 参考链接
 
-* 
+* [干货 | 准实时数仓落地实战：携程商旅基于Paimon的湖仓一体架构设计与批流融合实践](https://mp.weixin.qq.com/s/xHc3j_n-KABxltEBRwLZYg)
 * [Flink+Paimon：实时数仓的"超能搭档"（内藏高效秘籍）](https://mp.weixin.qq.com/s/Xc__giOjtgvA20VRyrILbA)
 * [小米基于 Apache Paimon 的流式湖仓实践](https://mp.weixin.qq.com/s/cgde9-zWgaviAKIkVyWspQ)
 * [vivo基于Paimon的湖仓一体落地实践](https://mp.weixin.qq.com/s/adye-mk6xoYu5nMeD5yQxQ)
