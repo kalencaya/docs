@@ -1,14 +1,116 @@
-# 基础
+# 概念
 
-## Operator&OperatorChain、Task&SubTask、并行度、Slot
+## 基础架构和概念
+
+### Flink 介绍
+
+Flink 是一个框架和分布式处理引擎，用于对无界和有界数据流进行有状态计算。
+
+* 有状态计算
+  * 状态接口。算子状态、键值状态、广播状态
+  * 容错机制。可从 checkpoint 和 savepoint 恢复
+  * 轻量级异步分布式快照算法
+* 流批一体。一套代码可以同时进行流处理和批处理
+* 提供高抽象层的 API
+  * SQL API
+  * Table API
+  * DataStream API
+  * Statefule Stream Processing API
+* 内置多种算子（operator）。
+  * source
+  * transformation
+  * sink
+* 多语言支持。支持 Java、Scala 和 Python
+
+#### 流处理
+
+流是数据的天然形态，无论是网站的事件流、股票的交易，还是工厂机器的传感数据等都是数据流，但是分析数据的时候，用户需要按照 `有界流（bounded）` 或 `无界流（unbounded）`组织数据，无论选择有界还是无界，都会对后续的处理有重大的影响。
+
+![bounded-unbounded](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/learn-flink/bounded-unbounded.png)
+
+* 批处理。批处理是有界流数据处理范式。批处理时用户可以读取整个数据集，执行排序，计算全局指标，或产出一个总结报表。
+* 流处理。流处理处理无界数据流。无界流不会结束，流处理需处理源源不断到来的数据。
+
+### Flink 的组件及其作用
+
+参考链接：
+
+* [Deployment](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/deployment/overview/#deployment)
+* [JobManager](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#jobmanager)
+* [TaskManagers](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/flink-architecture/#taskmanagers)
+
+在 Flink 的架构中，Flink 文档在不同场景下给出了不同的解释：
+
+* 部署。
+  * Client
+  * Flink 组件。JobManager、TaskManager
+  * 外部组件。
+* 运行。在运行架构中，Flink 集群包含 JobManager 和 TaskManager，不包含 Client。Client 只用来向 JobManager 发送 dataflow，之后 Client 就可以与 JobManager 断开连接（*detached mode*），也可以不断开接收处理结果（*attached mode*）
+
+其中 JobManager 和 TaskManager 作用如下：
+
+* JobManager。
+  * `Dispatcher`。提供 REST API 接收 Flink 应用提交，每次收到新的应用会启动一个 `JobMaster` 处理新的任务。同时提供 Flink web ui 服务
+  * `JobMaster`。管理单个 JobGraph 执行。Flink 集群可以同时执行多个任务，每个任务有自己的 `JobMaster`
+  * `ResourceManager`。负责 Flink 集群中资源（`task slot`）的分配和回收。Flink 为不同的环境和资源提供者实现了不同的 `ResourceManager`
+* TaskManager。TaskManager 提供资源执行 dataflow 中具体的 task，在不同的 task 之间传输和 buffer 数据流，执行 checkpoint、savepoint。TaskManager 中最小的资源调度单位为 `task slot`。
+
+Flink 部署架构图：
+
+![deployment_overview](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/deployment_overview.svg)
+
+Flink 运行架构图1：
+
+![distributed-runtime](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg)
+
+Flink 运行架构图2：
+
+![processes](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/processes.svg)
+
+Flink 运行架构图3：
+
+
+
+![ClientJmTm](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/ClientJmTm.svg)
+
+### 部署，运行模式。session、application，k8s，yarn
+
+
+
+### operator chain，并行度，task & sub-task
 
 参考链接：
 
 * [Physical Partitioning](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/operators/overview/#physical-partitioning)
 * [Task Chaining and Resource Groups](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/operators/overview/#task-chaining-and-resource-groups)
-* 
 
-在 Flink 任务中，任务由 source、transformation、sink 三种算子组成。算子之间传输策略：
+Flink 应用经过编译后变成一个 Logical Graph，Logical Graph 是一个 DAG（有向无环图），在 DAG 中每个节点就是一个算子（operator），Flink 默认会尽量将算子（operator）连接到一块，组成算子链（operator chain），将算子（operator）连接到一起，可以减少数据在算子（operator）间传输时网络和序列化/反序列化消耗，降低延迟提高吞吐。
+
+算子连接到一块的条件：
+
+* 并行度一致
+* 上下游算子之间传输策略为 Forward
+* 算子位于同一 task slot 共享组
+
+用户可以干预算子 chain 过程：
+
+* `startNewChain()`
+* `disableChaining()`
+
+Flink 应用在 Client 经过编译后最后提交到 Flink 集群的是 JobGraph，Flink 集群会将 JobGraph 转变成 ExecutionGraph，ExecutionGraph 中的节点即为 Task，每个 Task 为一个 operator（未 chain 到一起的 operator） 或 operator chain。
+
+Task 可以并行运行，Task 可以分成多少个 Sub-Task 由并行度决定。
+
+设置并行度的方式有 4 种，优先级由高到低：
+
+* 代码中设置。
+* 代码中全局设置
+* 启动任务时通过参数指定
+* flink-conf.yaml 中指定
+
+todo 最大并行度
+
+不同的 operator 上下游通过网络连接到一起，数据在 operator 之间的传输策略：
 
 * Forward。默认传输策略。
 * Rebalance。当 Forward 不满足时默认传输策略。
@@ -21,16 +123,133 @@
 * Global
 * Custom Partition
 
-算子链。算子满足一定条件时会 chain 到一起
+### checkpoint，savepoint，state，watermark，异步快照算法，背压
 
-Task 是 Operator 或 OperatorChain，假设某个 Operator 有 3 个并行度，会生成 3 个实例，这 3 个实例即是 SubTask。
+exactly-once，at-least-once，端到端一致性
 
-并行度设置方式，优先度由高到低
+failure strategy
 
-* 代码中设置。
-* 代码中全局设置
-* 启动任务时通过参数指定
-* flink-conf.yaml 中指定
+
+
+窗口
+
+join
+
+内存管理
+
+## 其他
+
+Flink 内部处理协调、网络、checkpoint，failover，API，算子，资源管理等功能的代码位于 `flink-dist.jar`，为了保证 Flink 核心的精简，只在 `/lib` 目录下存放必要的 jar，而将其他功能性的 jar 放入到 `/opt` 和 `/plugins` 目录下。如果用户有需要将 `/opt` 目录下的 jar 移入 `/lib` 和 `/plugins` 目录下即可。
+
+另外连接三方数据源的 connectors 和 formats 不在 `/lib` 和 `/plugins` 目录下，这样是为了避免用不到的代码存在 flink 运行环境中，需要用户在 flink 应用中按需添加。connectors 和 formats 相关代码也从 flink 仓库拆分到了独立的代码仓库。
+
+## 序列化
+
+参考链接：
+
+* [Data Types & Serialization](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/fault-tolerance/serialization/types_serialization/)
+
+
+
+## 异步IO
+
+参考链接：
+
+* [Asynchronous I/O for External Data Access](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/operators/asyncio/)
+
+场景：关联维表数据
+
+解决同步 I/O 低吞吐的 4 种解决方案：
+
+* 提高算子并行度。一般在 map 或者 flatmap 中关联维表数据，可通过增加并行度提高吞吐。缺点：I/O 不是 CPU 密集型工作，提高并行度没有利用好分配的 CPU 资源，存在资源浪费
+* 缓存加速。一般维表数据变化频率较低，可考虑缓存数据。将较慢的存储介质缓存在快速的存储介质中，如将 mysql 中数据缓存在 redis 甚至 state 中，缓存未命中时，查询 mysql，并更新缓存。
+* 异步 I/O。将同步 I/O 变为异步 I/O
+* 攒批处理。类似微服务中合并接口请求，也可以在 flink 中实现每攒够 20 条数据或到达 3s，批量请求维表数据。
+
+异步处理，使用异步 I/O 时，需数据库客户端支持异步请求，如果客户端不支持异步请求，需通过线程池将同步调用转为异步调用。
+
+顺序性。异步 I/O 返回的数据顺序是否和同步 I/O 顺序保持一致？答案是默认是乱序的，Flink 异步 I/O 提供了两种模式：
+
+* 有序模式。即异步 I/O 返回的数据顺序和数据处理顺序一致
+* 无序模式。
+
+异步 I/O 与事件时间。
+
+在无序模式下，异步 I/O 返回的数据顺序和数据输入顺序不一致，而错误的事件时间会使时间窗口产出错误的结果。那么在异步 I/O 之后应用事件时间窗口是否可行？答案是可以的。虽然是无序模式，异步 I/O 算子依然可以保证事件时间下的时间窗口计算结果正确。异步 I/O 算子通过 watermark 建立数据产出顺序的边界，相邻的两个 watermark 之间的数据可能是无序的，但是同一个 watermark 前后的数据依然是有序的。
+
+
+
+## 时间语义&时间窗口
+
+参考连接：
+
+* [Timely Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/time/)
+* [Generating Watermarks](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/event-time/generating_watermarks/)
+
+时间语义：
+
+* 事件时间。event time
+* 处理时间。process time
+* 摄入时间。ingest time
+
+时间窗口：
+
+* 滚动窗口。时间计算频率和时间计算长度一致的窗口
+* 滑动窗口。时间计算频率和时间计算长度不一致的窗口，滚动窗口算是滑动窗口的一个特例
+* 会话窗口。
+* 全局窗口。
+
+## Watermark
+
+水位线
+
+数据会乱序，针对乱序的数据或延迟的数据，窗口该如何处理：
+
+* 窗口重新计算数据，修正结果。通过 allowLateNess 实现
+* 将延迟数据收集起来，另行处理。通过 sideOutPut 实现
+* 丢弃延迟数据。默认实现
+
+乱序/延迟解决方案：watermark / allowLateNess / sideOutPut：
+
+* watermark。防止 数据乱序 / 指定时间内获取不到全部数据
+* allowLateNess。将窗口关闭时间延迟一段时间
+* sideOutPut。兜底操作，当指定窗口已经彻底关闭后，把接收到的延迟数据放到侧输出流，让用户决定如何处理
+
+watermark 实际上是一个 unix ms 时间戳，表示早于该时间的数据已全部抵达，不会再有时间小于水位线的数据输入。watermark 只能增大，不能减小。
+
+watermark 类型：
+
+* 周期性
+
+watermark 传输。watermark 生成后在经过 operator chain 传输过程中，是如何传播的？复用现有的 operator chain 中 subtask 的连接方式进行传输。watermark 在 source 生成，一直传输到 sink，会经过所有的 operator。
+
+在多并行度下
+
+
+
+## 状态
+
+参考链接：
+
+* [Stateful Stream Processing](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/concepts/stateful-stream-processing/)
+
+## 参数
+
+参考链接：
+
+* [Handling Application Parameters](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/datastream/application_parameters/)
+
+
+
+## Flink SQL
+
+如何优化 checkpoint 过大问题，如何用 flink sql 去重
+
+# 基础
+
+## Operator&OperatorChain、Task&SubTask、并行度、Slot
+
+* 
 
 最大并行度
 
@@ -256,7 +475,7 @@ streamSource
     .keyBy(CustomObject::getId)
     .window(TumblingEventTimeWindows.of(Time.seconds(20))
     .xxx
-            
+
 private static WatermarkStrategy<CustomObject> getWatermarkStrategy() {
     return WatermarkStrategy.<CustomObject>forBoundedOutOfOrderness(Duration.ofMinutes(1L))
             .withTimestampAssigner((customObject, recordTimestamp) -> customObject.getEtlTime())
@@ -406,8 +625,8 @@ union 操作代表的是数据流的合并过程，它控制的是数据的传�
 connect 功能和 union 操作一样，也是数据合并，但是 connect 不要求 DataStream 数据类型一致：
 
 ```java
-DataStream<Integer> someStream = //... 
-DataStream<String> otherStream = //... 
+DataStream<Integer> someStream = //...
+DataStream<String> otherStream = //...
 ConnectedStreams<Integer, String> connectedStreams = someStream.connect(otherStream);
 ```
 
@@ -424,10 +643,10 @@ ConnectedStreams<Integer, String> connectedStreams = someStream.connect(otherStr
 基于窗口的 join 将无界数据流转化为有界数据流，从而可以实现 join 操作。Flink 中的窗口操作分为时间窗口和计数窗口，这里的窗口指的是时间窗口。窗口可以使用滚动窗口、滑动窗口和会话窗口
 
 ```java
-stream.join(otherStream) 
-	.where(<KeySelector>) 
-	.equalTo(<KeySelector>) 
-	.window(<WindowAssigner>) 
+stream.join(otherStream)
+	.where(<KeySelector>)
+	.equalTo(<KeySelector>)
+	.window(<WindowAssigner>)
 	.apply(<JoinFunction>);
 ```
 
@@ -443,9 +662,9 @@ join 操作指的是**Inner Join**，如果任一 DataStream 没有数据，则�
 CoGroup 是 Outer Join（比如 Left Join、Right Join、Full Join）。
 
 ```java
-dataStream.coGroup(otherStream) 
-	.where(0).equalTo(1) 
-	.window(TumblingEventTimeWindows.of(Time.seconds(3))) 
+dataStream.coGroup(otherStream)
+	.where(0).equalTo(1)
+	.window(TumblingEventTimeWindows.of(Time.seconds(3)))
 	.apply (new CoGroupFunction () {...});
 ```
 
@@ -458,13 +677,13 @@ apply 操作支持：
 时间窗口关联以及 CoGroup 操作有一个共同点，那就是只有**相同时间窗口内**的数据才可以进行关联操作。然而有些操作天然是有先后顺序的，比如先曝光后点击，先下单后付款。那么当曝光事件发生在窗口的临界点时，点击事件往往落在下一个时间窗口内，从而曝光和点击无法关联。因此存在需求无论曝光事件的发生时间，关联曝光事件 5 分钟后的点击事件。
 
 ```java
-// this will join the two streams so that 
-// key1 == key2 && leftTs - 2 < rightTs < leftTs + 2 
-keyedStream.intervalJoin(otherKeyedStream) 
-  .between(Time.milliseconds(-2), Time.milliseconds(2)) 
-  // lower and upper bound 				
-  .upperBoundExclusive(true) // optional 
-  .lowerBoundExclusive(true) // optional 
+// this will join the two streams so that
+// key1 == key2 && leftTs - 2 < rightTs < leftTs + 2
+keyedStream.intervalJoin(otherKeyedStream)
+  .between(Time.milliseconds(-2), Time.milliseconds(2))
+  // lower and upper bound
+  .upperBoundExclusive(true) // optional
+  .lowerBoundExclusive(true) // optional
   .process(new IntervalJoinFunction() {...});
 ```
 
