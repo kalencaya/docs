@@ -354,6 +354,22 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.interview.java": {
+    "zh": "Java",
+    "en": "Java"
+  },
+  "nav.interview.mysql": {
+    "zh": "MySQL",
+    "en": "MySQL"
+  },
+  "nav.interview.redis": {
+    "zh": "Redis",
+    "en": "Redis"
+  },
+  "nav.interview.kafka": {
+    "zh": "Kafka",
+    "en": "Kafka"
+  },
   "nav.interview.flink": {
     "zh": "Flink",
     "en": "Flink"

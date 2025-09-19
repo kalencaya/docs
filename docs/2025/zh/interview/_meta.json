@@ -6,6 +6,30 @@
   },
   {
     "type": "dir",
+    "name": "java",
+    "collapsed": true,
+    "label": "nav.interview.java"
+  },
+  {
+    "type": "dir",
+    "name": "mysql",
+    "collapsed": true,
+    "label": "nav.interview.mysql"
+  },
+  {
+    "type": "dir",
+    "name": "redis",
+    "collapsed": true,
+    "label": "nav.interview.redis"
+  },
+  {
+    "type": "dir",
+    "name": "kafka",
+    "collapsed": true,
+    "label": "nav.interview.kafka"
+  },
+  {
+    "type": "dir",
     "name": "flink",
     "collapsed": true,
     "label": "nav.interview.flink"
