@@ -438,9 +438,9 @@
     "zh": "Doris",
     "en": "Doris"
   },
-  "nav.interview.lakehouse": {
-    "zh": "湖仓",
-    "en": "LakeHouse"
+  "nav.interview.datawarehouse": {
+    "zh": "数仓",
+    "en": "DataWarehouse"
   },
   "nav.interview.trouble_shoot": {
     "zh": "问题定位",

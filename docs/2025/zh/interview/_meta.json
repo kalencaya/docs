@@ -54,9 +54,9 @@
   },
   {
     "type": "dir",
-    "name": "lakehouse",
+    "name": "datawarehouse",
     "collapsed": true,
-    "label": "nav.interview.lakehouse"
+    "label": "nav.interview.datawarehouse"
   },
   {
     "type": "dir",
