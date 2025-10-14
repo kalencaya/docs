@@ -1,17 +1,5 @@
 # 湖仓
 
-## 数仓分层
-
-参考链接：
-
-* [数仓分层](https://help.aliyun.com/zh/dataphin/several-positions-layered)
-* [架构与模型设计](https://help.aliyun.com/zh/dataworks/use-cases/architecture-and-model-design/)
-* [简单聊聊数仓分层](https://mp.weixin.qq.com/s/dovyekHjePIZS5MK023gPg)
-* [腾讯面试：数仓建设需要遵循哪些规范？](https://mp.weixin.qq.com/s/MCNyGlYrUmVwukw110gc8w)
-* [腾讯面试：数仓分层架构是怎么样的？为什么要这样设计？](https://mp.weixin.qq.com/s/OXs8g-4j-E730PbSTPXJ6Q)
-* [数据仓库经典面试题（50道）](https://mp.weixin.qq.com/s/ABffo7h4ndWI2KrbxtFrkw)
-* [大数据仓库开发规范示例](https://mp.weixin.qq.com/s/ylajYqDgwaCldMtfh4w9Vg)
-
 ## Flink
 
 * [如何使用DataStream API实现FlinkSQL相同的功能](https://mp.weixin.qq.com/s/2gAOrgZxlp7-VqS3gTLwhg)
