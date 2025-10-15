@@ -19,6 +19,8 @@
 * [data-platform-open](https://gitee.com/aizuda/data-platform-open)。🔥🔥🔥可视化拖拽式大数据集成平台、大数据平台、大数据，包含数据流、数据源、数据对齐、查询模板、完善的监控等。像画流程图一样且无代码方式同步、清洗数据。
 * [bigprimeDGP](https://gitee.com/bigprime/bigprimeDGP)。bigprimeDGP是以数据驱动为核心优势的大数据数智平台。借助先进的插件化架构和灵活的配置,能够快速响应各种复杂的数据业务需求,为企业的数据治理之路提供技术支撑。它集成了数据集成,数据仓库,计算平台,任务调度,服务编排,数据治理,工作流引擎等技术,致力于通过高效的数据整合,帮助企业实现数据驱动的价值创造,让大数据结出更多“智慧果”。同时结合大数据计算,基于此赋能用户,企业实现价值的不断提升。
 * [流石数据管理工具](https://gitee.com/changkang/flowstone-amt)。提供API编排、ETL等能力，实现数据库到API的可视化转换，以及多系统API的整合、数据抽取与加工处理、自动依赖分析及数据血缘分析、实时MQTT消息的动态监听等；即可用于与低代码前端工具配合，为低代码前端提供接口，也可当成一个简单的ESB使用或ETL工具或数据中台使用
+* [starlake](https://github.com/starlake-ai/starlake)
+* [nimtable](https://github.com/nimtable/nimtable)
 
 ## 实时计算平台
 
