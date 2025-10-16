@@ -41,7 +41,7 @@ leader 负责维护和跟踪 ISR 集合中所有 follower 副本的滞后状态�
 
 一般情况下，当 leader 发送故障或失效时，只有 ISR 集合中的 follower 才有资格被选举为新的 leader，而 OSR 集合中的 follower 则没有这个机会（不过可以修改参数配置来改变）。
 
-### kafka 副本（leader&follower）主从同步原理1
+### 3.kafka 副本（leader&follower）主从同步原理1
 
 kafka 动态维护了一个同步状态的副本的集合（a set of In-SyncReplicas），简称 ISR，在这个集合中的结点都是和Leader保持高度一致的，任何一条消息只有被这个集合中的每个结点读取并追加到日志中，才会向外部通知“这个消息已经被提交”。
 
@@ -61,7 +61,7 @@ producer 向 broker 发送消息时可以通过配置 acks 属性来确认消息
 - `1`：默认设置，表示当 leader 接收成功时的确认。只有 leader 同步成功而 follower 尚未完成同步，如果 leader 挂了，就会造成数据丢失。此机制提供了较好的延迟和持久性的均衡
 - `-1`：表示 leader 和 follower 都接收成功的确认。此机制持久性可靠性最好，但延时性最差。
 
-### kafka 副本（leader&follower）主从同步原理2
+### 4.kafka 副本（leader&follower）主从同步原理2
 
 在消息写入 leader 后，follower 同步 leader 的消息，以及 consumer 消费 leader 中的消息，producer 向 leader 继续写入消息，这一系列的机制时通过 hw 和 leo 实现的：
 
@@ -71,7 +71,7 @@ producer 向 broker 发送消息时可以通过配置 acks 属性来确认消息
 
 参考：[Kafka中的HW、LEO、LSO等分别代表什么？](https://cloud.tencent.com/developer/article/1803023)
 
-### producer 发送消息流程
+### 5.producer 发送消息流程
 
 ![producer_send.jpg](https://picx.zhimg.com/v2-9d624e2899460d6f6936e8bde6a14471_1440w.jpg)
 
@@ -83,7 +83,7 @@ producer 向 broker 发送消息时可以通过配置 acks 属性来确认消息
 4. Sender 线程会从队列的队头部开始读取消息，然后创建 request 后会经过会被缓存，然后提交到 `Selector`，`Selector` 发送消息到 kafka 集群
 5. 对于一些还没收到 kafka 集群 ack 响应的消息，会将未响应接收消息的请求进行缓存，当收到 kafka 集群 ack 响应后，会将request 请求**在缓存中清除并同时移除消息累加器中的消息**
 
-### consumer 消费模式
+### 6.consumer 消费模式
 
 consumer 采用 pull 模式从 broker 批量拉取消息。
 
@@ -91,7 +91,13 @@ pull 模式可以让 consumer 根据自身消息消费能力决定拉取速率�
 
 pull 模式的缺点是 consumer 不知道 topic 是否有新消息到达时需要不断地轮询 broker，直到新的消息到达。为了避免这点，kafka 有个参数可以让 consumer 阻塞直到新消息到达(当然也可以阻塞直到新消息数量达到阈值这样就可以批量 pull)。
 
+### 如何保证消息的顺序性
 
+parititon 内消息有序，只需要确保消息发送至同一个 partition 即可：
+
+* topic 设置 partition 只有 1 个
+* producer 发送消息时指定发送到具体的 partition。通过 `ProducerRecord`
+* producer 发送时设置消息的 key，kafka 对 key 进行 hash 计算，确保同一个 key 的消息进入同一个 partition
 
 ### 2.kafka 为什么这么快？大数据中流计算、日志采集为什么采用 kafka？（高吞吐量、低延迟或高性能原因）
 
@@ -253,15 +259,47 @@ rebalance 策略：
 
 rebalance 过程：
 
-* 选择组协调器。每个 consumer group 都会选择一个 broker 作为自己的组协调器 coordinator，负责监控这个消费组里的所有消费者的心跳，以及判断是否宕机，然后开启消费者 rebalance
-* 加入消费组。在成功找到消费组所对应的 `GroupCoordinator` 之后就进入加入消费组的阶段，在此阶段的消费者会向 `GroupCoordinator` 发送 `JoinGroupRequest` 请求，并处理响应。然后 `GroupCoordinator` 从一个consumer group 中选择第一个加入 group 的 consumer 作为 leader(消费组协调器)，把 consumer group 情况发送给这个 leader，接着这个 leader 会负责制定分区方案
-* 同步
+* 选择组协调器（GroupCoordinator）。每个 consumer group 都会选择一个 broker 作为自己的组协调器 coordinator，负责监控这个消费组里的所有消费者的心跳，以及判断是否宕机，然后开启消费者 rebalance
+* 加入消费组。在成功找到消费组所对应的 `GroupCoordinator` 之后就进入加入消费组的阶段，在此阶段的消费者会向 `GroupCoordinator` 发送 `JoinGroupRequest` 请求，并处理响应。然后 `GroupCoordinator` 从一个consumer group 中选择一个加入 group 的 consumer 作为 leader (消费组协调器)，把 consumer group 情况发送给这个 leader，接着这个 leader 会负责制定分区方案
+* SyncGroup。coordinator 通过 SyncGroup 把 leader 制定的分区方案下发给所有的 consumer，每个 consumer 从指定的分区 leader broker 建立连接消费数据
 
-rebalance 过程：
+### 如何处理消息积压
 
-* 发现变化：kafka 会监控消费者组的状态，一旦发现变化，就会触发 rebalance。
-* 同步组状态：消费者组中的所有消费者都会向 kafka 发送一个同步请求，以获取最新的消费者组状态。
-* 选择协调器：消费者组中的消费者会通过投票选择一个协调器。
-* 分配分区：协调器会根据消费者的能力和分区数，将分区分配给消费者。
-* 同步分配结果：消费者会将分配到的分区信息同步给其他消费者。
-* 提交偏移量：消费者会向 kafka 提交其消费到的最新偏移量。
+### kafka 如何实现延迟消息
+
+参考链接：
+
+* [高吞吐低延迟：朴朴基于 Kafka 的延迟队列实践](https://www.infoq.cn/article/2ymoli5o2ooj1vw3r3q7)
+
+RocketMQ 在 4.x 版本只支持18个延迟级别，在 5.x 版本支持任意延迟等级的延迟队列，能够满足业务高吞吐、低延迟的要求。RocketMQ 4.x 的延迟队列主要在 client 完成，5.x 版本在 server 完成，基于 Kafka 实现延迟队列，主要参考 RocketMQ 4.x 的实现。
+
+在 RocketMQ 中定义了 18 个延迟级别，分别是 `1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h`，消息创建的时候，调用 `setDelayTimeLevel(int level)` 方法设置延迟时间，如 `setDelayTimeLevel(level = 3)` 也就是延迟 `10s`，因为 `level = 3` 对应 `10s` 延迟。
+
+当用户定义一个延迟 topic 如 `topic_order_delay`，当向 `topic_order_delay` 发送消息时，broker 并不会将消息直接写入 `topic_order_delay` 而是写入一个内部队列，如 `1s` 写入 `1s` 对应的队列，`5s` 写入 `5s` 对应的队列等等。也即 RockmeMQ 整个集群的所有延迟 topic 的延迟消息都会放入对应级别的一个内部队列，放入同一个内部队列的好处是：
+
+* 同一内部队列中的消息延时时间是一致的，都是 `1s` 或 `5s`。
+* 内部队列中的消息时按照消息到期时间进行递增排序的，说的简单直白就是队列中消息越靠前的到期时间越早。
+
+每个内部队列都有一个定时任务按照固定频率扫描到期的消息，当检测到期后重新发送入对应的 topic。
+
+![kafka_delay.png](https://static001.geekbang.org/infoq/ea/ea53c31cefca6f7d24fcf14e19437c62.png)
+
+基于 kafka 的实现也类似，首先在 kafka 中定义一系列对应的队列，每个队列对应一个延迟级别，在为每个队列设置一个消费者，通过 pull 方式拉取到期的消息，然后发送到真实的 topic。应用消费真实的 topic 即可。
+
+* sdk 或 client。对 kafka client 进行封装，当发送延迟消息时将消息进行重新封装，发送到对应延迟级别的队列中
+* 延迟调度服务。监控不同延迟级别的队列，消息到期后取出重新发送入对应的业务 topic
+
+在延迟调度服务中，需要将延迟级别对应的 topic 中的到期消息取出并投递到对应的业务 topic，延迟调度服务需要`准确`和`低延迟`地完成内部延迟队列和业务 topic 的投递。
+
+延迟调度服务设计为 kafka topic 的消费者，消息处理逻辑将收到的消息检测是否到期，如果到期则发送入业务 topic，如果没有到期则 sleep 一段时间后重新消费，继续进行检测：
+
+* 休眠时间设置。不能过长，过长会导致延迟，不能过短，否则会频繁无效拉取。可以根据收到的消息设置休眠时长为需要投递的时间。但是过长的休眠时长会导致 kafka consumer group 发生 rebalance，因此休眠时长会设置一个最长休眠时长。
+
+通过 sleep 机制可以确保延迟队列消息消费的及时性。
+
+因为 kafka topic 下有多个 partition，如果 consumer group 中的某个 consumer 负责其中几个 partition 的消费，如果 consumer sleep，则几个 partition 的消费都会停止。不同 partition 中的消息有快有慢，直接按照收到的消息的到期时间设置 sleep 时长会导致比较快的 partition 的消息无法及时投递，造成投递延迟。解决思路是将延迟队列 topic 的 partition 数目设置 1，这样就确保延迟队列 topic 的消息是全局有序的，第一条消息就是最早到期的。
+
+但是延迟队列 topic 的 partition 只有 1 个的话，消息吞吐量可能会有上限，不支持水平扩展。处理方式是将对应级别的延迟队列 topic 设置为多个，比如 `5s` 延迟级别可以设置 10 个 topic（这 10 个延迟队列 topic 的 partition 数量都是 1），每个 topic 都有各自的 consumer 来进行上述到期发送逻辑。sdk 发送延迟消息时只需要从 10 个 topic 中选择一个投递即可。这样就可以增加吞吐量。
+
+同时延迟级别也可以按需设置，可以设置很多的延迟级别出来。
+
