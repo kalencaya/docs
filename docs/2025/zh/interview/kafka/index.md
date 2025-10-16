@@ -9,6 +9,9 @@
 kafka 组件：
 
 * zookeeper。元数据中心和注册中心
+  * 偏移量管理。kafka 后来更改为内部的偏移量 topic
+  * 识别新 broker 连接和离开
+  * leader 检测
 * broker。kafka 以集群方式运行，每个节点称作 broker
 * consumer。kafka topic 消费者
 * consumer group。每个 kafka consumer 属于一个 consumer group，共同使用一个 groupId
@@ -38,6 +41,54 @@ leader 负责维护和跟踪 ISR 集合中所有 follower 副本的滞后状态�
 
 一般情况下，当 leader 发送故障或失效时，只有 ISR 集合中的 follower 才有资格被选举为新的 leader，而 OSR 集合中的 follower 则没有这个机会（不过可以修改参数配置来改变）。
 
+### kafka 副本（leader&follower）主从同步原理
+
+kafka 动态维护了一个同步状态的副本的集合（a set of In-SyncReplicas），简称 ISR，在这个集合中的结点都是和Leader保持高度一致的，任何一条消息只有被这个集合中的每个结点读取并追加到日志中，才会向外部通知“这个消息已经被提交”。
+
+kafka 通过配置 `producer.type` 来确定是 producer 向 broker 发送消息是异步还是同步，默认是同步：
+
+* 同步复制。
+  * producer 会先通过 zookeeper 识别到 leader，向 leader 发送消息，leader 收到消息后写入到本地 log 文件。
+  * follower 从 leader pull 消息写入本地 log，写入完成后会向 leader 发送 ack 回执。
+  * leader 收到所有 follower 的回执向 producer 回传 ack。
+* 异步复制。异步发送消息是基于同步发送消息的接口来实现的。client 消息发送时会先放入一个 `BlackingQueue` 队列中然后就返回了。producer 再开启一个线程 `ProducerSendTread` 不断从队列中取出消息，通过同步发送消息的接口将消息发送给 broker。
+
+producer 的这种在内存缓存消息，当累计达到阀值时批量发送请求，小数据I/O太多，会拖慢整体的网络延迟，批量延迟发送事实上提升了网络效率。但是如果在达到阀值前，producer不可用了，缓存的数据将会丢失。
+
+producer 向 broker 发送消息时可以通过配置 acks 属性来确认消息是否成功投递到了 broker：
+
+- `0`：表示不进行消息接收是否成功的确认。延迟最低，但持久性可靠性差。不和 kafka 进行消息接收确认，可能会因为网络异常，缓冲区满的问题，导致消息丢失
+- `1`：默认设置，表示当 leader 接收成功时的确认。只有 leader 同步成功而 follower 尚未完成同步，如果 leader 挂了，就会造成数据丢失。此机制提供了较好的延迟和持久性的均衡
+- `-1`：表示 leader 和 follower 都接收成功的确认。此机制持久性可靠性最好，但延时性最差。
+
+### producer 发送消息流程
+
+![producer_send.jpg](https://picx.zhimg.com/v2-9d624e2899460d6f6936e8bde6a14471_1440w.jpg)
+
+基本流程：
+
+1. 主线程 producer 中会经过`拦截器`、`序列化器`、`分区器`，然后将处理好的消息发送到`消息累加器`中
+2. `消息累加器`每个分区会对应一个队列，在收到消息后，将消息放到队列中
+3. 使用 `ProducerBatch` 批量的进行消息发送到 Sender 线程处理（这里为了提高发送效率，减少带宽），`ProducerBatch` 中就是我们需要发送的消息，其中消息累加器中可以使用 `Buffer.memory` 配置，默认为 `32MB`
+4. Sender 线程会从队列的队头部开始读取消息，然后创建 request 后会经过会被缓存，然后提交到 `Selector`，`Selector` 发送消息到 kafka 集群
+5. 对于一些还没收到 kafka 集群 ack 响应的消息，会将未响应接收消息的请求进行缓存，当收到 kafka 集群 ack 响应后，会将request 请求**在缓存中清除并同时移除消息累加器中的消息**
+
+### consumer 消费模式
+
+consumer 采用 pull 模式从 broker 批量拉取消息。
+
+pull 模式可以让 consumer 根据自身消息消费能力决定拉取速率，防止消息拉取速率超出 consumer 处理能力。同时 consumer 也可以自主决定是否采用批量 pull。
+
+pull 模式的缺点是 consumer 不知道 topic 是否有新消息到达时需要不断地轮询 broker，直到新的消息到达。为了避免这点，kafka 有个参数可以让 consumer 阻塞直到新消息到达(当然也可以阻塞直到新消息数量达到阈值这样就可以批量 pull)。
+
+### kafka 如何保证消息不丢失？
+
+HW（High Watermark）。高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个水位 offset 之前的消息
+
+LEO（Log End Offset）。标识当前日志文件中下一条待写入的消息的 offset。在 ISR 集合中的每个副本都会维护自身的 LEO，且HW==LEO。
+
+
+
 ### 2.kafka 为什么这么快？大数据中流计算、日志采集为什么采用 kafka？（高吞吐量、低延迟或高性能原因）
 
 * producer
@@ -58,3 +109,76 @@ leader 负责维护和跟踪 ISR 集合中所有 follower 副本的滞后状态�
   * 消费者群组。通过消费者群组可以实现消息的负载均衡和容错处理
   * 并行消费。不同的消费者可以独立地消费不同的分区，实现消费的并行处理
 
+### kafka 是如何实现 exactly once 语义的？
+
+消息的投递语义主要分为三种：
+
+- At Most Once。消息投递至多一次，可能会丢但不会出现重复。
+- At Least Once。消息投递至少一次，可能会出现重复但不会丢。kafka 默认提供
+- **Exactly Once**。消息投递正好一次，不会出现重复也不会丢。
+
+kafka 主要实现`流计算`场景下的 exactly once 能力，数据必须是从 kafka 读取，计算结果在写入 kafka 中。如果流计算中的状态存储依赖外部系统，则无法在系统出现故障崩溃时保证 exactly once。比如消费者消费一批数据后，在崩溃前没有提交消费位点，重启后可能会消费到重复的消息。flink 的 exactly once 语义下是将 kafka 消费位点保存到 checkpoint 或 savepoint 中，当flink 重启后读取 checkpoint 或 savepoint 中的 kafka 消费位点重新消费，则不会出现重复消费，所以可能重复消费的原因是任务没有把消费位点提交到 kafka 中，也没有自己额外存下来，做不到从崩溃前的位点消费。
+
+kafka 通过 `幂等性（Idempotence）`和`事务（Transaction）`实现 exactly once。
+
+- 幂等性只能保证单分区、单会话上的消息幂等性
+- 而事务能够保证跨分区、跨会话间的幂等性，但是事务性能比幂等性差
+
+#### 幂等性
+
+`幂等性`是指可以安全地进行重试，而不会对系统造成破坏。kafka 中 producer 默认不是幂等性的，可以通过参数开启：
+
+*  `props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG， true)`
+
+`enable.idempotence` 被设置成 `true` 后，producer 自动升级成幂等性 producer，其他所有的代码逻辑都不需要改变，kafka 自动帮你做消息的重复去重，kafka 通过`空间去换时间`的思路在 broker 多保存一些字段记录消息信息进行去重，当 producer 发送相同字段值的消息后，broker 可以识别消息重复发送，会丢弃掉这些重复消息。
+
+kafka 在底层设计架构中引入了 producerID 和 SequenceNumber。
+
+producer 需要做的只有两件事：
+
+- 启动时向 broker 申请一个 producerID
+- 为每条消息绑定一个 SequenceNumber
+
+broker 收到消息后会以 producerID 为单位存储 SequenceNumber，也就是说即时 Producer 重复发送了， Broker 端也会将其过滤掉。
+
+实现比较简单，同样的限制也比较大：
+
+- 首先，它只能保证单分区上的幂等性
+
+  。即一个幂等性 producer 能够保证某个主题的一个分区上不出现重复消息，它无法实现多个分区的幂等性。
+
+  - 因为 SequenceNumber 是以 Topic + Partition 为单位单调递增的，如果一条消息被发送到了多个分区必然会分配到不同的 SequenceNumber ，导致重复问题。
+
+- 其次，它只能实现单会话上的幂等性
+
+  。不能实现跨会话的幂等性。当你重启 producer 进程之后，这种幂等性保证就丧失了。
+
+  - 重启 producer 后会分配一个新的 ProducerID，相当于之前保存的 SequenceNumber 就丢失了。
+
+#### 事务
+
+kafka 自 0.11 版本开始也提供了对事务的支持，支持 `read committed` 隔离级别。它能保证 producer 将多条消息原子性地写入到目标分区（可写入多个分区），同时也能保证 consumer 只能看到事务成功提交的消息。事务型 producer 重启后 kafka 依然可以保证`发送消息`的精确一次处理。
+
+设置事务型 producer：
+
+- 开启 `enable.idempotence = true`。
+- 设置 producer 端参数 `transactional. id`。最好为其设置一个有意义的名字。
+
+同时 producer 发送事务消息代码也与普通消息不同，需要加入事务处理：
+
+```java
+producer.initTransactions();
+try {
+            producer.beginTransaction();
+            producer.send(record1);
+            producer.send(record2);
+            producer.commitTransaction();
+} catch (KafkaException e) {
+            producer.abortTransaction();
+}
+```
+
+consumer 读取事务消息时也需要做一些配置，设置 `isolation.level` 参数：
+
+* read_uncommitted。默认值，consumer 能够读取到 kafka 写入的任何消息，不论事务型 producer 提交事务还是终止事务，其写入的消息都可以读取
+* read_committed。consumer 只会读取事务型 producer 成功提交事务写入的消息，同时它也可以读取非事务型 producer 发送的所有消息
