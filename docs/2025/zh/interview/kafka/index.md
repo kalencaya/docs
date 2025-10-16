@@ -41,7 +41,7 @@ leader 负责维护和跟踪 ISR 集合中所有 follower 副本的滞后状态�
 
 一般情况下，当 leader 发送故障或失效时，只有 ISR 集合中的 follower 才有资格被选举为新的 leader，而 OSR 集合中的 follower 则没有这个机会（不过可以修改参数配置来改变）。
 
-### kafka 副本（leader&follower）主从同步原理
+### kafka 副本（leader&follower）主从同步原理1
 
 kafka 动态维护了一个同步状态的副本的集合（a set of In-SyncReplicas），简称 ISR，在这个集合中的结点都是和Leader保持高度一致的，任何一条消息只有被这个集合中的每个结点读取并追加到日志中，才会向外部通知“这个消息已经被提交”。
 
@@ -60,6 +60,16 @@ producer 向 broker 发送消息时可以通过配置 acks 属性来确认消息
 - `0`：表示不进行消息接收是否成功的确认。延迟最低，但持久性可靠性差。不和 kafka 进行消息接收确认，可能会因为网络异常，缓冲区满的问题，导致消息丢失
 - `1`：默认设置，表示当 leader 接收成功时的确认。只有 leader 同步成功而 follower 尚未完成同步，如果 leader 挂了，就会造成数据丢失。此机制提供了较好的延迟和持久性的均衡
 - `-1`：表示 leader 和 follower 都接收成功的确认。此机制持久性可靠性最好，但延时性最差。
+
+### kafka 副本（leader&follower）主从同步原理2
+
+在消息写入 leader 后，follower 同步 leader 的消息，以及 consumer 消费 leader 中的消息，producer 向 leader 继续写入消息，这一系列的机制时通过 hw 和 leo 实现的：
+
+* HW（High Watermark）。高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个水位 offset 之前的消息
+
+* LEO（Log End Offset）。标识当前日志文件中下一条待写入的消息的 offset。在 ISR 集合中的每个副本都会维护自身的 LEO，且HW==LEO。
+
+参考：[Kafka中的HW、LEO、LSO等分别代表什么？](https://cloud.tencent.com/developer/article/1803023)
 
 ### producer 发送消息流程
 
@@ -80,12 +90,6 @@ consumer 采用 pull 模式从 broker 批量拉取消息。
 pull 模式可以让 consumer 根据自身消息消费能力决定拉取速率，防止消息拉取速率超出 consumer 处理能力。同时 consumer 也可以自主决定是否采用批量 pull。
 
 pull 模式的缺点是 consumer 不知道 topic 是否有新消息到达时需要不断地轮询 broker，直到新的消息到达。为了避免这点，kafka 有个参数可以让 consumer 阻塞直到新消息到达(当然也可以阻塞直到新消息数量达到阈值这样就可以批量 pull)。
-
-### kafka 如何保证消息不丢失？
-
-HW（High Watermark）。高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个水位 offset 之前的消息
-
-LEO（Log End Offset）。标识当前日志文件中下一条待写入的消息的 offset。在 ISR 集合中的每个副本都会维护自身的 LEO，且HW==LEO。
 
 
 
@@ -108,6 +112,45 @@ LEO（Log End Offset）。标识当前日志文件中下一条待写入的消息
   * 批量拉取。kafka 支持批量拉取消息，可以一次性拉取多个消息进行消费。减少网络消耗，提升性能
   * 消费者群组。通过消费者群组可以实现消息的负载均衡和容错处理
   * 并行消费。不同的消费者可以独立地消费不同的分区，实现消费的并行处理
+
+### kafka 数据丢失原因
+
+丢失原因：
+
+* producer。
+  * producer 在向 broker 发送消息选择异步发送，未发送到 broker 前 producer 崩溃重启，数据丢失
+  * producer 端的 acks 设置为发送即认为成功，producer 不会确认 leader 是否接收成功，导致 producer 存在一定丢失消息概率
+* broker。producer 端的 acks 设置为 1，即 leader 确认认为发送成功。leader 所在的 broker 发生崩溃，leader 中的数据未同步到 follower，导致数据丢失
+* consumer。consumer 消费消息时先提交偏移位点，后消费消息，在提交偏移位点后崩溃没有消费消息。consumer 提交位点方式选择自动提交，即先提交位点后消费消息
+
+解决办法：
+
+* producer。
+  * 设置 acks 为 1 或 -1。默认为 1
+  * 设置 producer 重试参数：
+    * `retries = Integer.MAX_VALUE`。重试次数，需大于 0
+    * `max.in.flight.requests.per.connection = 1`。为保证消息发送重试时依然有序，需设置此参数
+    * `retry.backoff.ms`。重试间隔，默认为 `100ms`
+  * 调整发送方式，在异步发送代码中对 `#send()` 方法的 `future` 对象设置回调，当发生异常时进行重试
+* broker
+  * `unclean.leader.election.enable`。表示哪些 follower 可以选举为 leader。设置为 false，表示落后太多的 follower 不可选举为 leader
+  * `replication.factor`。分区副本的个数，建议设置为 >=3 个
+  * `min.insync.replicas`。该参数表示消息至少要被写入成功到 ISR 多少个副本才算`已提交`。推荐设置成：`replication.factor =min.insync.replicas +1`, 最大限度保证系统可用性
+* consumer
+  * 关闭自动提交。`enable.auto.commit = false`
+  * 业务增加幂等处理
+
+### kafka 数据重复原因
+
+重复原因：
+
+* producer。producer 发送消息到 broker 后，因为异常如网络原因没有收到 broker 返回的 acks，导致重试重复发送。同一条消息在 topic 中存了多条
+* consumer。consumer 消费消息后没有提交偏移位点，consumer 崩溃重启后还是从之前的偏移位点开始消费，导致数据重复消费。topic 中的消息被多次消费
+
+解决办法：
+
+* 幂等
+* 事务
 
 ### kafka 是如何实现 exactly once 语义的？
 
@@ -182,3 +225,43 @@ consumer 读取事务消息时也需要做一些配置，设置 `isolation.level
 
 * read_uncommitted。默认值，consumer 能够读取到 kafka 写入的任何消息，不论事务型 producer 提交事务还是终止事务，其写入的消息都可以读取
 * read_committed。consumer 只会读取事务型 producer 成功提交事务写入的消息，同时它也可以读取非事务型 producer 发送的所有消息
+
+### kafka rebalance 原理
+
+kafka 中 topic 中的 partition 分配给 consumer group 中的 consumer，需确定 group 中的 consumer 消费哪几个 partition。当 consumer group 发生变动时需重新进行分配，这个过程就叫做 rebalance。
+
+rebalance 影响：rebalance 期间 consumer 不消费消息，会造成应用消费 kafka 消息 tps 抖动，数据延迟以及 kafka topic 消息积压。
+
+rebalance 触发原因：
+
+* group 中 consumer 发生变动，新增或减少
+* topic 动态增加 partition
+* group 订阅了更多的 topic
+
+rebalance 目的：
+
+* 负载均衡。通过重新分配 partition，使得 consumer 消费数据负载更加均衡
+* 故障恢复。当 consumer 或 partition 发生故障时，系统能够自动恢复
+* 扩展性。支持动态增加/减少 consumer，动态添加 partition，增加扩展性
+* 数据一致性。当 consumer 减少或动态添加 partition 时，可以确保不会因为 consumer 减少，导致分配的 partition 不被消费，动态添加 partition 也是类似
+
+rebalance 策略：
+
+* range
+* round-robin。轮询
+* sticky。粘性
+
+rebalance 过程：
+
+* 选择组协调器。每个 consumer group 都会选择一个 broker 作为自己的组协调器 coordinator，负责监控这个消费组里的所有消费者的心跳，以及判断是否宕机，然后开启消费者 rebalance
+* 加入消费组。在成功找到消费组所对应的 `GroupCoordinator` 之后就进入加入消费组的阶段，在此阶段的消费者会向 `GroupCoordinator` 发送 `JoinGroupRequest` 请求，并处理响应。然后 `GroupCoordinator` 从一个consumer group 中选择第一个加入 group 的 consumer 作为 leader(消费组协调器)，把 consumer group 情况发送给这个 leader，接着这个 leader 会负责制定分区方案
+* 同步
+
+rebalance 过程：
+
+* 发现变化：kafka 会监控消费者组的状态，一旦发现变化，就会触发 rebalance。
+* 同步组状态：消费者组中的所有消费者都会向 kafka 发送一个同步请求，以获取最新的消费者组状态。
+* 选择协调器：消费者组中的消费者会通过投票选择一个协调器。
+* 分配分区：协调器会根据消费者的能力和分区数，将分区分配给消费者。
+* 同步分配结果：消费者会将分配到的分区信息同步给其他消费者。
+* 提交偏移量：消费者会向 kafka 提交其消费到的最新偏移量。
