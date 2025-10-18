@@ -7,7 +7,7 @@
 
 ```sql
 -- 创建 catalog，注意替换 s3 endpoint 地址
-CREATE CATALOG mycatalog WITH (
+CREATE CATALOG paimoncatalog WITH (
     'type'='paimon',
     'warehouse'='s3://gravitino/gravitino/paimon/',
     's3.endpoint' = 'http://localhost:9000',
@@ -16,7 +16,7 @@ CREATE CATALOG mycatalog WITH (
 );
 
 -- 创建 paimon sink 表，在 paimon catalog 下无需指定 connector 为 paimon 和 path
-CREATE TABLE mycatalog.`default`.word_count (
+CREATE TABLE paimoncatalog.`default`.word_count (
     word STRING PRIMARY KEY NOT ENFORCED,
     cnt BIGINT
 );
@@ -30,10 +30,10 @@ CREATE TABLE vvp.`default`.word_table (
 );
 
 -- 像 paimon 中写入数据，执行插入
-INSERT INTO mycatalog.`default`.word_count SELECT word, COUNT(*) FROM vvp.`default`.word_table GROUP BY word;
+INSERT INTO paimoncatalog.`default`.word_count SELECT word, COUNT(*) FROM vvp.`default`.word_table GROUP BY word;
 
 
 -- 查询 paimon 数据
-select * from mycatalog.`default`.word_count;
+select * from paimoncatalog.`default`.word_count;
 ```
 
