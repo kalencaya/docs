@@ -2,6 +2,9 @@
 
 ## 原因
 
+参考链接：
+* [腾讯面试：Flink与Spark内存管理机制有什么区别？](https://mp.weixin.qq.com/s/kEvreYLVphT7VHl-jj_FwA)
+
 基于 JVM 的数据引擎需要将大量数据加载到内存中，在高性能方面会受到 JVM 内存管理的限制：
 
 * Java 对象存储密度低。一个只包含 boolean 属性的对象占用了16个字节内存：对象头占了8个，boolean 属性占了1个，对齐填充占了7个。而实际上只需要一个bit（1/8字节）就够了。

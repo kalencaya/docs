@@ -125,6 +125,11 @@ todo 最大并行度
 
 ### checkpoint，savepoint，state，watermark，异步快照算法，背压
 
+参考链接：
+* [Flink Checkpoint 完整过程技术解析（附源码）](https://mp.weixin.qq.com/s/S3Um0btDr--m8Oc23V9N1Q)
+* [腾讯面试：Flink与Spark容错机制有什么区别？](https://mp.weixin.qq.com/s/aE8V65R8-b36K5bg8bI9Zw)
+* [Flink大状态优化指南（参数+业务代码）](https://mp.weixin.qq.com/s/C9MrDVaubOstxWpz-b5Zyg)
+
 exactly-once，at-least-once，端到端一致性
 
 failure strategy
