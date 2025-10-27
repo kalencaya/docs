@@ -27,5 +27,11 @@
     "name": "question",
     "collapsed": true,
     "label": "nav.interview.flink.question"
+  },
+  {
+    "type": "dir",
+    "name": "cep",
+    "collapsed": true,
+    "label": "nav.interview.flink.cep"
   }
 ]

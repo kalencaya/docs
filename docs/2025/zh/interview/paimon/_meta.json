@@ -18,5 +18,10 @@
     "type": "file",
     "name": "practice",
     "label": "nav.interview.paimon.practice"
+  },
+  {
+    "type": "file",
+    "name": "parameter",
+    "label": "nav.interview.paimon.parameter"
   }
 ]

@@ -394,6 +394,10 @@
     "zh": "面试题",
     "en": "Question"
   },
+  "nav.interview.flink.cep": {
+    "zh": "CEP",
+    "en": "CEP"
+  },
   "nav.interview.paimon": {
     "zh": "Paimon",
     "en": "Paimon"
@@ -409,6 +413,10 @@
   "nav.interview.paimon.primary-key-table": {
     "zh": "主键表",
     "en": "Primary Key Table"
+  },
+  "nav.interview.paimon.parameter": {
+    "zh": "参数",
+    "en": "Parameter"
   },
   "nav.interview.paimon.practice": {
     "zh": "实践",
