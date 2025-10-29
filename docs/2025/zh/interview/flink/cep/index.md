@@ -41,6 +41,7 @@
 ## 参考文档
 
 * [FlinkCEP - Flink的复杂事件处理](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/libs/cep/#flinkcep---flink%e7%9a%84%e5%a4%8d%e6%9d%82%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86)
+* [Flink-CEP 实战教程](https://blog.csdn.net/qq_43048957/article/details/135508027)
 * 阿里云。阿里云实时计算服务提供了对动态 cep 的支持，未开源
   * [FLIP-200: Support Multiple Rule and Dynamic Rule Changing (Flink CEP)](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=195730308)
   * [ververica-cep-demo](https://github.com/RealtimeCompute/ververica-cep-demo)
@@ -48,3 +49,4 @@
   * [动态CEP中规则的JSON格式定义](https://help.aliyun.com/zh/flink/definitions-of-rules-in-the-json-format-in-dynamic-flink-cep)
   * [探索Flink动态CEP：杭州银行的实战案例](https://developer.aliyun.com/article/1646649)
 * [Flink1.19源码编译及本地运行](https://blog.csdn.net/qq_20672231/article/details/147017660)
+* [基于flink和drools的实时日志处理](https://github.com/luxiaoxun/eagle)
