@@ -38,6 +38,70 @@
 * [Flink-Cep实现规则动态更新](https://blog.csdn.net/young_0609/article/details/110407781)
 * [一个Flink-Cep使用案例](https://blog.51cto.com/u_9928699/3699677)
 
+## 指标中心实战
+
+[FilterRules 且或组件](https://dtstack.github.io/dt-react-component/components/filter-rules)
+
+```json
+{
+    "key": "第一层",
+    "name": "第一条用户发送的消息",
+    "level": 1,
+    "combine": null,
+    "rules": {
+        "type": "and",
+        "expressions": [
+            {
+                "fieldName": "消息发送人",
+                "operation": "==",
+                "value": [
+                    "用户"
+                ]
+            },
+            {
+                "fieldName": "消息类型",
+                "operation": "in",
+                "value": [
+                    "文本",
+                    "图片"
+                ]
+            }
+        ]
+    },
+    "child": {
+        "combine": "紧接着",
+        "key": "第二层",
+        "name": "之后有客服发过言",
+        "level": 2,
+        "rules": {
+            "type": "and",
+            "expressions": [
+                {
+                    "fieldName": "消息发送人",
+                    "operation": "==",
+                    "value": [
+                        "客服"
+                    ]
+                },
+                {
+                    "fieldName": "消息类型",
+                    "operation": "in",
+                    "value": [
+                        "文本",
+                        "图片"
+                    ]
+                }
+            ]
+        },
+        "child": {
+
+        }
+    }
+}
+```
+
+
+
 ## 参考文档
 
 * [FlinkCEP - Flink的复杂事件处理](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/libs/cep/#flinkcep---flink%e7%9a%84%e5%a4%8d%e6%9d%82%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86)
