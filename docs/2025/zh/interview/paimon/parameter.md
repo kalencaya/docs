@@ -8,11 +8,222 @@
 
 ### partial update 
 
+paimon 的 partial update 可以代替多流Join构建宽表，显著提升了链路的稳定性和开发效率。但是用好 partial update 还有一些细节需要关注。
 
+#### 常见用法
+
+通过 `union all` 合并多个流写入 paimon。
+
+#### 无法更新为 NULL 值
+
+当使用 `partial-update` 合并引擎时，默认的是“**按字段合并非 NULL 值**”，以订单宽表为例，需关联订单和商品表。如果商品表某个字段原先有值非 NULL，后来更新为 NULL，`partial-update` 不会将订单宽表中商品表的这个字段更新为 NULL，而是保留之前的值，从而导致错误。
+
+解决思路是使用 `sequence-group` 机制控制多个流中的每个流的更新顺序，如`'fields.G.sequence-group'='A,B'`，由字段 `G` 控制是否更新字段 `A, B`；总得来说，`G` 的值如果为 null 或比更新值大将不更新 `A,B`。
+
+ `sequence-group` 作用是：
+
+1. 在多个数据流更新期间的无序问题。每个数据流都定义自己的序列组。
+2. 真正的部分更新，而不仅仅是非空值的更新。
+3. 接受删除记录来撤销部分列。
+
+```sql
+CREATE TABLE t (
+    trace_id BIGINT,
+    f1 STRING,
+    f2 STRING,
+    g_1 BIGINT,
+    f3 STRING,
+    f4 STRING,
+    g_2 BIGINT,
+    PRIMARY KEY (trace_id) NOT ENFORCED
+) WITH (
+    'merge-engine'='partial-update',
+    'fields.g_1.sequence-group'='f1,f2', -- f1,f2字段根据 g_1 排序
+    'fields.g_2.sequence-group'='f3,f4'  -- f3,f4字段根据 g_2 排序
+);
+
+insert  into t
+select  trace_id,
+        f1,
+        f2,
+        g_1,
+        f3,
+        f4,
+        g_2,
+        ...
+from    (
+            select  trace_id,
+                    f1,
+                    f2,
+                    g_1,
+                    cast(null as STRING) as f3,
+                    cast(null as STRING) as f4,
+                    cast(null as BIGINT) as g_2,
+                    xxx
+            from    table1
+            union all
+            select  trace_id,
+                    cast(null as STRING) as f1,
+                    cast(null as STRING) as f2,
+                    cast(null as BIGINT) as g_1,
+                    f3,
+                    f4,
+                    g_2,
+                    xxx
+            from    table2
+            union all
+            ......
+        )
+```
+
+`sequence-group` 作用进一步说明。假设如下一张表，参数基本都是默认的：
+
+```sql
+CREATE TABLE partial_update01
+(
+    id   INT,
+    age   INT,
+    name   STRING,
+    address STRING,
+    PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    'merge-engine' = 'partial-update'
+);
+
+-- 插入数据，age 第一次插入为 30，第二次被更新为 20
+insert into partial_update01 (id,age) values (1,30);
+insert into partial_update01 (id,age,address) values (1,20,'China');
+```
+
+假设现在要求 age 只能越来越大，即不可以出现 30 -> 20 这种情况，这里就可以通过 `sequence-group` 设置 age：
+
+```sql
+CREATE TABLE partial_update02
+(
+    id   INT,
+    age   INT,
+    name   STRING,
+    address STRING,
+    PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    'merge-engine' = 'partial-update',
+    'fields.age.sequence-group' = 'age'
+);
+
+-- 插入数据，age 第一次插入为 30，第二次不会 age 不会更新
+insert into partial_update02 (id,age) values (1,30);
+insert into partial_update02 (id,age,address) values (1,20,'China');
+```
+
+#### 删除数据
+
+当使用 `partial-update` 合并引擎时，默认情况下 **无法处理删除记录**，因为该引擎的设计逻辑是“**按字段合并非 NULL 值**”，而删除操作需要移除整行数据。此时，系统会抛出错误或忽略删除操作，导致数据不一致。为解决此问题，Paimon 提供以下四种配置方案：
+
+| 配置项                                                    | 核心行为                                                     | 适用场景                                                     |      | 副作用                                               |
+| --------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| 'ignore-delete' = 'true'                                  | 完全忽略删除记录，仅处理插入（Insert）和更新（Update）操作   | 删除操作无意义（如日志追加场景），或下游自行处理删除逻辑。   |      | 删除记录被静默丢弃，可能导致数据冗余。               |
+| 'partial-update.remove-record-on-delete' = 'true'         | 当收到删除记录时，直接删除整行（即使其他字段有非 NULL 值）   | 需要严格按主键删除整行的场景（如用户注销）                   |      | 可能意外删除其他字段的有效数据                       |
+| 配置 sequence-group                                       | 通过字段组（sequence-group）定义删除操作仅撤回指定字段，而非整行 | 多源更新场景，删除操作仅针对特定字段组（如删除用户地址但保留其他信息） |      | 需显式定义字段组，删除操作不彻底（残留其他字段数据） |
+| 'partial-update.remove-record-on-sequence-group' = 'true' | 当收到指定 sequence-group 的删除记录时，删除整行             | 关键字段组被删除时需移除整行（如订单核心信息删除后，整条订单失效） |      | 需结合 sequence-group 使用，配置复杂度较高           |
+
+#### aggragation 函数
+
+在 `partial-update` 的合并过程中也支持 aggragation 函数。
+
+```sql
+CREATE TABLE partial_update03
+(
+    id   INT,
+    age   INT,
+    name   STRING,
+    address STRING,
+    merge_num INT,
+    PRIMARY KEY (id) NOT ENFORCED
+) WITH (
+    'merge-engine' = 'partial-update',
+    'fields.age.sequence-group' = 'age',
+    'fields.merge_num.aggregate-function' = 'sum' -- 设置 aggragation 函数，统计更新次数
+);
+
+-- 插入数据，每次插入的时候都带着 merge_num，merge_num 值为 1，这样就可以记录插入次数
+insert into partial_update03 (id,age,merge_num) values (1,30,1);
+insert into partial_update03 (id,age,address,merge_num) values (1,20,'China',1);
+```
+
+#### 级联 join或外键打宽
+
+`partial-update` 要求目标宽表的主键和源表主键相同。
+
+以订单宽表为例，离线加工中需做如下 join 操作，同时 flink 的多流 join 也是支持这个操作的：
+
+```sql
+select *
+from ods.ods_order as t1
+join ods.ods_item as t2 on t1.item_id = t2.item_id
+join ods.ods_shop as t3 on t2.shop_id = t3.shop_id
+;
+```
+
+业界的一个操作是通过 flink sql 做多流 join，只存储相关主键和关联键，后续在通过 paimon 的 partial update 进行打宽。
+
+```sql
+-- 通过 flink sql 进行多流 join，只保留主键的部分，状态开销就会节省很多, 性能也会提升，以较低代价产出一张多表的主键变更关系流
+insert into dwd.dwd_order_pk
+select t1.order_id, t2.item_id, t3.shop_id
+from ods.ods_order as t1
+join ods.ods_item as t2 on t1.item_id = t2.item_id
+join ods.ods_shop as t3 on t2.shop_id = t3.shop_id
+;
+
+-- 下游流读这张 dwd.dwd_order_pk, 和原始的单表进行基于主键的维表关联, 来补齐其他表的字段形成大宽表
+-- 这里其实走的都是 lookup join，性能依赖 lookup join 性能，lookup join 不够快这种方式也是不行的
+select t1.order_id, t2.item_id, t3.shop_id
+from dwd.dwd_order_pk as x
+left join ods.ods_order as t1 on x.order_id = t1.order_id -- lookup join
+left join ods.ods_item as t2 on x.item_id = t2.item_id    -- lookup join
+left join ods.ods_shop as t3 on x.shop_id = t3.shop_id    -- lookup join
+;
+
+-- 上述方案会依赖 dwd.dwd_order_pk 的表的更新，如果 dwd.dwd_order_pk 表重置位点，回溯一定历史数据，则会触发所有依赖这种流表的任务更新
+-- 可通过 sequence 能力，减少 dwd.dwd_order_pk changelog 的产生
+insert into dwd.dwd_order_pk_sequence
+select t1.order_id, t2.item_id, t3.shop_id, t1.gmt_modified_1, t1.gmt_modified_2, t1.gmt_modified_3
+from ods.ods_order as t1
+left join ods.ods_item as t2 on t1.item_id = t2.item_id
+left join ods.ods_shop as t3 on t2.shop_id = t3.shop_id
+;
+
+CREATE TABLE dwd.dwd_order_pk_sequence (
+  `order_id` varchar,
+  `item_id` varchar,
+  `shop_id` varchar,
+  `gmt_modified_1` bigint,
+  `gmt_modified_2` bigint,
+  `gmt_modified_3` bigint,
+   primary key (`pk1`, `pk2`, `pk3`) NOT ENFORCED
+) with (
+    'merge-engine' = 'partial-update',
+    'fields.gmt_modified_1.sequence_group' = 'gmt_modified_1',
+    'fields.gmt_modified_2.sequence_group' = 'gmt_modified_2',
+    'fields.gmt_modified_3.sequence_group' = 'gmt_modified_3',
+    'chaneglog-producer' = 'lookup'
+)
+;
+```
+
+也可以参考：[widetable](https://github.com/CNDPP/widetable)
 
 ### aggregate
 
+针对ODS表主键不一致、无法通过一次Partial Update实现多流数据合并的场景，我们采用了Paimon的Aggregation合并引擎，并结合nested_update函数进行处理。
 
+具体做法是：将三个主键分别为col1、(co1, col8)、(col1, col18) 的流表，通过Aggregation引擎聚合到以 col1 为主键的宽表。nested_update函数的作用类似于hive SQL中的collect_list()，能够将非 col1 作为主键的流表记录，按  col1 聚合为Array类型，统一宽表的主键粒度。此外，对于 col8 和 col18 的计数需求，由于Paimon Aggregation引擎表暂不支持count函数，我们通过sum+case when的方式实现等价计算，满足了业务对多维度数据聚合的需求。
+
+### lookup join
+
+
+
+通过Aggregation加工的宽表和维表进行Lookup Join丰富维度信息，nested_update函数聚合的字段通过unnest展开与维表Join，作用等价于常用的explode函数。
 
 ## 参数解读
 
