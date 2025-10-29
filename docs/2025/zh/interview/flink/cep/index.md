@@ -1,8 +1,6 @@
 # 概览
 
-## 动态 cep
-
-
+## cep介绍
 
 ### 模式
 
@@ -31,6 +29,22 @@
 
 * 如何实现在 b 事件之前没有发生 a 事件？正常来说是 a 事件之后发生（未发生）b 事件，但如果从 b 事件出发进行逆推，b 事件发生前需要匹配未发生 a 事件。这种场景可以先设置一个 任意事件开始 notnext or notfollowedby 
 
-### 参考文档
+## 动态 cep
+
+* 阿里云版。阿里云实时计算服务提供了对动态 cep 的支持，未开源
+* [Flink-CEPplus](https://github.com/ljygz/Flink-CEPplus)。针对 flink 1.8 版本可做参考
+* [flink-dynamic-cep](https://github.com/shirukai/flink-dynamic-cep)。针对 flink 1.17 版本，对 flink 侵入小。推荐
+* [Flink动态CEP实例](https://jxeditor.github.io/2021/06/02/Flink%E5%8A%A8%E6%80%81CEP%E5%AE%9E%E4%BE%8B/)
+* [Flink-Cep实现规则动态更新](https://blog.csdn.net/young_0609/article/details/110407781)
+* [一个Flink-Cep使用案例](https://blog.51cto.com/u_9928699/3699677)
+
+## 参考文档
 
 * [FlinkCEP - Flink的复杂事件处理](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/libs/cep/#flinkcep---flink%e7%9a%84%e5%a4%8d%e6%9d%82%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86)
+* 阿里云。阿里云实时计算服务提供了对动态 cep 的支持，未开源
+  * [FLIP-200: Support Multiple Rule and Dynamic Rule Changing (Flink CEP)](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=195730308)
+  * [ververica-cep-demo](https://github.com/RealtimeCompute/ververica-cep-demo)
+  * [Flink动态CEP快速入门](https://help.aliyun.com/zh/flink/realtime-flink/getting-started/getting-started-with-dynamic-flink-cep)
+  * [动态CEP中规则的JSON格式定义](https://help.aliyun.com/zh/flink/definitions-of-rules-in-the-json-format-in-dynamic-flink-cep)
+  * [探索Flink动态CEP：杭州银行的实战案例](https://developer.aliyun.com/article/1646649)
+* [Flink1.19源码编译及本地运行](https://blog.csdn.net/qq_20672231/article/details/147017660)
