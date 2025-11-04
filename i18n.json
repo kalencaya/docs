@@ -402,6 +402,10 @@
     "zh": "CEP",
     "en": "CEP"
   },
+  "nav.interview.flink.project": {
+    "zh": "Project",
+    "en": "Project"
+  },
   "nav.interview.paimon": {
     "zh": "Paimon",
     "en": "Paimon"

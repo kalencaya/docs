@@ -33,5 +33,11 @@
     "name": "cep",
     "collapsed": true,
     "label": "nav.interview.flink.cep"
+  },
+  {
+    "type": "dir",
+    "name": "project",
+    "collapsed": true,
+    "label": "nav.interview.flink.project"
   }
 ]
