@@ -9,7 +9,9 @@ todo
 * [feathub](https://github.com/alibaba/feathub)
 * [nussknacker](https://github.com/TouK/nussknacker)。Low-code tool for automating actions on real time data | Stream processing for the users.
 * [seatunnel](https://github.com/apache/seatunnel)
-* [chronon](https://github.com/airbnb/chronon)。[Chronon，爱彼迎的机器学习特征平台，现已开源](https://mp.weixin.qq.com/s/oJFlmHHlFNL2xKelvRkk2A)
+* [chronon](https://github.com/airbnb/chronon)。
+  * [Chronon，爱彼迎的机器学习特征平台，现已开源](https://mp.weixin.qq.com/s/oJFlmHHlFNL2xKelvRkk2A)
+  * [Chronon — 一种开源声明式特征工程框架](https://mp.weixin.qq.com/s/aruCgYvwPxLx6MnzmdxYiQ)
 
 用户画像
 * [伴鱼用户画像平台：设计篇](https://tech.ipalfish.com/blog/2021/08/05/user-profile-design/)
