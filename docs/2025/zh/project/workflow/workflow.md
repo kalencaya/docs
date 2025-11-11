@@ -4,7 +4,9 @@
 
 * [temporal](https://github.com/temporalio/temporal)
 * [kestra](https://github.com/kestra-io/kestra)
-* [maestro](https://github.com/Netflix/maestro)。[一周2K star！Netflix 开源的工作流编排器，不容错过](https://mp.weixin.qq.com/s/ssa_F3FLveIvFPsHfEMGIg)
+* [maestro](https://github.com/Netflix/maestro)。
+  * [一周2K star！Netflix 开源的工作流编排器，不容错过](https://mp.weixin.qq.com/s/ssa_F3FLveIvFPsHfEMGIg)
+  * [百倍加速：我们如何为 Netflix Maestro 工作流引擎注入澎湃动力](https://mp.weixin.qq.com/s/Xk9cFIgSqi4yenfcbL0tbw)
 * [incubator-kie-kogito-runtimes](https://github.com/apache/incubator-kie-kogito-runtimes)
   * [kogito-examples](https://github.com/kiegroup/kogito-examples)
 * [flux](https://github.com/flipkart-incubator/flux)
