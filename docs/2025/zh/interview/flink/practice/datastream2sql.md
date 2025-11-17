@@ -16,7 +16,9 @@
   * `DataStream` 可以在不同的算子中完成关联维表操作，`filter`、`map` 和 `flatmap`，还有专门的 `AsyncIO` 来实现异步加载维表，但是需要用户自己按需添加 cache 和 retry 功能。
   * `SQL/Table` 大部分 connector 都提供了 Lookup Join 功能，且为 Lookup Join 功能提供了 cache 和 retry 功能，但是多以同步为主，只有部分实现了异步如 [hbase](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/hbase/)、[paimon](https://paimon.apache.org/docs/1.3/flink/sql-lookup/)、[doris](https://doris.apache.org/zh-CN/docs/3.x/ecosystem/flink-doris-connector#lookup-join)，如 jdbc 不支持异步。另外如 paimon API 不适合用 `DataStream` API 开发维表 join 功能。
 
-因此在使用 `DataStream` API 编程的时候，遇到 API 或 connector 支持力度不如 `SQL/Table`，可以通过 `DataStream` -> `Table` -> `SQL` -> `Table` -> `DataStream` 的方式巧妙利用 API 或 connector 的 `SQL/Table` 能力。
+因此在使用 `DataStream` API 编程的时候，遇到 API 或 connector 支持力度不如 `SQL/Table` 的时候，可以利用 `DataStream` 和 `Table` 的相互转换能力，通过 `DataStream` -> `Table` -> `SQL` -> `Table` -> `DataStream` 的方式巧妙利用 API 或 connector 的 `SQL/Table` 能力。
+
+注意：此场景仅适用于使用 Java `DataStream` API 开发 flink 任务场景。
 
 ## 注意事项
 
