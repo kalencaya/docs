@@ -4,14 +4,17 @@
 
 ![levels_of_abstraction](https://nightlies.apache.org/flink/flink-docs-release-1.20/fig/levels_of_abstraction.svg)
 
-在 API 层级中 `SQL/Table` 和 `DataStream` API 都是基于 `Stateful Stream Processing` API。`Stateful Stream Processing` 指 `DataStream` API 中的 `ProcessFunction`，通过这种方式 `Stateful Stream Processing` 嵌入到 `DataStream` API 中。
+在 API 层级中 `SQL/Table` 和 `DataStream` API 都是基于 `Stateful Stream Processing` API，但是二者使用的方式并不同：
 
-`SQL/Table` API 在编译阶段生成 `JobGraph`，在通过 `JobGraph` 通过代码生成底层的 `Operator`，利用 `ProcessFunction`。
+* `Stateful Stream Processing` 通过 `DataStream` API 中的 `ProcessFunction` 嵌入到 `DataStream` API 中。
+* `SQL/Table` API 在编译阶段生成 `JobGraph`，在通过 `JobGraph` 通过代码生成来生成底层的 `Operator`，底层的 `Operator` 利用 `ProcessFunction`。
 
 因此 `SQL/Table` 和 `DataStream` 之间是缺乏复用的，导致两种 API 能力未能对齐，比如：
 
-* Interval Join。`DataStream` 只支持 inner join，不支持 left join，而 `SQL/Table` 支持 inner join 和 left join
-* Lookup Join。`DataStream` 可以在不同的算子中完成关联维表操作，`filter`、`map` 和 `flatmap`，还有专门的 `AsyncIO` 来实现异步加载维表，但是需要用户自己按需添加 cache 和 retry 功能。`SQL/Table` 大部分 connector 都提供了 Lookup Join 功能，且为 Lookup Join 功能提供了 cache 和 retry 功能，但是多以同步为主，只有部分实现了异步如 [hbase](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/hbase/)、[paimon](https://paimon.apache.org/docs/1.3/flink/sql-lookup/)、[doris](https://doris.apache.org/zh-CN/docs/3.x/ecosystem/flink-doris-connector#lookup-join)，如 jdbc 不支持异步。另外如 paimon API 不适合用 `DataStream` API 开发维表 join 功能。
+* Interval Join。`DataStream` 只支持 inner join，不支持 left join，而 `SQL/Table` 同时支持 inner join 和 left join
+* Lookup Join。在关联维表时常关注的 3 个点为：cache、retry、同步 or 异步。
+  * `DataStream` 可以在不同的算子中完成关联维表操作，`filter`、`map` 和 `flatmap`，还有专门的 `AsyncIO` 来实现异步加载维表，但是需要用户自己按需添加 cache 和 retry 功能。
+  * `SQL/Table` 大部分 connector 都提供了 Lookup Join 功能，且为 Lookup Join 功能提供了 cache 和 retry 功能，但是多以同步为主，只有部分实现了异步如 [hbase](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/connectors/table/hbase/)、[paimon](https://paimon.apache.org/docs/1.3/flink/sql-lookup/)、[doris](https://doris.apache.org/zh-CN/docs/3.x/ecosystem/flink-doris-connector#lookup-join)，如 jdbc 不支持异步。另外如 paimon API 不适合用 `DataStream` API 开发维表 join 功能。
 
 因此在使用 `DataStream` API 编程的时候，遇到 API 或 connector 支持力度不如 `SQL/Table`，可以通过 `DataStream` -> `Table` -> `SQL` -> `Table` -> `DataStream` 的方式巧妙利用 API 或 connector 的 `SQL/Table` 能力。
 
