@@ -32,9 +32,9 @@
 ### Left Interval Join
 
 ```java
-package com.pxb7.mall.realtime.dw.job.inspection.demo;
+package cn.sliew.flink.demo;
 
-import com.pxb7.mall.realtime.dw.base.util.ParameterToolUtil;
+import cn.sliew.flink.demo.dw.base.util.ParameterToolUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
