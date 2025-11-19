@@ -26,6 +26,7 @@
 * 定义 bean 不推荐使用 `primitive types` 如不推荐使用 `int` 而使用 `Integer`。在 `Table` -> `DataStream` 转换时，`int` 类型默认为 `NOT NULL`，而 `Integer` 除非显示在 `Schema` 中声明为 `NOT NULL`，一般认为是允许为 `NULL`
 * 字段类型和数量相同。在 `Table` -> `DataStream` 转换时，使用 bean 接收 `Table` 中的数据时，需注意 bean 中的字段数量和 `Table` 中的字段数据量一致且类型一致
 * 序列化器。`Table` -> `DataStream` 转换和 `DataStream` -> `DataStream` 转换会使用不同的序列化器，导致同样是两个 `DataStream<Event>` 类型的流无法通过 `union()` 方法连接在一起。解决方式是对 `Table` -> `DataStream` 得出的结果执行 `DataStream<Event>.map(record -> record).returns(TypeInformation.of(Event.class))`。
+* 复杂类型。对于常规的类型如 `String` -> `DataTypes.STRING()` 是容易转换的，但是对于 `Map<String, List<User>>` 这种复杂类型设置为 `DataTypes.MAP(DataTypes.STRING(), DataTypes.ARRAY(DataTypes.of(QualityInspectMessage.class)))`。在实际使用中发现 `Table` 在向 `DataStream` 转换时会发生异常，因为 `Table` 默认 `DataTypes.ARRAY` 为数组类型，因此 Java Bean 中需要设置为 `Map<String, User[]>` 类型
 
 ## 实操案例
 
