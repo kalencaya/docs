@@ -166,6 +166,10 @@
     "zh": "Orca",
     "en": "Orca"
   },
+  "nav.project.workflow.orchestration.maestro": {
+    "zh": "Maestro",
+    "en": "Maestro"
+  },
   "nav.project.workflow.orchestration.design": {
     "zh": "设计",
     "en": "Design"

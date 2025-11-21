@@ -21,6 +21,11 @@
   },
   {
     "type": "file",
+    "name": "maestro",
+    "label": "nav.project.workflow.orchestration.maestro"
+  },
+  {
+    "type": "file",
     "name": "design",
     "label": "nav.project.workflow.orchestration.design"
   }
