@@ -37,6 +37,10 @@ http://127.0.0.1:$PORT
 * [目前国内可用Docker镜像源汇总](https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea)
 * [docker proxy](https://dockerproxy.com/docs)。`https://dockerproxy.com` 代理介绍
 * [docker daemon cli](https://docs.docker.com/engine/reference/commandline/dockerd/)
+* [镜像站](https://mirror.kentxxq.com/image)
+* [境内 Docker 镜像状态监控](https://status.anye.xyz/)
+* [KSpeeder](https://kspeeder.com/)
+* [轩辕镜像](https://docker.xuanyuan.me/)
 
 添加如下代理信息至 `daemon.json` 中。代理不定时失效，需勤快更新
 
