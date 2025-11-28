@@ -27,7 +27,7 @@ flink-cep 的应用场景有：
 * 实时规则检测。
   * 直播实时检测。检测到 10 分钟内观看人数持续下跌，实时推送直播达人，调整直播策略
   * 用户在 30 分钟内创建多笔订单，没有支付，疑似刷单，进行账号封禁
-  * 爆品发现。某款商品 5 分钟内成交超过 1000 单，实时推送商家，提醒及时补货、直播见挂链接
+  * 爆品发现。某款商品 5 分钟内成交超过 1000 单，实时推送商家，提醒及时补货、直播间挂链接
   * 在线奖励。当完成在线任务后，及时发放积分和奖励
 
 ## 1.模式
@@ -60,25 +60,30 @@ START((STAET));
 END((END));
 Health(身体健康);
 Criminal(无犯罪史);
-Man(18 < 男性 < 65);
-Woman(18 < 女性 < 65);
 
 START -- AND ---> Health;
 START -- AND ---> Criminal;
-START --AND ---> Age(年龄限制);
-Age -- OR ---> Man;
-Age -- OR ---> Woman;
-Man -- AND ---> Age_Man(年龄在 18 ~ 65);
-Man -- AND ---> Sex_Man(性别男);
-Woman -- AND ---> Age_Woman(年龄在 18 ~ 60);
-Woman -- AND ---> Sex_Woman(性别女);
+START --AND ---> Age_Start(年龄限制);
+
+Age_Start -- OR ---> Man_Start(18 < 男性 < 65);
+Man_Start -- AND ---> Age_Man(年龄在 18 ~ 65);
+Man_Start -- AND ---> Sex_Man(性别男);
+Age_Man -----> Man_Stop(Stop);
+Sex_Man -----> Man_Stop(Stop);
+
+Age_Start -- OR ---> Woman_Start(18 < 女性 < 65);
+Woman_Start -- AND ---> Age_Woman(年龄在 18 ~ 60);
+Woman_Start -- AND ---> Sex_Woman(性别女);
+Age_Woman -----> Woman_Stop(Stop);
+Sex_Woman -----> Woman_Stop(Stop);
+
+
+Man_Stop -----> Age_Stop(Stop);
+Woman_Stop -----> Age_Stop(Stop);
 
 Health -----> END;
 Criminal -----> END;
-Age_Man -----> END;
-Sex_Man -----> END;
-Age_Woman -----> END;
-Sex_Woman -----> END;
+Age_Stop -----> END;
 ```
 
 可用 JSON 表达如下：
@@ -341,6 +346,10 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 * `循环`模式。比如 1 小时内检测用户连续转账 5 次且每次转账金额大于 10000 的行为
 * `组合模式`。比如连续 3 次下单，但 10 分钟内没有支付的行为
 
+以监控告警为例：第一次报警发生后，30s 内发生第二次报警，进行报警升级，第一次报警邮件通知，第二次升级为电话通知。
+
+
+
 ### 1.6 复杂条件
 
 单个事件的检测规则可以很简单，也可以很复杂，但是都是针对单个事件。条件也可以跨多个事件。比如某日销售额超过前 3 天的平均值 20%，数据流为每日销售额对象。
@@ -368,7 +377,7 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 
 针对上面数据，判断 `20251014` 销售额是否超过 `20251011 + 20251012 + 20251013` 平均值 20%。
 
-又或者第一次报警发生后，30s 内发生第二次报警，进行报警升级，第一次报警邮件通知，第二次升级为电话通知。
+
 
 ## 2.匹配后跳过策略
 
