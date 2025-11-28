@@ -22,6 +22,40 @@
 
 ## 注意事项
 
+### watermark
+
+在 `DataStream` -> `Table` 或 `Table` -> `DataStream` 转换过程中，是否会携带 watermark 信息？
+
+* `DataStream` -> `Table`。默认不携带（[Handling of (Insert-Only) Streams](https://nightlies.apache.org/flink/flink-docs-release-1.20/docs/dev/table/data_stream_api/#handling-of-insert-only-streams)），可在 `Schema` 或 `Expression` 中重新定义，重新定义后会覆盖 `DataStream` 中的 watermark，也可通过定义沿用 `DataStream` 的 watermark
+* `Table` -> `DataStream`。携带（`toDataStream(Table)`）。
+
+假设 `DataStream` 中的 event 有字段 `private Long ts`，并被定义为 watermark 时间。在 `DataStream` -> `Table` 后，可以使用 `left.ts between right.ts - 60000 and right.ts + 60000`。
+
+如何验证 watermark 的存在。可在 `DataStream` 后增加 `ProcessFunction` 并在每条数据经过时输出 `watermark`，也可设置定时器，查看定时器是否触发以验证 `watermark` 或 source idle-time。
+
+```java
+// 标记事件时间列
+public static final Expression[] FIELDS = new Expression[]{
+        Expressions.$("id"),
+        ......
+        Expressions.$("kafkaTimestamp").rowtime() // 标记 kafkaTimestamp 为事件列，但不是 watermark。watermark 仍然由 DataStream 的 WatermarkStrategy 决定
+}
+
+// 透传 watermark。如果上游是通过 create table xxx 的 sql 定义的 DataStream，无法通过 SOURCE_WATERMARK() 透传 watermark
+public static final Schema SCHEMA = Schema.newBuilder()
+        .column("id", DataTypes.STRING())
+        ......
+        .column("kafkaTimestamp", DataTypes.BIGINT())
+        
+        .columnByExpression("kafka_timestamp", "TO_TIMESTAMP_LTZ(kafkaTimestamp, 3)")
+        .watermark("kafka_timestamp", "SOURCE_WATERMARK()")
+        .build();
+```
+
+### 其他
+
+
+
 * watermark。在 `DataStream` -> `Table` 或 `Table` -> `DataStream` 转换过程中，是不能转换 watermark 信息的。需添加 `Schema` 参数，在 `Schema` 中指定 watermark 完成转换
 * 定义 bean 不推荐使用 `primitive types` 如不推荐使用 `int` 而使用 `Integer`。在 `Table` -> `DataStream` 转换时，`int` 类型默认为 `NOT NULL`，而 `Integer` 除非显示在 `Schema` 中声明为 `NOT NULL`，一般认为是允许为 `NULL`
 * 字段类型和数量相同。在 `Table` -> `DataStream` 转换时，使用 bean 接收 `Table` 中的数据时，需注意 bean 中的字段数量和 `Table` 中的字段数据量一致且类型一致
