@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.flink.cep.index"
+  },
+  {
+    "type": "file",
+    "name": "concept",
+    "label": "nav.interview.flink.cep.concept"
+  },
+  {
+    "type": "file",
+    "name": "rule",
+    "label": "nav.interview.flink.cep.rule"
+  }
+]
