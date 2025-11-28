@@ -32,13 +32,22 @@ flink-cep 的应用场景有：
 
 ## 1.模式
 
-### 1.1 条件
+模式有 3 种：
 
-可以指定一个条件来决定事件是否进入这个模式，条件可以很简单，比如 `value > 5` 或 `name contains "SB"`等
+* 单个模式
+* 组合模式
+* 模式组
 
-#### 1.1.1 组合条件树
+### 1.1 单个模式
 
-条件可以是很复杂的，由多个条件组合、具有层级的筛选规则组成。组合条件树需包含 2 个概念：
+#### 1.1.1 条件（Conditions）
+
+可以指定一个条件来决定事件是否进入这个模式：
+
+* 条件可以很简单，比如 `value > 5` 或 `name contains "SB"`等
+* 条件可以是很复杂的，由多个条件组合、具有层级的筛选规则组成，形成组合条件树
+
+组合条件树需包含 2 个概念：
 
 * 可组合。可通过`且或`条件进行组合
 * 可分层。条件不只是简单的 `value > 5` 还可以史复合条件如 `18 < age < 60 and sex == "man"`
@@ -174,9 +183,167 @@ Sex_Woman -----> END;
 }
 ```
 
-#### 1.1.2 迭代条件
+#### 1.1.2 量词
 
-条件不只在单个事件，还可以扩展到多个事件，比如某日销售额超过前 3 天的平均值 20%，数据流为每日销售额对象。
+如果只能检测到单个事件（虽然单个事件的匹配规则可能很复杂，但也只能匹配一个事件），会使用受限。flink-cep 也可以支持对模式增加`量词`，表达事件的重复次数。
+
+模式类型：
+
+* 单例模式。只能匹配一次
+* 循环模式。可重复匹配
+
+![cep](./image/cep.webp)
+
+比如在金融风控场景，检测用户连续转账 5 次且每次转账金额大于 10000 的行为，暂时封禁用户账号，防止被诈骗。转账事件定义如下，金额单位：分
+
+```json
+{
+    "timestamp": 1764315873504,
+    "userId": "1",
+    "amount": 1000000,
+    "action": "transfer"
+}
+```
+
+想检测到转账金额大于 10000，条件为 `action == "transfer" and amount >= 1000000`，接下来需要检测事件重复次数超过 5 次。5 次即为`量词`：
+
+* 单例模式。`action == "transfer" and amount >= 1000000`
+* 循环模式。设置 `action == "transfer" and amount >= 1000000` 重复次数超过 5 次
+
+在 flink-cep 中实现如下：
+
+```java
+Pattern<Event, Event> pattern = Pattern.<Event>begin("转账事件")
+        .where(new AviatorCondition<>("action == transfer and amount >= 1000000"))
+        .timesOrMore(5); // 5 次或更多
+```
+
+flink-cep 支持的量词如下：
+
+* `times(5)`。期望出现 5 次
+* `times(1, 3)`。期望出现 1 ~ 3 次
+* `timesOrMore(5)`。期望出现 5 次或更多
+* `oneOrMore()`。等价于 `timesOrMore(1)`
+* `opitonal()`。可将量词变成可选，加上`optional()` 表示可以不发生
+  * `times(5).optional()`。表示可以出现 5 次，也可出现 0 次
+  * `times(1, 3).optional()`。表示可以出现 1 ～ 3 次，也可以出现 0 次
+  * `timesOrMore(5).optional()`。表示可以出现 5 次或更多，也可出现 0 次
+* `greedy()`。期望尽可能多的重复，比如一个期望一个事件重复 3 次，实际上出现 10 次，匹配的时候期望把 10 次全拿出来作为一个结果，而不是把 10 次作为 3 + 3 + 3，给了 3 个结果。
+  * `times(5).greedy()`。表示可以出现 5 次，并尽可能的重复次数多
+  * `times(1, 3).greedy()`。表示可以出现 1 ～ 3 次，并尽可能的重复次数多
+  * `timesOrMore(5).greedy()`。表示可以出现 5 次或更多，并尽可能的重复次数多
+* `optinonal` 和 `greedy()` 也可以一起使用
+  * `times(5).optional().greedy()`。表示可以出现 5 次，也可以出现 0 次，并尽可能的重复次数多
+
+### 1.2 组合模式
+
+比如在网站流量场景，通过埋点不断获取到用户在网页的曝光、点击、加购、下单、支付等事件，事件结构定义如下：
+
+```json
+{
+    "timestamp": 1764315873504,
+    "userId": "1",
+    "productId": "1",
+    "action": "view | click | addCart | order | pay"
+}
+```
+
+想检测连续 3 次下单，但都没有支付的数据，向用户发送促销消息。需要匹配 2 个`单个模式`成为一个`组合模式`：
+
+* 连续 3 次下单。单个模式，模式因为有`量词`从`单例`变成`循环`
+* 支付。单个模式，无`量词`是`单例`
+
+```java
+// 单个模式。连续 3 次下单
+Pattern<Event, Event> pattern = Pattern.<Event>begin("下单事件")
+        .where(new AviatorCondition<>("action == order"))
+        .timesOrMore(3);
+
+// 单个模式。支付
+Pattern<Event, Event> pattern = Pattern.<Event>begin("支付事件")
+        .where(new AviatorCondition<>("action == pay"));
+
+// 组合模式。连续 3 次下单 --没有---> 支付，连接条件：未发生
+Pattern<Event, Event> pattern = Pattern.<Event>begin("下单事件")
+        .where(new AviatorCondition<>("action == order"))
+        .timesOrMore(3)
+        .notFollowedBy("支付事件")
+        .where(new AviatorCondition<>("action == pay"));
+```
+
+### 1.3 模式组
+
+对于`模式组`是对`单个模式`和`组合模式`的更进一步结合，比如对检测连续 3 次下单，但都没有支付的数据，发生一次可能是用户没有购买意愿可向用户发送促销消息促成交，发生 10 次判断用户可能是刷单用户。因此需要检测模式整体发生了 10 次：
+
+```java
+// 组合模式
+Pattern<Event, Event> notPayPattern = Pattern.<Event>begin("下单事件")
+        .where(new AviatorCondition<>("action == order"))
+        .timesOrMore(3)
+        .notFollowedBy("支付事件")
+        .where(new AviatorCondition<>("action == pay"));
+
+// 模式组
+Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
+        .timesOrMore(10);
+```
+
+### 1.4 连续性
+
+连续性指的是不同事件之间的是否连续，它有 2 个场景：
+
+* 在`单个模式`中，如果对`单例`模式增加`量词`即可变成`循环`模式。比如检测用户连续转账 5 次且每次转账金额大于 10000 的行为，对于连续转账中的连续的定义：是真正的连续事件，还是转账事件中间可以夹杂着`登陆`、`登出`事件。
+* 将多个`单个模式`组合成`组合模式`。比如连续 3 次下单，但没有支付的行为中，在连续 3 次下单和支付行为中间，是连续的，还是可以夹杂着`曝光`、`点击`、`加购`等事件。
+
+在模式序列中，把多个`单个模式`组合成`组合模式`的条件为连续条件
+
+* **严格连续**: 期望所有匹配的事件严格的一个接一个出现，中间没有任何不匹配的事件。
+* **松散连续**: 两个匹配事件的相对顺序，忽略匹配的事件之间的不匹配的事件。
+* **不确定的松散连续**: 可以重复使用之前已经匹配过的事件，以同一个事件作为开始匹配，更进一步的松散连续，允许忽略掉一些匹配事件的附加匹配。
+
+配置方式：
+
+* `组合模式`。
+  * `next()`。严格连续
+  * `followedBy()`。松散连续
+  * `followedByAny()`。不确定的松散连续
+* `模式组`。
+  * `start.next(
+        Pattern.<Event>begin("next_start").where(...).followedBy("next_middle").where(...)
+    ).times(3)`
+  * `start.followedBy(
+        Pattern.<Event>begin("followedby_start").where(...).followedBy("followedby_middle").where(...)
+    ).oneOrMore();`
+  * `start.followedByAny(
+        Pattern.<Event>begin("followedbyany_start").where(...).followedBy("followedbyany_middle").where(...)
+    ).optional();`
+
+同时还可以配置`Not`语义的连接：
+
+* `notNext()`，如果不想后面直接连着一个特定事件
+* `notFollowedBy()`，如果不想一个特定事件发生在两个事件之间的任何地方。
+
+注意，`Not`语义有使用限制：
+
+* 如果模式序列没有定义时间约束，则不能以 `notFollowedBy()` 结尾。
+* 一个`Not`模式前面不能是可选的模式（有`optional()`量词）。
+
+对于`单例`模式，通过增加`量词`变成`循环`模式时，重复次数的连续性配置如下：
+
+* 严格连续。`consecutive() `与 `oneOrMore()` 和 `times()` 一起使用， 在匹配的事件之间施加严格的连续性， 也就是说，任何不匹配的事件都会终止匹配（和 `next()` 一样）。
+* 松散连续。默认行为，即`followedBy()`
+* 不确定性连续。`allowCombinations()` 与 `oneOrMore()` 和 `times()` 一起使用， 在匹配的事件中间施加不确定松散连续性（和 `followedByAny()` 一样）
+
+### 1.5 时间约束
+
+除了指定事件的重复次数和不同事件之间的组合，还可以添加时间约束：
+
+* `循环`模式。比如 1 小时内检测用户连续转账 5 次且每次转账金额大于 10000 的行为
+* `组合模式`。比如连续 3 次下单，但 10 分钟内没有支付的行为
+
+### 1.6 复杂条件
+
+单个事件的检测规则可以很简单，也可以很复杂，但是都是针对单个事件。条件也可以跨多个事件。比如某日销售额超过前 3 天的平均值 20%，数据流为每日销售额对象。
 
 ```json
 [
@@ -203,26 +370,11 @@ Sex_Woman -----> END;
 
 又或者第一次报警发生后，30s 内发生第二次报警，进行报警升级，第一次报警邮件通知，第二次升级为电话通知。
 
-### 1.2 量词
+## 2.匹配后跳过策略
 
-![cep](./image/cep.webp)
+xxxx
 
-### 1.3 模式
-
-
-
-### 连续性
-
-在模式序列中，多个匹配
-
-* **严格连续**: 期望所有匹配的事件严格的一个接一个出现，中间没有任何不匹配的事件。
-* **松散连续**: 忽略匹配的事件之间的不匹配的事件。
-* **不确定的松散连续**: 更进一步的松散连续，允许忽略掉一些匹配事件的附加匹配。
-
-
-
-### 匹配后跳过策略
-
-## 限制
+## 3.限制条件
 
 * 不可逆。
+* 有序。A -> B -> C，A -> C -> B，B -> A -> C，B -> C -> A，C -> A -> B，C -> B -> A

@@ -112,6 +112,7 @@
   * [ververica-cep-demo](https://github.com/RealtimeCompute/ververica-cep-demo)
   * [Flink动态CEP快速入门](https://help.aliyun.com/zh/flink/realtime-flink/getting-started/getting-started-with-dynamic-flink-cep)
   * [动态CEP中规则的JSON格式定义](https://help.aliyun.com/zh/flink/definitions-of-rules-in-the-json-format-in-dynamic-flink-cep)
+  * [复杂事件处理（CEP）语句](https://help.aliyun.com/zh/flink/cep-statements)
   * [探索Flink动态CEP：杭州银行的实战案例](https://developer.aliyun.com/article/1646649)
 * [Flink1.19源码编译及本地运行](https://blog.csdn.net/qq_20672231/article/details/147017660)
 * [基于flink和drools的实时日志处理](https://github.com/luxiaoxun/eagle)
