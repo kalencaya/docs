@@ -346,13 +346,13 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 * `循环`模式。比如 1 小时内检测用户连续转账 5 次且每次转账金额大于 10000 的行为
 * `组合模式`。比如连续 3 次下单，但 10 分钟内没有支付的行为
 
-以监控告警为例：第一次报警发生后，30s 内发生第二次报警，进行报警升级，第一次报警邮件通知，第二次升级为电话通知。
-
-
-
 ### 1.6 复杂条件
 
-单个事件的检测规则可以很简单，也可以很复杂，但是都是针对单个事件。条件也可以跨多个事件。比如某日销售额超过前 3 天的平均值 20%，数据流为每日销售额对象。
+单个事件的检测规则可以很简单，也可以很复杂，但是都是针对单个事件，条件也可以跨多个事件。
+
+#### 1.6.1 案例1
+
+比如某日销售额超过前 3 天的平均值 20%，数据流为每日销售额对象。
 
 ```json
 [
@@ -377,7 +377,145 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 
 针对上面数据，判断 `20251014` 销售额是否超过 `20251011 + 20251012 + 20251013` 平均值 20%。
 
+这种场景下，需获取当日销售额的前 3 天销售额，计算前 3 天销售额的平均值，继而和当天销售额进行比较。
 
+实现方式如下：
+
+```java
+Pattern<Event, Event> pattern = Pattern.<Event>begin("start", AfterMatchSkipStrategy.noSkip())
+        .where(BooleanConditions.trueFunction())
+        .times(3)
+        .next("avg")
+        .where(new IterativeCondition<Event>() {
+            @Override
+            public boolean filter(Event event, Context<Event> context) throws Exception {
+                Iterable<Event> start = context.getEventsForPattern("start");
+                Long sum = 0L;
+                Long size = 0L;
+                for (Event startEvent : start) {
+                    sum += startEvent.getGmv();
+                    size++;
+                }
+                Double avg = sum * 1.0 / size;
+                double increase = (event.getGmv() - avg) * 1.0 / avg;
+                System.out.println("start: " + JacksonUtil.toJsonString(start) + ", event: " + JacksonUtil.toJsonString(event));
+                return increase > 0.2;
+            }
+        })
+        .times(1);
+```
+
+因为是计算每日销售额是否大于前 3 天销售额，因此前 3 天的数据是一个滑动窗口效果。
+
+
+
+todo：判断 context 是否可以获取正在匹配的模式的数据
+
+```java
+Pattern<Event, Event> pattern = Pattern.<Event>begin("gmv")
+        .oneOrMore()
+        .where(new IterativeCondition<Event>() {
+            @Override
+            public boolean filter(Event event, Context<Event> context) throws Exception {
+                Iterable<Event> events = context.getEventsForPattern("gmv");
+                List<Event> list = IteratorUtils.toList(events.iterator());
+                if (CollectionUtils.size(list) < 3) {
+                    return true;
+                }
+                if (CollectionUtils.size(list) == 3) {
+                    Long avgAmount = calAvg(list);
+                    return (event.getAmount() - avgAmount) / avgAmount >= 0.2;
+                }
+                return false;
+            }
+        })
+        ;
+```
+
+todo: 如何实现滚动
+
+```java
+Pattern<Event, Event> pattern = Pattern.<Event>begin("gmv")
+        .where(BooleanConditions.trueFunction())
+        .times(3)
+        .next("higherGmv")
+        .where(new IterativeCondition<Event>() {
+            @Override
+            public boolean filter(Event event, Context<Event> context) throws Exception {
+                Iterable<Event> events = context.getEventsForPattern("gmv");
+                Long sumAmount = 0L;
+                for (Event gmvEvent : events) {
+                    sumAmount += gmvEvent.getAmount();
+                }
+                Long avgAmount = sumAmount / 3;
+                return (event.getAmount() - avgAmount) / avgAmount >= 0.2;
+            }
+        })
+        ;
+```
+
+
+
+#### 1.6.2 案例2
+
+以监控告警为例：第一次告警发生后，30s 内发生第二次告警，进行告警升级，第一次告警邮件通知，第二次升级为电话通知。
+
+需要配置  2 条规则：
+
+```java
+// 只能匹配到 第一次发生报警，在 30s 内发生第二次报警的组合事件。如果发生一次告警，没有在 30s 内发生第二次，告警就会被吞掉，无法进行邮件通知
+Pattern<Event, Event> pattern = Pattern.<Event>begin("first alert") // 首次告警
+        .where(new AviatorCondition<>("type == alert"))
+        .times(1)
+        .followedBy("second alert")                                 // 30s再次告警。如果增加 optional() 修饰，会导致告警到达不能第一时间处理，需要等待 30s 查看是否有第二条
+        .where(new AviatorCondition<>("type == alert"))
+        .within(Time.of(30, TimeUnit.SECONDS))
+        ;
+// 如果在增加一个模式，则先发生一次告警，30s内发生第二次告警，则两次告警都会被这个检测到，会发 2 次邮件通知，加上 1 次电话通知
+Pattern<Event, Event> pattern = Pattern.<Event>begin("alert") // 告警
+        .where(new AviatorCondition<>("type == alert"))
+        ;
+```
+
+也可以配置 1 条规则：
+
+* 通过把第二次告警事件的发生次数设置为 `optional()` 可保证只有一次告警的时候也能发出
+* 因为设置了时间约束，30s 内，可通过超时函数获取到只发生一次告警的事件
+
+缺点是在第一次告警发生后，需等待 30s 查看是否有第二条告警事件，导致第一次告警后不能及时发送告警通知
+
+```java
+// 只能匹配到 第一次发生报警，在 30s 内发生第二次报警的组合事件
+Pattern<Event, Event> pattern = Pattern.<Event>begin("first alert") // 首次告警
+        .where(new AviatorCondition<>("type == alert"))
+        .times(1)
+        .followedBy("second alert")                                 // 30s再次告警。如果增加 optional() 修饰，会导致告警到达不能第一时间处理，需要等待 30s 查看是否有第二条
+        .where(new AviatorCondition<>("type == alert"))
+        .optional()
+        .within(Time.of(30, TimeUnit.SECONDS))
+        ;
+```
+
+比较好的实现是把 30s 的时间间隔放置到发送告警消息时，如果只有 1 条消息，发送邮件通知，如果有 2 条消息，且 2 条消息的时间间隔低于 30 s，发送电话通知，否则发送邮件通知。
+
+```java
+// 只能匹配到 第一次发生报警，在 30s 内发生第二次报警的组合事件
+Pattern<Event, Event> pattern = Pattern.<Event>begin("first alert") // 首次告警
+        .where(new AviatorCondition<>("type == alert"))
+        .times(1)
+        .followedBy("second alert")                                 // 30s再次告警。如果增加 optional() 修饰，会导致告警到达不能第一时间处理，需要等待 30s 查看是否有第二条
+        .where(new AviatorCondition<>("type == alert ")) // todo
+        .optional()
+        ;
+```
+
+todo
+
+* 告警静默。1 小时内只发送一次
+
+#### 1.6.3 案例3
+
+多模式的匹配条件
 
 ## 2.匹配后跳过策略
 

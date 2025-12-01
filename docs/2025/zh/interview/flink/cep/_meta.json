@@ -11,6 +11,11 @@
   },
   {
     "type": "file",
+    "name": "json",
+    "label": "nav.interview.flink.cep.json"
+  },
+  {
+    "type": "file",
     "name": "rule",
     "label": "nav.interview.flink.cep.rule"
   }

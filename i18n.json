@@ -406,6 +406,24 @@
     "zh": "CEP",
     "en": "CEP"
   },
+  "nav.interview.flink.cep.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.interview.flink.cep.concept": {
+    "zh": "概念",
+    "en": "Concept"
+  },
+  "nav.interview.flink.cep.json": {
+    "zh": "Json",
+    "en": "Json"
+  },
+  "nav.interview.flink.cep.rule": {
+    "zh": "规则引擎",
+    "en": "RuleEngine"
+  },
+
+
   "nav.interview.flink.project": {
     "zh": "Project",
     "en": "Project"
