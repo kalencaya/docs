@@ -122,6 +122,27 @@ Pattern<Event, Event> pattern = Pattern.<Event>begin("start", AfterMatchSkipStra
 * name。第一次为 `start`，第二次为 `end`，说明它选择了最后一个条件的 name 字段
 * quantifier。与 name 一样，同样为最后一个条件的 quantifier 字段
 
+### 窗口
+
+如下面所示代码，多次设置 `within()` 方法，那么模式组要如何生效呢？
+
+```java
+Pattern<Event, Event> pattern = Pattern.<Event>begin("start", AfterMatchSkipStrategy.skipPastLastEvent())
+        .where(new AviatorCondition<>("action == 0"))
+        .next("middle")
+        .where(new AviatorCondition<>("action == 0"))
+        .within(Time.seconds(5L))
+        .followedBy("end")
+        .where(new AviatorCondition<>("action == 0"))
+        .within(Time.seconds(3L), WithinType.PREVIOUS_AND_CURRENT)
+        .within(Time.seconds(10L), WithinType.FIRST_AND_LAST);
+```
+
+模式组的窗口有 2 个限制：
+
+* 只对整个模式组生效，无法实现 `start -> middle` 或 `middle -> end` 部分模式生效
+* 多次设置，flink 官网说会选择时间最小的那个。实际测试 ververica flink-cep 的 `Pattern` 到 JSON 的转化，发现它只会获取最后一次设置的，而且是在最后设置，如果是对 `middle` 设置，就会丢掉
+
 ## Node
 
 ### 条件

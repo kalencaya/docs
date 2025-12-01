@@ -308,6 +308,8 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 * **松散连续**: 两个匹配事件的相对顺序，忽略匹配的事件之间的不匹配的事件。
 * **不确定的松散连续**: 可以重复使用之前已经匹配过的事件，以同一个事件作为开始匹配，更进一步的松散连续，允许忽略掉一些匹配事件的附加匹配。
 
+![contiguity](./image/contiguity.webp)
+
 ![strict_relaxed_contiguity](./image/strict_relaxed_contiguity.webp)
 
 ![non-deterministic_relaxed_contiguity](./image/non-deterministic_relaxed_contiguity.webp)
@@ -525,7 +527,27 @@ todo
 
 ## 2.匹配后跳过策略
 
-xxxx
+对于一个给定模式 `b+ c` 和数据流 `b1 b2 b3 c`，模式 `b+` 是 SQL 的语法，表示 1 到多个 b。数据流中有 3 个 b 事件：`b1 b2 b3` 都会命中 `b+` 的规则，那么同一个事件可能会分配到多个成功的匹配上，用户可以指定匹配后跳过策略，控制一个事件会分配到多少个匹配上。
+
+总共有 5 种策略：
+
+*  NO_SKIP。每个成功的匹配都会被输出
+* SKIP_TO_NEXT。丢弃以相同事件开始的所有部分匹配
+* SKIP_PAST_LAST_EVENT。丢弃起始在这个匹配的开始和结束之间的所有部分匹配
+* SKIP_TO_FIRST。丢弃起始在这个匹配的开始和第一个出现的名称为*PatternName*事件之间的所有部分匹配
+* SKIP_TO_LAST。丢弃起始在这个匹配的开始和最后一个出现的名称为*PatternName*事件之间的所有部分匹配
+
+详细说明如下
+
+| 策略                 | 结果                            | 描述                                                         |
+| -------------------- | ------------------------------- | ------------------------------------------------------------ |
+| NO_SKIP              | b1 b2 b3 c<br/>b2 b3 c<br/>b3 c | 找到匹配b1 b2 b3 c之后，不会丢弃任何结果。                   |
+| SKIP_TO_NEXT         | b1 b2 b3 c<br/>b2 b3 c<br/>b3 c | 找到匹配b1 b2 b3 c之后，不会丢弃任何结果，因为没有以b1开始的其他匹配。 |
+| SKIP_PAST_LAST_EVENT | b1 b2 b3 c                      | 找到匹配b1 b2 b3 c之后，会丢弃其他所有的部分匹配。           |
+| SKIP_TO_FIRST(b)     | b1 b2 b3 c<br/>b2 b3 c<br/>b3 c | 找到匹配`b1 b2 b3 c`之后，会尝试丢弃所有在`b1`之前开始的部分匹配，但没有这样的匹配，所以没有任何匹配被丢弃。 |
+| SKIP_TO_LAST(b)      | b1 b2 b3 c<br/>b3 c             | 找到匹配b1 b2 b3 c之后，会尝试丢弃所有在b3之前开始的部分匹配，有一个这样的b2 b3 c被丢弃。 |
+
+详情参考：[匹配后跳过策略](https://nightlies.apache.org/flink/flink-docs-master/zh/docs/libs/cep/#%e5%8c%b9%e9%85%8d%e5%90%8e%e8%b7%b3%e8%bf%87%e7%ad%96%e7%95%a5)
 
 ## 3.限制条件
 
