@@ -1,33 +1,9 @@
 # 概览
 
-## cep介绍
+## CEP
 
-### 模式
-
-模式分为 2 种：
-
-* 单个模式。单个模式又分为 2 种形式：单例和循环
-  * 单例。单例模式只处理一个事件，如客服智能质检中发言数据，每条发言就是一个事件。单例模式可对单个事件进行匹配，如针对客服发言检测：客服发言 not contains ['辱骂词汇'] and 客服发言 not contains ['索要敏感信息']
-  * 循环。循环模式可处理多个事件。期望指定事件出现一次或多次，比如客服发言不能机器僵硬，反复回复：“请稍等，正在处理”，即检测：客服发言 == “请稍等，正在处理” 出现次数不能大于 3 次。
-  * 说明。循环模式是单例模式的升级，对单例增加`量词`即成为循环模式
-* 组合模式。组合模式是对单个模式的扩张，如在风控领域当用户连续
-
-### 连续性
-
-* `next()`，严格连续。期望所有匹配的事件严格的一个接一个出现，中间没有任何不匹配的事件。如事件序列 [a, b, c, c, b, a, c]，针对 a 事件后下一个必须是事件 b，可以比配成功
-* `followedBy`，松散连续。忽略匹配的事件之间的不匹配的事件。如事件序列 [a, c, c, b, a, c]，检测事件 a 发生后是否发生事件 b，可以匹配成功
-* `followedByAny`，不确定的松散连续。更进一步的松散连续，允许忽略掉一些匹配事件的附加匹配。如事件序列 [a, c, c, b, b, a, c]，检测事件 a 发生后是否发生事件 b，可以匹配成功，而且会匹配出 2 条结果
-* 还有 `notNext` 和 `notFollowedBy`。如果模式序列没有定义时间约束，则不能以 `notFollowedBy()` 结尾。
-
-循环模式中的连续性如 `times()` 默认是松散连续，如果想使用`严格连续` 需使用 `consecutive()` 方法，如果使用 `不确定的松散连续`需使用 `allowCombinations()` 方法。
-
-### 匹配后跳过策略
-
-
-
-### 经验
-
-* 如何实现在 b 事件之前没有发生 a 事件？正常来说是 a 事件之后发生（未发生）b 事件，但如果从 b 事件出发进行逆推，b 事件发生前需要匹配未发生 a 事件。这种场景可以先设置一个 任意事件开始 notnext or notfollowedby 
+* [Flink1.13架构全集| 一文带你由浅入深精通Flink方方面面（四）CEP篇](https://mp.weixin.qq.com/s/2vxjhh-h4JvHq6HrSY8VAA)
+* [业务敏捷与成本优化如何兼得？Flink动态CEP——引领下一代实时决策引擎](https://mp.weixin.qq.com/s/Ci5Fh7po6wexp4VtiKE7OA)
 
 ## 动态 cep
 
@@ -37,70 +13,6 @@
 * [Flink动态CEP实例](https://jxeditor.github.io/2021/06/02/Flink%E5%8A%A8%E6%80%81CEP%E5%AE%9E%E4%BE%8B/)
 * [Flink-Cep实现规则动态更新](https://blog.csdn.net/young_0609/article/details/110407781)
 * [一个Flink-Cep使用案例](https://blog.51cto.com/u_9928699/3699677)
-
-## 指标中心实战
-
-[FilterRules 且或组件](https://dtstack.github.io/dt-react-component/components/filter-rules)
-
-```json
-{
-    "key": "第一层",
-    "name": "第一条用户发送的消息",
-    "level": 1,
-    "combine": null,
-    "rules": {
-        "type": "and",
-        "expressions": [
-            {
-                "fieldName": "消息发送人",
-                "operation": "==",
-                "value": [
-                    "用户"
-                ]
-            },
-            {
-                "fieldName": "消息类型",
-                "operation": "in",
-                "value": [
-                    "文本",
-                    "图片"
-                ]
-            }
-        ]
-    },
-    "child": {
-        "combine": "紧接着",
-        "key": "第二层",
-        "name": "之后有客服发过言",
-        "level": 2,
-        "rules": {
-            "type": "and",
-            "expressions": [
-                {
-                    "fieldName": "消息发送人",
-                    "operation": "==",
-                    "value": [
-                        "客服"
-                    ]
-                },
-                {
-                    "fieldName": "消息类型",
-                    "operation": "in",
-                    "value": [
-                        "文本",
-                        "图片"
-                    ]
-                }
-            ]
-        },
-        "child": {
-
-        }
-    }
-}
-```
-
-
 
 ## 参考文档
 

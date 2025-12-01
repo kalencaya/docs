@@ -242,6 +242,8 @@ flink-cep 支持的量词如下：
 
 ### 1.2 组合模式
 
+![group_pattern](./image/group_pattern.jpg)
+
 比如在网站流量场景，通过埋点不断获取到用户在网页的曝光、点击、加购、下单、支付等事件，事件结构定义如下：
 
 ```json
@@ -305,6 +307,10 @@ Pattern<Event, Event> riskPattern = Pattern.begin(notPayPattern)
 * **严格连续**: 期望所有匹配的事件严格的一个接一个出现，中间没有任何不匹配的事件。
 * **松散连续**: 两个匹配事件的相对顺序，忽略匹配的事件之间的不匹配的事件。
 * **不确定的松散连续**: 可以重复使用之前已经匹配过的事件，以同一个事件作为开始匹配，更进一步的松散连续，允许忽略掉一些匹配事件的附加匹配。
+
+![strict_relaxed_contiguity](./image/strict_relaxed_contiguity.webp)
+
+![non-deterministic_relaxed_contiguity](./image/non-deterministic_relaxed_contiguity.webp)
 
 配置方式：
 
