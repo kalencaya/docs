@@ -111,6 +111,7 @@
   * [FLIP-200: Support Multiple Rule and Dynamic Rule Changing (Flink CEP)](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=195730308)
   * [ververica-cep-demo](https://github.com/RealtimeCompute/ververica-cep-demo)
   * [Flink动态CEP快速入门](https://help.aliyun.com/zh/flink/realtime-flink/getting-started/getting-started-with-dynamic-flink-cep)
+  * [动态Flink CEP电商实时预警系统](https://help.aliyun.com/zh/flink/realtime-flink/use-cases/build-an-e-commerce-early-warning-system-with-flink-cep)
   * [动态CEP中规则的JSON格式定义](https://help.aliyun.com/zh/flink/definitions-of-rules-in-the-json-format-in-dynamic-flink-cep)
   * [复杂事件处理（CEP）语句](https://help.aliyun.com/zh/flink/cep-statements)
   * [探索Flink动态CEP：杭州银行的实战案例](https://developer.aliyun.com/article/1646649)
