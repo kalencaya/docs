@@ -216,4 +216,19 @@ todo：需研究是 flink-cep 本身不支持，还是 ververica flink-cep 定�
 
 ## Edge
 
- 
+ edge 只有 3 个字段：
+
+* source
+* target
+* type。连续性
+
+案例如下：
+
+```json
+{
+    "source": "middle",
+    "target": "end",
+    "type": "SKIP_TILL_NEXT"
+}
+```
+
