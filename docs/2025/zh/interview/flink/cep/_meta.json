@@ -11,6 +11,11 @@
   },
   {
     "type": "file",
+    "name": "dynamic",
+    "label": "nav.interview.flink.cep.dynamic"
+  },
+  {
+    "type": "file",
     "name": "json",
     "label": "nav.interview.flink.cep.json"
   },
