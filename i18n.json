@@ -415,12 +415,12 @@
     "en": "Concept"
   },
   "nav.interview.flink.cep.dynamic": {
-    "zh": "Json",
-    "en": "Json"
-  },
-  "nav.interview.flink.cep.json": {
     "zh": "动态 Cep",
     "en": "Dynamic Cep"
+  },
+  "nav.interview.flink.cep.json": {
+    "zh": "Json",
+    "en": "Json"
   },
   "nav.interview.flink.cep.rule": {
     "zh": "规则引擎",
