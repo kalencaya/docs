@@ -480,6 +480,10 @@
     "zh": "Doris",
     "en": "Doris"
   },
+  "nav.interview.odps": {
+    "zh": "ODPS",
+    "en": "ODPS"
+  },
   "nav.interview.datawarehouse": {
     "zh": "数仓",
     "en": "DataWarehouse"
