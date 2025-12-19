@@ -8,21 +8,6 @@
 * [ant design pro components](https://pro-components.antdigital.dev/components)
 * [ant design pro](https://pro.ant.design/zh-CN/)
 * [pro-chat](https://github.com/ant-design/pro-chat)
-* [pro-flow](https://github.com/ant-design/pro-flow)
-  * [xyflow](https://github.com/xyflow/xyflow)。基于 reactflow 实现
-    * [React Flow](https://flow.reactjs.ac.cn/)。中文网站
-    * [React Flow](https://reactflow.nodejs.cn/)。中文网站
-    * [React-Flow](http://react-flow.com/guide)。中文网站
-      * [Flowmix 可视化编辑器](https://flowmix.turntip.cn/flow/edit?id=KHDX7XrVqRSQevboUJ_zG)
-    * [flowify](https://github.com/radityaharya/flowify)
-    * [Reactflow Examples](https://reactflowexample.vercel.app/home)
-    * [React Flow Dev](https://react-flow-dev.netlify.app/)
-    * [awesome-node-based-uis](https://github.com/xyflow/awesome-node-based-uis)
-  * [vue-flow](https://github.com/bcakmakoglu/vue-flow)。一个 vue 的拖拉拽库
-  * [flowgram.ai](https://github.com/bytedance/flowgram.ai)。
-  * 流程图 demo
-    * [Jsplumb](https://jsplumbtoolkit.com/)
-    * [kedro-viz](https://github.com/kedro-org/kedro-viz)
 * [Formily](https://v2.formilyjs.org/zh-CN/guide)
 
 基于 antd 的开源项目
@@ -48,15 +33,6 @@
 ### antv
 
 * [antv](https://antv.antgroup.com/)
-* [x6](https://x6.antv.antgroup.com/)。x6 文档分为 2.x 和 1.x。文档不一样，有些还在支持的功能在 2.x 文档没有展示
-  * [2.x](https://x6.antv.antgroup.com/)。
-  * [1.x](https://x6.antv.vision/zh)。
-    * [x6-react-components](https://github.com/antvis/X6/tree/master/packages/x6-react-components)
-    * [x6-react-components](https://x6.antv.vision/zh/docs/api/ui/menu)
-* [xflow](https://x6.antv.antgroup.com/xflow/guide/introduction)。xflow 2.x 版本文档迁移至 x6
-* 布局算法
-  * [hierarchy](https://github.com/antvis/hierarchy)
-  * [layout](https://github.com/antvis/layout)
 
 ### 其他
 
@@ -72,9 +48,6 @@
 
 * [awesome-react](https://github.com/enaqx/awesome-react)
 * [velaux](https://github1s.com/kubevela/velaux/blob/main/packages/velaux-ui/src/extends)。根据接口定义，动态显示表单
-* [Flowise](https://github1s.com/FlowiseAI/Flowise)。dag 解决方案
-* [dify](https://github.com/langgenius/dify)
-* [tinyflow](https://github.com/tinyflow-ai/tinyflow)
 * [dockview](https://github.com/mathuo/dockview)。布局
 * [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
 * [menu](https://github.com/react-component/menu)。演示网站很好。[menu.react-component.now.sh/](https://menu.react-component.now.sh/)
