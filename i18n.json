@@ -426,6 +426,10 @@
     "zh": "规则引擎",
     "en": "RuleEngine"
   },
+  "nav.interview.flink.risk": {
+    "zh": "风控",
+    "en": "Risk"
+  },
 
 
   "nav.interview.flink.project": {

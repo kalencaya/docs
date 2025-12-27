@@ -36,6 +36,12 @@
   },
   {
     "type": "dir",
+    "name": "risk",
+    "collapsed": true,
+    "label": "nav.interview.flink.risk"
+  },
+  {
+    "type": "dir",
     "name": "project",
     "collapsed": true,
     "label": "nav.interview.flink.project"
