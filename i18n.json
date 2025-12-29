@@ -460,6 +460,10 @@
     "zh": "实践",
     "en": "Practice"
   },
+  "nav.interview.paimon.example": {
+    "zh": "Example",
+    "en": "Example"
+  },
   "nav.interview.gravitino": {
     "zh": "Gravitino",
     "en": "Gravitino"

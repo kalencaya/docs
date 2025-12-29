@@ -23,5 +23,10 @@
     "type": "file",
     "name": "parameter",
     "label": "nav.interview.paimon.parameter"
+  },
+  {
+    "type": "file",
+    "name": "example",
+    "label": "nav.interview.paimon.example"
   }
 ]
