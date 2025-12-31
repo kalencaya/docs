@@ -1,4 +1,4 @@
-# FlorGram
+# FlowGram
 
 字节开源的 [FlowGram.AI](https://flowgram.ai/index.html) 介绍
 
@@ -6,8 +6,6 @@
 
 * [IOC](https://flowgram.ai/guide/concepts/ioc.html)。flowgram 使用 [inversify](https://inversify.io/docs/introduction/getting-started/) 作为 IOC（控制反转），因此一些扩展也需要使用 inversify 来开发。
 * [ECS](https://flowgram.ai/guide/concepts/ecs.html)。
-
-
 
 ### Service
 
@@ -31,4 +29,8 @@
 * coze-studio
   * frontend/packages/workflow/playground/src/entites。`WorkflowGlobalStateEntity`
   * frontend/packages/workflow/playground/src/container。`WorkflowPageContainerModule`
+  * frontend/packages/workflow/playground/src/workflow-playground.tsx。`WorkflowPlayground`
+  * frontend/packages/project-ide/biz-workflow/src/main.tsx。`Main`
+
+感觉需要
 
