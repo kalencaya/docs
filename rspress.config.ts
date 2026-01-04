@@ -11,8 +11,8 @@ export default defineConfig({
     logo: '/rspress-icon.png',
     lang: 'zh',
     multiVersion: {
-        default: '2025',
-        versions: ['2025', '2024', '2023'],
+        default: '2026',
+        versions: ['2026', '2025', '2024', '2023'],
     },
     plugins: [mermaid({
         mermaidConfig: {

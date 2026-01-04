@@ -1,0 +1,32 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.paimon.index"
+  },
+  {
+    "type": "file",
+    "name": "concept",
+    "label": "nav.interview.paimon.concept"
+  },
+  {
+    "type": "file",
+    "name": "primary-key-table",
+    "label": "nav.interview.paimon.primary-key-table"
+  },
+  {
+    "type": "file",
+    "name": "practice",
+    "label": "nav.interview.paimon.practice"
+  },
+  {
+    "type": "file",
+    "name": "parameter",
+    "label": "nav.interview.paimon.parameter"
+  },
+  {
+    "type": "file",
+    "name": "example",
+    "label": "nav.interview.paimon.example"
+  }
+]

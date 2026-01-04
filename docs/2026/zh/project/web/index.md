@@ -1,0 +1,65 @@
+# Overview
+
+## 阿里
+
+### antd
+
+* [ant design](https://ant-design.antgroup.com/components/overview-cn/)
+* [ant design pro components](https://pro-components.antdigital.dev/components)
+* [ant design pro](https://pro.ant.design/zh-CN/)
+* [pro-chat](https://github.com/ant-design/pro-chat)
+* [Formily](https://v2.formilyjs.org/zh-CN/guide)
+
+基于 antd 的开源项目
+
+* [eiam](https://github.com/topiam/eiam)。以开源为核心的IDaas/IAM平台，用于管理企业内员工账号、权限、身份认证、应用访问，帮助整合部署在本地或云端的内部办公系统、业务系统及三方 SaaS 系统的所有身份，实现一个账号打通所有应用的服务
+* [quan](https://github.com/quan100/quan)。Quan 基于Spring Boot 2.7.x开发的后台管理系统。采用的架构是基于DDD领域驱动设计思想的BFF架构。目标是打造一个支持多端适配、分布式、高可用、多模块的系统。在未来可扩展成任意的企业中后台系统解决方案。 前端基于 Ant Design 5.0，为 Web 应用提供了丰富的基础 UI 组件， 助力设计开发者「更灵活」地搭建出「更美」的产品 ～
+  - [quan-admin](https://github.com/quan100/quan-admin)
+* [Taier](https://github.com/DTStack/Taier)。
+* [dt-react-component](https://github.com/DTStack/dt-react-component)。袋鼠云基于 antd 4.x 封装的一些新组件
+* [odc-client](https://github.com/oceanbase/odc-client)。
+* [oceanbase-design](https://github.com/oceanbase/oceanbase-design)。oceanbase 基于 antd 的组件。
+* [slash-admin](https://github.com/d3george/slash-admin)。Slash Admin 是一款现代化的后台管理模板，基于 React 18、Vite、Ant Design 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统
+* [TestHub](https://github.com/dromara/TestHub)。一款基于流程编排的自动化测试工具
+* [datavines](https://github.com/datavane/datavines)。新一代数据可观测性平台，数据目录管理和数据质量监控平台
+* [AIFlowy](https://gitee.com/aiflowy/aiflowy)
+* [spug](https://github.com/openspug/spug)。开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、文件在线上传下载、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。
+
+
+### umi
+
+* [umi](https://umijs.org/)
+
+### antv
+
+* [antv](https://antv.antgroup.com/)
+
+### 其他
+
+* [fusion design](https://fusion.design/pc/)
+
+## 字节
+
+* [semi design](https://semi.design/zh-CN/)
+* [arco design](https://arco.design/)
+
+
+## 其他
+
+* [awesome-react](https://github.com/enaqx/awesome-react)
+* [velaux](https://github1s.com/kubevela/velaux/blob/main/packages/velaux-ui/src/extends)。根据接口定义，动态显示表单
+* [dockview](https://github.com/mathuo/dockview)。布局
+* [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels)。布局
+* [menu](https://github.com/react-component/menu)。演示网站很好。[menu.react-component.now.sh/](https://menu.react-component.now.sh/)
+* [console](https://github.com/kubesphere/console/tree/release-3.4/)。kubesphere 前端项目。3.x 版本，4.x 版本有大改，无法查看 devops 页面
+* [xeasywork](https://github.com/chinesHhd/xeasywork)
+* [universe](https://uiverse.io/)
+* [homer](https://github.com/bastienwirtz/homer)
+* [reactbits](https://www.reactbits.dev/)
+* [motion](https://github.com/motiondivision/motion)
+* [OrgChart](https://github.com/dabeng/OrgChart)
+* [react-arborist](https://github.com/brimdata/react-arborist)
+* [VTable](https://github.com/VisActor/VTable)
+* [react-cron-generator](https://github.com/sojinantony01/react-cron-generator)
+* [formik](https://github.com/jaredpalmer/formik)
+* [storybook](https://storybook.js.org/)

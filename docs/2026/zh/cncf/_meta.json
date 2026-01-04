@@ -1,0 +1,48 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.cncf.index"
+  },
+  {
+    "type": "file",
+    "name": "experience",
+    "label": "nav.cncf.experience"
+  },
+  {
+    "type": "file",
+    "name": "container",
+    "label": "nav.cncf.container"
+  },
+  {
+    "type": "dir",
+    "name": "kubernetes",
+    "collapsed": true,
+    "label": "nav.cncf.kubernetes"
+  },
+  {
+    "type": "file",
+    "name": "volcano",
+    "label": "nav.cncf.volcano"
+  },
+  {
+    "type": "file",
+    "name": "config",
+    "label": "nav.cncf.config"
+  },
+  {
+    "type": "file",
+    "name": "package",
+    "label": "nav.cncf.package"
+  },
+  {
+    "type": "file",
+    "name": "alert",
+    "label": "nav.cncf.alert"
+  },
+  {
+    "type": "file",
+    "name": "cicd",
+    "label": "nav.cncf.cicd"
+  }
+]

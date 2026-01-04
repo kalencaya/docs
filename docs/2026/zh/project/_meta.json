@@ -1,0 +1,49 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.project.index"
+  },
+  {
+    "type": "dir",
+    "name": "java",
+    "collapsed": true,
+    "label": "nav.project.java"
+  },
+  {
+    "type": "dir",
+    "name": "microservice",
+    "collapsed": true,
+    "label": "nav.project.microservice"
+  },
+  {
+    "type": "dir",
+    "name": "workflow",
+    "collapsed": true,
+    "label": "nav.project.workflow"
+  },
+  {
+    "type": "dir",
+    "name": "database",
+    "collapsed": true,
+    "label": "nav.project.database"
+  },
+  {
+    "type": "dir",
+    "name": "web",
+    "collapsed": true,
+    "label": "nav.project.web"
+  },
+  {
+    "type": "dir",
+    "name": "lowcode",
+    "collapsed": true,
+    "label": "nav.project.lowcode"
+  },
+  {
+    "type": "dir",
+    "name": "bigdata",
+    "collapsed": true,
+    "label": "nav.project.bigdata"
+  }
+]

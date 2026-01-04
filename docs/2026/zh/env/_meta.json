@@ -1,0 +1,31 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.env.index"
+  },
+  {
+    "type": "dir",
+    "name": "dev",
+    "collapsed": false,
+    "label": "nav.env.dev"
+  },
+  {
+    "type": "dir",
+    "name": "standard",
+    "collapsed": true,
+    "label": "nav.env.standard"
+  },
+  {
+    "type": "dir",
+    "name": "kubernetes",
+    "collapsed": true,
+    "label": "nav.env.kubernetes"
+  },
+  {
+    "type": "dir",
+    "name": "tools",
+    "collapsed": true,
+    "label": "nav.env.tools"
+  }
+]

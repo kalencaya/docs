@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.ai.index"
+  },
+  {
+    "type": "file",
+    "name": "project",
+    "label": "nav.ai.project"
+  },
+  {
+    "type": "file",
+    "name": "program",
+    "label": "nav.ai.program"
+  }
+]

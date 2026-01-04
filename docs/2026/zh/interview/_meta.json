@@ -1,0 +1,73 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.index"
+  },
+  {
+    "type": "dir",
+    "name": "java",
+    "collapsed": true,
+    "label": "nav.interview.java"
+  },
+  {
+    "type": "dir",
+    "name": "mysql",
+    "collapsed": true,
+    "label": "nav.interview.mysql"
+  },
+  {
+    "type": "dir",
+    "name": "redis",
+    "collapsed": true,
+    "label": "nav.interview.redis"
+  },
+  {
+    "type": "dir",
+    "name": "kafka",
+    "collapsed": true,
+    "label": "nav.interview.kafka"
+  },
+  {
+    "type": "dir",
+    "name": "flink",
+    "collapsed": true,
+    "label": "nav.interview.flink"
+  },
+  {
+    "type": "dir",
+    "name": "paimon",
+    "collapsed": true,
+    "label": "nav.interview.paimon"
+  },
+  {
+    "type": "dir",
+    "name": "gravitino",
+    "collapsed": true,
+    "label": "nav.interview.gravitino"
+  },
+  {
+    "type": "dir",
+    "name": "doris",
+    "collapsed": true,
+    "label": "nav.interview.doris"
+  },
+  {
+    "type": "dir",
+    "name": "odps",
+    "collapsed": true,
+    "label": "nav.interview.odps"
+  },
+  {
+    "type": "dir",
+    "name": "datawarehouse",
+    "collapsed": true,
+    "label": "nav.interview.datawarehouse"
+  },
+  {
+    "type": "dir",
+    "name": "trouble_shoot",
+    "collapsed": true,
+    "label": "nav.interview.trouble_shoot"
+  }
+]

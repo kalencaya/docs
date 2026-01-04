@@ -1,0 +1,49 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.flink.index"
+  },
+  {
+    "type": "dir",
+    "name": "doc",
+    "collapsed": true,
+    "label": "nav.interview.flink.doc"
+  },
+  {
+    "type": "dir",
+    "name": "practice",
+    "collapsed": true,
+    "label": "nav.interview.flink.practice"
+  },
+  {
+    "type": "dir",
+    "name": "devops",
+    "collapsed": true,
+    "label": "nav.interview.flink.devops"
+  },
+  {
+    "type": "dir",
+    "name": "question",
+    "collapsed": true,
+    "label": "nav.interview.flink.question"
+  },
+  {
+    "type": "dir",
+    "name": "cep",
+    "collapsed": true,
+    "label": "nav.interview.flink.cep"
+  },
+  {
+    "type": "dir",
+    "name": "risk",
+    "collapsed": true,
+    "label": "nav.interview.flink.risk"
+  },
+  {
+    "type": "dir",
+    "name": "project",
+    "collapsed": true,
+    "label": "nav.interview.flink.project"
+  }
+]

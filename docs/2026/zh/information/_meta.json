@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.information.index"
+  },
+  {
+    "type": "file",
+    "name": "project",
+    "label": "nav.information.project"
+  }
+]

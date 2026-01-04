@@ -1,0 +1,27 @@
+# 快速开始
+
+## 部署 gravitino
+
+通过 docker compose 部署
+
+* 支持 mysql 和 doris catalog。下载 [mysql-connector-j.jar](https://repo.maven.apache.org/maven2/com/mysql/mysql-connector-j/8.2.0/mysql-connector-j-8.2.0.jar)，并挂载到 `/root/gravitino/catalogs/jdbc-mysql/libs/mysql.jar` 和 `/root/gravitino/catalogs/jdbc-doris/libs/mysql.jar` 目录
+* paimon 支持 s3。下载 [paimon-s3-0.8.0.jar](https://repo.maven.apache.org/maven2/org/apache/paimon/paimon-s3/0.8.0/paimon-s3-0.8.0.jar)，并挂载到 `/root/gravitino/catalogs/lakehouse-paimon/libs` 目录。
+  * 必须是 0.8.0 版本，gravitino 内部依赖的是 0.8.0，测试过 1.1.1 版本，存在缺少类异常
+
+
+## Catalog
+
+### Paimon
+
+以 minio 为例
+
+```
+catalog-backend: filesystem
+warehouse: s3://gravitino/gravitino/paimon/
+s3-endpoint: http://host.docker.internal:9000
+s3-access-key-id: admin
+s3-secret-access-key: password
+```
+
+使用 docker compose 启动 gravitino 时需增加 paimon-s3 支持，否则会失败。
+
