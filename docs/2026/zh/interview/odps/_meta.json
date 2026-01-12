@@ -1,0 +1,12 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.interview.odps.index"
+  },
+  {
+    "type": "file",
+    "name": "concept",
+    "label": "nav.interview.odps.selectdb"
+  }
+]

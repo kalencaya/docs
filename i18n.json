@@ -492,6 +492,14 @@
     "zh": "ODPS",
     "en": "ODPS"
   },
+  "nav.interview.odps.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.interview.odps.selectdb": {
+    "zh": "SelectDB",
+    "en": "SelectDB"
+  },
   "nav.interview.datawarehouse": {
     "zh": "数仓",
     "en": "DataWarehouse"
