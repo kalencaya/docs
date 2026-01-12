@@ -73,5 +73,58 @@ FROM    (
         ) 
 WHERE   rn = 1
 ;
+
+INSERT OVERWRITE TABLE unique_orders PARTITION (ds = '${bizdate}')
+SELECT  `(ds|rn)?+.+`
+        ,TO_CHAR(end_time,'yyyymmdd') ds
+FROM    (
+            SELECT  *
+                    ,ROW_NUMBER() OVER (PARTITION BY order_no ORDER BY end_time DESC,ds ASC ) AS rn
+            FROM    (
+                        SELECT  *
+                                ,CAST(end_time / 1000 AS TIMESTAMP) end_time
+                                ,ds
+                        FROM    ods_orders_di
+                        WHERE   ds BETWEEN '${yesdate}' AND '${bizdate}'
+                        UNION ALL
+                        SELECT  *
+                        FROM    dwd_orders_di
+                        WHERE   ds IN (
+                                    SELECT  DISTINCT TO_CHAR(CAST(end_time / 1000 AS TIMESTAMP),'yyyymmdd')
+                                    FROM    ods_orders_di
+                                    WHERE   ds BETWEEN '${yesdate}' AND '${bizdate}'
+                                ) 
+                        AND     ds > 0
+                    ) t
+        ) t
+WHERE   rn = 1
+;
+```
+
+### 字典表
+
+从 mysql 中的表有很多是枚举，在代码中往往需要使用 `case when` 进行解析处理，可创建字典表集中维护项目中的枚举字典
+
+```sql
+-- 会创建 table，毕竟是 create table 语法
+CREATE TABLE my_table AS
+SELECT * FROM VALUES
+  ('wang', 1),
+  ('li', 2),
+  ('zhang', 3)
+AS t(name, age);
+
+-- CTE（Common Table Expression）即公共表表达式，是一种临时命名的结果集，用于简化复杂查询的编写
+WITH temp AS 
+(
+    SELECT  *
+    FROM    VALUES
+            ('wang',1)
+            ,('li',2)
+            ,('zhang',3) AS t(name,age)
+)
+SELECT  *
+FROM    temp
+;
 ```
 

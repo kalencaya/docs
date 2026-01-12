@@ -6,7 +6,7 @@
   },
   {
     "type": "file",
-    "name": "concept",
+    "name": "selectdb",
     "label": "nav.interview.odps.selectdb"
   }
 ]
