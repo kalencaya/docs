@@ -13,7 +13,39 @@ TO_CHAR(chat_start_time,'yyyy-mm-dd hh:mi:ss')
 
 ### 函数
 
+```json
 
+-- 拆 json 数组，行转列
+SELECT  *
+FROM    (
+            SELECT  *
+            FROM    ods.ods_data_center_my_table
+            WHERE   ds = '${bizdate}'
+        ) AS a
+LATERAL VIEW EXPLODE(FROM_JSON(json_ext,"array<string>")) ext AS json_field
+WHERE   GET_JSON_OBJECT(json_field,"$.name") = 'foo'
+LIMIT   100
+;
+
+-- 将最新的一行和最早的一行放一块，不会去重
+SELECT 
+    user_id,
+    FIRST_VALUE(order_id) OVER w AS first_order_id,
+    FIRST_VALUE(order_date) OVER w AS first_order_date,
+    FIRST_VALUE(amount) OVER w AS first_amount,
+    LAST_VALUE(order_id) OVER w AS last_order_id,
+    LAST_VALUE(order_date) OVER w AS last_order_date,
+    LAST_VALUE(amount) OVER w AS last_amount
+FROM orders
+where ds = '${bizdate}'
+WINDOW w AS (
+    PARTITION BY user_id 
+    ORDER BY order_date
+    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+);
+```
+
+行转列参考：[ODPS SQL ——列转行、行转列这回让我玩明白了！](https://rivers.chaitin.cn/blog/cqq5ai10lnec5jjugkjg)
 
 ### 临时表
 
