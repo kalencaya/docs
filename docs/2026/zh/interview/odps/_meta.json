@@ -6,7 +6,17 @@
   },
   {
     "type": "file",
+    "name": "sql",
+    "label": "nav.interview.odps.sql"
+  },
+  {
+    "type": "file",
     "name": "selectdb",
     "label": "nav.interview.odps.selectdb"
+  },
+  {
+    "type": "file",
+    "name": "admin",
+    "label": "nav.interview.odps.admin"
   }
 ]

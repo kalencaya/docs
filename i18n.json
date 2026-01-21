@@ -496,9 +496,17 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.interview.odps.sql": {
+    "zh": "SQL",
+    "en": "SQL"
+  },
   "nav.interview.odps.selectdb": {
     "zh": "SelectDB",
     "en": "SelectDB"
+  },
+  "nav.interview.odps.admin": {
+    "zh": "Admin",
+    "en": "Admin"
   },
   "nav.interview.datawarehouse": {
     "zh": "数仓",
