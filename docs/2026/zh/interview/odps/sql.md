@@ -23,6 +23,10 @@ DATEADD(DATETIME '2005-02-28 00:00:00', 1, 'dd');
 DATEADD('2005-02-28 00:00:00', 1, 'dd');
 -- 常用操作
 TO_CHAR(DATEADD(TO_DATE('${bizdate}','yyyymmdd'),-3,'month'),'yyyymmdd')
+
+-- 日期和时间戳互相转化
+unix_timestamp(datetime|date|timestamp|string <date>)
+from_unixtime(bigint <unixtime>)
 ```
 
 ### 函数
