@@ -12,3 +12,4 @@
 * [Flink1.19源码编译及本地运行](https://blog.csdn.net/qq_20672231/article/details/147017660)
 * [基于flink和drools的实时日志处理](https://github.com/luxiaoxun/eagle)
 * [flink规则引擎设计思路](https://blog.csdn.net/woloqun/article/details/128649833)
+* [alibabacloud-ververica-common](https://github.com/aliyun/alibabacloud-ververica-common)
