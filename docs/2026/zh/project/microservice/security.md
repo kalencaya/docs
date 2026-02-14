@@ -15,3 +15,4 @@
 
 * [企业级 Spring Boot 身份认证实践：如何正确集成第三方平台？](https://mp.weixin.qq.com/s/Je8nwGw8NDfCjBrccde0Tg)
 * [构建企业级权限管理体系：Spring Boot RBAC 模型、数据权限与注解控制实战](https://mp.weixin.qq.com/s/XLM8zWfzwtAaY8FNCgoYMw)
+* [Spring Security 7 细粒度授权实战：基于属性的访问控制（ABAC）落地指南](https://mp.weixin.qq.com/s/yZRUKCVtP3m3C-wrabj0Ug)
