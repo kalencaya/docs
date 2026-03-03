@@ -10,6 +10,7 @@ SHOW CATALOGS;
 SWITCH CATALOGS;
 
 -- oss
+SHOW CREATE CATALOG paimon_oss_catalog;
 DROP CATALOG IF EXISTS paimon_oss_catalog;
 CREATE CATALOG IF NOT EXISTS paimon_oss_catalog PROPERTIES (
     'type' = 'paimon',
@@ -22,6 +23,7 @@ CREATE CATALOG IF NOT EXISTS paimon_oss_catalog PROPERTIES (
 );
 
 -- minio
+SHOW CREATE CATALOG paimon_oss_catalog;
 DROP CATALOG IF EXISTS paimon_s3_catalog;
 CREATE CATALOG IF NOT EXISTS paimon_s3_catalog PROPERTIES (
     'type' = 'paimon',
