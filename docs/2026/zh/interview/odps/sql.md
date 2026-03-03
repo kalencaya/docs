@@ -45,6 +45,8 @@ WHERE   GET_JSON_OBJECT(json_field,"$.name") = 'foo'
 LIMIT   100
 ;
 
+
+
 -- 将最新的一行和最早的一行放一块，不会去重
 SELECT 
     user_id,
@@ -176,5 +178,91 @@ WITH temp AS
 SELECT  *
 FROM    temp
 ;
+
+-- 路径枚举，可处理任意层深的表
+CREATE TABLE IF NOT EXISTS dim_type_df
+(
+    id         BIGINT COMMENT '类型ID'
+    ,parent_id BIGINT COMMENT '类型父ID'
+    ,name      STRING COMMENT '类型名称'
+    ,`sort`    BIGINT COMMENT '排序值'
+    ,root_id   BIGINT COMMENT 'root路径id'
+    ,root_name STRING COMMENT 'root路径名称'
+    ,id_path   STRING COMMENT 'id路径'
+    ,name_path STRING COMMENT '名称路径'
+    ,level     BIGINT COMMENT '层级'
+    ,is_leaf   INT COMMENT '是否叶子节点。1=是，0=否'
+)
+COMMENT '类型'
+PARTITIONED BY ( ds STRING)
+;
+
+WITH RECURSIVE path_builder AS (
+    -- 递归部分：获取所有节点的完整路径
+    SELECT 
+        id
+        ,parent_id
+        ,name
+        ,sort
+        ,id AS root_id
+        ,name AS root_name
+        ,ARRAY(id) AS id_array
+        ,ARRAY(name) AS name_array
+        ,0 AS level
+    FROM ods_type_df
+    WHERE ds = '${bizdate}' AND is_deleted = 0 AND parent_id = 0 
+    UNION ALL
+    SELECT 
+        c.id
+        ,c.parent_id
+        ,c.name
+        ,c.sort
+        ,p.root_id
+        ,p.root_name
+        ,CONCAT(p.id_array, ARRAY(c.id)) AS id_array
+        ,CONCAT(p.name_array, ARRAY(c.name)) AS name_array
+        ,p.level + 1 AS level
+    FROM ods_type_df c
+    JOIN path_builder p ON c.parent_id = p.id
+    WHERE c.ds = '${bizdate}' AND c.is_deleted = 0
+),
+leaf_marker AS (
+    -- 标记叶子节点
+    SELECT 
+        p.*
+        ,CASE WHEN NOT EXISTS (
+            SELECT 1 
+            FROM ods_type_df t 
+            WHERE t.ds = '${bizdate}' AND t.is_deleted = 0 AND t.parent_id = p.id
+        ) THEN 1 ELSE 0 END AS is_leaf
+    FROM path_builder p
+)
+INSERT OVERWRITE TABLE dim_type_df PARTITION(ds = '${bizdate}')
+SELECT 
+    id
+    ,parent_id
+    ,name
+    ,sort
+    ,root_id
+    ,root_name
+    ,CONCAT('/', CONCAT_WS('/', CAST(id_array AS ARRAY<STRING>)), '/') AS id_path
+    ,CONCAT('/', CONCAT_WS('/', name_array), '/') AS name_path
+    ,level
+    ,is_leaf
+FROM leaf_marker
+;
+
+```
+
+### 数据备份
+
+```sql
+-- 备份数据，将 A 表数据复制到 B 表中
+INSERT OVERWRITE TABLE my_table_b PARTITION (ds)
+SELECT * FROM my_table_a
+WHERE ds >= '20260101'
+
+-- 删除分区
+ALTER TABLE my_table DROP IF EXISTS PARTITION (ds='20260101');
 ```
 
