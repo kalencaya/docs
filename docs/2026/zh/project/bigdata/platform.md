@@ -21,6 +21,7 @@
 * [流石数据管理工具](https://gitee.com/changkang/flowstone-amt)。提供API编排、ETL等能力，实现数据库到API的可视化转换，以及多系统API的整合、数据抽取与加工处理、自动依赖分析及数据血缘分析、实时MQTT消息的动态监听等；即可用于与低代码前端工具配合，为低代码前端提供接口，也可当成一个简单的ESB使用或ETL工具或数据中台使用
 * [starlake](https://github.com/starlake-ai/starlake)
 * [nimtable](https://github.com/nimtable/nimtable)
+* [EasyETL](https://gitee.com/easyetl/EasyETLPublic)。EasyETL是一款开源的分布式 DAG 调度系统,面向非技术背景用户和企业数据初学者的轻量级数据集成平台，旨在大幅降低大数据中台的技术门槛。通过可视化界面和向导式配置，用户无需编写复杂代码，只需简单拖拽和配置即可完成异构数据同步、数据清洗转换、任务调度等核心数据开发工作，让企业快速构建数据能力
 
 ## 实时计算平台
 
