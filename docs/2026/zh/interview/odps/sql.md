@@ -47,6 +47,36 @@ WHERE   GET_JSON_OBJECT(json_field,"$.name") = 'foo'
 LIMIT   100
 ;
 
+WITH base_data AS 
+(
+    SELECT  ds
+            ,user_id
+            ,MIN(login_time) AS login_time
+            ,MAX(logout_time) AS logout_time
+    FROM    dwd.dwd_data_center_my_table
+    WHERE   ds BETWEEN '20260306' AND '20260319'
+    GROUP BY ds
+             ,user_id
+)
+,list_data AS 
+(
+    SELECT  t.ds
+            ,t.user_id
+            ,b.behavior_name
+            ,b.behavior_time
+            ,ROW_NUMBER() OVER (PARTITION BY t.ds,t.merge_id ORDER BY b.behavior_time ASC ) AS behavior_rn
+    FROM    base_data t
+    LATERAL VIEW UNNEST(
+           ARRAY(
+               NAMED_STRUCT('behavior_name','登陆','behavior_time',login_time),
+               NAMED_STRUCT('behavior_name','登出','behavior_time',logout_time)
+                        )
+    ) tmp AS b
+    WHERE   b.behavior_time IS NOT NULL
+)
+SELECT *
+FROM list_data
+;
 
 
 -- 将最新的一行和最早的一行放一块，不会去重
