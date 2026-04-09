@@ -41,6 +41,8 @@ FROM    (
             WHERE   ds = '${bizdate}'
         ) AS a
 LATERAL VIEW EXPLODE(FROM_JSON(json_ext,"array<string>")) ext AS json_field
+-- POSEXPLODE 可以保留位置信息
+-- LATERAL VIEW POSEXPLODE(FROM_JSON(json_ext,"array<string>")) ext AS pos, json_field
 WHERE   GET_JSON_OBJECT(json_field,"$.name") = 'foo'
 LIMIT   100
 ;
