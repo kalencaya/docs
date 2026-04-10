@@ -5,7 +5,7 @@
     "label": "nav.interview.odps.index"
   },
   {
-    "type": "file",
+    "type": "dir",
     "name": "sql",
     "label": "nav.interview.odps.sql"
   },
