@@ -22,21 +22,21 @@
 ### Agent Framework
 
 * java
-  * [Tools4AI](https://github.com/vishalmysore/Tools4AI)
-  * [agents-flex](https://github.com/agents-flex/agents-flex)
-  * [langchain4j](https://github.com/langchain4j/langchain4j)
-  * [langgraph4j](https://github.com/bsorrentino/langgraph4j)
-  * [spring-ai](https://spring.io/projects/spring-ai#overview)。
-    * [Introducing the Model Context Protocol Java SDK](https://spring.io/blog/2025/02/14/mcp-java-sdk-released-2)
-  * [spring-ai-alibaba](https://github.com/alibaba/spring-ai-alibaba)
+    * [Tools4AI](https://github.com/vishalmysore/Tools4AI)
+    * [agents-flex](https://github.com/agents-flex/agents-flex)
+    * [langchain4j](https://github.com/langchain4j/langchain4j)
+    * [langgraph4j](https://github.com/bsorrentino/langgraph4j)
+    * [spring-ai](https://spring.io/projects/spring-ai#overview)。
+        * [Introducing the Model Context Protocol Java SDK](https://spring.io/blog/2025/02/14/mcp-java-sdk-released-2)
+    * [spring-ai-alibaba](https://github.com/alibaba/spring-ai-alibaba)
 * go
-  * [eino](https://github.com/cloudwego/eino)
+    * [eino](https://github.com/cloudwego/eino)
 
 ### 工作流
 
 * [xyflow](https://github.com/xyflow/xyflow)
 * [X6](https://github.com/antvis/X6)
-  * [XFlow](https://github.com/antvis/XFlow)
+    * [XFlow](https://github.com/antvis/XFlow)
 * [reaflow](https://github.com/reaviz/reaflow)。官网不错
 * [tinyflow](https://github.com/tinyflow-ai/tinyflow)
 * [simple-ai](https://github.com/Alwurts/simple-ai)

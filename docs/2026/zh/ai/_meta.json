@@ -5,7 +5,7 @@
     "label": "nav.ai.index"
   },
   {
-    "type": "file",
+    "type": "dir",
     "name": "project",
     "label": "nav.ai.project"
   },
