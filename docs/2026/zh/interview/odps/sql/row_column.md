@@ -78,7 +78,7 @@ LATERAL VIEW EXPLODE(FROM_JSON(json_ext,"array<string>")) temp AS json_field
 LATERAL VIEW POSEXPLODE(FROM_JSON(json_ext,"array<string>")) temp AS pos,json_field
 -- OUTER 可以在 FROM_JSON(json_ext,"array<string>") 无数据时对应的输入行依然保留
 LATERAL VIEW OUTER EXPLODE(FROM_JSON(json_ext,"array<string>")) temp AS json_field
--- 还可以组合多个 LATERAL VIEW
+-- 还可以组合多个 LATERAL VIEW，结果为笛卡尔集
 SELECT pageid,mycol1, mycol2 FROM pageAds 
     LATERAL VIEW EXPLODE(col1) myTable1 AS mycol1 
     LATERAL VIEW EXPLODE(col2) myTable2 AS mycol2;
