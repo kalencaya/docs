@@ -275,6 +275,22 @@
     "zh": "编程",
     "en": "Program"
   },
+  "nav.ai.saa": {
+    "zh": "Spring AI Alibaba",
+    "en": "Spring AI Alibaba"
+  },
+  "nav.ai.saa.index": {
+    "zh": "概览",
+    "en": "Overview"
+  },
+  "nav.ai.saa.graph": {
+    "zh": "Graph",
+    "en": "Graph"
+  },
+  "nav.ai.saa.agent": {
+    "zh": "Agent",
+    "en": "Agent"
+  },
 
   "nav.ali": {
     "zh": "阿里",

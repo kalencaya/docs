@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "nav.ai.saa.index"
+  },
+  {
+    "type": "file",
+    "name": "graph",
+    "label": "nav.ai.saa.graph"
+  },
+  {
+    "type": "dir",
+    "name": "agent",
+    "label": "nav.ai.saa.agent"
+  }
+]

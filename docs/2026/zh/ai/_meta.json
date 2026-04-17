@@ -13,5 +13,10 @@
     "type": "file",
     "name": "program",
     "label": "nav.ai.program"
+  },
+  {
+    "type": "dir",
+    "name": "saa",
+    "label": "nav.ai.saa"
   }
 ]
