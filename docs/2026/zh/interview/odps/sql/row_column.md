@@ -102,5 +102,6 @@ LATERAL VIEW OUTER EXPLODE(
 * [行转列及列转行最佳实践](https://help.aliyun.com/zh/maxcompute/use-cases/transpose-rows-to-columns-or-columns-to-rows)
 * [LATERAL VIEW](https://help.aliyun.com/zh/maxcompute/user-guide/lateral-view)
 * [EXPLODE](https://help.aliyun.com/zh/maxcompute/user-guide/explode)、[POSEXPLODE](https://help.aliyun.com/zh/maxcompute/user-guide/posexplode)
+* [PIVOT、UNPIVOT](https://help.aliyun.com/zh/maxcompute/user-guide/pivot-and-unpivot)
 * [ODPS SQL ——列转行、行转列这回让我玩明白了！](https://rivers.chaitin.cn/blog/cqq5ai10lnec5jjugkjg)
 * [SQL面试题 03｜行转列和列转行，一篇讲透](https://mp.weixin.qq.com/s/MAfcasf1HIW7KqLM4-OhPQ)
