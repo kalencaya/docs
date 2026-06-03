@@ -476,6 +476,10 @@
     "zh": "实践",
     "en": "Practice"
   },
+  "nav.interview.paimon.action": {
+    "zh": "Action",
+    "en": "Action"
+  },
   "nav.interview.paimon.example": {
     "zh": "Example",
     "en": "Example"

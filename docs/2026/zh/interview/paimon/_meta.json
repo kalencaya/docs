@@ -26,6 +26,11 @@
   },
   {
     "type": "file",
+    "name": "action",
+    "label": "nav.interview.paimon.action"
+  },
+  {
+    "type": "file",
     "name": "example",
     "label": "nav.interview.paimon.example"
   }

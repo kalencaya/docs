@@ -46,9 +46,68 @@ CREATE TABLE IF NOT EXISTS sku_info
 ;
 ```
 
+定义的 MySQL CDC Source 如下：
+
+```sql
+CREATE TEMPORARY TABLE mysql_sku_info
+(
+    `id`              STRING COMMENT 'SKU ID',
+    `spu_id`          STRING COMMENT 'SPU ID',
+    `price`           DECIMAL(16, 2) COMMENT '价格',
+    `sku_name`        STRING COMMENT 'SKU名称',
+    `sku_desc`        STRING COMMENT 'SKU描述',
+    `weight`          DECIMAL(16, 2) COMMENT '重量',
+    `tm_id`           STRING COMMENT '品牌ID',
+    `category3_id`    STRING COMMENT '品类ID',
+    `sku_default_img` STRING COMMENT '默认显示图片',
+    `is_sale`         STRING COMMENT '是否在售',
+    `create_time`     TIMESTAMP(3) COMMENT '创建时间',
+    PRIMARY KEY (`id`) NOT ENFORCED
+)
+WITH (
+    'connector' = 'mysql' -- 阿里云实时计算服务的 connector
+    ,'hostname' = '<host>'
+    ,'port' = '<port>'
+    ,'username' = '<root>'
+    ,'password' = '<password>'
+    ,'database-name' = '<database>'
+    ,'table-name' = '<table>'
+    ,'jdbc.properties.tinyInt1isBit' = 'false'
+    ,'server-id' = '8601-8610' -- 需协调好各个 binlog 服务抽取，或者 server-id 设置大一点
+    ,'scan.startup.mode' = 'initial'
+)
+;
+```
+
 ### Kafka
 
-
+```sql
+CREATE TEMPORARY TABLE kafka_sku_info
+(
+    `id`              STRING COMMENT 'SKU ID',
+    `spu_id`          STRING COMMENT 'SPU ID',
+    `price`           DECIMAL(16, 2) COMMENT '价格',
+    `sku_name`        STRING COMMENT 'SKU名称',
+    `sku_desc`        STRING COMMENT 'SKU描述',
+    `weight`          DECIMAL(16, 2) COMMENT '重量',
+    `tm_id`           STRING COMMENT '品牌ID',
+    `category3_id`    STRING COMMENT '品类ID',
+    `sku_default_img` STRING COMMENT '默认显示图片',
+    `is_sale`         STRING COMMENT '是否在售',
+    `create_time`     TIMESTAMP(3) COMMENT '创建时间',
+)
+COMMENT ''
+WITH (
+    'connector' = 'kafka'
+    ,'properties.bootstrap.servers' = 'localhost:9092'
+    ,'topic' = '<kafka_topic>'
+    ,'format' = 'json'
+    ,'scan.startup.mode' = 'latest-offset'
+    ,'properties.group.id' = '<kafka_group_id>'
+    ,'properties.request.timeout.ms' = '300000'
+)
+;
+```
 
 ## Sink
 
@@ -74,12 +133,82 @@ CREATE TABLE IF NOT EXISTS paimon_catalog.ods.ods_product_sku_info
     `sku_default_img` STRING COMMENT '默认显示图片',
     `is_sale`         STRING COMMENT '是否在售',
     `create_time`     TIMESTAMP(3) COMMENT '创建时间',
-    PRIMARY KEY (`id`) NOT ENFORCED
+    PRIMARY KEY (`id`) NOT ENFORCED -- primary key。主键表
 ) 
 COMMENT 'sku info'
 WITH (
-    'bucket' = '-1'
-    ,'changelog-producer' = 'input'
+    'bucket' = '-1' -- 动态分桶
+    ,'changelog-producer' = 'input' -- cdc 数据为 input
+)
+;
+
+-- 动态 partition
+-- 主键表和 append-only 表
+
+```
+
+### Doris
+
+```sql
+CREATE TEMPORARY TABLE selectdb_sku_info
+(
+    `id`              STRING COMMENT 'SKU ID'
+    ,`spu_id`          STRING COMMENT 'SPU ID'
+    ,`price`           DECIMAL(16, 2) COMMENT '价格'
+    ,`sku_name`        STRING COMMENT 'SKU名称'
+    ,`sku_desc`        STRING COMMENT 'SKU描述'
+    ,`weight`          DECIMAL(16, 2) COMMENT '重量'
+    ,`tm_id`           STRING COMMENT '品牌ID'
+    ,`category3_id`    STRING COMMENT '品类ID'
+    ,`sku_default_img` STRING COMMENT '默认显示图片'
+    ,`is_sale`         STRING COMMENT '是否在售'
+    ,`create_time`     TIMESTAMP(3) COMMENT '创建时间'
+    ,PRIMARY KEY (id) NOT ENFORCED
+)
+WITH (
+    'connector' = 'doris'
+    ,'fenodes' = '<fenodes>'
+    ,'jdbc-url' = '<jdbc-url>'
+    ,'username' = '<username>'
+    ,'password' = '<password>'
+    ,'table.identifier' = 'ods.ods_sku_info'
+    ,'sink.properties.format' = 'json'
+    ,'sink.properties.read_json_by_line' = 'true'
+    ,'sink.buffer-flush.max-rows' = '200000'
+    ,'sink.buffer-flush.max-bytes' = '30MB'
+    ,'sink.buffer-flush.interval' = '5s'
+    ,'sink.enable.batch-mode' = 'true'
+)
+;
+```
+
+### Kafka
+
+```sql
+CREATE TEMPORARY TABLE kafka_sku_info
+(
+    `id`              STRING COMMENT 'SKU ID',
+    `spu_id`          STRING COMMENT 'SPU ID',
+    `price`           DECIMAL(16, 2) COMMENT '价格',
+    `sku_name`        STRING COMMENT 'SKU名称',
+    `sku_desc`        STRING COMMENT 'SKU描述',
+    `weight`          DECIMAL(16, 2) COMMENT '重量',
+    `tm_id`           STRING COMMENT '品牌ID',
+    `category3_id`    STRING COMMENT '品类ID',
+    `sku_default_img` STRING COMMENT '默认显示图片',
+    `is_sale`         STRING COMMENT '是否在售',
+    `create_time`     TIMESTAMP(3) COMMENT '创建时间',
+)
+COMMENT ''
+WITH (
+    'connector' = 'kafka'
+    ,'properties.bootstrap.servers' = 'localhost:9092'
+    ,'topic' = '<kafka_topic>'
+    ,'format' = 'json'
+    ,'scan.startup.mode' = 'latest-offset'
+    ,'properties.group.id' = '<kafka_group_id>'
+    ,'properties.request.timeout.ms' = '300000'
+  	,'properties.enable.idempotence' = 'false' -- 重要。flink kafka connector 高版本升级了 kafka-client，kafka-client 高版本默认开启了 idempotence，阿里云的 kafka 实例如没有启用此功能需关闭
 )
 ;
 ```
@@ -123,6 +252,7 @@ WITH (
 BEGIN STATEMENT SET
 ;
 
+-- paimon 表已提前创建
 INSERT INTO paimon_catalog.ods.ods_product_sku_info
 SELECT
     ,`id`
