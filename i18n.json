@@ -291,6 +291,10 @@
     "zh": "Agent",
     "en": "Agent"
   },
+  "nav.ai.claude": {
+    "zh": "Claude Code",
+    "en": "Claude Code"
+  },
 
   "nav.ali": {
     "zh": "阿里",

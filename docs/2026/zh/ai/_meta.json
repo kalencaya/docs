@@ -18,5 +18,10 @@
     "type": "dir",
     "name": "saa",
     "label": "nav.ai.saa"
+  },
+  {
+    "type": "file",
+    "name": "claude",
+    "label": "nav.ai.claude"
   }
 ]
