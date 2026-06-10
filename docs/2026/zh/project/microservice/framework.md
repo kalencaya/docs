@@ -18,9 +18,9 @@
   * [quan-admin](https://github.com/quan100/quan-admin)
 * [memberclub](https://github.com/juejin-wuyang/memberclub)
 * [wemirr-platform](https://github.com/battcn/wemirr-platform)
-* [EnjoyIot](https://github.com/OpenEnjoy/EnjoyIot)
+
 
 ## 其他
 
 * [t-io](https://github.com/tywo45/t-io)。[一款高性能网络框架，适用于物联网、IM、客服系统](https://mp.weixin.qq.com/s/HHlPYDLJryrZTKzBKyk5VQ)
-* 
+* [EnjoyIot](https://github.com/OpenEnjoy/EnjoyIot)
