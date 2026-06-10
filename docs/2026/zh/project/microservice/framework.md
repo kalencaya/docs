@@ -18,6 +18,7 @@
   * [quan-admin](https://github.com/quan100/quan-admin)
 * [memberclub](https://github.com/juejin-wuyang/memberclub)
 * [wemirr-platform](https://github.com/battcn/wemirr-platform)
+* [EnjoyIot](https://github.com/OpenEnjoy/EnjoyIot)
 
 ## 其他
 
