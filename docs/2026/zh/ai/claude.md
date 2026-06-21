@@ -11,8 +11,8 @@
 
 ## 插件
 
-* [codegraph](https://github.com/colbymchenry/codegraph)
-* 
+* [codegraph](https://github.com/colbymchenry/codegraph)。
+* [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)。
 
 ## 使用经验
 
