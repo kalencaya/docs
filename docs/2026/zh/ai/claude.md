@@ -13,6 +13,7 @@
 
 * [codegraph](https://github.com/colbymchenry/codegraph)。
 * [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)。
+* [ponytail](https://github.com/DietrichGebert/ponytail)
 
 ## 使用经验
 
