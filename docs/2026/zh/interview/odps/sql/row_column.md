@@ -86,6 +86,14 @@ SELECT pageid,mycol1, mycol2 FROM pageAds
 LATERAL VIEW OUTER EXPLODE(
         CONCAT(NVL(FROM_JSON(json_1,"array<string>"),ARRAY()),NVL(FROM_JSON(json_2,"array<string>"),ARRAY()))
 ) temp AS json_field
+-- 对json数组自动解json
+LATERAL VIEW OUTER EXPLODE(FROM_JSON(json_ext,"array<string>")) j AS items
+LATERAL VIEW JSON_TUPLE(items,'id','score','itemName','categoryId','categoryName') jt AS
+        item_id
+        ,item_score
+        ,item_name
+        ,category_id
+        ,category_name
 ```
 
 `lateral view` 可以和 array 和 map 配合，主要是 array，构建 array 的方式有多种：
