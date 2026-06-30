@@ -70,6 +70,7 @@ SELECT  DATE_ADD(NEXT_DAY(DATETIME('2026-04-10 10:02:03'),'Monday'),-7)
 SELECT  DATE_ADD(NEXT_DAY(DATETIME('2026-04-10 10:02:03'),'Friday'),-7)
         ,DATE_ADD(NEXT_DAY(DATETIME('2026-04-10 10:02:03'),'Friday'),-1)
 ;
+-- 上面的 sql 不仅在 ODPS 中有效，在 Doris 中也有效
 ```
 
 ## 参考文档
