@@ -11,9 +11,12 @@
 
 ## 插件
 
+* [claude-mem](https://github.com/thedotmack/claude-mem)
 * [codegraph](https://github.com/colbymchenry/codegraph)。
 * [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)。
-* [ponytail](https://github.com/DietrichGebert/ponytail)
+* [Understand Anything](https://github.com/Egonex-AI/Understand-Anything)。
+* [ponytail](https://github.com/DietrichGebert/ponytail)。
+* [headroom](https://github.com/headroomlabs-ai/headroom)
 
 ## 使用经验
 

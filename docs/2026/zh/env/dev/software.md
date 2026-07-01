@@ -9,7 +9,7 @@
   * [Snipaste](https://zh.snipaste.com/download.html)。截图工具
   * [ezip](https://ezip.awehunt.com/?locale=zh-CN)
   * [网易云](https://music.163.com/st/download)
-  * [ClashX](https://github.com/bannedbook/ClashX)
+  * [ClashX](https://github.com/bannedbook/ClashX)。vpn
 
 * 可选
 
@@ -31,6 +31,7 @@
 
 * 数据库
 
+  * [dbx](https://dbxio.com/cn)
   * [navicat](https://xclient.info/s/navicat-premium.html)
   * [chat2db](https://chat2db-ai.com/download)
   * [odc](https://www.oceanbase.com/softwarecenter)
@@ -41,6 +42,7 @@
   * [brew](https://brew.sh/zh-cn/)。
     * `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
   * [tabby](https://tabby.sh/)
+  * [otty](https://otty.sh/)
   * xcode
 
 * 其他
@@ -54,6 +56,10 @@
 * [Trae](https://www.trae.cn/ide/download)
 * [Lingma](https://lingma.aliyun.com/download)
 * [Cursor](https://cursor.com/cn/downloads)
+
+## AI
+
+* [cc-switch](https://www.ccswitch.io/zh/)
 
 ## 前端
 
