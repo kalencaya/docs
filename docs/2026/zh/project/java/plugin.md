@@ -2,6 +2,7 @@
 
 * [pf4j](https://github.com/pf4j/pf4j)。
   * [sbp](https://github.com/hank-cp/sbp)。Plugin framework for Spring Boot based on pf4j
+  * [gj.spring.pf4j](https://github.com/wangpengxpy/gj.spring.pf4j)
   * [spinnaker/kork](https://github.com/spinnaker/kork)
   * [oceanbase/odc](https://github.com/oceanbase/odc/blob/main/server/plugins/pom.xml)
   
