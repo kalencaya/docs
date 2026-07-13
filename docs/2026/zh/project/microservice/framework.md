@@ -18,6 +18,7 @@
   * [quan-admin](https://github.com/quan100/quan-admin)
 * [memberclub](https://github.com/juejin-wuyang/memberclub)
 * [wemirr-platform](https://github.com/battcn/wemirr-platform)
+* [主数据平台（master-data-platform）](https://gitee.com/henhen6/mddata)
 
 
 ## 其他
