@@ -41,6 +41,7 @@ http://127.0.0.1:$PORT
 * [境内 Docker 镜像状态监控](https://status.anye.xyz/)
 * [KSpeeder](https://kspeeder.com/)
 * [轩辕镜像](https://docker.xuanyuan.me/)
+* [渡渡鸟镜像同步站](https://docker.aityp.com/)
 
 添加如下代理信息至 `daemon.json` 中。代理不定时失效，需勤快更新
 
