@@ -25,7 +25,6 @@
 * 开发
 
   * [docker](https://www.docker.com/products/docker-desktop/)
-
   * [sublime](https://www.sublimetext.com/download)
   * [typora](https://typora.io/)
 
@@ -43,6 +42,7 @@
     * `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
   * [tabby](https://tabby.sh/)
   * [otty](https://otty.sh/)
+  * [mise](https://github.com/jdx/mise)。环境管理工具，支持 java、node 等，还可以在 IDEA 安装插件后与 IDE 集成
   * xcode
 
 * 其他
@@ -53,6 +53,7 @@
   * idea
     * lombok
     * MyBatisCodeHelperPro
+    * [intellij-mise](https://github.com/134130/intellij-mise)。mise
 * [Trae](https://www.trae.cn/ide/download)
 * [Lingma](https://lingma.aliyun.com/download)
 * [Cursor](https://cursor.com/cn/downloads)
