@@ -63,9 +63,31 @@ WITH (
 )
 ;
 
+-- kafka 结果表
+CREATE TEMPORARY TABLE kafka_bury_stats
+(
+    user_id    STRING COMMENT '用户id'
+    ,stat_date STRING COMMENT '统计日期'
+    ,show_cnt  BIGINT COMMENT '曝光次数'
+    ,click_cnt BIGINT COMMENT '点击次数'
+)
+WITH (
+    'connector' = 'kafka'
+    ,'topic' = 'bury_stats'
+    ,'properties.bootstrap.servers' = 'localhost:9092,localhost:9093,localhost:9094'
+    ,'key.format' = 'raw'
+    ,'key.fields' = 'user_id' -- 设置 kafka 的 key
+    ,'value.format' = 'json'
+    ,'value.json.encode.decimal-as-plain-number' = 'true'
+    ,'properties.enable.idempotence' = 'false'
+    ,'properties.request.timeout.ms' = '300000'
+)
+;
+
 -- 埋点关联维表，使用累积窗口，统计 1 天内用户的曝光和点击，窗口 5 分钟输出一次计算结果
 -- 风险点：数据处理放大。假设 1 天内的埋点数据有 5 亿条，1 天内每 5 分钟就会对接收到的数据进行一次计算
 -- 导致读取的数据和计算的数据量严重不对等，计算的数据量被放大的非常厉害
+INSERT INTO kafka_bury_stats
 WITH events
 AS
 (
@@ -89,6 +111,7 @@ FROM TABLE(CUMULATE(TABLE events,
 GROUP BY
     user_id
     ,window_start
+    ,window_end -- 要同时写 window_start 和 window_end，因为 window_end 表示这一步输出的范围
 ;
 ```
 

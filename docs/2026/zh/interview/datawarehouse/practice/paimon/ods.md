@@ -205,7 +205,10 @@ WITH (
     ,'properties.bootstrap.servers' = 'localhost:9092'
     ,'topic' = '<kafka_topic>'
     ,'format' = 'json'
-    ,'scan.startup.mode' = 'latest-offset'
+    -- ,'key.format' = 'raw'
+    -- ,'key.fields' = 'id' -- 设置 kafka 的 key
+    ,'value.format' = 'json'
+    ,'value.json.encode.decimal-as-plain-number' = 'true'
     ,'properties.group.id' = '<kafka_group_id>'
     ,'properties.request.timeout.ms' = '300000'
   	,'properties.enable.idempotence' = 'false' -- 重要。flink kafka connector 高版本升级了 kafka-client，kafka-client 高版本默认开启了 idempotence，阿里云的 kafka 实例如没有启用此功能需关闭
