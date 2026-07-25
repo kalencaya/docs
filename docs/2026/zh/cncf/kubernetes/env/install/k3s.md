@@ -383,6 +383,11 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+# 关闭 swap
+swapoff -a
+
+# 
+
 # 定义文件名
 registries_file="/etc/rancher/k3s/registries.yaml"
 mkdir -p /etc/rancher/k3s && touch $registries_file
