@@ -370,3 +370,56 @@ spec:
       type: NodePort
 ```
 
+## 快速安装脚本
+
+以腾讯云服务器为例，可在云平台提供的命令管理功能中将脚本保存下来，后续重置环境可一键执行安装
+
+```shell
+#!/bin/bash
+
+# 检查是否以root用户运行脚本
+if [ "$(id -u)" != "0" ]; then
+    echo "请以root用户运行此脚本。" >&2
+    exit 1
+fi
+
+# 定义文件名
+registries_file="/etc/rancher/k3s/registries.yaml"
+mkdir -p /etc/rancher/k3s && touch $registries_file
+
+# 定义要写入的数据 腾讯云功能定制，加入腾讯云镜像地址
+registries="
+mirrors:
+  docker.io:
+    endpoint:
+      - \"https://mirror.ccs.tencentyun.com\""
+
+# 创建文件并写入数据
+echo "$registries" > $registries_file
+
+# 检查文件是否创建成功
+if [ -f $registries_file ]; then
+    echo "文件 '$registries_file' 已成功创建并写入数据。"
+else
+    echo "创建文件 '$registries_file' 失败。" >&2
+    exit 1
+fi
+
+echo "开始安装 k3s"
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+	INSTALL_K3S_MIRROR=cn \
+	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_SKIP_SELINUX_RPM=true \
+	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
+    INSTALL_K3S_EXEC="--system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
+	sh -
+echo "安装 k3s 结束"
+
+# 薅了 sreworks 提供的国内代理
+echo "开始安装 helm"
+wget https://sreworks.oss-cn-beijing.aliyuncs.com/bin/helm-linux-am64 -O helm
+chmod +x ./helm
+mv ./helm /usr/local/bin/
+echo "安装 helm 结束"
+```
+
