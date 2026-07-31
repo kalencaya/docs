@@ -17,6 +17,8 @@
 * [rocket-api](https://github.com/mihuajun/rocket-api)。"Rocket-API" 基于spring boot 的API敏捷开发框架，服务端50%以上的功能只需要写SQL或者 mongodb原始执行脚本就能完成开发，另外30%也在不停的完善公共组件，比如文件上传，下载，导出，预览，分页等等通过一二行代码也能完成开发，剩下的20%也能依赖于动态编译技术生成class的形式，不需要发布部署，不需要重启来实现研发团队的快速编码，提测以及回归。
 * [DataApiService](https://github.com/WeBankFinTech/DataSphereStudio-Doc/blob/main/zh_CN/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/DataApiService%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)。（DSS已内置的第三方应用工具）数据API服务。可快速将SQL脚本发布为一个 Restful 接口，对外提供 Rest 访问能力。
 * [crabc-api](https://gitee.com/linebyte/crabc)。Crabc是一款低代码API开发平台，企业级接口管理、数据服务平台。深度整合SpringBoot和Mybatis特性实现动态数据源、动态SQL和标签，可视化编写SQL快速发布接口，支持接口管理、代理转发、鉴权、限流、熔断和监控告警等一站式API数据服务。
+  * [apigo](https://github.com/pingapi/apigo)。
+
 * [SREWorks](https://github.com/alibaba/SREWorks)。提供了数据服务功能，位于 [saas/dataops/api/dataset](https://github.com/alibaba/SREWorks/tree/main/saas/dataops/api/dataset) 模块
   * [InterfaceConfigService.java](https://github.com/alibaba/SREWorks/blob/main/saas/dataops/api/dataset/dataset-api/src/main/java/com/alibaba/sreworks/dataset/api/inter/InterfaceConfigService.java)
 * [驭数平台](https://gitee.com/data_harness_cloud/data_harness-be)。提供了部分数据服务功能，参考：
