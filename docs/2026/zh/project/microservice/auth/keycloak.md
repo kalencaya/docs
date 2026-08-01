@@ -67,7 +67,7 @@ Keycloak 登陆信息如下：
 
 ### 配置 client
 
-![keycload_add_client_role_01](/docs/zh/project/microservice/auth/keycloak/keycload_add_client_role_01.jpg)
+![keycload_add_client_role_01](docs/zh/project/microservice/auth/keycloak/keycload_add_client_role_01.jpg)
 
 
 
