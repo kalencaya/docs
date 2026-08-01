@@ -3,6 +3,7 @@
 * [dashboard](https://github.com/kubernetes/dashboard)
 * [cilikube](https://github.com/ciliverse/cilikube)
 * [kuboard-press](https://github.com/eip-work/kuboard-press)。Kuboard 是基于 Kubernetes 的微服务管理界面
+* [KubePolaris](https://github.com/qq547475331/KubePolaris)
 * [kite](https://github.com/zxh326/kite)
 * [freelens](https://github.com/freelensapp/freelens)
 * [KubeForge](https://github.com/kubenote/KubeForge)
