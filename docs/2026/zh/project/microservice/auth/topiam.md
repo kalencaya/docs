@@ -130,6 +130,32 @@ spring.data.redis.database=3
 
 登陆成功后（首次登陆需要修改密码），进入后台管理
 
+1. 创建应用，类型为 OIDC
+
+![topiam_admin_application_create_01](./images/topiam/topiam_admin_application_create_01.jpg)
+
+2. 配置应用
+
+需记住 clientId、clientSecret 和 appId。
+
+![topiam_admin_application_create_02](./images/topiam/topiam_admin_application_create_02.jpg)
+
+![topiam_admin_application_create_03](./images/topiam/topiam_admin_application_create_03.jpg)
+
+![topiam_admin_application_create_04](./images/topiam/topiam_admin_application_create_04.jpg)
+
+3. 授权用户
+
+![topiam_admin_application_create_05](./images/topiam/topiam_admin_application_create_05.jpg)
+
+![topiam_admin_application_create_06](./images/topiam/topiam_admin_application_create_06.jpg)
+
+4. 添加其他用户
+
+![topiam_admin_application_create_07](./images/topiam/topiam_admin_application_create_07.jpg)
+
+## Spring Security 接入
+
 
 
 ## 参考链接
