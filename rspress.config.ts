@@ -23,7 +23,7 @@ export default defineConfig({
         lastUpdated: true,
         socialLinks: [
             {icon: 'github', mode: 'link', content: 'https://github.com/kalencaya/docs'},
-            {icon: 'wechat', mode: 'img', content: 'wechat.jpg'},
+            {icon: 'wechat', mode: 'img', content: '/wechat.jpg'},
         ],
         locales: [
             {
