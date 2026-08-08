@@ -54,16 +54,29 @@
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+     
+     
      <!-- 在本地指定文件目录，存储本地 jar 包。可不指定，默认存储在 $user_home/.m2/repository  -->
      <localRepository>/path/to/local_repository</localRepository>
    
-     <!-- 配置阿里云 maven 仓库镜像  -->
+     <!-- 配置阿里云 maven 仓库镜像 -->
+     <!-- 只能配置一个 central，如果配置多个 central 排在第一位的生效 -->
      <mirrors>
+       <!-- 注意尽量不配置 * 的镜像，因为它会拦截所有的镜像源，包括 central 和项目 pom.xml 中自定义的 <repository>  -->
+       <!-- 
+    			<mirror>
+           <id>my-mirror</id>
+           <mirrorOf>*</mirrorOf>
+           <name>my-mirror</name>
+           <url>https://maven.aliyun.com/repository/central</url>
+       	</mirror>
+   		-->
        <mirror>
-         <id>nexus-aliyun</id>
+         <id>central</id>
          <mirrorOf>central</mirrorOf>
-         <name>Nexus aliyun</name>
+         <name>central</name>
          <url>https://maven.aliyun.com/repository/central</url>
+         <!-- <url>https://repo1.maven.org/maven2/</url> -->
        </mirror>
      </mirrors>
    </settings>
