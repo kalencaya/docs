@@ -397,7 +397,12 @@ registries="
 mirrors:
   docker.io:
     endpoint:
-      - \"https://mirror.ccs.tencentyun.com\""
+      - \"https://mirror.ccs.tencentyun.com\"
+      - \"https://docker.sparkcr.cn\"
+      - \"https://docker.1ms.run\"
+      - \"https://docker.m.daocloud.io\"
+      - \"https://docker.1panel.live\"
+      - \"https://dockerproxy.net\""
 
 # 创建文件并写入数据
 echo "$registries" > $registries_file
