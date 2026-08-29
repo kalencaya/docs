@@ -1,6 +1,11 @@
 [
   {
     "type": "file",
+    "name": "rancher",
+    "label": "nav.cncf.kubernetes.env.panel.rancher"
+  },
+  {
+    "type": "file",
     "name": "kubepi",
     "label": "nav.cncf.kubernetes.env.panel.kubepi"
   },

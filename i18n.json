@@ -337,6 +337,10 @@
     "zh": "管理面板",
     "en": "Panel"
   },
+  "nav.cncf.kubernetes.env.panel.rancher": {
+    "zh": "Rancher",
+    "en": "Rancher"
+  },
   "nav.cncf.kubernetes.env.panel.kubepi": {
     "zh": "KubePi",
     "en": "KubePi"
