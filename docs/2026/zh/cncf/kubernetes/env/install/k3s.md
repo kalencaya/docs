@@ -386,13 +386,13 @@ fi
 # 关闭 swap
 swapoff -a
 
-# 
-
+# 修改 docker 代理
 # 定义文件名
 registries_file="/etc/rancher/k3s/registries.yaml"
 mkdir -p /etc/rancher/k3s && touch $registries_file
 
 # 定义要写入的数据 腾讯云功能定制，加入腾讯云镜像地址
+# https://mirror.ccs.tencentyun.com 为腾讯云内网docker代理，速度很快，仅限腾讯云服务器使用
 registries="
 mirrors:
   docker.io:
@@ -402,7 +402,12 @@ mirrors:
       - \"https://docker.1ms.run\"
       - \"https://docker.m.daocloud.io\"
       - \"https://docker.1panel.live\"
-      - \"https://dockerproxy.net\""
+      - \"https://dockerproxy.net\"
+  quay.io:
+    endpoint:
+      - \"https://quay.mirrors.aliyun.com\"
+      - \"https://quay.io\"
+"
 
 # 创建文件并写入数据
 echo "$registries" > $registries_file
@@ -426,6 +431,7 @@ curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 echo "安装 k3s 结束"
 
 # 薅了 sreworks 提供的国内代理
+# rancher 在国内的代理：https://mirror.rancher.cn
 echo "开始安装 helm"
 wget https://sreworks.oss-cn-beijing.aliyuncs.com/bin/helm-linux-am64 -O helm
 chmod +x ./helm
