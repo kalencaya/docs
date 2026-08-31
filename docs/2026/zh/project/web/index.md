@@ -24,6 +24,8 @@
 * [datavines](https://github.com/datavane/datavines)。新一代数据可观测性平台，数据目录管理和数据质量监控平台
 * [AIFlowy](https://gitee.com/aiflowy/aiflowy)
 * [spug](https://github.com/openspug/spug)。开源运维平台：面向中小型企业设计的轻量级无Agent的自动化运维平台，整合了主机管理、主机批量执行、主机在线终端、文件在线上传下载、应用发布部署、在线任务计划、配置中心、监控、报警等一系列功能。
+* [xxl-boot](https://github.com/xuxueli/xxl-boot)。提供了 Vue 和 React 版本前端，React 技术栈为 Vite + Ant Design。
+* [Chat2DB](https://github.com/OtterMind/Chat2DB)
 
 
 ### umi
