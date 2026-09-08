@@ -1,6 +1,6 @@
 # 函数
 
-### 日期
+## 日期
 
 在 MaxCompute 中日期类型包括 3 个：
 
@@ -71,6 +71,53 @@ SELECT  DATE_ADD(NEXT_DAY(DATETIME('2026-04-10 10:02:03'),'Friday'),-7)
         ,DATE_ADD(NEXT_DAY(DATETIME('2026-04-10 10:02:03'),'Friday'),-1)
 ;
 -- 上面的 sql 不仅在 ODPS 中有效，在 Doris 中也有效
+```
+
+## 窗口函数
+
+### 最大值、最小值
+
+假设有 1 张订单表，查询用户首次下单的订单id、下单时间，最后一次下单的订单id、下单时间，在 odps 中有 3 种方式可以实现：
+
+* FIRST_VALUE、LAST_VALUE
+* ARG_MIN、ARG_MAX
+* MIN_BY、MIN_MAX
+
+```sql
+CREATE TABLE IF NOT EXISTS orders
+(
+    order_id    STRING COMMENT '工单id'
+    ,user_id    BIGINT COMMENT '用户id'
+    ,order_time DATETIME COMMENT '下单时间'
+)
+COMMENT '订单表'
+PARTITIONED BY 
+(
+    ds          STRING
+)
+LIFECYCLE 30
+;
+
+SELECT  *
+        ,FIRST_VALUE(order_id) OVER (PARTITION BY user_id ORDER BY order_time ) AS first_order_id
+        ,FIRST_VALUE(order_time) OVER (PARTITION BY user_id ORDER BY order_time ) AS first_order_time
+        ,LAST_VALUE(order_id) OVER (PARTITION BY user_id ORDER BY order_time ) AS last_order_id
+        ,LAST_VALUE(order_time) OVER (PARTITION BY user_id ORDER BY order_time ) AS last_order_time
+FROM    order
+WHERE   ds = MAX_PT('order')
+;
+
+SELECT  user_id
+        ,ARG_MIN(order_time,order_id) AS first_order_id
+        ,MIN_BY(order_id,order_time) AS first_order_id2 -- MIN_BY 函数的字段顺序和 ARG_MIN 是相反的
+        ,MIN(order_time) AS first_order_time
+        ,ARG_MAX(order_time,order_id) AS last_order_id
+        ,MAX_BY(order_id,order_time) AS last_order_id2 -- MAX_BY 函数的字段顺序和 ARG_MAX 是相反的
+        ,MAX(order_time) AS last_order_time
+FROM    order
+WHERE   ds = MAX_PT('order')
+GROUP BY user_id
+;
 ```
 
 ## 参考文档
