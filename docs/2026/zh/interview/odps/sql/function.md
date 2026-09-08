@@ -98,6 +98,7 @@ PARTITIONED BY
 LIFECYCLE 30
 ;
 
+-- 窗口函数，每条数据都可以获取最大值和最小值
 SELECT  *
         ,FIRST_VALUE(order_id) OVER (PARTITION BY user_id ORDER BY order_time ) AS first_order_id
         ,FIRST_VALUE(order_time) OVER (PARTITION BY user_id ORDER BY order_time ) AS first_order_time
@@ -107,6 +108,7 @@ FROM    order
 WHERE   ds = MAX_PT('order')
 ;
 
+-- 聚合函数
 SELECT  user_id
         ,ARG_MIN(order_time,order_id) AS first_order_id
         ,MIN_BY(order_id,order_time) AS first_order_id2 -- MIN_BY 函数的字段顺序和 ARG_MIN 是相反的
@@ -122,9 +124,76 @@ GROUP BY user_id
 
 ## JSON
 
-todo
+### 解析 JSON
 
+```sql
+FROM_JSON(json_ext,"array<string>")
+```
 
+### 构建 JSON
+
+```sql
+-- NAMED_STRUCT 函数 VALUE 类型可以不是不同类型，但经过 TO_JSON 处理后，KEY 会全部转小写
+TO_JSON(NAMED_STRUCT('type',type, 'data',data)) 
+-- MAP 函数限制 VALUE 的类型必须是一样的，STRING 通用性最高，一般都用 STRING
+TO_JSON(MAP('game_name',game_name)) 
+-- JSON_OBJECT 可以保持 string、number、boolean 类型，但是不支持嵌套
+JSON_OBJECT('a', 123,'b','hello')
+```
+
+如果既想让 VALUE 具有不同的类型，KEY 也想用大小写，需要用 UDF 自定义实现：
+
+```java
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.aliyun.odps.udf.UDF;
+import com.aliyun.odps.udf.annotation.Resolve;
+import org.apache.commons.lang.math.NumberUtils;
+
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * 自定义 json 构造。
+ * TO_JSON + NAMED_STRUCT 会都改成小写
+ * TO_JSON + MAP 可以保持大小写，但是 MAP 限制必须是 MAP<STRING, STRING> 类型
+ * JSON_OBJECT 可以保持 string、number、boolean 类型，但是不支持嵌套
+ */
+@Resolve("MAP<STRING, STRING>->String")
+public class ToJson extends UDF {
+
+    public String evaluate(Map<String, String> args) throws Exception {
+        if (Objects.isNull(args) || args.isEmpty()) {
+            return null;
+        }
+        JSONObject jsonObject = new JSONObject();
+        for (Map.Entry<String, String> entry : args.entrySet()) {
+            jsonObject.put(entry.getKey(), parseObjectOrArray(entry.getValue()));
+        }
+        return jsonObject.toJSONString();
+    }
+
+    private Object parseObjectOrArray(String string) {
+        try {
+            // 可以对不同类型的字段进行针对性类型转换
+            if (NumberUtils.isDigits(string)) {
+                return NumberUtils.createNumber(string);
+            }
+            Object parse = JSONObject.parse(string);
+            if (parse instanceof JSONObject) {
+                return parse;
+            } else if (parse instanceof JSONArray) {
+                return parse;
+            } else {
+                return string;
+            }
+        } catch (Exception e) {
+            return string;
+        }
+    }
+}
+```
 
 ## 参考文档
 
