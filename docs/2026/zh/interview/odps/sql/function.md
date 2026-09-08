@@ -120,6 +120,12 @@ GROUP BY user_id
 ;
 ```
 
+## JSON
+
+todo
+
+
+
 ## 参考文档
 
 * [SQL概述](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-maxcompute-sql)
