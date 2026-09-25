@@ -17,8 +17,11 @@
   - [quan-admin](https://github.com/quan100/quan-admin)
 * [Taier](https://github.com/DTStack/Taier)。
 * [dt-react-component](https://github.com/DTStack/dt-react-component)。袋鼠云基于 antd 4.x 封装的一些新组件
-* [odc-client](https://github.com/oceanbase/odc-client)。
 * [oceanbase-design](https://github.com/oceanbase/oceanbase-design)。oceanbase 基于 antd 的组件。
+  * [odc-client](https://github.com/oceanbase/odc-client)。
+  * [ob-operator](https://github.com/oceanbase/ob-operator)
+  * [obshell](https://github.com/oceanbase/obshell)
+
 * [slash-admin](https://github.com/d3george/slash-admin)。Slash Admin 是一款现代化的后台管理模板，基于 React 18、Vite、Ant Design 和 TypeScript 构建。它旨在帮助开发人员快速搭建功能强大的后台管理系统
 * [TestHub](https://github.com/dromara/TestHub)。一款基于流程编排的自动化测试工具
 * [datavines](https://github.com/datavane/datavines)。新一代数据可观测性平台，数据目录管理和数据质量监控平台
