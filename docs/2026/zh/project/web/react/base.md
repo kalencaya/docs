@@ -94,3 +94,13 @@ const MyFunComponent2: React.FC<IProps> = ({a}) => {
 
 ## CSS 
 
+## 参考链接
+
+* [React基础快速入门（一）：JSX语法和规则](https://mp.weixin.qq.com/s/T2c9ACAgZPS9gLm2SsameA)
+* [React基础快速入门（二）：函数组件与 Props属性传参](https://mp.weixin.qq.com/s/C8P-X_WTA8C1eTaj8k0Bvw)
+* [React基础快速入门（三）：组件状态与 useState](https://mp.weixin.qq.com/s/iO3-RzslLwUqiTdiXh3Kbw)
+* [React基础快速入门（四）：Hooks全面解析与函数组件生命周期](https://mp.weixin.qq.com/s/3uh_fHGLFEYSG9Rt3pDkPQ)
+* [React基础快速入门（五）：父子组件通信与组件设计最佳实践](https://mp.weixin.qq.com/s/JbbpUHwwTselJ-94KSPgaw)
+* [React基础快速入门（六）：useEffect执行机制与副作用原理](https://mp.weixin.qq.com/s/aDTc3SWqwjjbmOxHZjLFrA)
+* [React基础快速入门（七）：样式CSS、CSS Modules、CSS-in-JS该如何选择？](https://mp.weixin.qq.com/s/eSucOoUQSynQi9tLEXlCnA)
+
