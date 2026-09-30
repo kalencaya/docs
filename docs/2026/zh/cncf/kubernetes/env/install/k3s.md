@@ -423,7 +423,7 @@ fi
 echo "开始安装 k3s"
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 	INSTALL_K3S_MIRROR=cn \
-	INSTALL_K3S_VERSION=v1.26.8+k3s1 \
+	INSTALL_K3S_VERSION=v1.26.13+k3s1 \
 	INSTALL_K3S_SKIP_SELINUX_RPM=true \
 	K3S_KUBECONFIG_OUTPUT=/root/.kube/config \
     INSTALL_K3S_EXEC="--system-default-registry=registry.cn-hangzhou.aliyuncs.com" \
