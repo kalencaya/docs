@@ -66,18 +66,44 @@ cd kubesphere/config/ks-core && helm package .
 ### 安装
 
 ```bash
-# docker 版本
+# docker 备份版本
 helm upgrade --install -n kubesphere-system --create-namespace ks-core ks-core-1.1.5.tgz \
-     --set global.imageRegistry=openksc
-# 阿里云 acr 版本，因为 image-sync 把镜像名改了，得一个个替换
+     --set global.imageRegistry=swr.cn-southwest-2.myhuaweicloud.com/ks \
+     --set extension.imageRegistry=swr.cn-southwest-2.myhuaweicloud.com/ks \
+#     --set global.imageRegistry=hub.kubesphere.com.cn \
+#     --set extension.imageRegistry=hub.kubesphere.com.cn \
+     --set apiserver.image.registry=docker.io \
+     --set apiserver.image.repository=openksc/ks-apiserver \
+     --set console.image.registry=docker.io \
+     --set console.image.repository=openksc/ks-console \
+     --set controller.image.registry=docker.io \
+     --set controller.image.repository=openksc/ks-controller-manager \
+     --set kubectl.image.registry=docker.io \
+     --set kubectl.image.repository=openksc/kubectl \
+     --set ksExtensionRepository.image.registry=docker.io \
+     --set ksExtensionRepository.image.repository=openksc/ks-extensions-museum \
+     --set ksExtensionRepository.image.tag=v1.1.6
+
+# 可以考虑用下面的 扩展市场 镜像，比较新，但没有测试过兼容性，毕竟还是用的没有限制的 4.1.3 版本
+#     --set ksExtensionRepository.image.registry=hub.kubesphere.com.cn \
+#     --set ksExtensionRepository.image.repository=kse/extensions-museum \
+#     --set ksExtensionRepository.image.tag=v11.3.0
+
+# 阿里云 acr 备份版本
 helm upgrade --install -n kubesphere-system --create-namespace ks-core ks-core-1.1.5.tgz \
-     --set global.imageRegistry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
-#     --set extension.imageRegistry=swr.cn-southwest-2.myhuaweicloud.com/ks \
-     --set extension.imageRegistry=hub.kubesphere.com.cn \
+     --set global.imageRegistry=swr.cn-southwest-2.myhuaweicloud.com/ks \
+     --set extension.imageRegistry=swr.cn-southwest-2.myhuaweicloud.com/ks \
+     --set apiserver.image.registry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
      --set apiserver.image.repository=kalencaya/openksc-ks-apiserver \
+     --set console.image.registry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
      --set console.image.repository=kalencaya/openksc-ks-console \
-     --set console.image.repository=kalencaya/openksc-ks-controller-manager \
-     --set ksExtensionRepository.image.repository=kalencaya/openksc-ks-extensions-museum
+     --set controller.image.registry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
+     --set controller.image.repository=kalencaya/openksc-ks-controller-manager \
+     --set kubectl.image.registry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
+     --set kubectl.image.repository=kalencaya/openksc-kubectl \
+     --set ksExtensionRepository.image.registry=xxx.cn-hangzhou.personal.cr.aliyuncs.com \
+     --set ksExtensionRepository.image.repository=kalencaya/openksc-ks-extensions-museum \
+     --set ksExtensionRepository.image.tag=v1.1.6
 ```
 
 ## 参考链接
