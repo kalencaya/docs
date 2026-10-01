@@ -349,7 +349,7 @@ export default () => {
 * [从零搭建React19+Vite+Antd6中后台管理系统（五）-配置路由React Router](https://mp.weixin.qq.com/s/dEUri8g_H8EfviOLTwwybQ)
 * [从零搭建React19+Vite+Antd6中后台管理系统（六）-配置状态管理Redux](https://mp.weixin.qq.com/s/tiwfFCNXN2cqskA0pEdJsw)
 * [从零搭建React19+Vite+Antd6中后台管理系统（七）-配置Mock和Axios](https://mp.weixin.qq.com/s/E6SzLz6uQYOdyCeFSvO_JQ)
-* [antd-admin：轻量级后台管理系统的务实起点](https://mp.weixin.qq.com/s/041Czzt4zhStBwVTDkbDuw)
+* [antd-admin](https://github.com/zuiidea/antd-admin)。[antd-admin：轻量级后台管理系统的务实起点](https://mp.weixin.qq.com/s/041Czzt4zhStBwVTDkbDuw)
 * [south-admin-react](https://github.com/southliu/south-admin-react)
 * [one-admin-react](https://gitee.com/maoxiaojiu9/one-admin-react)
 * [让你 React 组件水平暴增的 5 个技巧](https://mp.weixin.qq.com/s/K2TbPPcLjot1BFcE9gGePQ)
