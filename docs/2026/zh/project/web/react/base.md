@@ -13,7 +13,7 @@ import React from 'react';
 const MyFunComponent1: React.FC = () => {
   return (
     <>
-      <div>函数式组件</div>
+      <div>函数式组件1</div>
     </>
   );
 };
@@ -21,12 +21,19 @@ const MyFunComponent1: React.FC = () => {
 const MyFunComponent2 = () => {
   return (
     <>
-      <div>函数式组件</div>
+      <div>函数式组件2</div>
     </>
   );
 };
-
 export default MyFunComponent2;
+
+export default function MyFunComponent3(props: any) {
+  return (
+    <>
+      <div>函数式组件3</div>
+    </>
+  )
+}
 ```
 
 ### 类
