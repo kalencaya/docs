@@ -5,10 +5,11 @@
     "label": "nav.interview.index"
   },
   {
-    "type": "dir",
+    "type": "dir-section-header",
     "name": "java",
     "collapsed": true,
-    "label": "nav.interview.java"
+    "label": "nav.interview.java",
+    "tag": "new"
   },
   {
     "type": "dir",
@@ -27,6 +28,10 @@
     "name": "kafka",
     "collapsed": true,
     "label": "nav.interview.kafka"
+  },
+  {
+    "type": "divider",
+    "dashed": "true"
   },
   {
     "type": "dir",
