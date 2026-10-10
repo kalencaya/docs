@@ -27,7 +27,7 @@ ALTER TABLE <table_name> ADD COLUMNS (
 
 删除字段
 
-```sql
+```sql fold
 -- 创建备份表，备份原表数据
 CREATE TABLE IF NOT EXISTS user_backup(
 	id BIGINT COMMENT 'id',
