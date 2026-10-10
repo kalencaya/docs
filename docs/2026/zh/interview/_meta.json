@@ -12,19 +12,19 @@
     "tag": "new"
   },
   {
-    "type": "dir",
+    "type": "dir-section-header",
     "name": "mysql",
     "collapsed": true,
     "label": "nav.interview.mysql"
   },
   {
-    "type": "dir",
+    "type": "dir-section-header",
     "name": "redis",
     "collapsed": true,
     "label": "nav.interview.redis"
   },
   {
-    "type": "dir",
+    "type": "dir-section-header",
     "name": "kafka",
     "collapsed": true,
     "label": "nav.interview.kafka"
@@ -34,43 +34,43 @@
     "dashed": "true"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "flink",
     "collapsed": true,
     "label": "nav.interview.flink"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "paimon",
     "collapsed": true,
     "label": "nav.interview.paimon"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "gravitino",
     "collapsed": true,
     "label": "nav.interview.gravitino"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "doris",
     "collapsed": true,
     "label": "nav.interview.doris"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "odps",
     "collapsed": true,
     "label": "nav.interview.odps"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "datawarehouse",
     "collapsed": true,
     "label": "nav.interview.datawarehouse"
   },
   {
-    "type": "dir",
+    "type": "section-header",
     "name": "trouble_shoot",
     "collapsed": true,
     "label": "nav.interview.trouble_shoot"
