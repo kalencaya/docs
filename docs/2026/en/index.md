@@ -1,17 +1,19 @@
 ---
 pageType: home
+title: Docs
+titleSuffix: 'Knowledges, Skills, Experiences'
 
 hero:
   name: Docs
-  text: share skills、experiences、knowledges
+  text: Knowledges, Skills, Experiences
   tagline: Knowledges, Skills, Experiences
   actions:
     - theme: brand
       text: Quick Start
-      link: /2023/en/quick-start/
+      link: ./introduction
     - theme: alt
       text: Overview
-      link: /2023/en/quick-start/
+      link: ./introduction
   image:
     src: /rspress-icon.png
     alt: Docs Logo

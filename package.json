@@ -1,17 +1,23 @@
 {
-  "name": "docs",
+  "name": "rspress-doc-template",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "rspress dev",
     "build": "rspress build",
+    "dev": "rspress dev",
     "preview": "rspress preview"
   },
   "dependencies": {
-    "rspress": "^1.20.1",
-    "rspress-plugin-mermaid": "^0.3.0"
+    "@rspress/core": "^2.0.22",
+    "rspress-plugin-mermaid": "^1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^16"
+    "@types/node": "^22.8.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^6.0.3"
   }
 }

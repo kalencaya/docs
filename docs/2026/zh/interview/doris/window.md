@@ -2,7 +2,7 @@
 
 窗口函数是一类特殊的分析函数，又名开窗函数。最常见的窗口函数是 `row_number()`，如用 `row_number()` 函数进行去重：
 
-```mysql
+```sql
 -- row_number 函数，对用户发言顺序进行排序
 SELECT
   *,
