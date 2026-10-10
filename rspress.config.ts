@@ -15,7 +15,7 @@ export default defineConfig({
     lang: 'zh',
     multiVersion: {
         default: '2026',
-        versions: ['2026'],
+        versions: ['2026', '2025'],
     },
     search: {
         versioned: false,
@@ -46,7 +46,7 @@ export default defineConfig({
             {
                 icon: 'github',
                 mode: 'github-stars',
-                content: 'https://github.com/kalencaya/docs',
+                content: 'https://github.com/kalencaya/docs/docs',
             },
             { icon: 'wechat', mode: 'img', content: '/wechat.png' },
         ],
