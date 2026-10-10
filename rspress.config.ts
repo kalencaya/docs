@@ -39,14 +39,14 @@ export default defineConfig({
         lastUpdated: true,
         editLink: {
             docRepoBaseUrl:
-                'https://github.com/kalencaya/docs',
+                'https://github.com/kalencaya/docs/docs',
             text: '📝 在 GitHub 上编辑此页',
         },
         socialLinks: [
             {
                 icon: 'github',
                 mode: 'github-stars',
-                content: 'https://github.com/kalencaya/docs/docs',
+                content: 'https://github.com/kalencaya/docs',
             },
             { icon: 'wechat', mode: 'img', content: '/wechat.png' },
         ],

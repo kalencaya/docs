@@ -43,5 +43,18 @@
     "text": "nav.faq",
     "link": "/faq/",
     "activeMatch": "/faq/"
+  },
+  {
+    "text": "链接",
+    "items": [
+      {
+        "text": "查看源码",
+        "link": "https://github.com/kalencaya/docs"
+      },
+      {
+        "text": "Rspress 文档",
+        "link": "https://rspress.rs/zh/"
+      }
+    ]
   }
 ]

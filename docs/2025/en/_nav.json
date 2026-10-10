@@ -43,5 +43,18 @@
     "text": "nav.faq",
     "link": "/faq/",
     "activeMatch": "/faq/"
+  },
+  {
+    "text": "Link",
+    "items": [
+      {
+        "text": "View Source Code",
+        "link": "https://github.com/kalencaya/docs"
+      },
+      {
+        "text": "Rspress Docs",
+        "link": "https://rspress.rs/zh/"
+      }
+    ]
   }
 ]
