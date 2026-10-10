@@ -10,6 +10,7 @@ import React from 'react';
 {/* return 语句添加 () 包裹是为了避免 js 自动在语句后增加 ; 导致异常 */}
 {/* <></> 是 <React.Fragment></React.Fragment> 的语法糖，因为 return 返回的内容需有一个根元素 */}
 {/* 为了避免频繁使用 <div></div> 包裹返回内容，造成 div 嵌套地狱，React 提供了 React.Fragment 组件优化  */}
+{/* 箭头函数写法 */}
 const MyFunComponent1: React.FC = () => {
   return (
     <>
@@ -27,6 +28,7 @@ const MyFunComponent2 = () => {
 };
 export default MyFunComponent2;
 
+{/* function 写法 */}
 export default function MyFunComponent3(props: any) {
   return (
     <>
@@ -34,6 +36,8 @@ export default function MyFunComponent3(props: any) {
     </>
   )
 }
+
+
 ```
 
 ### 类
