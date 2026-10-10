@@ -24,7 +24,7 @@ ods 的问题一般有 2 个：
 
 假设上游 MySQL 的 DDL 如下：
 
-```mysql
+```sql
 DROP TABLE IF EXISTS sku_info
 ;
 

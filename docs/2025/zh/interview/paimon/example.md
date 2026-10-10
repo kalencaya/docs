@@ -449,7 +449,7 @@ WITH (
 ;
 ```
 
-```mysql
+```sql
 -- 阿里云商业版 mysql。开源版 mysql-cdc 的商业版，connector 需改为 mysql，同时开源版的 row_kind 也变为 op_type 
 CREATE TEMPORARY TABLE products
 (

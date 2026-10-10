@@ -30,7 +30,7 @@
 
 在使用 Java 开发代码中，经常会使用`泛型`，JVM 在编译 Java 代码时会丢掉泛型信息，导致序列化时出现异常。如 Jackson 在序列化一段 json 为`List<Map<String, User>>`类型时，往往需要在序列化时提供泛型信息以正确序列化：
 
-```Java
+```java
 String json = "";
 List<Map<String, User>> list = JacksonUtil.parseJsonArray(json, new TypeReference<Map<String, User>>() {});
 ```
@@ -39,7 +39,7 @@ List<Map<String, User>> list = JacksonUtil.parseJsonArray(json, new TypeReferenc
 
 本次问题就是一起 flink 看似正确推导类型信息，实则没有正确推导的问题：
 
-```Java
+```java
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -120,7 +120,7 @@ public class KryoDemoJob {
 
 问题发生的原因未知，没确定为啥会这么诡异。解决方式是通过`returns()`方法为 flink 提供具体的类型信息，即可正常序列化：
 
-```Java
+```java
 env.fromElements(kafkaRecord).returns(new TypeHint<KafkaRecord<String, Dog>>() {}).print();
 ```
 

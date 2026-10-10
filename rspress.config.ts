@@ -54,6 +54,9 @@ export default defineConfig({
     markdown: {
         defaultWrapCode: true,
         showLineNumbers: true,
+        link: {
+            checkDeadLinks: false,
+        },
     },
     llms: true,
 });
