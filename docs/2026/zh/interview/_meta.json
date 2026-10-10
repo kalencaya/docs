@@ -7,6 +7,7 @@
   {
     "type": "dir-section-header",
     "name": "java",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.java",
     "tag": "new"
@@ -14,64 +15,74 @@
   {
     "type": "dir-section-header",
     "name": "mysql",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.mysql"
   },
   {
     "type": "dir-section-header",
     "name": "redis",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.redis"
   },
   {
     "type": "dir-section-header",
     "name": "kafka",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.kafka"
   },
   {
     "type": "divider",
-    "dashed": "true"
+    "dashed": "false"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "flink",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.flink"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "paimon",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.paimon"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "gravitino",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.gravitino"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "doris",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.doris"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "odps",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.odps"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "datawarehouse",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.datawarehouse"
   },
   {
-    "type": "section-header",
+    "type": "dir-section-header",
     "name": "trouble_shoot",
+    "collapsible": true,
     "collapsed": true,
     "label": "nav.interview.trouble_shoot"
   }
