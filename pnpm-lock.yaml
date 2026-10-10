@@ -15,6 +15,9 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@rspress/core@2.0.23(@rspack/core@2.2.8(@swc/helpers@0.5.23))(micromark-util-types@2.0.3)(micromark@4.0.3))
     devDependencies:
+      '@shikijs/transformers':
+        specifier: ^4.5.0
+        version: 4.5.0
       '@types/node':
         specifier: ^22.8.1
         version: 22.20.5
@@ -30,6 +33,9 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.3.0(react@19.3.0)
+      rspress-plugin-file-tree:
+        specifier: ^1.0.7
+        version: 1.0.7(@rspress/core@2.0.23(@rspack/core@2.2.8(@swc/helpers@0.5.23))(micromark-util-types@2.0.3)(micromark@4.0.3))
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -216,6 +222,10 @@ packages:
 
   '@shikijs/themes@4.5.0':
     resolution: {integrity: sha512-zGb87H3UBbpuI4yoh5UguB1XbU+2BDU3kflM7UfZ+Cy2hWo9lBtqjSVK20gmLY6ukYl040hAypGXMgud9vul8Q==}
+    engines: {node: '>=20'}
+
+  '@shikijs/transformers@4.5.0':
+    resolution: {integrity: sha512-LM7twi043qCC3gRyGQfjoC2/sowzbEltWuruyRtT3RlBlk1hKzWk9ETnU7RcDBoVWQBmC8Mebnr7p28W7kPoaA==}
     engines: {node: '>=20'}
 
   '@shikijs/types@4.5.0':
@@ -1162,6 +1172,11 @@ packages:
     peerDependencies:
       '@rspress/core': ^2.0.0-rc.4 || ^2.0.0
 
+  rspress-plugin-file-tree@1.0.7:
+    resolution: {integrity: sha512-0F/uM3H1HJmlAELXIn7Wvm4MAQf96uYZXGdXc9YaIJlpM80ocNygsVjfFr1hldxgWVYO/nHFUWZlXk/c6U0vBA==}
+    peerDependencies:
+      '@rspress/core': ^2.0.0-rc.4 || ^2.0.0
+
   rspress-plugin-mermaid@1.0.3:
     resolution: {integrity: sha512-7qw0c3zZoUygZhHIT31k0rua2Bk6bPVSCROx82kz7PZAPMpDqSPQi3kQ68KROMq6XhZc25nEPavy60sW+oBitw==}
     peerDependencies:
@@ -1565,6 +1580,11 @@ snapshots:
 
   '@shikijs/themes@4.5.0':
     dependencies:
+      '@shikijs/types': 4.5.0
+
+  '@shikijs/transformers@4.5.0':
+    dependencies:
+      '@shikijs/core': 4.5.0
       '@shikijs/types': 4.5.0
 
   '@shikijs/types@4.5.0':
@@ -3053,6 +3073,13 @@ snapshots:
       unist-util-visit: 5.1.0
       util-ts-types: 1.0.0
       vfile: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
+
+  rspress-plugin-file-tree@1.0.7(@rspress/core@2.0.23(@rspack/core@2.2.8(@swc/helpers@0.5.23))(micromark-util-types@2.0.3)(micromark@4.0.3)):
+    dependencies:
+      '@rspress/core': 2.0.23(@rspack/core@2.2.8(@swc/helpers@0.5.23))(micromark-util-types@2.0.3)(micromark@4.0.3)
+      rspress-plugin-devkit: 1.0.1(@rspress/core@2.0.23(@rspack/core@2.2.8(@swc/helpers@0.5.23))(micromark-util-types@2.0.3)(micromark@4.0.3))
     transitivePeerDependencies:
       - supports-color
 

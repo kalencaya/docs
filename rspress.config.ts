@@ -1,6 +1,15 @@
 import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import mermaid from 'rspress-plugin-mermaid';
+import pluginFileTree from 'rspress-plugin-file-tree';
+import { transformerCompatibleMetaHighlight } from '@rspress/core/shiki-transformers';
+import {
+    transformerNotationDiff,
+    transformerNotationErrorLevel,
+    transformerNotationFocus,
+    transformerNotationHighlight,
+    transformerRemoveNotationEscape
+} from '@shikijs/transformers';
 
 export default defineConfig({
     root: path.join(__dirname, 'docs'),
@@ -30,11 +39,14 @@ export default defineConfig({
             label: '简体中文'
         },
     ],
-    plugins: [mermaid({
-        mermaidConfig: {
-            theme: 'forest',
-        },
-    })],
+    plugins: [
+        mermaid({
+            mermaidConfig: {
+                theme: 'forest',
+            }
+        }),
+        pluginFileTree(),
+    ],
     themeConfig: {
         lastUpdated: true,
         editLink: {
@@ -57,6 +69,28 @@ export default defineConfig({
         link: {
             checkDeadLinks: false,
         },
+        shiki: {
+            langs: [
+                'markdown',
+                'mdx',
+                'tsx',
+                'json',
+                'bash',
+                'yaml',
+                'ts',
+                'js',
+                'css',
+                'html'
+            ],
+            transformers: [
+                transformerNotationDiff(),
+                transformerNotationErrorLevel(),
+                transformerNotationHighlight(),
+                transformerNotationFocus(),
+                transformerCompatibleMetaHighlight(),
+                transformerRemoveNotationEscape(),
+            ],
+        }
     },
     llms: true,
 });
