@@ -2,6 +2,10 @@ import * as path from 'node:path';
 import { defineConfig } from '@rspress/core';
 import mermaid from 'rspress-plugin-mermaid';
 import pluginFileTree from 'rspress-plugin-file-tree';
+import { pluginPlayground } from '@rspress/plugin-playground';
+import { pluginPreview } from '@rspress/plugin-preview';
+import { pluginSass } from '@rsbuild/plugin-sass';
+import { pluginTailwindcss } from '@rsbuild/plugin-tailwindcss';
 import { transformerCompatibleMetaHighlight } from '@rspress/core/shiki-transformers';
 import {
     transformerNotationDiff,
@@ -46,7 +50,32 @@ export default defineConfig({
             }
         }),
         pluginFileTree(),
+        pluginPreview({
+            previewLanguages: ['tsx', 'jsx', 'mdx'],
+            iframeOptions: {
+                devPort: 7778,
+                builderConfig: {
+                    plugins: [pluginTailwindcss()],
+                    source: {
+                        preEntry: [
+                            '@vant/touch-emulator',
+                            './src/dark-mode-observer.js',
+                            './tailwind.css',
+                        ],
+                    },
+                },
+            },
+        }),
+        pluginPlayground(),
     ],
+    globalStyles: path.join(__dirname, 'tailwind.css'),
+    builderConfig: {
+        plugins: [
+            // Tailwind CSS v4 不适合与 Sass、Less 或 Stylus 等 CSS 预处理器一起使用
+            // pluginSass(),
+            pluginTailwindcss()
+        ],
+    },
     themeConfig: {
         lastUpdated: true,
         editLink: {

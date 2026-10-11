@@ -13,6 +13,10 @@
     "rspress-plugin-mermaid": "^1.0.3"
   },
   "devDependencies": {
+    "@rsbuild/plugin-sass": "^2.0.1",
+    "@rsbuild/plugin-tailwindcss": "^2.0.3",
+    "@rspress/plugin-playground": "^2.0.23",
+    "@rspress/plugin-preview": "^2.0.23",
     "@shikijs/transformers": "^4.5.0",
     "@types/node": "^22.8.1",
     "@types/react": "^19.2.18",
@@ -20,6 +24,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "rspress-plugin-file-tree": "^1.0.7",
+    "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
 }
