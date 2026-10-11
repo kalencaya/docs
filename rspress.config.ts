@@ -58,8 +58,6 @@ export default defineConfig({
                     plugins: [pluginTailwindcss()],
                     source: {
                         preEntry: [
-                            '@vant/touch-emulator',
-                            './src/dark-mode-observer.js',
                             './tailwind.css',
                         ],
                     },
