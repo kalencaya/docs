@@ -27,13 +27,21 @@ https://127.0.0.1:$PORT
 配置全局代理：
 
 ```shell
-# 设置代理
+# 设置代理 全局代理
 git config --global http.proxy http://127.0.0.1:$PORT
 git config --global https.proxy https://127.0.0.1:$PORT
 
-# 取消代理
+# 取消代理 全局代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
+# 设置代理 仓库代理
+git config http.proxy http://127.0.0.1:7890
+git config https.proxy https://127.0.0.1:7890
+
+# 取消代理 仓库代理
+git config --unset http.proxy
+git config --unset https.proxy
 ```
 
 提示：
