@@ -23,5 +23,10 @@
     "type": "file",
     "name": "claude",
     "label": "nav.ai.claude"
+  },
+  {
+    "type": "dir",
+    "name": "data-agent",
+    "label": "nav.ai.data-agent"
   }
 ]

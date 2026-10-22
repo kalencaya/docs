@@ -295,6 +295,10 @@
     "zh": "Claude Code",
     "en": "Claude Code"
   },
+  "nav.ai.data-agent": {
+    "zh": "Data Agent",
+    "en": "Data Agent"
+  },
 
   "nav.ali": {
     "zh": "阿里",
