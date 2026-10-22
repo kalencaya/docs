@@ -1,4 +1,4 @@
-# DataFoundry
+# DataFoundry/dataagent
 
 
 
@@ -36,7 +36,7 @@ AUTH_SMTP_HOST=smtp.feishu.cn
 AUTH_SMTP_PORT=465
 # 飞书需开启
 AUTH_SMTP_SECURE=true
-AUTH_SMTP_USER=example-password
+AUTH_SMTP_USER=example@group.com
 AUTH_SMTP_PASSWORD=example-password
 ```
 
@@ -65,6 +65,8 @@ EMBEDDING_OUTPUT_TYPE=dense
 EMBEDDING_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 EMBEDDING_API_KEY=
 ```
+
+### 构建、启动
 
 
 
