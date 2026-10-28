@@ -528,6 +528,10 @@
     "zh": "概览",
     "en": "Overview"
   },
+  "nav.interview.odps.ai": {
+    "zh": "AI",
+    "en": "AI"
+  },
   "nav.interview.odps.sql": {
     "zh": "SQL",
     "en": "SQL"
