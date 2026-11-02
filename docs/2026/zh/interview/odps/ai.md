@@ -34,7 +34,27 @@ aliyun maxc agent skill uninstall cursor --json
 
 语义增量 CLI 为对 maxcompute 中的表进行语义化后存入本地 sqlite + markdown。
 
-安装 Agent Skill：
+profile 配置和目录绑定：
+
+```bash
+## profile
+# 创建 profile
+mcs profile create
+
+mcs profile list # 查看 profile 列表
+mcs profile list -f json # 查看 profile 列表，json 格式输出
+mcs profile show <name> # 查看 profile 详情
+mcs profile show <name> -f json # 查看 profile 详情，json 格式输出
+
+mcs profile update <name> # 更新 profile
+
+## 绑定 profile。在进入指定目录后可自动应用 profile。
+## 如果不绑定，需在 cli 中指定 --profile <name>，如 mcs status --profile <name>
+mcs link bind <profile-name> # 将当前目录绑定到 profile（推荐）
+mcs link status # 查看当前目录绑定状态
+```
+
+安装 Agent Skill，安装完后可以让大模型自己去通过 skill 操作，无需用户自身去查看 CLI 语法手敲：
 
 ```bash
 # mcs 的 Skill 注册到本机 Agent
@@ -50,6 +70,37 @@ mcs skill install --detect -g
 
 # 把 Skill 安装到所有支持的平台
 mcs skill install --all -g
+```
+
+支持导出为 ossie，不支持从 ossie 导入：
+
+```bash
+# 导出 profile 名为 game_buddy_dw 下的语义包
+mcs profile export game_buddy_dw --osi
+```
+
+一些常用命令行说明：
+
+```bash
+## 语义包构建与维护
+mcs show --profile <name> # 查看语义包
+mcs show --table <table-name> --profile <name> # 查看表语义
+mcs build --profile <name> # 构建语义包
+## 语义包构建完成后，会对表描述、字段含义等生成语义建议（比如从字段采样后生成的置信度判断是否可信），需经人工审核后写入语义包
+mcs package propose --from-suggestions --profile <name>
+mcs package list-proposals --status suggested|applied|rejected|pending --profile <name>
+mcs package apply <id> --profile <name>
+mcs package show-proposal <id> --profile <name>
+
+## metric
+mcs metric add gmv \
+  --expression "SUM(pay_amount)" \
+  --description "成交金额" \
+  --ai-context "GMV 使用订单支付金额求和，排除取消订单。"
+
+## memory
+# 新增一条经过验证的 SQL。比较反常识，命令不是 add 之类的
+mcs memory verify --question "<自然语言问题>" --sql '<SQL>' --tables table_a,table_b
 ```
 
 ## 参考链接
