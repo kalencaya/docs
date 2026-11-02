@@ -65,4 +65,4 @@ mcs skill install --all -g
 * SDK
   * [catalog-api](https://mvnrepository.com/artifact/com.aliyun.odps/catalog-api)。源码：[aliyun-odps-openapi-sdk](https://github.com/aliyun/aliyun-odps-openapi-sdk)
   * [odps-jdbc](https://mvnrepository.com/artifact/com.aliyun.odps/odps-jdbc)
-  * [odps-sdk-core](https://mvnrepository.com/artifact/com.aliyun.odps/odps-sdk-core)
+  * [odps-sdk-core](https://mvnrepository.com/artifact/com.aliyun.odps/odps-sdk-core)。源码：[aliyun-odps-java-sdk](https://github.com/aliyun/aliyun-odps-java-sdk)
