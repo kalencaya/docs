@@ -117,3 +117,4 @@ mcs memory verify --question "<自然语言问题>" --sql '<SQL>' --tables table
   * [catalog-api](https://mvnrepository.com/artifact/com.aliyun.odps/catalog-api)。源码：[aliyun-odps-openapi-sdk](https://github.com/aliyun/aliyun-odps-openapi-sdk)
   * [odps-jdbc](https://mvnrepository.com/artifact/com.aliyun.odps/odps-jdbc)
   * [odps-sdk-core](https://mvnrepository.com/artifact/com.aliyun.odps/odps-sdk-core)。源码：[aliyun-odps-java-sdk](https://github.com/aliyun/aliyun-odps-java-sdk)
+  * [alibabacloud-python-sdk](https://github.com/aliyun/alibabacloud-python-sdk/tree/master/dataworks-public-20200518)。共有 3 版：`20180601`、`20200518`、`20240518`
