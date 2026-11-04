@@ -14,6 +14,7 @@
   * 文档
     * [dataworks-public-20200518](https://next.api.aliyun.com/api/dataworks-public/2020-05-18)
     * [dataworks-public-20240518](https://next.api.aliyun.com/api/dataworks-public/2024-05-18)
+    * 也可以自己拼一下接口地址如：https://api.aliyun.com/meta/v1/products/dataworks-public/versions/2020-05-18/apis/ListNodes/api.json
 
 ## Python
 
