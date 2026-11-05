@@ -112,4 +112,4 @@ mcs memory verify --question "<自然语言问题>" --sql '<SQL>' --tables table
     * remote。需要是阿里云主账号或者 `AliyunRAMFullAccess` 权限进行 OAuth 授权
     * local。本地安装 python mcp server
   * [MaxCompute CLI](https://help.aliyun.com/zh/maxcompute/user-guide/maxcompute-cli)。基于 阿里云CLI 调用
-  * [MaxCompute 语义增强 CLI（MaxCompute-semantic）](https://help.aliyun.com/zh/maxcompute/user-guide/maxcompute-semantic-cli)。[maxcompute-semantic](https://github.com/aliyun/maxcompute-semantic)
+  * [MaxCompute 语义增强 CLI（MaxCompute-semantic）](https://help.aliyun.com/zh/maxcompute/user-guide/maxcompute-semantic-cli)。源码：[maxcompute-semantic](https://github.com/aliyun/maxcompute-semantic)，文档：[maxcompute-semantic](https://aliyun.github.io/maxcompute-semantic/zh-cn/index.html)
