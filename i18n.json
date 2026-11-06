@@ -56,6 +56,14 @@
     "zh": "软件",
     "en": "Software"
   },
+  "nav.env.dev.local-ai": {
+    "zh": "本地AI",
+    "en": "Local AI"
+  },
+  "nav.env.dev.remote-ai": {
+    "zh": "远端AI",
+    "en": "Remote AI"
+  },
   "nav.env.dev.resource": {
     "zh": "资源",
     "en": "Resource"

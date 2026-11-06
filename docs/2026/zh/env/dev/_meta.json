@@ -32,6 +32,16 @@
   },
   {
     "type": "file",
+    "name": "local-ai",
+    "label": "nav.env.dev.local-ai"
+  },
+  {
+    "type": "file",
+    "name": "remote-ai",
+    "label": "nav.env.dev.remote-ai"
+  },
+  {
+    "type": "file",
     "name": "resource",
     "label": "nav.env.dev.resource"
   }
