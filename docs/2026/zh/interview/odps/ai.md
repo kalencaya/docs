@@ -108,7 +108,7 @@ mcs memory verify --question "<自然语言问题>" --sql '<SQL>' --tables table
 * [阿里云CLI](https://help.aliyun.com/zh/cli)
 * [阿里云 Agent Skills](https://skills.aliyun.com/skills?orderBy=install)
 * MaxCompute Agentic 生态
-  * [MaxCompute MCP 服务使用文档](https://help.aliyun.com/zh/maxcompute/user-guide/mcp-overview-and-access)。
+  * [MaxCompute MCP 服务使用文档](https://help.aliyun.com/zh/maxcompute/user-guide/mcp-overview-and-access)。源码：[alibabacloud-maxcompute-mcp-server](https://github.com/aliyun/alibabacloud-maxcompute-mcp-server)
     * remote。需要是阿里云主账号或者 `AliyunRAMFullAccess` 权限进行 OAuth 授权
     * local。本地安装 python mcp server
   * [MaxCompute CLI](https://help.aliyun.com/zh/maxcompute/user-guide/maxcompute-cli)。基于 阿里云CLI 调用

@@ -26,7 +26,7 @@
     "label": "nav.env.dev.language"
   },
   {
-    "type": "file",
+    "type": "dir",
     "name": "ai",
     "label": "nav.env.dev.ai"
   },
