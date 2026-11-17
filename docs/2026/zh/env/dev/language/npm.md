@@ -12,9 +12,24 @@ nvm -v
 安装node
 
 ```shell
-nvm install 18
+## 列出远程可用版本
+nvm ls-remote --lts
+## 安装最新 LTS 版本
+nvm install --lts
+## 安装指定代号的 LTS（lts/krypton 代表 node 24）
+nvm install lts/krypton
+## 设置默认版本
+nvm alias default lts/krypton
+## 手动切换版本
 nvm use 18
 node -v
+```
+
+配置镜像源：
+
+```bash
+npm config set registry https://registry.npmjs.org
+npm config get registry
 ```
 
 安装包管理工具
