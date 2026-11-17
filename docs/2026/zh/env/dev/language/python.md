@@ -35,6 +35,8 @@ export UV_DEFAULT_INDEX="https://mirrors.aliyun.com/pypi/simple/"
 ```bash
 # 装 Python 版本（取代 pyenv）
 uv python install 3.13 
+# 指定项目版本，会在项目目录下生成 .python-version 文件
+uv python pin 3.12
 # 建虚拟环境（取代 virtualenv）
 uv venv
 # 装包（取代 pip，快得不像话）
