@@ -1,16 +1,6 @@
 [
   {
     "type": "file",
-    "name": "java",
-    "label": "nav.env.dev.java"
-  },
-  {
-    "type": "file",
-    "name": "web",
-    "label": "nav.env.dev.web"
-  },
-  {
-    "type": "file",
     "name": "terminal",
     "label": "nav.env.dev.terminal"
   },
@@ -31,14 +21,14 @@
     "label": "nav.env.dev.software"
   },
   {
-    "type": "file",
-    "name": "local-ai",
-    "label": "nav.env.dev.local-ai"
+    "type": "dir",
+    "name": "language",
+    "label": "nav.env.dev.language"
   },
   {
     "type": "file",
-    "name": "remote-ai",
-    "label": "nav.env.dev.remote-ai"
+    "name": "ai",
+    "label": "nav.env.dev.ai"
   },
   {
     "type": "file",

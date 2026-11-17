@@ -24,14 +24,6 @@
     "zh": "开发环境",
     "en": "Development"
   },
-  "nav.env.dev.java": {
-    "zh": "Java",
-    "en": "Java"
-  },
-  "nav.env.dev.web": {
-    "zh": "前端",
-    "en": "Web"
-  },
   "nav.env.dev.terminal": {
     "zh": "终端工具",
     "en": "Terminal"
@@ -56,13 +48,13 @@
     "zh": "软件",
     "en": "Software"
   },
-  "nav.env.dev.local-ai": {
-    "zh": "本地AI",
-    "en": "Local AI"
+  "nav.env.dev.language": {
+    "zh": "开发语言",
+    "en": "Develop Language"
   },
-  "nav.env.dev.remote-ai": {
-    "zh": "远端AI",
-    "en": "Remote AI"
+  "nav.env.dev.ai": {
+    "zh": "AI",
+    "en": "AI"
   },
   "nav.env.dev.resource": {
     "zh": "资源",
