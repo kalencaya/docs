@@ -54,3 +54,12 @@ mise current
 mise which <tool>
 ```
 
+如何遇到从 github 下载不稳定，在 `~/.config/mise/config.toml` 配置：
+
+```toml
+[settings.url_replacements]
+"https://github.com/" = "https://gh-proxy.com"
+```
+
+
+

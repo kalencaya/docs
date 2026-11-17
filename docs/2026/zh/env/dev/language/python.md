@@ -45,23 +45,3 @@ uv pip install requests
 uv tool install ruff ## uninstall reinstall     
 ```
 
-#### mise
-
-安装：
-
-```bash
-curl https://mise.run | sh
-
-mise --version
-mise doctor
-
-## 激活其他工具如 npm 和 node
-echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
-
-mise ls --current
-
-# 安装 node
-mise use --global node@20
-node -v
-```
-
