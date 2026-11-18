@@ -58,7 +58,7 @@ mise which <tool>
 
 ```toml
 [settings.url_replacements]
-"https://github.com/" = "https://gh-proxy.com"
+"https://github.com/" = "https://gh-proxy.org/https://github.com/"
 ```
 
 
