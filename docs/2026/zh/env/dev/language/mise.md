@@ -4,12 +4,11 @@
 
 ```bash
 curl https://mise.run | sh
+echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+source ~/.bashrc
 
 mise --version
 mise doctor
-
-## 激活其他工具如 npm 和 node
-echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 
 mise ls --current
 ```
@@ -52,26 +51,23 @@ mise which <tool>
 
 如何遇到从 github 下载不稳定，在 `~/.config/mise/config.toml` 配置：
 
+* `mkdir -p .config/mise && touch .config/mise/config.toml`
+* `vim .config/mise/config.toml`
+
 ```toml
 [settings]
 http_download_timeout = "6h"
-python.uv_venv_auto = "create|source"
 pypi.registry_url = "https://mirrors.aliyun.com/pypi/simple/"
 node.mirror_url = "https://npmmirror.com/mirrors/node/"
 [settings.python]
 # python 解释器下载地址
-mirror_url = "https://registry.npmmirror.com/-/binary/python-build-standalone"
+# mirror_url = "https://registry.npmmirror.com/-/binary/python-build-standalone"
+uv_venv_auto = "create|source"
 [settings.url_replacements]
 "https://github.com/" = "https://gh-proxy.org/https://github.com/"
 "https://archive.apache.org/dist/" = "https://dlcdn.apache.org/"
 
-[tools]
-java = "21"
-maven = "3.9.16"
-node = "24"
-
-[tools.maven]
-mirror = "https://maven.aliyun.com/repository/public"
+# maven.mirror = "https://maven.aliyun.com/repository/public"
 
 [env]
 # 自动创建 venv

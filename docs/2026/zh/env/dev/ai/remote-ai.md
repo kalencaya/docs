@@ -1,6 +1,18 @@
 # 远端 AI
 
+
+
 ## 环境
+
+切换用户
+
+```bash
+sudo useradd -m -s /bin/bash agent-user
+echo "agent-user:123456" | sudo chpasswd
+sudo chown -R agent-user:agent-user /home/agent-user
+# 切换到
+su - agent-user
+```
 
 通过 mise 安装如下环境：
 
@@ -42,14 +54,6 @@ curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.
 
 
 ## Agent
-
-为 claude 创建一个非特权用户
-
-```bash
-sudo useradd -m -s /bin/bash claude-user
-sudo passwd claude-user  # 为该用户设置密码
-sudo chown -R claude-user:claude-user /path/to/your/workspace
-```
 
 安装 agent
 
