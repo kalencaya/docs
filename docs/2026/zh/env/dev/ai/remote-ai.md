@@ -1,5 +1,32 @@
 # 远端 AI
 
+## 环境
+
+通过 mise 安装如下环境：
+
+```bash
+# 安装 node
+mise use --global node@20
+node -v
+# 配置 npm 镜像源
+npm config set registry https://registry.npmmirror.com
+npm config get registry
+
+# 安装 java
+mise use --global java@21
+java -version
+
+# 安装 maven
+mise use --global maven@3.9.16
+mvn -v
+# 阿里云代理配置在 mise 的全局配置中
+mvn help:effective-settings
+
+# 安装 python
+mise use --global python@3.12
+python --version
+```
+
 ## 模型网关
 
 ### magpie
@@ -7,62 +34,24 @@
 直接安装，通过代理下载 release
 
 ```bash
-curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.org/
-```
-
-通过 docker 启动：
-
-```yaml
-services:
-
-# port 设置为 127.0.0.1 确保只能本地打开，
-# 使用的时候通过 ssh -L 把服务器的 3430 转到本地，在本地浏览器中打开带 ?k= 的地址
-# 带 ?k= 的地址通过查看日志找到。docker compose logs magpie
-  magpie:
-    image: ghcr.io/yetone/magpie:0.1.3098
-    container_name: magpie
-    restart: unless-stopped
-    command: web --addr 0.0.0.0:3430 --no-open
-    ports:
-      - "127.0.0.1:3425:3425"
-      - "127.0.0.1:3430:3430"
-    environment:
-      TZ: Asia/Shanghai
-      MAGPIE_WEB_KEY: <at-least-16-characters>
-    networks:
-      - magpie
-
-networks:
-  magpie:
-    driver: bridge
+curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.com/
 ```
 
 本地 ssh 配置端口转发，打开 magpie web 页面进行模型配置，以 [tabby](https://tabby.sh/) 为例：
 
 
 
-## nvm
+## Agent
+
+为 claude 创建一个非特权用户
 
 ```bash
-## 安装 nvm
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-## 验证安装结果
-nvm --version
-
-## 查询支持的长期版本
-nvm ls-remote --lts
-
-## 安装 node
-nvm install <node_version>
-
-## 设置默认版本
-nvm alias default <node_version>
-
-## 查看已安装的版本
-nvm list
+sudo useradd -m -s /bin/bash claude-user
+sudo passwd claude-user  # 为该用户设置密码
+sudo chown -R claude-user:claude-user /path/to/your/workspace
 ```
 
-## Agent
+安装 agent
 
 * claude code。`npm install -g @anthropic-ai/claude-code`
 * codex。`npm install -g @openai/codex`

@@ -12,10 +12,6 @@ mise doctor
 echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 
 mise ls --current
-
-# 安装 node
-mise use --global node@20
-node -v
 ```
 
 ## 配置文件
@@ -57,8 +53,29 @@ mise which <tool>
 如何遇到从 github 下载不稳定，在 `~/.config/mise/config.toml` 配置：
 
 ```toml
+[settings]
+http_download_timeout = "6h"
+python.uv_venv_auto = "create|source"
+pypi.registry_url = "https://mirrors.aliyun.com/pypi/simple/"
+node.mirror_url = "https://npmmirror.com/mirrors/node/"
+[settings.python]
+# python 解释器下载地址
+mirror_url = "https://registry.npmmirror.com/-/binary/python-build-standalone"
 [settings.url_replacements]
 "https://github.com/" = "https://gh-proxy.org/https://github.com/"
+"https://archive.apache.org/dist/" = "https://dlcdn.apache.org/"
+
+[tools]
+java = "21"
+maven = "3.9.16"
+node = "24"
+
+[tools.maven]
+mirror = "https://maven.aliyun.com/repository/public"
+
+[env]
+# 自动创建 venv
+_.python.venv = { path = ".venv", create = true, uv_create_args = ["--seed"]  }
 ```
 
 
