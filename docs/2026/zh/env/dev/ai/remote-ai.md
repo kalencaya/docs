@@ -47,6 +47,7 @@ python --version
 
 ```bash
 curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.com/
+
 ```
 
 本地 ssh 配置端口转发，打开 magpie web 页面进行模型配置，以 [tabby](https://tabby.sh/) 为例：

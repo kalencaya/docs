@@ -1,8 +1,17 @@
 # AI
 
+权限，阿里云的产品大部分都支持通过环境变量读取 aceessKey 和 secretKey，可通一设置：
+
+```bash
+export ALIBABA_CLOUD_ACCESS_KEY_ID=<my_access_key_id>
+export ALIBABA_CLOUD_ACCESS_KEY_SECRET=<my_access_key_secret>
+```
+
 ## CLI
 
+### aliyun
 
+跟着文档安装完成后，可以在 `~/.aliyun/config.json` 中删除 accessKey 和 secretKey 的配置，自动读取环境变量
 
 ### MaxCompute CLI，基于阿里云CLI
 
@@ -52,6 +61,17 @@ mcs profile update <name> # 更新 profile
 ## 如果不绑定，需在 cli 中指定 --profile <name>，如 mcs status --profile <name>
 mcs link bind <profile-name> # 将当前目录绑定到 profile（推荐）
 mcs link status # 查看当前目录绑定状态
+```
+
+profile 默认的配置目录可通过环境变量（`MCS_CONFIG_DIR`）调整，默认位置为 `~/.config/maxcompute-semantic/profiles.yaml`。
+
+权限配置文件也可通过命令行配置：
+
+```yaml
+    auth:
+      type: ak
+      access_key_id: ${env:ALIBABA_CLOUD_ACCESS_KEY_ID}
+      access_key_secret: ${env:ALIBABA_CLOUD_ACCESS_KEY_SECRET}
 ```
 
 安装 Agent Skill，安装完后可以让大模型自己去通过 skill 操作，无需用户自身去查看 CLI 语法手敲：
