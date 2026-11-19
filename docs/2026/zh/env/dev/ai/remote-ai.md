@@ -18,7 +18,7 @@ su - agent-user
 
 ```bash
 # 安装 node
-mise use --global node@20
+mise use --global node@24
 node -v
 # 配置 npm 镜像源
 npm config set registry https://registry.npmmirror.com
@@ -64,7 +64,7 @@ curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.
 
 ```bash
 ## 配置代理
-export T3CODE_RELEASE_BASE_URL=https://gh-proxy.org/https://github.com/pingdotgg/t3code/releases/download
+export T3CODE_RELEASE_BASE_URL=https://gh-proxy.com/https://github.com/pingdotgg/t3code/releases/download
 
 ## npm 方式安装
 npm install -g t3@0.1.7
