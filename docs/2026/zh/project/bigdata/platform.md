@@ -23,6 +23,8 @@
 * [nimtable](https://github.com/nimtable/nimtable)
 * [EasyETL](https://gitee.com/easyetl/EasyETLPublic)。EasyETL是一款开源的分布式 DAG 调度系统,面向非技术背景用户和企业数据初学者的轻量级数据集成平台，旨在大幅降低大数据中台的技术门槛。通过可视化界面和向导式配置，用户无需编写复杂代码，只需简单拖拽和配置即可完成异构数据同步、数据清洗转换、任务调度等核心数据开发工作，让企业快速构建数据能力
 * [NXIN](https://gitee.com/team-designer/etl)。NXIN 是一套面向数据集成、ETL 开发、任务调度、运行监控和数据治理的智能数据集成产品。把传统 Kettle的数据处理能力搬到 Web 端，围绕企业实际落地场景补齐工程管理、数据源管理、权限协作、脚本发布、批流任务运维、日志追踪、数据血缘、数据溯源和 AI 辅助设计等能力。适合需要把分散数据源快速接入、清洗、加工并稳定运行起来的团队,可以更清楚地理解数据从哪里来、经过了哪些处理、最终流向哪里
+* [datay](https://gitee.com/yuyuejia/datay)。DataY 是轻量、高性能的数据平台，一个 JAR、自研流批一体处理引擎，自研分布式调度框架，在 2 核 4G 的机器上 就能跑通 数据集成 → 数据建模 → 数据开发 → 任务调度 → 数据应用 的完整链路。
+* [stx](https://github.com/LeonYoah/stx)。**SeaTunnel 一站式运维平台** — 让 SeaTunnel 运维不再黑箱。
 
 ## 实时计算平台
 
