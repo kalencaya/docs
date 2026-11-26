@@ -66,6 +66,7 @@ curl -fsSL https://usemagpie.ai/install.sh | sh -s -- --mirror https://gh-proxy.
 ```bash
 ## 配置代理
 export T3CODE_RELEASE_BASE_URL=https://gh-proxy.com/https://github.com/pingdotgg/t3code/releases/download
+export T3CODE_TELEMETRY_ENABLED=false
 
 ## npm 方式安装
 npm install -g t3@0.1.7
@@ -82,6 +83,8 @@ mkdir -p ~/.config/systemd/user/t3code.service.d
 cat > ~/.config/systemd/user/t3code.service.d/override.conf <<'EOF'
 [Service]
 Environment=T3CODE_HOST=0.0.0.0
+Environment=T3CODE_TELEMETRY_ENABLED=false
+
 EOF
 
 # 重新加载并重启服务
